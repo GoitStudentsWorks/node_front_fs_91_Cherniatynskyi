@@ -1,5 +1,4 @@
 import css from './Sidebar.module.css';
-import { Board } from '../Board/Board';
 
 export const Sidebar = () => {
   return (
@@ -27,7 +26,7 @@ export const Sidebar = () => {
       </div>
       {/* boards  */}
       <ul className={css.bordList}>
-        <Board></Board>
+        
       </ul>
       {/* need help */}
       <div className={css.helpBox}>
