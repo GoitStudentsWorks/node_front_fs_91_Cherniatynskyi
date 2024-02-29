@@ -1,3 +1,55 @@
+:root {
+  --accentBgColor: #bedbb0;
+  --accentTextColor: #bedbb0;
+  --mainTextColor: #161616;
+  --secondaryTextColor: #161616;
+  --buttonsColor: #161616;
+  --secondaryButtonsColor: #121212;
+  --buttonsBgColor: #bedbb0;
+  --burgerColor: #161616;
+  --mainBgColor: #f6f6f7;
+  --mainTextColorLowOp: rgba(22, 22, 22, 0.5);
+  --secondaryTextColorLowOp: rgba(22, 22, 22, 0.5);
+  --mainTextColorVeryLowOp: rgba(22, 22, 22, 0.1);
+  --modalBorderColorLowOp: rgba(22, 22, 22, 0.1);
+  --modalBgColor: rgba(21, 21, 21, 0.3);
+  --needHelpBgColor: #f6f6f7;
+  --modalWindowsBgColor: #fcfcfc;
+  --mainAsideColor: #fff;
+  --mainHeaderColor: #fcfcfc;
+  --mainPageTextColor: rgba(22, 22, 22, 0.7);
+  --themeWrapper: #fcfcfc;
+  --themeWrapperBorder: #bedbb0;
+  --themeMainTextColor: rgba(22, 22, 22, 0.8);
+  --themeTextColor: #161616;
+  --themeTextHoverColor: #bedbb0;
+  --logoIconColor: #fff;
+  --logoIconBgColor: #1f1f1f;
+  --whiteColor: #fff;
+  --whiteColorLowOp: rgba(255, 255, 255, 0.3);
+  --blackColor: #161616;
+  --greenColor: #bedbb0;
+  --errorColor: #ff2929;
+  --priorityColorLow: #8fa1d0;
+  --priorityColorWithout: rgba(22, 22, 22, 0.3);
+  --priorityColorMedium: #e09cb5;
+  --priorityColorHigh: #bedbb0;
+  --scrollThumb: rgba(22, 22, 22, 0.1);
+  --scrollBar: #e8e8e8;
+  --logoutIcon: #bedbb0;
+  --modalBtnHover: #9dc888;
+  --modalPlusIcon: #fff;
+  --modalPlusIconWrapper: #161616;
+  --defaultAvatar: #fff;
+  --addColumnBtn: #fff;
+  --addColumnPlusWrapper: #161616;
+  --cardListScrollThumb: rgba(22, 22, 22, 0.1);
+  --cardListScrollBar: rgba(22, 22, 22, 0.1);
+  --defaultIconBackground: #f6f6f7;
+  --calendarBgColor: #fff;
+  --calendarNumbersOutLowOp: rgba(22, 22, 22, 0.2);
+}
+
 .App {
   text-align: center;
 }
@@ -14,18 +66,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--mainBgColor);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--mainTextColor);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--themeTextHoverColor);
 }
 
 @keyframes App-logo-spin {
