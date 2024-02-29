@@ -9,9 +9,9 @@ function App() {
 
   // const dispatch = useDispatch()
   // const openModalHandler = () => {
-  //   dispatch(openModal('add-board'))
-  // } функція відкриття модалки і передачі контенту
-  //<button onClick={openModalHandler}>OPEN MODAL</button> КНОПКА ТРИГЕРУ МОДАЛКИ
+  //   dispatch(openModal({content: 'add-board', id: '1234234'}))
+  // }// функція відкриття модалки і передачі контенту
+  // <button onClick={openModalHandler}>OPEN MODAL</button> КНОПКА ТРИГЕРУ МОДАЛКИ
 
   return (
     <div className="App">

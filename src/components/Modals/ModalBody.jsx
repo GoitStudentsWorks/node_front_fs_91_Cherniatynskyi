@@ -8,7 +8,7 @@ import { Test } from "./Test"
 
 export const ModalBody = () =>{
     const dispatch = useDispatch()
-    const {modalContent} = useSelector((state) => state.modal) // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
+    const {modalContent, selectedElId} = useSelector((state) => state.modal) // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
     useLockBodyScroll(); //БЛОКУЄ СКРОЛ СТОРІНКИ
 
     const firstRender = useRef(false)
@@ -40,7 +40,7 @@ export const ModalBody = () =>{
     const handleContent = (content) =>{  //ФУНКЦІЯ ВИЗНАЧЕННЯ РЕДНЕРУ КОНЕТНТУ. КОЖЕН КЕЙС ПОТРІБНО ПРОПИСАТИ
         switch (content) {
             case 'add-board':
-                 return <Test></Test>
+                 return <Test id={selectedElId}></Test>
             case 'edit-board':
                  return //вставити компонент
             default:

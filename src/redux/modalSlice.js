@@ -7,13 +7,15 @@ export const ModalSlice = createSlice({
         modalContent: null
     },
     reducers:{
-        openModal: (state, action) =>{
+        openModal: (state, {payload}) =>{
             state.isOpen = true
-            state.modalContent = action.payload
+            state.modalContent = payload.content
+            state.selectedElId = payload.id
         },
         closeModal: (state, action) =>{
             state.isOpen = false
             state.modalContent = null
+            state.selectedElId = null
         }
     }
 })
