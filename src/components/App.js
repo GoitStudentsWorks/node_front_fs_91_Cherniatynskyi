@@ -1,11 +1,11 @@
+import WelcomePage from '../pages/WelcomePage/WelcomePage.jsx';
 import './App.css';
 import { ModalBody } from './Modals/ModalBody';
 import { useSelector } from 'react-redux';
 // import { openModal } from '../redux/modalSlice'; //імпорт методу відкриття модалки
 
-
 function App() {
-  const {isOpen} = useSelector((state) => state.modal)
+  const { isOpen } = useSelector(state => state.modal);
 
   // const dispatch = useDispatch()
   // const openModalHandler = () => {
@@ -15,7 +15,8 @@ function App() {
 
   return (
     <div className="App">
-      {isOpen && <ModalBody/>}
+      <WelcomePage />
+      {isOpen && <ModalBody />}
     </div>
   );
 }
