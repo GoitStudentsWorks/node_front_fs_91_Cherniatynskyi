@@ -8,6 +8,7 @@
   --secondaryBgColor: #161616;
   --darkBgColor: #121212;
   --greyBgElements: rgb(49,49,49);
+  --sidebarBgColor: #121212;
 
    /* кольори для тексту */
   --mainTextColor: #ffffff;
@@ -34,6 +35,7 @@
 
   --boardActiveBackground: rgb(23,23,23);
   --filterColor: rgba(255,255,255,0.8);
+  --addIconButtonColor: #161616
 
   /* кольори для календаря */
   --calendarBgColor: rgb(31,31,31);

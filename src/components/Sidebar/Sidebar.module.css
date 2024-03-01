@@ -4,7 +4,7 @@
     left: 0;
     width: 225px;
     height: 100vh;
-    background-color: var(--darkBgColor);
+    background-color: var(--sidebarBgColor);
     transform: translateX(-100%);
     transition: 500ms transform;
 }
