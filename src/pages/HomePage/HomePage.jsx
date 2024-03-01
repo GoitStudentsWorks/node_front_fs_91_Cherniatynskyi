@@ -5,6 +5,7 @@ import { ModalBody } from 'components/Modals/ModalBody'
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Sidebar } from 'components/Sidebar/Sidebar'
+import { DefaultBoard } from 'components/DefaultBoard/DefaultBoard';
 
 const HomePage = () =>{
     const { isOpen } = useSelector(state => state.modal)
@@ -17,10 +18,7 @@ const HomePage = () =>{
 
             <div className={css.mainPage}>
                 {/* МІСЦЕ ДЛЯ ХЕДЕРА */}
-                {location.pathname === '/home' &&
-                     <div className={css.boardDefault}>
-                        <p className={css.boardDefaultText}>Before starting your project, it is essential <span className={css.boardDefaultLink}>to create a board</span> to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.</p>
-                    </div>}
+                {location.pathname === '/home' && <DefaultBoard/>}
                 {/* В outlet БУДЕ РЕНДЕРИТИСЯ БОРД */}
                 <Suspense fallback={<div>Loading....</div>}>
                         <Outlet/>
