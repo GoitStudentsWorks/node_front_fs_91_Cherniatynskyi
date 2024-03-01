@@ -1,13 +1,16 @@
 import css from './Sidebar.module.css';
+import sprite from '../../images/sprite.svg';
+import pot from '../../images/need-help/pot.png';
+import pot2x from '../../images/need-help/pot2x.png';
 
 export const Sidebar = () => {
   return (
-    <div className={css.sidebar}>
+    <div className={css.sideBar}>
       {/* logo, title */}
       <div className={css.titleBox}>
         <div className={css.iconBox}>
-          <svg width="0" height="0">
-            <use />
+          <svg className={css.iconLogo} width="32" height="32">
+            <use href={`${sprite}#icon-logo`} />
           </svg>
           <h2 className={css.title}>Task Pro</h2>
         </div>
@@ -17,39 +20,40 @@ export const Sidebar = () => {
           <div className={css.buttonBox}>
             <span className={css.buttonText}>Create a new board</span>
             <button className={css.buttonCreate}>
-              <svg width="0" height="0">
-                <use />
+              <svg className={css.iconCreate} width="20" height="20">
+                <use href={`${sprite}#icon-plus`} />
               </svg>
             </button>
           </div>
         </div>
       </div>
       {/* boards  */}
-      <ul className={css.bordList}>
-        
-      </ul>
+      <ul className={css.bordList}></ul>
       {/* need help */}
       <div className={css.helpBox}>
         <div className={css.helpTextBox}>
-          <img src="" alt="" />
-          <p>
-            If you need help with
-            <span>TaskPro</span>, check out our support resources or reach out
-            to our customer support team.
+          <picture className={css.imgHelp}>
+            <source srcSet={`${pot} 1x, ${pot2x} 2x`} />
+            <img srcSet={`${pot} 1x`} alt="pot" />
+          </picture>
+          <p className={css.helpText}>
+            If you need help with{' '}
+            <span className={css.helpTextLink}>TaskPro</span>, check out our
+            support resources or reach out to our customer support team.
           </p>
           <button className={css.buttonHelp}>
-            <svg width="0" height="0">
-              <use />
+            <svg className={css.iconHelp} width="20" height="20" >
+              <use href={`${sprite}#icon-help`} />
             </svg>
-            <p>Need help?</p>
+            <p className={css.helpButtonText}>Need help?</p>
           </button>
         </div>
         {/* logout */}
         <button className={css.buttonLogOut}>
-          <svg width="0" height="0">
-            <use />
+          <svg className={css.iconLogOut} width="32" height="32">
+            <use href={`${sprite}#icon-login`} />
           </svg>
-          <p>Log Out</p>
+          <p className={css.logOutButtonText}>Log Out</p>
         </button>
       </div>
     </div>
