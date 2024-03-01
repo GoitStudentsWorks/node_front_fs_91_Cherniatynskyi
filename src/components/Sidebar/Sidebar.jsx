@@ -28,7 +28,8 @@ export const Sidebar = () => {
         </div>
       </div>
       {/* boards  */}
-      <ul className={css.bordList}></ul>
+      <ul className={css.bordList}>
+      </ul>
       {/* need help */}
       <div className={css.helpBox}>
         <div className={css.helpTextBox}>

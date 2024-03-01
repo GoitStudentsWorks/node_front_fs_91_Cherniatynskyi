@@ -56,9 +56,10 @@
 
 .welcomeLogoTitle {
   color: var(--reversedTextColor);
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: -1.12px;
+  margin: 0;
 
   @media (min-width: 768px) {
     font-size: 40px;
@@ -104,9 +105,8 @@
   transition: all 250ms linear;
 
   &:hover {
-    /* background-color: var(--accentColorHover);
-    color: var(--reversedTextColor); */
-    opacity: 0.8;
+    background-color: var(--accentColorHover);
+    color: var(--reversedTextColor);
   }
 
   @media (min-width: 375px) {

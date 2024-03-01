@@ -37,13 +37,14 @@
 
   --boardActiveBackground: rgb(23,23,23);
   --filterColor: rgba(255,255,255,0.8);
-  --addIconButtonColor: #161616
+  --addIconButtonColor: #161616;
 
   /* кольори для календаря */
   --calendarBgColor: rgb(31,31,31);
   --calendarInactiveDatesColor: rgb(76,76,76);
 
 }
+
 
 .App {
   text-align: center;

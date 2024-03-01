@@ -8,11 +8,12 @@ import { Sidebar } from 'components/Sidebar/Sidebar'
 const HomePage = () =>{
     const { isOpen } = useSelector(state => state.modal)
     return(
-        <div className={css.test}>
-            {/* МІСЦЕ ДЛЯ ХЕДЕРА */}
+        <div className={css.main}>
+            <Sidebar/> 
+            
 
-            <div className={css.main}>
-                <Sidebar/> 
+            <div className={css.mainPage}>
+                {/* МІСЦЕ ДЛЯ ХЕДЕРА */}
 
                 {/* В outlet БУДЕ РЕНДЕРИТИСЯ БОРД */}
                 <Suspense fallback={<div>Loading....</div>}>

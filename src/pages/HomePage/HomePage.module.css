@@ -1,3 +1,7 @@
 .main{
     display: flex;
 }
+
+.mainPage{
+    width: 100%;
+}
