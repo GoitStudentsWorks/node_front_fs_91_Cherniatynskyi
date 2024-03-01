@@ -3,7 +3,7 @@ import css from '../Welcome/WelcomeContent.module.css';
 import iconImg from '../../images/welcome/boy@2x.png';
 import sprite from '../../images/sprite.svg';
 
-export const WelcomeContent = () => {
+const WelcomeContent = () => {
   return (
     <div className={css.welcomeWrapper}>
       <div className={css.welcomeContainer}>

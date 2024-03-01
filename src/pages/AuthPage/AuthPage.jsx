@@ -1,5 +1,7 @@
 import css from './AuthPage.module.css'
 
-export const AuthPage = () =>{
+const AuthPage = () =>{
     return(<div className={css.test}></div>)
 }
+
+export default AuthPage

@@ -1,5 +1,7 @@
 import css from './ScreensPage.module.css'
 
-export const ScreensPage = () =>{
+const ScreensPage = () =>{
     return (<div className={css.test}></div>)
 }
+
+export default ScreensPage
