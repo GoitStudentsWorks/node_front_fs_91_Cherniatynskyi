@@ -24,19 +24,9 @@ export const WelcomeContent = () => {
         <NavLink to="/auth/login" className={css.welcomeLoginBtn}>
           Log In
         </NavLink>
-        <NavLink to="/auth/login" className={css.welcomeTestBtn}>
-          Test
-        </NavLink>
-        <NavLink to="/auth/login" className={css.welcomeTest}>
-          Test2
-        </NavLink>
       </div>
     </div>
   );
 };
 
 export default WelcomeContent;
-
-// 1. визначитися з hover
-// 2. не дороблена svg logo
-// 3. додати глобальні стилі(root, front)
