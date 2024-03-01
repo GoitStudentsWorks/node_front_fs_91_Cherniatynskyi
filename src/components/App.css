@@ -1,8 +1,10 @@
 :root {
-  /* кольори для градіенту в Welcome */
-  --whiteGradient: rgb(245,245,245);
-  --greenGradient: rgb(196,218,179); 
-
+  --welcomBackground: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  
   /* основні бекграунди (лайт це той що під дошкою) */
   --lightBgColor: rgb(31,31,31);
   --secondaryBgColor: #161616;
