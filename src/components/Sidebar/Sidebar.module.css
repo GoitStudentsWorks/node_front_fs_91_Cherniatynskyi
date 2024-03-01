@@ -14,7 +14,7 @@
 
 @media screen and (min-width: 768px) {
     .sideBar {
-        width: 310px;
+        width: 260px;
     }
 }
 
@@ -228,6 +228,7 @@
 
 .buttonHelp {
     padding: 0;
+    margin-top: 10px;
     gap: 8px;
     display: flex;
     align-items: center;
