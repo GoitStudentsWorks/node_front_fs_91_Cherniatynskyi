@@ -33,7 +33,7 @@ function App() {
       <Route path='/' element ={<Welcome/>} />
       <Route path='/auth:id' element ={<Auth/>} />
       <Route path='/home' element ={<Home/>} >
-        <Route path='/home/:boardId' element={<ScreensPages/>}/>
+        <Route path=':boardId' element={<ScreensPages/>}/>
       </Route>
     </Routes>
     </Suspense>
