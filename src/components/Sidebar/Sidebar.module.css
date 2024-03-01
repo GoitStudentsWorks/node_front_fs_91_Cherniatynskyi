@@ -8,7 +8,7 @@
     width: 225px;
     height: 100vh;
     background-color: var(--sidebarBgColor);
-    /* transform: translateX(-100%); */
+    transform: translateX(-100%);
     transition: 500ms transform;
 }
 
@@ -177,11 +177,6 @@
     flex-direction: column;
 }
 
-@media screen and (min-width: 768px) {
-    .helpBox {
-
-    }
-}
 
 .helpTextBox {
     box-sizing: border-box;
