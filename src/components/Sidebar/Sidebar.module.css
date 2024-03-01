@@ -82,8 +82,22 @@
     cursor: pointer;
 }
 
+.logoIconContainer{
+    border-radius: 10px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lightBgColor);
+    padding-left: 1px;
+}
+
 .iconLogo {
-    fill: var(--inputsBgColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--mainTextColor);
     stroke: var(--mainTextColor);
 }
 
@@ -227,6 +241,7 @@
 }
 
 .buttonHelp {
+    color: var(--mainTextColor);
     padding: 0;
     margin-top: 10px;
     gap: 8px;
@@ -234,21 +249,35 @@
     align-items: center;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: 200ms linear;
+}
+
+.buttonHelp:hover{
+    color: var(--accentColor);
+    stroke: var(--accentColor);
+}
+
+.buttonHelp:hover .iconHelp{
+    stroke: var(--accentColor);
 }
 
 .iconHelp {
-    /* stroke: var(--mainTextColor); */
-    fill: var(--mainTextColor);
+    stroke: var(--mainTextColor);
+    fill: var(--lightBgColor);
+    transition: 200ms linear;
 }
 
 .helpButtonText {
-    color: var(--mainTextColor);
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.24px;
+
+    
 }
+
 
 .buttonLogOut {
     margin: 24px;
@@ -259,6 +288,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    padding: 10px;
 
     transition: 200ms linear;
 }

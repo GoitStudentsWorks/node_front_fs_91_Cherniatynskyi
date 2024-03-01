@@ -10,7 +10,7 @@ const WelcomeContent = () => {
         <img src={iconImg} alt="boy at laptop" className={css.welcomeIcon} />
         <div className={css.welcomeLogo}>
           <svg className={css.welcomeLogoIcon}>
-            <use href={`${sprite}#icon-logo`} />
+            <use href={`${sprite}#icon-logo2`} />
           </svg>
           <h1 className={css.welcomeLogoTitle}>Task Pro</h1>
         </div>
