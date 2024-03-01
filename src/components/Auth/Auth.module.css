@@ -1,33 +1,54 @@
 .authPageWrapper {
-  min-width: 1440px;
-  height: 770px;
-  background: linear-gradient(180deg, #c4c4c4 25%, #bedbb0 92.19%);
-  mix-blend-mode: color-burn;
-  /*  opacity: 0.02; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
 }
 
 .registerForm {
-  width: 424px;
-  height: 395px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background: #151515;
   border-radius: 8px;
+  padding: 0;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 190px;
+  height: 363px;
+  min-width: 320px;
+  @media (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media (min-width: 768px) {
+    width: 424px;
+    height: 395px;
+  }
 }
 
 .authNav {
-  margin-left: 40px;
+  margin-left: 28px;
+  margin-top: 24px;
   margin-right: auto;
+  padding: 0;
+  @media (min-width: 768px) {
+    margin-top: 40px;
+    margin-left: 40px;
+  }
 }
 .authLink {
   display: inline-block;
   text-decoration: none;
-  margin-top: 36px;
+  margin-bottom: 0px;
+  @media (min-width: 768px) {
+    margin-bottom: 24px;
+  }
   margin-right: 20px;
   font-family: var(--font-family);
   font-weight: 500;
@@ -45,19 +66,30 @@
 Form {
   display: flex;
   flex-direction: column;
-  width: 378px;
-  height: 281px;
-  padding: 20px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+  margin-bottom: 23px;
+
+  @media (min-width: 320px) {
+    width: 311px;
+  }
+
+  @media (min-width: 768px) {
+    width: 378px;
+    height: 281px;
+  }
 }
 
 .field {
   border: 1px solid #bedbb0;
   border-radius: 8px;
-  width: 344px;
   height: 49px;
+  padding: 0;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
   background: #1f1f1f;
   opacity: 0.4;
@@ -68,10 +100,25 @@ Form {
   color: #fff;
   &:hover {
     background: #1f1f1f;
+    opacity: 1;
   }
   &:active {
     background: #1f1f1f;
+    opacity: 1;
   }
+
+  @media (min-width: 320px) {
+    width: 285px;
+  }
+
+  @media (min-width: 768px) {
+    width: 344px;
+    height: 49px;
+  }
+}
+
+.field::placeholder {
+  padding-left: 10px;
 }
 
 .button {
@@ -79,13 +126,26 @@ Form {
   border-radius: 8px;
   text-decoration: none;
   color: 161616;
-  width: 344px;
+  width: 287px;
   height: 49px;
   background: #bedbb0;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-right: auto;
   margin-left: auto;
+  padding: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #161616;
+
+  @media (min-width: 768px) {
+    width: 344px;
+    height: 49px;
+    margin-bottom: 17px;
+  }
 
   &:hover {
     background: #9dc888;

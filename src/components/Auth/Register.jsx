@@ -12,7 +12,7 @@ const nameRegExp =
 
 const emailRegExp =
   /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/;
-
+// /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const passwordRegExp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
 
@@ -59,27 +59,28 @@ export const Register = () => {
           // onSubmit={handleSubmit}
         >
           <Form>
+            <ErrorMessage name="name" component="div" />
             <Field
               className={css.field}
               type="text"
               name="name"
               placeholder="Enter your name"
             />
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage name="email" component="div" />
             <Field
               className={css.field}
               type="email"
               name="email"
               placeholder="Enter your email"
             />
-            <ErrorMessage name="number" component="div" />
+            <ErrorMessage name="password" component="div" />
             <Field
               className={css.field}
               type="password"
               name="password"
               placeholder="Create a password"
             />
-            <ErrorMessage name="name" component="div" />
+
             <button className={css.button} type="submit">
               Register Now
             </button>
@@ -89,3 +90,9 @@ export const Register = () => {
     </div>
   );
 };
+
+// * Підправити стилі на виведення помилки
+// * звірити валідації
+// * пофіксити марджин по кнопці
+// * перевірити верстку під адаптив
+// * підключити зміну теми
