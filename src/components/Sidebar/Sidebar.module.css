@@ -20,7 +20,6 @@
 
 @media screen and (min-width: 1440px) {
     .sideBar {
-        position: static;
         width: 260px;
         transform: none;
 
