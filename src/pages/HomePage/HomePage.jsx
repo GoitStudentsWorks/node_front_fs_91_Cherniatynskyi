@@ -11,7 +11,7 @@ const HomePage = () =>{
         <div className={css.test}>
             {/* МІСЦЕ ДЛЯ ХЕДЕРА */}
 
-            <div>
+            <div className={css.main}>
                 <Sidebar/> 
 
                 {/* В outlet БУДЕ РЕНДЕРИТИСЯ БОРД */}

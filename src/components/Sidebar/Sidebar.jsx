@@ -42,7 +42,7 @@ export const Sidebar = () => {
             support resources or reach out to our customer support team.
           </p>
           <button className={css.buttonHelp}>
-            <svg className={css.iconHelp} width="0" height="0">
+            <svg className={css.iconHelp} width="20" height="20" >
               <use href={`${sprite}#icon-help`} />
             </svg>
             <p className={css.helpButtonText}>Need help?</p>
