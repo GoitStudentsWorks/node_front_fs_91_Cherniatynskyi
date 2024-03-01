@@ -1,0 +1,100 @@
+.authPageWrapper {
+  min-width: 1440px;
+  height: 770px;
+  background: linear-gradient(180deg, #c4c4c4 25%, #bedbb0 92.19%);
+  mix-blend-mode: color-burn;
+  /*  opacity: 0.02; */
+}
+
+.registerForm {
+  width: 424px;
+  height: 395px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #151515;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 190px;
+}
+
+.authNav {
+  margin-left: 40px;
+  margin-right: auto;
+}
+.authLink {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 36px;
+  margin-right: 20px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.3);
+  &:active {
+    color: #fff;
+  }
+  &:hover {
+    color: #fff;
+  }
+}
+
+Form {
+  display: flex;
+  flex-direction: column;
+  width: 378px;
+  height: 281px;
+  padding: 20px;
+}
+
+.field {
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  width: 344px;
+  height: 49px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  background: #1f1f1f;
+  opacity: 0.4;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  &:hover {
+    background: #1f1f1f;
+  }
+  &:active {
+    background: #1f1f1f;
+  }
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: 161616;
+  width: 344px;
+  height: 49px;
+  background: #bedbb0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  &:hover {
+    background: #9dc888;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #9dc888;
+    box-shadow: none;
+  }
+}
