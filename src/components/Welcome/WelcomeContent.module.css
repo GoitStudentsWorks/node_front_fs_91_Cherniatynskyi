@@ -55,7 +55,7 @@
 }
 
 .welcomeLogoTitle {
-  color: var(--blackColor);
+  color: var(--reversedTextColor);
   font-size: 28px;
   font-weight: 600;
   letter-spacing: -1.12px;
@@ -70,7 +70,7 @@
   margin-top: 24px;
   margin-bottom: 48px;
   text-align: center;
-  color: var(--blackColor);
+  color: var(--reversedTextColor);
   font-size: 14px;
   font-family: 'Poppins';
   line-height: 1.28;
@@ -92,20 +92,21 @@
   padding: 14px 0;
   margin-bottom: 14px;
   text-decoration: none;
-  color: var(--whiteColor);
+  color: var(--mainTextColor);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
   min-width: 320px;
   border-radius: 8px;
-  background: var(--blackColor);
+  background: var(--secondaryBgColor);
 
   transition: all 250ms linear;
 
   &:hover {
-    background-color: var(--modalBtnHover);
-    color: var(--blackColor);
+    /* background-color: var(--accentColorHover);
+    color: var(--reversedTextColor); */
+    opacity: 0.8;
   }
 
   @media (min-width: 375px) {
@@ -121,79 +122,19 @@
   padding: 14px 0;
   margin-bottom: 14px;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--reversedTextColor);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
   min-width: 320px;
   border-radius: 8px;
-  background: #161616;
 
   transition: all 250ms linear;
 
   &:hover {
-    /* color: #9dc888; */
-    background-color: #9dc888;
-    /* opacity: 0.8; */
-  }
-
-  @media (min-width: 375px) {
-    width: 335px;
-  }
-
-  @media (min-width: 768px) {
-    width: 473px;
-  }
-}
-
-.welcomeTestBtn {
-  padding: 14px 0;
-  margin-bottom: 14px;
-  text-decoration: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.28px;
-  min-width: 320px;
-  border-radius: 8px;
-  background: #161616;
-
-  transition: all 250ms linear;
-
-  &:hover {
-    background-color: #9dc888;
-    color: #161616;
-  }
-
-  @media (min-width: 375px) {
-    width: 335px;
-  }
-
-  @media (min-width: 768px) {
-    width: 473px;
-  }
-}
-
-.welcomeTest {
-  padding: 14px 0;
-  margin-bottom: 14px;
-  text-decoration: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.28px;
-  min-width: 320px;
-  border-radius: 8px;
-  color: var(--blackColor);
-
-  transition: all 250ms linear;
-
-  &:hover {
-    background-color: var(--modalBtnHover);
-    color: var(--whiteColor);
+    color: var(--mainTextColor);
+    background-color: var(--accentColorHover);
   }
 
   @media (min-width: 375px) {
