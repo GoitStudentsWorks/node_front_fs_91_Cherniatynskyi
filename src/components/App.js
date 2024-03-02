@@ -23,7 +23,7 @@ function App() {
     <Suspense>
       <Routes>
         <Route path='/' element ={<WelcomePage/>} />
-        <Route path='/auth:id' element ={<Auth/>} />
+        <Route path='/auth/:id' element ={<Auth/>} />
         <Route path='/home' element ={<Home/>} >
           <Route path=':boardId' element={<ScreensPages/>}/>
         </Route>

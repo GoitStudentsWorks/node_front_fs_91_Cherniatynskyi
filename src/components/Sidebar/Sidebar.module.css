@@ -92,6 +92,11 @@
     padding-left: 1px;
 }
 
+.iconLogo{
+    stroke: var(--logoIconColor);
+    fill: var(--logoIconColor)
+}
+
 .title {
     color: var(--sidebarMainTextColor);
     font-size: 16px;
