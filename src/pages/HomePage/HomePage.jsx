@@ -6,20 +6,20 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 import { DefaultBoard } from 'components/DefaultBoard/DefaultBoard';
+import { Navigation } from 'components/Navigation/Navigation';
 
 const HomePage = () => {
   const { isOpen } = useSelector(state => state.modal);
   const location = useLocation();
 
-  return (
-    <div className={css.main}>
-      <Sidebar />
-      {console.log(location.pathname)}
 
+    return(
+        <div className={css.main} data-theme='dark'>
+            <Sidebar/> 
+            {console.log(location.pathname)}
       <div className={css.mainPage}>
-        {/* МІСЦЕ ДЛЯ ХЕДЕРА */}
+        <Navigation />
         {location.pathname === '/home' && <DefaultBoard />}
-
         {/* В outlet БУДЕ РЕНДЕРИТИСЯ БОРД */}
         <Suspense fallback={<div>Loading....</div>}>
           <Outlet />
