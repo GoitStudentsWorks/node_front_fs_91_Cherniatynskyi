@@ -2,6 +2,7 @@ import css from './Sidebar.module.css';
 import sprite from '../../images/sprite.svg';
 import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
+import { Board } from './Board/Board';
 
 export const Sidebar = () => {
   return (
@@ -31,6 +32,7 @@ export const Sidebar = () => {
       </div>
       {/* boards  */}
       <ul className={css.bordList}>
+        <Board></Board>
       </ul>
       {/* need help */}
       <div className={css.helpBox}>
@@ -45,7 +47,7 @@ export const Sidebar = () => {
             support resources or reach out to our customer support team.
           </p>
           <button className={css.buttonHelp}>
-            <svg className={css.iconHelp} width="20" height="20" >
+            <svg className={css.iconHelp} width="20" height="20">
               <use href={`${sprite}#icon-help`} />
             </svg>
             <p className={css.helpButtonText}>Need help?</p>

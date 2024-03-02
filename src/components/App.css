@@ -11,11 +11,20 @@
   --darkBgColor: #121212;
   --greyBgElements: rgb(49,49,49);
   --sidebarBgColor: #121212;
+  --logoBgColor: #1f1f1f;
+  --logoIconColor: #ffffff;
+  --scrollThumbColor: #121212;
+  --helpBgColor: #1f1f1f;
+  --boardAddIconBg: #bedbb0;
+
+  --sidebarLightColor: #888888;
+  --sidebarLightColorEl: #2a2a2a;
 
    /* кольори для тексту */
   --mainTextColor: #ffffff;
   --secondaryTextColor: rgba(255, 255, 255, 0.5);
   --reversedTextColor: #161616;
+  --sidebarMainTextColor: #ffffff;
 
   --accentColor: #bedbb0;
   --accentColorHover: #9DC888;
@@ -37,12 +46,105 @@
 
   --boardActiveBackground: rgb(23,23,23);
   --filterColor: rgba(255,255,255,0.8);
-  --addIconButtonColor: #161616;
+  --addIconButtonBgColor: #161616;
+  --addIconPlusColor: #161616;
+  --logoutIconColor: #bedbb0;
+  --helpIconColor: #ffffff;
 
   /* кольори для календаря */
   --calendarBgColor: rgb(31,31,31);
   --calendarInactiveDatesColor: rgb(76,76,76);
 
+}
+
+
+
+[data-theme='light']{
+    /* основні бекграунди (лайт це той що під дошкою) */
+  --lightBgColor: rgb(246,246,246);
+  --secondaryBgColor: #FCFCFC;
+  --darkBgColor: #ffffff;
+  --greyBgElements: rgb(232,232,232);
+  --sidebarBgColor: #ffffff;
+  --scrollThumbColor: #d3d3d3;
+  --helpBgColor: #F6F6F7;
+
+   /* кольори для тексту */
+  --mainTextColor: #161616;
+  --secondaryTextColor: #161616B2;
+  --sidebarMainTextColor: #161616;
+
+  --sidebarLightColor: #8a8a8a;
+  --sidebarLightColorEl: #e8e8e8;
+
+   /* кольори в формах */
+  --inputsBgColor: #fcfcfc;
+  --inputsPlaceholderColor: rgb(160,160,160);
+
+  /* бекграунд для попапів и модалок  */
+  --modalBgColor: #fcfcfc;
+
+
+  --boardActiveBackground: #fcfcfc;
+  --filterColor: #434343;
+  --addIconButtonColor: #161616;
+  --helpIconColor: #161616;
+
+  /* кольори для календаря */
+  --calendarBgColor: #fcfcfc;
+  --calendarInactiveDatesColor: #d0d0d0;
+}
+
+
+[data-theme='violet']{
+    /* основні бекграунди (лайт це той що під дошкою) */
+  --lightBgColor: #ecedfd;
+  --secondaryBgColor: #ffffff;
+  --darkBgColor: #ffffff;
+  --greyBgElements: rgb(232,232,232);
+  --sidebarBgColor: #5255BC;
+  --logoBgColor: #ecedfd;
+  --logoIconColor: #5255BC;
+  --helpBgColor: #9192d6;
+  --boardAddIconBg: #B8BCFD;
+
+  --sidebarLightColor: #a9aade;
+  --sidebarLightColorEl: #6366c3;
+
+   /* кольори для тексту */
+  --sidebarMainTextColor: #ffffff;
+  --mainTextColor: #161616;
+  --secondaryTextColor: #5c5c5c;
+  --reversedTextColor: #ffffff;
+
+  --accentColor: #5255BC;
+  --accentColorHover: #7B7EDE;
+
+   /* кольори в формах */
+  --inputsBgColor: #fcfcfc;
+  --inputsPlaceholderColor: rgb(160,160,160);
+  --inputsBorderColor: rgb(99,109,93);
+  --authInactiveButtonColor: rgb(91,91,91);
+
+   /*кольори значків пріоритетів */
+  --priorityColorWithout: rgba(22, 22, 22, 0.3);
+  --priorityColorLow: #8fa1d0;
+  --priorityColorMedium: #e09cb5;
+
+  /* бекграунд для попапів и модалок  */
+  --modalBgColor: #fcfcfc;
+
+
+  --boardActiveBackground: #7677c9;
+  --filterColor: #434343;
+  --addIconButtonColor: #161616;
+  --addIconPlusColor: #ffffff;
+  --logoutIconColor: #ffffff;
+  --helpIconColor: #ffffff;
+
+  /* кольори для календаря */
+  --calendarBgColor: #fcfcfc;
+  --calendarInactiveDatesColor: #d0d0d0;
 }
 
 

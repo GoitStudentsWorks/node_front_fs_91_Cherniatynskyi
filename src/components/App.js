@@ -1,7 +1,10 @@
-
 import { Suspense, lazy } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+
+// import { ModalBody } from './Modals/ModalBody';
+// import { useSelector } from 'react-redux';
+// import { openModal } from '../redux/modalSlice'; //імпорт методу відкриття модалки
 
 
 const WelcomePage = lazy (() => import ('../pages/WelcomePage/WelcomePage'))
@@ -18,13 +21,13 @@ function App() {
   return (
     // Робоча версія, підсля написання модулів реєстрації/аутентифікації додам Restricted та Private Routes. Якщо будемо використовувати лоадер також додам до Suspense. Іра
     <Suspense>
-    <Routes>
-      <Route path='/' element ={<WelcomePage/>} />
-      <Route path='/auth:id' element ={<Auth/>} />
-      <Route path='/home' element ={<Home/>} >
-        <Route path=':boardId' element={<ScreensPages/>}/>
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element ={<WelcomePage/>} />
+        <Route path='/auth:id' element ={<Auth/>} />
+        <Route path='/home' element ={<Home/>} >
+          <Route path=':boardId' element={<ScreensPages/>}/>
+        </Route>
+      </Routes>
     </Suspense>
   );
 }

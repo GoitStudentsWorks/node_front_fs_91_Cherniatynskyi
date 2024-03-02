@@ -12,11 +12,12 @@ const HomePage = () => {
   const { isOpen } = useSelector(state => state.modal);
   const location = useLocation();
 
-  return (
-    <div className={css.main}>
-      <Sidebar />
-      {console.log(location.pathname)}
 
+
+    return(
+        <div className={css.main} data-theme='dark'>
+            <Sidebar/> 
+            {console.log(location.pathname)}
       <div className={css.mainPage}>
         <Navigation />
         {location.pathname === '/home' && <DefaultBoard />}
