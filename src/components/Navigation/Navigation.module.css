@@ -23,3 +23,10 @@
   align-items: center;
   stroke: var(--mainTextColor);
 }
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* color: var(--mainTextColor); */
+}

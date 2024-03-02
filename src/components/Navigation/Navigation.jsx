@@ -1,7 +1,7 @@
 import css from './Navigation.module.css';
 import sprite from '../../images/sprite.svg';
-// import { UserMenu } from '../UserMenu/UserMenu.js';
-// import { ThemeSelect } from '../ThemeSelect/ThemeSelect.js';
+import { UserMenu } from '../UserMenu/UserMenu.jsx';
+import { ThemeSelect } from '../ThemeSelect/ThemeSelect.jsx';
 
 export const Navigation = ({ openMenu }) => {
   return (
@@ -13,8 +13,8 @@ export const Navigation = ({ openMenu }) => {
       </button>
 
       <div className={css.navMenu}>
-        {/* <ThemeSelect />
-        <UserMenu /> */}
+        <ThemeSelect />
+        <UserMenu />
       </div>
     </div>
   );
