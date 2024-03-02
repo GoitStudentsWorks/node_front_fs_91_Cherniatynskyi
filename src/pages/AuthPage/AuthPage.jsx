@@ -1,13 +1,10 @@
-import { Login } from 'components/Auth/Login';
-import { Register } from 'components/Auth/Register';
-import css from './AuthPage.module.css';
-import { useSelector } from 'react-redux';
-import { isRegister } from '../../redux/auth/selector';
+import { AuthNav } from 'components/Auth/AuthNav';
+import css from '../../components/Auth/Auth.module.css';
 
 export const AuthPage = () => {
-  const isRegisterForm = useSelector(isRegister);
-
   return (
-    <div className={css.test}>{isRegisterForm ? <Register /> : <Login />}</div>
+    <div className={css.authPageWrapper}>
+      <AuthNav />
+    </div>
   );
 };

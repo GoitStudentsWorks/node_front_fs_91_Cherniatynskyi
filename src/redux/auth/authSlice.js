@@ -5,7 +5,6 @@ const initialState = {
   isLoading: false,
   error: '',
   profile: null,
-  isRegister: true,
 };
 
 export const authSlice = createSlice({

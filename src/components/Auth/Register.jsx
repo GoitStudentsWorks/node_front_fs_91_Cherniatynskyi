@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import css from './Auth.module.css';
 // import { useDispatch } from 'react-redux';
 // import { register } from 'redux/auth/operations';
-import { AuthNav } from './AuthNav';
 
 const nameRegExp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{2,32}$/;
@@ -46,47 +45,44 @@ export const Register = () => {
   // };
 
   return (
-    <div className={css.authPageWrapper}>
-      <div className={css.registerForm}>
-        <AuthNav />
-        <Formik
-          initialValues={{
-            name: '',
-            email: '',
-            password: '',
-          }}
-          validationSchema={schema}
-          // onSubmit={handleSubmit}
-        >
-          <Form>
-            <ErrorMessage name="name" component="div" />
-            <Field
-              className={css.field}
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-            />
-            <ErrorMessage name="email" component="div" />
-            <Field
-              className={css.field}
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-            <ErrorMessage name="password" component="div" />
-            <Field
-              className={css.field}
-              type="password"
-              name="password"
-              placeholder="Create a password"
-            />
+    <div className={css.registerForm}>
+      <Formik
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+        }}
+        validationSchema={schema}
+        // onSubmit={handleSubmit}
+      >
+        <Form>
+          <ErrorMessage name="name" component="div" />
+          <Field
+            className={css.field}
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+          />
+          <ErrorMessage name="email" component="div" />
+          <Field
+            className={css.field}
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+          />
+          <ErrorMessage name="password" component="div" />
+          <Field
+            className={css.field}
+            type="password"
+            name="password"
+            placeholder="Create a password"
+          />
 
-            <button className={css.button} type="submit">
-              Register Now
-            </button>
-          </Form>
-        </Formik>
-      </div>
+          <button className={css.button} type="submit">
+            Register Now
+          </button>
+        </Form>
+      </Formik>
     </div>
   );
 };
@@ -94,4 +90,3 @@ export const Register = () => {
 // * Підправити стилі на виведення помилки
 // * звірити валідації
 // * підключити зміну теми
-// *Додати іконку і логіку на видимість пароля
