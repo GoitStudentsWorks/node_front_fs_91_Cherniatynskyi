@@ -69,7 +69,7 @@
 
 @media screen and (min-width: 768px) {
     .titleBox {
-        
+
         padding: 24px 24px 40px 24px;
     }
 }
@@ -82,7 +82,7 @@
     cursor: pointer;
 }
 
-.logoIconContainer{
+.logoIconContainer {
     border-radius: 10px;
     width: 32px;
     height: 32px;
@@ -91,14 +91,6 @@
     align-items: center;
     background-color: var(--logoBgColor);
     padding-left: 1px;
-}
-
-.iconLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    fill: var(--logoIconColor);
-    stroke: var(--logoIconColor);
 }
 
 .title {
@@ -253,12 +245,12 @@
     transition: 200ms linear;
 }
 
-.buttonHelp:hover{
+.buttonHelp:hover {
     color: var(--accentColor);
     stroke: var(--accentColor);
 }
 
-.buttonHelp:hover .iconHelp{
+.buttonHelp:hover .iconHelp {
     stroke: var(--accentColor);
 }
 
@@ -275,7 +267,7 @@
     line-height: normal;
     letter-spacing: -0.24px;
 
-    
+
 }
 
 
@@ -293,7 +285,8 @@
     transition: 200ms linear;
 }
 
-.buttonLogOut:hover, .buttonLogOut:active{
+.buttonLogOut:hover,
+.buttonLogOut:active {
     background-color: var(--accentColorHover);
     border-radius: 8px;
 
