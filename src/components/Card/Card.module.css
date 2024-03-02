@@ -96,7 +96,7 @@ margin-right: 14px;
 .cardIconsList{
     display: flex;
     margin-left: auto;
-    align-items: end;
+    align-items: flex-end;
     
     
 }

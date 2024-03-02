@@ -1,3 +1,4 @@
+import { Card } from 'components/Card/Card'
 import css from './Column.module.css'
 
 export const Column = ({column}) =>{
@@ -10,7 +11,9 @@ export const Column = ({column}) =>{
                 <button>delete</button>
             </div>
         </div>
-        <ul className={css.columnList}>cards list</ul>
+        <ul className={css.columnList}>
+            <Card/>
+        </ul>
         <button className={css.columnButton}>Add Card</button>
     </li>)
 }
