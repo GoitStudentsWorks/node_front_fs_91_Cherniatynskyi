@@ -12,7 +12,7 @@ const HomePage = () =>{
     const location = useLocation()
 
     return(
-        <div className={css.main}>
+        <div className={css.main} data-theme='dark'>
             <Sidebar/> 
             {console.log(location.pathname)}
 

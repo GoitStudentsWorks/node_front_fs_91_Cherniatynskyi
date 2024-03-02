@@ -18,13 +18,13 @@ function App() {
   return (
     // Робоча версія, підсля написання модулів реєстрації/аутентифікації додам Restricted та Private Routes. Якщо будемо використовувати лоадер також додам до Suspense. Іра
     <Suspense>
-    <Routes>
-      <Route path='/' element ={<WelcomePage/>} />
-      <Route path='/auth:id' element ={<Auth/>} />
-      <Route path='/home' element ={<Home/>} >
-        <Route path=':boardId' element={<ScreensPages/>}/>
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element ={<WelcomePage/>} />
+        <Route path='/auth:id' element ={<Auth/>} />
+        <Route path='/home' element ={<Home/>} >
+          <Route path=':boardId' element={<ScreensPages/>}/>
+        </Route>
+      </Routes>
     </Suspense>
   );
 }
