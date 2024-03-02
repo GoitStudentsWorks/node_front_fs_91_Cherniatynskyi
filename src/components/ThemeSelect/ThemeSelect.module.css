@@ -1,0 +1,13 @@
+.menuTheme {
+  margin: 0;
+  width: 68px;
+  color: var(--mainTextColor);
+  background-color: var(--secondaryBgColor);
+
+  display: flex;
+  align-items: center;
+}
+
+.iconChevronDown {
+  stroke: var(--mainTextColor);
+}

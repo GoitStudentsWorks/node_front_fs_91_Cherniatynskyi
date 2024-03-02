@@ -1,70 +1,69 @@
 .sideBar {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 225px;
-    height: 100vh;
-    background-color: var(--sidebarBgColor);
-    transform: translateX(-100%);
-    transition: 500ms transform;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 100vh;
+  background-color: var(--sidebarBgColor);
+  transform: translateX(-100%);
+  transition: 500ms transform;
 }
 
 @media screen and (min-width: 768px) {
-    .sideBar {
-        width: 260px;
-    }
+  .sideBar {
+    width: 260px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .sideBar {
-        position: static;
-        width: 310px;
-        transform: none;
-
-    }
+  .sideBar {
+    position: static;
+    width: 310px;
+    transform: none;
+  }
 }
 
 /* має працювати як буде кнопка відкриття */
 
-/* .openSideBar {
-    min-height: 768px;
-    z-index: 2;
+.openSideBar {
+  min-height: 768px;
+  z-index: 2;
 
-    position: absolute;
+  position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    top: 0;
-    width: 225px;
-    height: 100vh;
-    flex-shrink: 0;
-    background-color: #121212;
+  top: 0;
+  width: 225px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #121212;
 
-    transition: 500ms;
-    transform: translateX(0);
+  transition: 500ms;
+  transform: translateX(0);
 }
 
 @media screen and (min-width: 768px) {
-    .openSideBar {
-        /* padding: 24px; */
-/* width: 260px;
-    }
+  .openSideBar {
+    padding: 24px;
+    width: 260px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .openSideBar {
-        position: absolute;
-        width: 260px;
-    }
-}  */
+  .openSideBar {
+    position: absolute;
+    width: 260px;
+  }
+}
 
 .titleBox {
-    padding: 14px 14px 30px 14px;
+  padding: 14px 14px 30px 14px;
 }
 
 @media screen and (min-width: 768px) {
@@ -75,11 +74,11 @@
 }
 
 .iconBox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.25s ease;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s ease;
+  cursor: pointer;
 }
 
 .logoIconContainer {
@@ -104,13 +103,13 @@
 }
 
 .bordBox {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 @media screen and (min-width: 768px) {
-    .bordBox {
-        margin-top: 60px;
-    }
+  .bordBox {
+    margin-top: 60px;
+  }
 }
 
 .bordTitle {
@@ -161,28 +160,28 @@
 }
 
 .buttonCreate:hover {
-    background-color: var(--accentColorHover);
+  background-color: var(--accentColorHover);
 }
 
 .iconCreate {
     stroke: var(--addIconPlusColor);
+
 }
 
 .bordList {
-    color: var(--mainTextColor);
-    margin-bottom: auto;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0 24px;
-    margin-bottom: 20px;
+  color: var(--mainTextColor);
+  margin-bottom: auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0 24px;
+  margin-bottom: 20px;
 }
 
 .helpBox {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
-
 
 .helpTextBox {
     box-sizing: border-box;
@@ -196,12 +195,12 @@
 }
 
 @media screen and (min-width: 768px) {
-    .helpTextBox {
-        width: 212px;
-        height: 272px;
-        flex-shrink: 0;
-        padding: 20px 20px 18px 20px;
-    }
+  .helpTextBox {
+    width: 212px;
+    height: 272px;
+    flex-shrink: 0;
+    padding: 20px 20px 18px 20px;
+  }
 }
 
 .helpText {
@@ -217,19 +216,19 @@
 }
 
 @media screen and (min-width: 768px) {
-    .helpText {
-        width: 172px;
-        height: 102px;
-        flex-shrink: 0;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: -0.28px;
-    }
+  .helpText {
+    width: 172px;
+    height: 102px;
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+  }
 }
 
 .helpTextLink {
-    cursor: 'pointer';
-    color: var(--accentColor);
+  cursor: 'pointer';
+  color: var(--accentColor);
 }
 
 .buttonHelp {
@@ -270,19 +269,18 @@
 
 }
 
-
 .buttonLogOut {
-    margin: 24px;
-    margin-bottom: 24px;
-    gap: 14px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
+  margin: 24px;
+  margin-bottom: 24px;
+  gap: 14px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
 
-    transition: 200ms linear;
+  transition: 200ms linear;
 }
 
 .buttonLogOut:hover,
@@ -315,7 +313,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .logOutButtonText {
-        font-size: 16px;
-    }
+  .logOutButtonText {
+    font-size: 16px;
+  }
 }
