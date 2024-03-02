@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
+
 // import { ModalBody } from './Modals/ModalBody';
 // import { useSelector } from 'react-redux';
 // import { openModal } from '../redux/modalSlice'; //імпорт методу відкриття модалки
