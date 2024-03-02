@@ -1,7 +1,14 @@
-import css from './AuthPage.module.css'
+import { AuthNav } from 'components/Auth/AuthNav';
+import css from '../../components/Auth/Auth.module.css';
 
-const AuthPage = () =>{
-    return(<div className={css.test}></div>)
-}
+const AuthPage = () => {
+  return (
+    <div className={css.authPageWrapper}>
+      <AuthNav />
+    </div>
+  );
+};
+
 
 export default AuthPage
+
