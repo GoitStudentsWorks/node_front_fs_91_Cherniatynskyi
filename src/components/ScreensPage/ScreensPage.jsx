@@ -6,10 +6,8 @@ import MainDashboard from '../dashboard/MainDashboard/MainDashboard';
 const ScreensPage = () => {
   return (
     <div className={css.screensWrap}>
-      <div>
         <HeaderDashboard />
         <MainDashboard />
-      </div>
     </div>
   );
 };

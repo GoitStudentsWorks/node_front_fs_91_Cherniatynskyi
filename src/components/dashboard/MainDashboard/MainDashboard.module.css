@@ -1,5 +1,9 @@
 .columnWrap {
   padding: 0 20px;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 100px;
 }
 
 .addColumnBtn {

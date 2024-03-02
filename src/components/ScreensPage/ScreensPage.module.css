@@ -1,5 +1,6 @@
 .screensWrap {
-  background-color: var(--darkBgColor);
+  background-color: var(--lightBgColor);
   width: 100%;
   height: 100%;
+
 }
