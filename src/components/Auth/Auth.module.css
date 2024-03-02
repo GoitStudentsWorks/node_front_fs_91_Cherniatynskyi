@@ -32,6 +32,27 @@
   }
 }
 
+.loginForm {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #151515;
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  min-width: 335px;
+  /* @media (min-width: 375px) {
+    width: 335px;
+  } */
+
+  @media (min-width: 768px) {
+    width: 424px;
+    height: 332px;
+  }
+}
+
 .authNav {
   margin-left: 28px;
   margin-top: 24px;
@@ -46,9 +67,9 @@
   display: inline-block;
   text-decoration: none;
   margin-bottom: 0px;
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     margin-bottom: 24px;
-  }
+  } */
   margin-right: 20px;
   font-family: var(--font-family);
   font-weight: 500;
@@ -69,12 +90,9 @@ Form {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 24px;
+  margin-top: 40px;
   margin-bottom: 23px;
-
-  @media (min-width: 320px) {
-    width: 311px;
-  }
+  width: 311px;
 
   @media (min-width: 768px) {
     width: 378px;
@@ -87,6 +105,7 @@ Form {
   border-radius: 8px;
   height: 49px;
   padding: 0;
+  width: 285px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 14px;
@@ -105,10 +124,6 @@ Form {
   &:active {
     background: #1f1f1f;
     opacity: 1;
-  }
-
-  @media (min-width: 320px) {
-    width: 285px;
   }
 
   @media (min-width: 768px) {
@@ -158,3 +173,8 @@ Form {
     box-shadow: none;
   }
 }
+
+/* // * Підправити стилі на виведення помилки
+// * звірити валідації
+// * підключити зміну теми  
+ */
