@@ -1,319 +1,314 @@
 .sideBar {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 225px;
-    height: 100vh;
-    background-color: var(--sidebarBgColor);
-    transform: translateX(-100%);
-    transition: 500ms transform;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 100vh;
+  background-color: var(--sidebarBgColor);
+  transform: translateX(-100%);
+  transition: 500ms transform;
 }
 
 @media screen and (min-width: 768px) {
-    .sideBar {
-        width: 260px;
-    }
+  .sideBar {
+    width: 260px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .sideBar {
-        position: static;
-        width: 310px;
-        transform: none;
-
-    }
+  .sideBar {
+    position: static;
+    width: 310px;
+    transform: none;
+  }
 }
 
 /* має працювати як буде кнопка відкриття */
 
-/* .openSideBar {
-    min-height: 768px;
-    z-index: 2;
+.openSideBar {
+  min-height: 768px;
+  z-index: 2;
 
-    position: absolute;
+  position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    top: 0;
-    width: 225px;
-    height: 100vh;
-    flex-shrink: 0;
-    background-color: #121212;
+  top: 0;
+  width: 225px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #121212;
 
-    transition: 500ms;
-    transform: translateX(0);
+  transition: 500ms;
+  transform: translateX(0);
 }
 
 @media screen and (min-width: 768px) {
-    .openSideBar {
-        /* padding: 24px; */
-/* width: 260px;
-    }
+  .openSideBar {
+    padding: 24px;
+    width: 260px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .openSideBar {
-        position: absolute;
-        width: 260px;
-    }
-}  */
+  .openSideBar {
+    position: absolute;
+    width: 260px;
+  }
+}
 
 .titleBox {
-    padding: 14px 14px 30px 14px;
+  padding: 14px 14px 30px 14px;
 }
 
 @media screen and (min-width: 768px) {
-    .titleBox {
-        
-        padding: 24px 24px 40px 24px;
-    }
+  .titleBox {
+    padding: 24px 24px 40px 24px;
+  }
 }
 
 .iconBox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.25s ease;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s ease;
+  cursor: pointer;
 }
 
-.logoIconContainer{
-    border-radius: 10px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--lightBgColor);
-    padding-left: 1px;
+.logoIconContainer {
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lightBgColor);
+  padding-left: 1px;
 }
 
 .iconLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    fill: var(--mainTextColor);
-    stroke: var(--mainTextColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: var(--mainTextColor);
+  stroke: var(--mainTextColor);
 }
 
 .title {
-    color: var(--mainTextColor);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.64px;
-    margin: 0;
+  color: var(--mainTextColor);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.64px;
+  margin: 0;
 }
 
 .bordBox {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 @media screen and (min-width: 768px) {
-    .bordBox {
-        margin-top: 60px;
-    }
+  .bordBox {
+    margin-top: 60px;
+  }
 }
 
 .bordTitle {
-    color: var(--secondaryTextColor);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.24px;
+  color: var(--secondaryTextColor);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
 }
 
 .buttonBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-    padding: 14px 0 14px;
-    border-top: 1px solid var(--secondaryTextColor);
-    border-bottom: 1px solid var(--secondaryTextColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding: 14px 0 14px;
+  border-top: 1px solid var(--secondaryTextColor);
+  border-bottom: 1px solid var(--secondaryTextColor);
 }
 
 .buttonText {
-    width: 76px;
-    display: block;
-    color: var(--mainTextColor);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: -0.28px;
+  width: 76px;
+  display: block;
+  color: var(--mainTextColor);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.28px;
 }
 
 .buttonCreate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--accentColor);
-    transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--accentColor);
+  transition: background-color 0.3s ease;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .buttonCreate:hover {
-    background-color: var(--accentColorHover);
+  background-color: var(--accentColorHover);
 }
 
 .iconCreate {
-    stroke: var(--darkBgColor);
+  stroke: var(--darkBgColor);
 }
 
 .bordList {
-    color: var(--mainTextColor);
-    margin-bottom: auto;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0 24px;
-    margin-bottom: 20px;
+  color: var(--mainTextColor);
+  margin-bottom: auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0 24px;
+  margin-bottom: 20px;
 }
 
 .helpBox {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .helpTextBox {
-    box-sizing: border-box;
-    align-self: center;
-    padding: 14px 14px 18px 14px;
-    width: 197px;
-    height: 238px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: var(--inputsBgColor);
+  box-sizing: border-box;
+  align-self: center;
+  padding: 14px 14px 18px 14px;
+  width: 197px;
+  height: 238px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--inputsBgColor);
 }
 
 @media screen and (min-width: 768px) {
-    .helpTextBox {
-        width: 212px;
-        height: 272px;
-        flex-shrink: 0;
-        padding: 20px 20px 18px 20px;
-    }
+  .helpTextBox {
+    width: 212px;
+    height: 272px;
+    flex-shrink: 0;
+    padding: 20px 20px 18px 20px;
+  }
 }
 
 .helpText {
-    margin: 0;
-    margin-top: 14px;
-    flex-shrink: 0;
-    color: var(--mainTextColor);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: -0.24px;
+  margin: 0;
+  margin-top: 14px;
+  flex-shrink: 0;
+  color: var(--mainTextColor);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.24px;
 }
 
 @media screen and (min-width: 768px) {
-    .helpText {
-        width: 172px;
-        height: 102px;
-        flex-shrink: 0;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: -0.28px;
-    }
+  .helpText {
+    width: 172px;
+    height: 102px;
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+  }
 }
 
 .helpTextLink {
-    cursor: 'pointer';
-    color: var(--accentColor);
+  cursor: 'pointer';
+  color: var(--accentColor);
 }
 
 .buttonHelp {
-    color: var(--mainTextColor);
-    padding: 0;
-    margin-top: 10px;
-    gap: 8px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: 200ms linear;
+  color: var(--mainTextColor);
+  padding: 0;
+  margin-top: 10px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 200ms linear;
 }
 
-.buttonHelp:hover{
-    color: var(--accentColor);
-    stroke: var(--accentColor);
+.buttonHelp:hover {
+  color: var(--accentColor);
+  stroke: var(--accentColor);
 }
 
-.buttonHelp:hover .iconHelp{
-    stroke: var(--accentColor);
+.buttonHelp:hover .iconHelp {
+  stroke: var(--accentColor);
 }
 
 .iconHelp {
-    stroke: var(--mainTextColor);
-    fill: var(--lightBgColor);
-    transition: 200ms linear;
+  stroke: var(--mainTextColor);
+  fill: var(--lightBgColor);
+  transition: 200ms linear;
 }
 
 .helpButtonText {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
-
-    
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
 }
-
 
 .buttonLogOut {
-    margin: 24px;
-    margin-bottom: 24px;
-    gap: 14px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
+  margin: 24px;
+  margin-bottom: 24px;
+  gap: 14px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
 
-    transition: 200ms linear;
+  transition: 200ms linear;
 }
 
-.buttonLogOut:hover, .buttonLogOut:active{
-    background-color: var(--lightBgColor);
-    border-radius: 8px;
+.buttonLogOut:hover,
+.buttonLogOut:active {
+  background-color: var(--lightBgColor);
+  border-radius: 8px;
 }
 
 .iconLogOut {
-    stroke: var(--accentColor);
-    fill: transparent;
+  stroke: var(--accentColor);
+  fill: transparent;
 }
 
 .logOutButtonText {
-    color: var(--mainTextColor);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
+  color: var(--mainTextColor);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
 }
 
 @media screen and (min-width: 768px) {
-    .logOutButtonText {
-        font-size: 16px;
-    }
+  .logOutButtonText {
+    font-size: 16px;
+  }
 }

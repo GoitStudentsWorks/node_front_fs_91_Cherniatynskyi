@@ -1,0 +1,25 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 18px 20px;
+  background-color: var(--secondaryBgColor);
+}
+
+.buttonBurger {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondaryBgColor);
+}
+
+.iconBurger {
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  stroke: var(--mainTextColor);
+}
