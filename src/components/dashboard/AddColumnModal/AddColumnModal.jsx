@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import sprite from '../../images/sprite.svg';
+// import sprite from '../../images/sprite.svg';
 
 const AddColumnModal = ({ isOpen, onClose, onAddColumn }) => {
   const initialValues = {
@@ -38,9 +38,9 @@ const AddColumnModal = ({ isOpen, onClose, onAddColumn }) => {
         </div>
         <button type="submit">
           <div>
-            <svg>
+            {/* <svg>
               <use href={`${sprite}#icon-plus`}></use>
-            </svg>
+            </svg> */}
             <p>Add another column</p>
           </div>
         </button>
