@@ -1,0 +1,61 @@
+.boardItem {
+    display: flex;
+    gap: 43px;
+    justify-content: space-between;
+    width: 215px;
+    height: 61px;
+    padding: 22px 10px 22px 14px;
+    transition: 250ms;
+}
+
+@media screen and (min-width: 768px) {
+    .board {
+        width: 252px;
+        padding: 22px 14px 22px 24px;
+        gap: 58px;
+    }
+}
+
+.boardTitleBox {
+    display: flex;
+    align-items: flex-end;
+}
+
+.boardIcon {
+    stroke: var(--logoIconColor);
+}
+
+.boardText {
+    color: var(--logoIconColor);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin-left: 4px;
+    max-width: 88px;
+}
+
+@media screen and (min-width: 768px) {
+    .boardTittle {
+        margin-left: 8px;
+    }
+}
+
+.boardButtonBox {
+    display: flex;
+    gap: 8px;
+}
+
+.boardButton {
+    padding: 0;
+    background-color: transparent;
+    border: transparent;
+}
+
+.iconButton {
+    stroke: var(--logoIconColor);
+    opacity: 0.5;
+    cursor: pointer;
+}
