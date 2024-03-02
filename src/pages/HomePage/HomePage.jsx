@@ -14,7 +14,7 @@ const HomePage = () => {
 
 
     return(
-        <div className={css.main} data-theme='dark'>
+    <div className={css.main} data-theme='dark'>
             <Sidebar/> 
             {console.log(location.pathname)}
       <div className={css.mainPage}>

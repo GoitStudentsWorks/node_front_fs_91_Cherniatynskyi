@@ -102,3 +102,35 @@
 .react-datepicker__day--disabled {
   visibility: visible;
 }
+
+
+.calendar{
+  background-color: var(--calendarBgColor);
+  border-color: var(--inputsBorderColor);
+}
+
+.day{
+  color: var(--mainTextColor);
+  border-radius: 50%;
+}
+
+.day:hover, .day:active{
+  color: var(--calendarBgColor);
+  background-color: var(--accentColor);
+  border-radius: 50%;
+}
+
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--calendarBgColor);
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom: 1px solid red;
+}
+
+  
+
