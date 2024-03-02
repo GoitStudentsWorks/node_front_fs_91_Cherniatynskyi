@@ -16,6 +16,7 @@
     line-height: 20px;
     letter-spacing: -0.02em;
     text-align: center;
+    margin-top: -60px;
 
     color: var(--secondaryTextColor);
     

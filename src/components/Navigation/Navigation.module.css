@@ -24,6 +24,12 @@
   stroke: var(--mainTextColor);
 }
 
+@media screen and (min-width: 1024px) {
+  .iconBurger {
+    display: none;
+  }
+}
+
 .navMenu {
   display: flex;
   align-items: center;

@@ -18,6 +18,14 @@
   }
 }
 
+@media screen and (min-width: 1024px) {
+    .sideBar {
+      width: 260px;
+      position: static;
+      transform: none;
+    }
+  }
+
 @media screen and (min-width: 1440px) {
   .sideBar {
     position: static;
@@ -66,9 +74,9 @@
   padding: 14px 14px 30px 14px;
 }
 
-@media screen and (min-width: 768px) {
-    .titleBox {
 
+@media screen and (min-width: 1024px) {
+    .titleBox {
         padding: 24px 24px 40px 24px;
     }
 }
@@ -111,7 +119,7 @@
   margin-top: 70px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .bordBox {
     margin-top: 60px;
   }
@@ -199,7 +207,7 @@
     background: var(--helpBgColor);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .helpTextBox {
     width: 212px;
     height: 272px;
@@ -220,7 +228,7 @@
     letter-spacing: -0.24px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .helpText {
     width: 172px;
     height: 102px;
@@ -317,7 +325,7 @@
     letter-spacing: -0.24px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .logOutButtonText {
     font-size: 16px;
   }
