@@ -48,7 +48,7 @@ export const NewBoardForm = () =>{
                         <div className={css.iconsWrap}>
                             {icValues.map(ic =>{
                                 return(
-                                    <label className={css.container}>
+                                    <label key={ic} className={css.container}>
                                         <input onChange={(e)=>handleIconChange(e)} type="radio" id={ic} name="icon" value={ic}/> 
                                         <svg className={css.checkmark}>
                                             <use href={`${sprite}#icon-${ic}`}/>
