@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react';
 import { closeModal } from '../../redux/modalSlice';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
+import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
 
-import { Test } from './Test';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export const ModalBody = () => {
     //ФУНКЦІЯ ВИЗНАЧЕННЯ РЕДНЕРУ КОНЕТНТУ. КОЖЕН КЕЙС ПОТРІБНО ПРОПИСАТИ
     switch (content) {
       case 'add-board':
-        return <Test id={selectedElId}></Test>;
+        return <NewBoardForm/>;
       case 'edit-board':
         return; //вставити компонент
       default:
