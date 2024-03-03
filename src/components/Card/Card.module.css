@@ -9,7 +9,6 @@
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
     padding-left: 4px;
-    background-color: blue;
     @media (min-width: 375px) {
         width: 334px;
       }
