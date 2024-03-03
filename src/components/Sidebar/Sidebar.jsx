@@ -4,9 +4,10 @@ import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
 import { Board } from './Board/Board';
 
-export const Sidebar = () => {
+export const Sidebar = ({ isMenuOpen, handleCloseOverlay }) => {
+  console.log(isMenuOpen);
   return (
-    <div className={css.sideBar}>
+    <div className={isMenuOpen ? css.sideBar : css.sideBarClose}>
       {/* logo, title */}
       <div className={css.titleBox}>
         <div className={css.iconBox}>
@@ -61,6 +62,7 @@ export const Sidebar = () => {
           <p className={css.logOutButtonText}>Log Out</p>
         </button>
       </div>
+      <div className={css.overlay} onClick={handleCloseOverlay}></div>
     </div>
   );
 };
