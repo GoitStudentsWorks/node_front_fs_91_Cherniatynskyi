@@ -6,14 +6,15 @@ import { Board } from './Board/Board';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../redux/modalSlice';
 
-export const Sidebar = () => {
-  const dispatch = useDispatch()
 
+export const Sidebar = ({ isMenuOpen, handleCloseOverlay }) => {
+  const dispatch = useDispatch()
+  
   const handleAddBoard = ()=>{
     dispatch(openModal({content: 'add-board'}))
   }
   return (
-    <div className={css.sideBar}>
+    <div className={isMenuOpen ? css.sideBar : css.sideBarClose}>
       {/* logo, title */}
       <div className={css.titleBox}>
         <div className={css.iconBox}>
@@ -68,6 +69,7 @@ export const Sidebar = () => {
           <p className={css.logOutButtonText}>Log Out</p>
         </button>
       </div>
+      <div className={css.overlay} onClick={handleCloseOverlay}></div>
     </div>
   );
 };
