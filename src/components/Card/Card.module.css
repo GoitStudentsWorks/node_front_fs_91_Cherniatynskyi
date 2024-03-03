@@ -124,7 +124,7 @@ margin-right: 14px;
 .cardSvg{
     width: 16px;
     height: 15px;
-    fill: inherit;
+    fill: var(--darkBgColor);
     
 }
 
