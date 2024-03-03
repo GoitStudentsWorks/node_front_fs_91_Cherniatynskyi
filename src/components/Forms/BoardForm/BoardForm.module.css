@@ -112,6 +112,7 @@
   .bgContainer:nth-child(9){
     margin-left: 0;
   }
+
   /* Hide the browser's default radio button */
   .container input {
     position: absolute;
@@ -166,11 +167,13 @@
     background-color: inherit;
     fill: var(--modalBgColor);
     stroke: var(--mainTextColor);
+    transform: scale(1.2);
   }
 
   .bgContainer input:checked ~ .bgCheckmark {
     border: 2px solid var(--accentColor);
     border-radius: 8px;
+    transform: scale(1.2);
   }
   
   
@@ -191,7 +194,7 @@
     line-height: 21px;
     letter-spacing: -0.02em;
 
-    color: var(--reverseTextColor);
+    color: var(--reversedTextColor);
     cursor: pointer;
 
 }
@@ -211,5 +214,5 @@
 }
 
 .buttonIcon{
-    stroke: white;
+    stroke: var(--mainTextColor);
 }
