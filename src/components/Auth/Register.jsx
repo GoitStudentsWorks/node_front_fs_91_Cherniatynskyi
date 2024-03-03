@@ -1,17 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './Auth.module.css';
 // import { useDispatch } from 'react-redux';
 // import { register } from 'redux/auth/operations';
+import sprite from '../../images/sprite.svg';
 
 const nameRegExp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{2,32}$/;
 
-const emailRegExp =
-  /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/;
-// /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegExp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
 
@@ -30,6 +30,12 @@ const schema = Yup.object().shape({
 
 export const Register = () => {
   // const dispatch = useDispatch();
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const handleClickPasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   // const handleSubmit = e => {
   //   e.preventDefault();
@@ -56,27 +62,55 @@ export const Register = () => {
         // onSubmit={handleSubmit}
       >
         <Form>
-          <ErrorMessage name="name" component="div" />
           <Field
             className={css.field}
             type="text"
             name="name"
             placeholder="Enter your name"
           />
-          <ErrorMessage name="email" component="div" />
+          <ErrorMessage name="name">
+            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+          </ErrorMessage>
           <Field
             className={css.field}
             type="email"
             name="email"
             placeholder="Enter your email"
           />
-          <ErrorMessage name="password" component="div" />
+          <ErrorMessage name="email">
+            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+          </ErrorMessage>
+
           <Field
             className={css.field}
-            type="password"
+            type={passwordVisible ? 'text' : 'password'}
             name="password"
             placeholder="Create a password"
           />
+          {passwordVisible ? (
+            <button
+              className={css.iconBtn}
+              type="button"
+              onClick={handleClickPasswordVisibility}
+            >
+              <svg>
+                <use href={`${sprite}#icon-eye`} />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className={css.iconBtn}
+              type="button"
+              onClick={handleClickPasswordVisibility}
+            >
+              <svg>
+                <use href={`${sprite}#icon-eye`} />
+              </svg>
+            </button>
+          )}
+          <ErrorMessage name="password">
+            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+          </ErrorMessage>
 
           <button className={css.button} type="submit">
             Register Now
