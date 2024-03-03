@@ -28,10 +28,11 @@ export const NewBoardForm = () =>{
         console.log({title, iconValue, bgValue})
     }
 
-    const values = []
+    const icValues= ['four-circles', 'eye', 'star', 'loading', 'puzzle', 'container', 'logo', 'hexagon']
+    const bgValues = []
 
     for (let i = 1; i <= 16; i++) {
-        values.push(i)  
+        bgValues.push(i)  
       }
 
 
@@ -45,67 +46,22 @@ export const NewBoardForm = () =>{
                 <fieldset className={css.iconsForm}>
                     <legend className={css.iconsTitle}>Icons</legend>
                         <div className={css.iconsWrap}>
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon1' name="icon" value='circles'/>
-                                
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-four-circles`}/>
-                                </svg>
-                            </label>
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon2' name="icon" value='eye'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-eye`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon3' name="icon" value='star'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-star`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon4' name="icon" value='loading'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-loading`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon5' name="icon" value='puzzle'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-puzzle`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon6' name="icon" value='container'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-container`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon7' name="icon" value='logo'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-logo`}/>
-                                </svg>
-                            </label>
-
-                            <label className={css.container}>
-                                <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon8' name="icon" value='hexagon'/>
-                                <svg className={css.checkmark}>
-                                    <use href={`${sprite}#icon-hexagon`}/>
-                                </svg>
-                            </label>
+                            {icValues.map(ic =>{
+                                return(
+                                    <label className={css.container}>
+                                        <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon1' name="icon" value={ic}/> 
+                                        <svg className={css.checkmark}>
+                                            <use href={`${sprite}#icon-${ic}`}/>
+                                        </svg>
+                                    </label>
+                                )
+                            })}
                         </div>
                 </fieldset>
                 <fieldset className={css.iconsForm}>
                     <legend className={css.iconsTitle}>Background</legend>
                         <div className={css.bgIconsWrap}>
-                           {values.map(bg => {
+                           {bgValues.map(bg => {
                             return (
                                 <label key={bg} className={css.bgContainer}>
                                     <input onChange={(e)=>handleBgChange(e)} type="radio" id={bg} name="icon" value={bg}/>
