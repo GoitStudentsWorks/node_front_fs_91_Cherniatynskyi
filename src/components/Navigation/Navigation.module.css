@@ -7,6 +7,8 @@
   background-color: var(--secondaryBgColor);
 }
 
+
+
 .buttonBurger {
   width: 24px;
   height: 24px;
@@ -14,6 +16,17 @@
   justify-content: center;
   align-items: center;
   background-color: var(--secondaryBgColor);
+}
+
+@media screen and (min-width: 1024px) {
+  
+  .navContainer{
+    justify-content: flex-end;
+  }
+
+  .buttonBurger {
+    display: none;
+  }
 }
 
 .iconBurger {
