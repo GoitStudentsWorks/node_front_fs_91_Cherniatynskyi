@@ -5,9 +5,9 @@
 
 /* Фоновий колір потрібно буде передати через функцію в залежності від того які дані прийдуть з юзера, за допомогою доп класа */
 .cardWrapper{
-   
-   
     border-radius: 8px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
     padding-left: 4px;
     background-color: blue;
     @media (min-width: 375px) {
@@ -17,11 +17,15 @@
     }
 
 .cardContainer{
-height: inherit;
-border-radius: inherit;
-background-color: var(--darkBgColor);
-color: var(--secondaryTextColor);
-padding: 14px 24px ;
+    height: inherit;
+    background-color: var(--darkBgColor);
+    color: var(--secondaryTextColor);
+    padding: 14px 24px ;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    margin-left: 1px;
 }
 .cardTitle{
     color:var(--mainTextColor);
