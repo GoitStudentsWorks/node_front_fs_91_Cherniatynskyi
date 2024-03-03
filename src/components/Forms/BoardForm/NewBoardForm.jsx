@@ -49,7 +49,7 @@ export const NewBoardForm = () =>{
                             {icValues.map(ic =>{
                                 return(
                                     <label className={css.container}>
-                                        <input onChange={(e)=>handleIconChange(e)} type="radio" id='icon1' name="icon" value={ic}/> 
+                                        <input onChange={(e)=>handleIconChange(e)} type="radio" id={ic} name="icon" value={ic}/> 
                                         <svg className={css.checkmark}>
                                             <use href={`${sprite}#icon-${ic}`}/>
                                         </svg>
@@ -64,7 +64,7 @@ export const NewBoardForm = () =>{
                            {bgValues.map(bg => {
                             return (
                                 <label key={bg} className={css.bgContainer}>
-                                    <input onChange={(e)=>handleBgChange(e)} type="radio" id={bg} name="icon" value={bg}/>
+                                    <input onChange={(e)=>handleBgChange(e)} type="radio" id={bg} name="bg" value={bg}/>
                                     <img className={css.bgCheckmark} width="20" height="20" src={require(`../../../images/card/background-icons/${bg}.png`)} alt="" />       
                                 </label>)
                            })}  

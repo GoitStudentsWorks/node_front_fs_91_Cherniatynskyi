@@ -155,6 +155,11 @@
   .container:hover input ~ .checkmark {
     stroke: var(--mainTextColor);
   }
+
+  .bgContainer:hover input ~ .bgCheckmark {
+    border: 2px solid var(--inputsBorderColor);
+    border-radius: 8px;
+  }
   
   /* When the radio button is checked, add a blue background */
   .container input:checked ~ .checkmark {
@@ -168,28 +173,7 @@
     border-radius: 8px;
   }
   
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
   
-  /* Show the indicator (dot/circle) when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the indicator (dot/circle) */
-  .container .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-  }
-
 
 .formButton{
     display: flex;
