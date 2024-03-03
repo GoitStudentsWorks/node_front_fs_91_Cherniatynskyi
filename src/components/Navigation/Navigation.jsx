@@ -14,7 +14,7 @@ export const Navigation = ({ openMenu }) => {
 
       <div className={css.navMenu}>
         <ThemeSelect />
-        <UserMenu />м
+        <UserMenu />
       </div>
     </div>
   );
