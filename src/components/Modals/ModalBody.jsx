@@ -8,7 +8,7 @@ import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
-  const { modalContent, selectedElId } = useSelector(state => state.modal); // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
+  const { modalContent } = useSelector(state => state.modal); // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
   useLockBodyScroll(); //БЛОКУЄ СКРОЛ СТОРІНКИ
 
   const firstRender = useRef(false);
