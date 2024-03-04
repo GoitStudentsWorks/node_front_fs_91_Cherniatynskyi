@@ -1,5 +1,27 @@
-.columnWrap {
+.boardWrap {
   padding: 0 20px;
+  height: 100%;
+  display: flex;
+  gap: 32px;
+  flex-wrap: nowrap;
+  padding-bottom: 80px;
+
+  @media (min-width: 1440px) {
+    padding-bottom: 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding-bottom: 60px;
+  }
+
+}
+
+.columnsList{
+  display: flex;
+  gap: 32px;
+  flex-wrap: nowrap;
+  padding-bottom: 20px;
+  overflow-x: auto;
 }
 
 .addColumnBtn {
