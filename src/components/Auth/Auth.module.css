@@ -98,8 +98,8 @@ Form {
     margin-bottom: 10px;
   }
 }
-
-.field {
+.fieldWrapper {
+  display: flex;
   border: 1px solid #bedbb0;
   border-radius: 8px;
   height: 49px;
@@ -128,6 +128,27 @@ Form {
   @media (min-width: 768px) {
     width: 344px;
     height: 49px;
+  }
+}
+.field {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  background: #1f1f1f;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  &:hover {
+    background: #1f1f1f;
+    opacity: 1;
+  }
+  &:active {
+    background: #1f1f1f;
+    opacity: 1;
   }
 }
 
@@ -173,21 +194,14 @@ Form {
 }
 
 .iconBtn {
-  width: 40px;
-  height: 40px;
-  position: absolute;
   right: 2px;
-  padding: 10px 0;
   background-color: inherit;
   border: none;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   cursor: pointer;
-
-  @media screen and (min-width: 768px) {
-    width: 53px;
-    height: 53px;
-  }
+  margin-left: auto;
+  margin-right: 18px;
 }
 
 svg {

@@ -53,43 +53,46 @@ export const Login = () => {
       >
         {/* <Form onSubmit={handleSubmit} autoComplete="off">*/}
         <Form autoComplete="off">
-          <Field
-            className={css.field}
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-          />
+          <div className={css.fieldWrapper}>
+            <Field
+              className={css.field}
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+            />
+          </div>
           <ErrorMessage name="email">
             {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
           </ErrorMessage>
-
-          <Field
-            className={css.field}
-            type="password"
-            name="password"
-            placeholder="Confirm a password"
-          />
-          {passwordVisible ? (
-            <button
-              className={css.iconBtn}
-              type="button"
-              onClick={handleClickPasswordVisibility}
-            >
-              <svg>
-                <use href={`${sprite}#icon-eye`} />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className={css.iconBtn}
-              type="button"
-              onClick={handleClickPasswordVisibility}
-            >
-              <svg>
-                <use href={`${sprite}#icon-eye`} />
-              </svg>
-            </button>
-          )}
+          <div className={css.fieldWrapper}>
+            <Field
+              className={css.field}
+              type={passwordVisible ? 'text' : 'password'}
+              name="password"
+              placeholder="Confirm a password"
+            />
+            {passwordVisible ? (
+              <button
+                className={css.iconBtn}
+                type="button"
+                onClick={handleClickPasswordVisibility}
+              >
+                <svg>
+                  <use href={`${sprite}#icon-eye`} />
+                </svg>
+              </button>
+            ) : (
+              <button
+                className={css.iconBtn}
+                type="button"
+                onClick={handleClickPasswordVisibility}
+              >
+                <svg>
+                  <use href={`${sprite}#icon-eye`} />
+                </svg>
+              </button>
+            )}
+          </div>
           <ErrorMessage name="password">
             {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
           </ErrorMessage>
