@@ -59,70 +59,85 @@ export const Register = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <div className={css.fieldWrapper}>
-            <Field
-              className={css.field}
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-            />
-          </div>
-          <ErrorMessage name="name">
-            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-          </ErrorMessage>
-          <div className={css.fieldWrapper}>
-            <Field
-              className={css.field}
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-          </div>
-          <ErrorMessage name="email">
-            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-          </ErrorMessage>
-          <div className={css.fieldWrapper}>
-            <Field
-              className={css.field}
-              type={passwordVisible ? 'text' : 'password'}
-              name="password"
-              placeholder="Create a password"
-            />
-            {passwordVisible ? (
-              <button
-                className={css.iconBtn}
-                type="button"
-                onClick={handleClickPasswordVisibility}
-              >
-                <svg>
-                  <use href={`${sprite}#icon-eye`} />
-                </svg>
-              </button>
+        {({ errors, touched }) => (
+          <Form>
+            <div className={css.fieldWrapper}>
+              <Field
+                className={css.field}
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+              />
+            </div>
+            {errors.name && touched.name ? (
+              <ErrorMessage name="name">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
             ) : (
-              <button
-                className={css.iconBtn}
-                type="button"
-                onClick={handleClickPasswordVisibility}
-              >
-                <svg>
-                  <use href={`${sprite}#icon-eye`} />
-                </svg>
-              </button>
+              <div className={css.notError}></div>
             )}
-          </div>
-          <ErrorMessage name="password">
-            {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-          </ErrorMessage>
-          <button className={css.button} type="submit">
-            Register Now
-          </button>
-        </Form>
+            <div className={css.fieldWrapper}>
+              <Field
+                className={css.field}
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            {errors.email && touched.email ? (
+              <ErrorMessage name="email">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
+            ) : (
+              <div className={css.notError}></div>
+            )}
+
+            <div className={css.fieldWrapper}>
+              <Field
+                className={css.field}
+                type={passwordVisible ? 'text' : 'password'}
+                name="password"
+                placeholder="Create a password"
+              />
+              {passwordVisible ? (
+                <button
+                  className={css.iconBtn}
+                  type="button"
+                  onClick={handleClickPasswordVisibility}
+                >
+                  <svg>
+                    <use href={`${sprite}#icon-eye`} />
+                  </svg>
+                </button>
+              ) : (
+                <button
+                  className={css.iconBtn}
+                  type="button"
+                  onClick={handleClickPasswordVisibility}
+                >
+                  <svg>
+                    <use href={`${sprite}#icon-eye`} />
+                  </svg>
+                </button>
+              )}
+            </div>
+            {errors.password && touched.password ? (
+              <ErrorMessage name="password">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
+            ) : (
+              <div className={css.notError}></div>
+            )}
+
+            <button className={css.button} type="submit">
+              Register Now
+            </button>
+          </Form>
+        )}
       </Formik>
     </div>
   );
 };
 
-// * Підправити стилі на виведення помилки
 // * звірити валідації
 // * підключити зміну теми
