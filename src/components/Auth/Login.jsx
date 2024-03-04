@@ -9,8 +9,6 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -18,8 +16,10 @@ const schema = Yup.object().shape({
     .email('Enter a valid Email*')
     .required('Email is required*'),
   password: Yup.string()
-    .required('Password is required*')
-    .matches(passwordRegExp, 'Password must meet the requirements*'),
+    .matches(/^(?=.*[a-z])/, 'Password must meet the requirements*')
+    .min(8, 'Password must be at least 6 characters')
+    .max(64, 'Password must be no more than 16 characters')
+    .required('Password is required*'),
 });
 
 export const Login = () => {
@@ -105,5 +105,3 @@ export const Login = () => {
     </div>
   );
 };
-
-// *Додати іконку і логіку на видимість пароля

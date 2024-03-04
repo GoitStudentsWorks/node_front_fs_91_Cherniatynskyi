@@ -8,24 +8,22 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import sprite from '../../images/sprite.svg';
 
-const nameRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{2,32}$/;
-
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
 
 const schema = Yup.object().shape({
   name: Yup.string()
-    .matches(nameRegExp, 'Enter a valid name*')
+    .min(2, 'Name must be at least 6 characters')
+    .max(32, 'Name must be no more than 16 characters')
     .required('Name is required*'),
   email: Yup.string()
     .matches(emailRegExp, 'Enter a valid Email*')
     .email('Enter a valid Email*')
     .required('Email is required*'),
   password: Yup.string()
-    .required('Password is required*')
-    .matches(passwordRegExp, 'Password must meet the requirements*'),
+    .matches(/^(?=.*[a-z])/, 'Password must meet the requirements*')
+    .min(8, 'Password must be at least 6 characters')
+    .max(64, 'Password must be no more than 16 characters')
+    .required('Password is required*'),
 });
 
 export const Register = () => {
