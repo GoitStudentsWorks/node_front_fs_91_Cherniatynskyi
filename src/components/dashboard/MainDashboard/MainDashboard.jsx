@@ -71,12 +71,12 @@ const MainDashboard = () => {
       <ul className={css.columnsList}>
         {columns.map(col => {
           return (
-            <Column column={col}>
-              {cards
-                .filter(card => card.columnId === col.id)
-                .map(card => {
-                  return <Card card={card} />;
-                })}
+
+            <Column key={col.id} column={col}>
+              {cards.filter(card => card.columnId === col.id).map(card => {
+                        return (<Card key={card.id} card={card}/>)
+                    })}
+
             </Column>
           );
         })}

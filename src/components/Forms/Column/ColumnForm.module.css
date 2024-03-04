@@ -1,0 +1,210 @@
+.formWrap {
+  width: 350px;
+  height: 220px;
+  background-color: var(--modalBgColor);
+  border-radius: 8px;
+  border: 0.1px solid var(--inputsBorderColor);
+  padding: 30px 24px;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
+
+  margin-bottom: 25px;
+}
+
+.formInput {
+  width: 300px;
+  height: 49px;
+  background-color: var(--inputsBgColor);
+  border: 1px solid var(--inputsBorderColor);
+  border-radius: 8px;
+  padding: 0 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  color: var(--mainTextColor);
+}
+
+.formInput::placeholder {
+  color: var(--inputsPlaceholderColor);
+}
+
+.iconsForm {
+  border: none;
+  margin-top: 30px;
+}
+
+.iconsTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
+}
+
+.iconsWrap {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.bgIconsWrap {
+  display: flex;
+  gap: 20px;
+  width: 98%;
+  flex-wrap: wrap;
+}
+
+.iconInput:after {
+  transform: translateX(-100%);
+  opacity: 1;
+  background-color: aquamarine;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bgContainer {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.bgContainer:first-child {
+  margin-left: 0;
+}
+
+.bgContainer:nth-child(9) {
+  margin-left: 0;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+
+.bgContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  fill: var(--modalBgColor);
+  stroke: var(--secondaryTextColor);
+}
+
+.bgCheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 28px;
+  width: 28px;
+  fill: var(--modalBgColor);
+  stroke: var(--secondaryTextColor);
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  stroke: var(--mainTextColor);
+}
+
+.bgContainer:hover input ~ .bgCheckmark {
+  border: 2px solid var(--inputsBorderColor);
+  border-radius: 8px;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: inherit;
+  fill: var(--modalBgColor);
+  stroke: var(--mainTextColor);
+  transform: scale(1.2);
+}
+
+.bgContainer input:checked ~ .bgCheckmark {
+  border: 2px solid var(--accentColor);
+  border-radius: 8px;
+  transform: scale(1.2);
+}
+
+.formButton {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+  background-color: var(--accentColor);
+  height: 49px;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+
+  color: var(--reversedTextColor);
+  cursor: pointer;
+}
+
+.formButton:hover {
+  background-color: var(--accentColorHover);
+}
+
+.iconWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--modalBgColor);
+}
+
+.buttonIcon {
+  stroke: var(--mainTextColor);
+}

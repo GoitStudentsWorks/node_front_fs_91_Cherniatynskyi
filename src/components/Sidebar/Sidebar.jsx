@@ -3,8 +3,15 @@ import sprite from '../../images/sprite.svg';
 import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
 import { Board } from './Board/Board';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../redux/modalSlice';
 
 export const Sidebar = () => {
+  const dispatch = useDispatch()
+
+  const handleAddBoard = ()=>{
+    dispatch(openModal({content: 'add-board'}))
+  }
   return (
     <div className={css.sideBar}>
       {/* logo, title */}
@@ -22,7 +29,7 @@ export const Sidebar = () => {
           {/* button create */}
           <div className={css.buttonBox}>
             <span className={css.buttonText}>Create a new board</span>
-            <button className={css.buttonCreate}>
+            <button onClick={handleAddBoard} className={css.buttonCreate}>
               <svg className={css.iconCreate} width="22" height="22">
                 <use href={`${sprite}#icon-plus`} />
               </svg>

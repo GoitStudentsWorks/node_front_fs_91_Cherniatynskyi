@@ -3,12 +3,16 @@ import { useEffect, useRef } from 'react';
 import { closeModal } from '../../redux/modalSlice';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
+import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
+import { EditBoardForm } from 'components/Forms/BoardForm/EditBoardForm';
+import { AddColumnForm } from 'components/Forms/Column/AddColumnForm';
+import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
+import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 
-import { Test } from './Test';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
-  const { modalContent, selectedElId } = useSelector(state => state.modal); // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
+  const { modalContent } = useSelector(state => state.modal); // ДІСТАЄ З РЕДАКСУ КОНТЕНТ
   useLockBodyScroll(); //БЛОКУЄ СКРОЛ СТОРІНКИ
 
   const firstRender = useRef(false);
@@ -42,9 +46,15 @@ export const ModalBody = () => {
     //ФУНКЦІЯ ВИЗНАЧЕННЯ РЕДНЕРУ КОНЕТНТУ. КОЖЕН КЕЙС ПОТРІБНО ПРОПИСАТИ
     switch (content) {
       case 'add-board':
-        return <Test id={selectedElId}></Test>;
+        return <NewBoardForm/>;
       case 'edit-board':
-        return; //вставити компонент
+        return <EditBoardForm/>;
+      case 'add-column':
+        return <AddColumnForm/>;
+      case 'edit-column':
+        return <EditColumnForm/>;
+      case 'need-help':
+        return <NeedHelpForm/>;
       default:
         break;
     }
