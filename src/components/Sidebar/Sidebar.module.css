@@ -12,6 +12,19 @@
   transition: 500ms transform;
 }
 
+.sidebarBackdrop{
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sideBarOpened {
+  transform: none;
+}
+
+
 @media screen and (min-width: 768px) {
   .sideBar {
     width: 260px;

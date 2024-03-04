@@ -7,8 +7,6 @@
   background-color: var(--secondaryBgColor);
 }
 
-
-
 .buttonBurger {
   width: 24px;
   height: 24px;
@@ -18,27 +16,44 @@
   background-color: var(--secondaryBgColor);
 }
 
-@media screen and (min-width: 1024px) {
-  
-  .navContainer{
-    justify-content: flex-end;
-  }
-
-  .buttonBurger {
-    display: none;
-  }
-}
-
 .iconBurger {
   border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
   stroke: var(--mainTextColor);
+  cursor: pointer;
 }
 
 .navMenu {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .navContainer {
+    height: 68px;
+    padding: 18px 32px;
+  }
+
+  .buttonBurger {
+    width: 32px;
+    height: 32px;
+  }
+
+  .iconBurger {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navContainer {
+    justify-content: flex-end;
+  }
+
+  .buttonBurger {
+    display: none;
+  }
 }

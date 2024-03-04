@@ -4,7 +4,8 @@ export const ModalSlice = createSlice({
     name: 'modal',
     initialState: {
         isOpen: false,
-        modalContent: null
+        modalContent: null,
+        sideBarIsOpen: false
     },
     reducers:{
         openModal: (state, {payload}) =>{
@@ -16,10 +17,18 @@ export const ModalSlice = createSlice({
             state.isOpen = false
             state.modalContent = null
             state.selectedElId = null
+        },
+        openSidebar: (state, {payload}) =>{
+            state.sideBarIsOpen = true
+            
+        },
+        closeSidebar: (state, action) =>{
+            state.sideBarIsOpen = false
+            
         }
     }
 })
 
 
 
-export const {openModal, closeModal} = ModalSlice.actions
+export const {openModal, closeModal, openSidebar, closeSidebar} = ModalSlice.actions

@@ -11,7 +11,7 @@ export const UserForm = () =>{
 //   };
 
 //   const handleCommentChange = e => {
-//     setCEmail(e.target.value);
+//     setEmail(e.target.value);
 //   };
 
 //   const onSubmitForm = e => {

@@ -114,6 +114,11 @@ margin-right: 14px;
     margin-right: 12px;
     stroke: var(--accentColor);
 }
+.cardIconButton{
+    background-color: inherit;
+    width: 16px;
+    height: 15px;
+}
 .cardIconItem:not(:first-child){
     stroke: var(--secondaryTextColor);
     &:hover{
