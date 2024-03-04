@@ -12,15 +12,17 @@ export const UserMenu = () => {
   return (
     <>
       <div className={css.userInfo}>
-        <p className={css.userName}>Name</p>
         <button
           className={css.buttonOpen}
           type="button"
           onClick={handleUserModalOpen}
         >
-          <svg className={css.userIcon}>
-            <use href={`${sprite}#icon-user`} />
-          </svg>
+          Name
+          <div className={css.userAvatarWrap}>
+            <svg className={css.userIcon}>
+              <use href={`${sprite}#icon-user2`} />
+            </svg>
+          </div>
         </button>
       </div>
     </>
