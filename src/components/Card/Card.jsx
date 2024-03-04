@@ -26,24 +26,32 @@ export const Card = ({card}) =>{
                             </div>
                             <ul className={css.cardIconsList}>
                                 <li className={css.cardIconItem}>
+                                    <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-bell`}/>
                                     </svg>
+                                    </button>
                                 </li>
                                 <li className={css.cardIconItem} >
+                                    <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-arrow-in-circle`}/>
                                     </svg>
+                                    </button>
                                 </li>
                                 <li className={css.cardIconItem}>
+                                    <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-pencil`}/>
                                     </svg>
+                                    </button>
                                 </li>
                                 <li className={css.cardIconItem}>
+                                    <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-trash`}/>
                                     </svg>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
