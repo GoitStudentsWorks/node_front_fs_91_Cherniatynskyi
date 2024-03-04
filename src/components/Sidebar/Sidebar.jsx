@@ -3,17 +3,26 @@ import sprite from '../../images/sprite.svg';
 import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
 import { Board } from './Board/Board';
-import { useDispatch } from 'react-redux';
-import { openModal } from '../../redux/modalSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal, closeSidebar } from '../../redux/modalSlice';
 
 export const Sidebar = () => {
   const dispatch = useDispatch()
+  const { sideBarIsOpen } = useSelector(state => state.modal);
 
   const handleAddBoard = ()=>{
-    dispatch(openModal({content: 'add-board'}))
+    dispatch(openModal({content: 'add-board'}))  
   }
+
+  const handleCloseSidebar = (e) =>{
+    if(e.target === e.currentTarget){
+      dispatch(closeSidebar())
+    }
+  }
+
   return (
-    <div className={css.sideBar}>
+    <div onClick={(e)=>handleCloseSidebar(e)} className={`${ sideBarIsOpen && css.sidebarBackdrop}`}>
+      <div  className={`${css.sideBar} ${sideBarIsOpen && css.sideBarOpened}`}>
       {/* logo, title */}
       <div className={css.titleBox}>
         <div className={css.iconBox}>
@@ -68,6 +77,7 @@ export const Sidebar = () => {
           <p className={css.logOutButtonText}>Log Out</p>
         </button>
       </div>
+    </div>
     </div>
   );
 };
