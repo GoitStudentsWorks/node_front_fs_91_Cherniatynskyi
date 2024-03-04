@@ -1,13 +1,12 @@
-.main{
-    display: flex;
-    height: 100vh;
-    background-color: var(--lightBgColor);
+.main {
+  display: flex;
+  height: 100vh;
+  background-color: var(--lightBgColor);
+  overflow: hidden;
 }
 
-.mainPage{
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    padding-bottom: 100px;
+.mainPage {
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
 }
-
