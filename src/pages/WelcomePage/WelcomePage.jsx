@@ -4,6 +4,8 @@ import css from './WelcomePage.module.css';
 import iconImg from '../../images/welcome/boy@2x.png';
 import sprite from '../../images/sprite.svg';
 
+
+
 const WelcomePage = () => {
   return (
     <div className={css.welcomeWrapper}>
