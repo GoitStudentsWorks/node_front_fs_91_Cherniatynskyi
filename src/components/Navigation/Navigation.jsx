@@ -7,7 +7,7 @@ export const Navigation = ({ openMenu }) => {
   return (
     <div className={css.navContainer}>
       <button className={css.buttonBurger} type="button" onClick={openMenu}>
-        <svg className={css.iconBurger} width="16" height="16">
+        <svg className={css.iconBurger} width="18" height="18">
           <use href={`${sprite}#icon-menu`} />
         </svg>
       </button>
@@ -19,4 +19,5 @@ export const Navigation = ({ openMenu }) => {
     </div>
   );
 };
+
 
