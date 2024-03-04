@@ -1,7 +1,6 @@
-
 .formWrap {
   width: 350px;
-  height: 453px;
+  height: 220px;
   background-color: var(--modalBgColor);
   border-radius: 8px;
   border: 0.1px solid blue;
@@ -177,7 +176,7 @@
   gap: 8px;
   justify-content: center;
   align-items: center;
-  margin-top: 55px;
+  margin-top: 24px;
   width: 100%;
   background-color: var(--accentColor);
   height: 49px;
