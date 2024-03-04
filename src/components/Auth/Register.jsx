@@ -4,8 +4,8 @@ import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './Auth.module.css';
-// import { useDispatch } from 'react-redux';
-// import { register } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
 import sprite from '../../images/sprite.svg';
 
 const nameRegExp =
@@ -29,7 +29,7 @@ const schema = Yup.object().shape({
 });
 
 export const Register = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -37,18 +37,18 @@ export const Register = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget;
-  //   dispatch(
-  //     register({
-  //       name: form.elements.name.value,
-  //       email: form.elements.email.value,
-  //       password: form.elements.password.value,
-  //     })
-  //   );
-  //   form.reset();
-  // };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
 
   return (
     <div className={css.registerForm}>
@@ -59,7 +59,7 @@ export const Register = () => {
           password: '',
         }}
         validationSchema={schema}
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Form>
           <div className={css.fieldWrapper}>

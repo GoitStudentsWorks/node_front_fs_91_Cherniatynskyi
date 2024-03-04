@@ -5,9 +5,8 @@ import * as Yup from 'yup';
 import { Form, Field, ErrorMessage } from 'formik';
 import css from './Auth.module.css';
 import sprite from '../../images/sprite.svg';
-
-// import { useDispatch } from 'react-redux';
-// import { logIn } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/operations';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegExp =
@@ -24,7 +23,7 @@ const schema = Yup.object().shape({
 });
 
 export const Login = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -32,16 +31,18 @@ export const Login = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-  //     const form = e.currentTarget;
-  //     dispatch(
-  //       logIn({
-  //         email: form.elements.email.value,
-  //         password: form.elements.password.value,
-  //       })
-  //     );
-  //     form.reset();
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   return (
     <div className={css.loginForm}>
       <Formik
@@ -51,8 +52,7 @@ export const Login = () => {
         }}
         validationSchema={schema}
       >
-        {/* <Form onSubmit={handleSubmit} autoComplete="off">*/}
-        <Form autoComplete="off">
+        <Form onSubmit={handleSubmit} autoComplete="off">
           <div className={css.fieldWrapper}>
             <Field
               className={css.field}
