@@ -5,11 +5,18 @@
   max-height: 200px;
   color: var(--mainTextColor);
   background-color: var(--secondaryBgColor);
-  opacity: 0.8;
 
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.titleMenuTheme {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 0.67;
+  letter-spacing: -2%;
+  opacity: 0.8;
 }
 
 .buttonMenu {
@@ -23,9 +30,10 @@
 
 .iconChevronDown {
   stroke: var(--mainTextColor);
+  cursor: pointer;
 }
 
-.dropdownMenu {
+/* .dropdownMenu {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -36,15 +44,16 @@
   padding: 18px;
   background-color: #151515;
   border-radius: 8px;
-  border: 1px;
+  gap: 4px;
+  border: 1px solid var(--accentColor);
   opacity: 0;
-  transform: translateY(-10px);
-  visibility: hidden;
-  transform: 0.3s;
 }
 
-.dropdownMenu {
-  transform: translateY(0);
-  opacity: 0;
-  visibility: visible;
-}
+.menuList {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 0.67;
+  letter-spacing: -2%;
+  color: var(--mainTextColor);
+  opacity: 0.5;
+} */
