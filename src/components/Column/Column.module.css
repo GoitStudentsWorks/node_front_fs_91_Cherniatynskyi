@@ -1,48 +1,128 @@
-.columnWrap{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 355px;
+.columnWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 355px;
 }
 
-.columnTitleWrap{
-    display: flex;
-    background-color: var(--darkBgColor);
-    padding: 18px 20px;
-    border-radius: 8px;
-    justify-content: space-between;
-    margin-bottom: 14px;
+.columnTitleWrap {
+  display: flex;
+  background-color: var(--darkBgColor);
+  padding: 18px 20px;
+  border-radius: 8px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  /* width: 100%; */
+
+  @media (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media (min-width: 768px) {
+    width: 334px;
+  }
 }
 
-.columnTitle{
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    letter-spacing: -0.02em;
-    text-align: left;
-    color: var(--mainTextColor);
+.columnTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
 }
 
-.columnList{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 680px;
-    padding-right: 30px;
-    margin-bottom: 20px;
+.columnBtnWrap {
+  gap: 8px;
+  display: flex;
+}
+
+.columnButton {
+  width: 16px;
+  height: 16px;
+}
+
+.columnIconPensil {
+  width: 16px;
+  height: 16px;
+  background-color: var(--darkBgColor);
+  stroke: var(--secondaryTextColor);
+  fill: var(--darkBgColor);
+}
+
+.columnIconTrash {
+  width: 16px;
+  height: 16px;
+  background-color: var(--darkBgColor);
+  stroke: var(--secondaryTextColor);
+  fill: var(--darkBgColor);
+}
+
+.columnList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  height: 70vh;
+  padding-right: 4px;
+  margin-bottom: 14px;
+
+  @media (min-width: 768px) {
+    padding-right: 8px;
+  }
 }
 
 .columnList::-webkit-scrollbar {
-    width: 10px;
-    background-color: var(--darkBgColor);
+  width: 8px;
+  background-color: var(--darkBgColor);
 }
 
 .columnList::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    width: 4px;
-    border: none;
-    background-color: #404040;
+  border-radius: 8px;
+  width: 4px;
+  border: none;
+  background-color: #404040;
+}
+
+.columnAddButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  gap: 8px;
+  border-radius: 8px;
+  color: var(--reversedTextColor);
+  background-color: var(--boardAddIconBg);
+  transition: all 450ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 14px 0;
+
+  @media (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media (min-width: 768px) {
+    width: 334px;
+  }
+
+  &:hover {
+    background-color: var(--accentColorHover);
+    color: var(--reversedTextColor);
+  }
+}
+
+.addColumnIcon {
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: var(--secondaryBgColor);
+  stroke: var(--mainTextColor);
+}
+
+.addColumnTitle {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
 }
