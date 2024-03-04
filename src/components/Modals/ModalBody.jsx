@@ -5,8 +5,8 @@ import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
 import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
 import { EditBoardForm } from 'components/Forms/BoardForm/EditBoardForm';
-import { AddColumnForm } from 'components/Forms/Column/AddColumnFrom';
-import { EditColumnForm } from 'components/Forms/Column/EditColumnFrom';
+import { AddColumnForm } from 'components/Forms/Column/AddColumnForm';
+import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
 import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 
 
