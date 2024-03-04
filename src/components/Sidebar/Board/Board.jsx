@@ -7,7 +7,7 @@ export const Board = () => {
   const dispatch = useDispatch();
 
   const handleEditBoard = () => {
-    dispatch(openModal({ content: 'edit-board' }));
+    dispatch(openModal({ content: 'edit-board' , }));
   };
 
   return (

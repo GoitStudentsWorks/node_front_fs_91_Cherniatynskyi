@@ -1,42 +1,47 @@
-.Container {
+.formWrap {
+  width: 350px;
+  height: 453px;
+  background-color: var(--modalBgColor);
   border-radius: 8px;
-  height: 522px;
-  position: relative;
-  padding: 24px;
-  width: 100%;
-  background: var();
-  display: flex;
-  flex-direction: column;
+  border: 0.1px solid var(--inputsBorderColor);
+  padding: 30px 24px;
 }
 
-.TitleModal {
-  margin-bottom: 24px;
-  font-family: 'Poppins-Medium';
+.formTitle {
   font-size: 18px;
-  line-height: 1.5;
-  color: var();
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
+
+  margin-bottom: 25px;
 }
 
-.CloseModal {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
+.formInput {
+  width: 300px;
+  height: 49px;
+  background-color: var(--inputsBgColor);
+  border: 1px solid var(--inputsBorderColor);
+  border-radius: 8px;
+  padding: 0 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  color: var(--mainTextColor);
 }
 
-.CloseModal button {
-  margin: 0;
-  padding: 0;
+.formInput::placeholder {
+  color: var(--inputsPlaceholderColor);
+}
+
+.iconsForm {
   border: none;
-  background: none;
-}
-
-.ErrMsg {
-  position: absolute;
-  top: 2px;
-  right: 8px;
-  color: red;
-  font-size: 12px;
+  margin-top: 30px;
 }
 
 .TitleCard {
@@ -188,3 +193,82 @@
   letter-spacing: -0.02em;
   color: var();
 }
+
+
+.container {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 14px;
+  width: 14px;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+  
+}
+
+.iconsWrap{
+  display: flex;
+  gap: 8px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.noPriority {
+  background-color: var(--priorityColorWithout);
+}
+
+.lowPriority {
+  background-color: var(--priorityColorLow);
+}
+
+.medPriority {
+  background-color: var(--priorityColorMedium);
+}
+
+.highPriority {
+  background-color: var(--priorityColorHight);
+}
+
+
+.container:hover input ~ .checkmark {
+  opacity: 0.7;
+}
+
+.container input:checked ~ .checkmark {
+  transform: scale(1.1);
+}
+
+.container input:checked ~ .checkmark::after {
+  content: ' ';
+  position: absolute;
+  left: 11%;
+  top: 11%;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: inherit;
+  border: 3px solid var(--modalBgColor);
+
+}
+
+

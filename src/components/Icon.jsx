@@ -1,4 +1,4 @@
-import Icons from '../sprite.svg';
+import Icons from '../images/sprite.svg';
 
 export const Icon = ({
   fill = 'none',

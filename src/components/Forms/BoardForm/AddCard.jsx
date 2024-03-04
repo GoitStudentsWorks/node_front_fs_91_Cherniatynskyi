@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Calendar } from 'components/Calendar';
-import { useDispatch } from 'react-redux';
-import { addCard } from '../../../redux/board/operations';
+// import { useDispatch } from 'react-redux';
+// import { addCard } from '../../../redux/board/operations';
 import { Icon } from 'components/Icon';
 
-import styles from './AddCardModal.module.css';
+import css from './AddCard.module.css';
 
 const priority = ['without', 'low', 'medium', 'high'];
 
@@ -23,28 +23,18 @@ const formCardSchema = Yup.object().shape({
   deadline: Yup.date(),
 });
 
-export default function AddCardModal({ title, btnText, onClose, columnId }) {
+export const AddCardForm = () =>{
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const onSubmit = values => {
-    dispatch(addCard({ values, columnId }));
-    onClose();
-  };
+  // const onSubmit = values => {
+  //   dispatch(addCard({ values, columnId }));
+  //   onClose();
+  // };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.titleModal}>{title}</h2>
-      <div className={styles.closeModal}>
-        <button type="button" onClick={onClose}>
-          <Icon
-            name="close"
-            width="18"
-            height="18"
-            stroke="var(--textColorcalendar)"
-          />
-        </button>
-      </div>
+    <div className={css.formWrap}>
+      <h2 className={css.formTitle}>Add Card</h2>
       <Formik
         initialValues={{
           title: '',
@@ -53,41 +43,70 @@ export default function AddCardModal({ title, btnText, onClose, columnId }) {
           deadline: selectedDate,
         }}
         validationSchema={formCardSchema}
-        onSubmit={onSubmit}
+        
       >
         {({ handleSubmit, setFieldValue }) => (
-          <form className={styles.styledForm} onSubmit={handleSubmit}>
+          <form className={css.from} onSubmit={handleSubmit}>
             <input
-              className={styles.titleCard}
+              className={css.formInput}
               type="text"
               name="title"
               placeholder="Title"
             />
-            <p className={styles.errMsg} name="title" />
+            <p className={css.errMsg} name="title" />
             <label>
               <textarea
-                className={styles.styledDescription}
+                className={css.formInput}
                 rows={4}
                 name="text"
                 placeholder="Description"
               />
-              <p className={styles.errMsg} name="text" />
+              <p className={css.errMsg} name="text" />
             </label>
-            <label
-              className={styles.labelColorStyle}
-              htmlFor="colorCard-radio-group"
-            >
-              Label color
-            </label>
-            {/* <RadioInputs
-              defaultChecked="without"
-              onPriorityChange={priority => {
-                setFieldValue('priority', priority);
-              }}
-            /> */}
-            <p className={styles.deadlineStyle}>Deadline</p>
+            <fieldset className={css.iconsForm}>
+            <legend className={css.iconsTitle}>Label color</legend>
+            <div className={css.iconsWrap}>
+                  <label className={css.container}>
+                    <input 
+                      type="radio"
+                      id="1"
+                      name="icon"
+                      value="no-priority"
+                    />
+                    <span className={`${css.checkmark} ${css.noPriority}`}></span>
+                  </label>
+                  <label className={css.container}>
+                    <input 
+                      type="radio"
+                      id="2"
+                      name="icon"
+                      value="low-priority"
+                    />
+                    <span className={`${css.checkmark} ${css.lowPriority}`}></span>
+                  </label>
+                  <label className={css.container}>
+                    <input 
+                      type="radio"
+                      id="3"
+                      name="icon"
+                      value="med-priority"
+                    />
+                    <span className={`${css.checkmark} ${css.medPriority}`}></span>
+                  </label>
+                  <label className={css.container}>
+                    <input 
+                      type="radio"
+                      id="4"
+                      name="icon"
+                      value="high-priority"
+                    />
+                    <span className={`${css.checkmark} ${css.highPriority}`}></span>
+                  </label>
+            </div>
+          </fieldset>
+            <p className={css.deadlineStyle}>Deadline</p>
             <div>
-              <span className={styles.span}> Today,</span>
+              <span className={css.span}> Today,</span>
               <Calendar
                 selectedDate={selectedDate}
                 onDateChange={date => {
@@ -96,11 +115,11 @@ export default function AddCardModal({ title, btnText, onClose, columnId }) {
                 }}
               />
             </div>
-            <button className={styles.addButton} type="submit">
-              <div className={styles.stylePlus}>
+            <button className={css.addButton} type="submit">
+              <div className={css.stylePlus}>
                 <Icon name="plus" width="14" height="14" />
               </div>
-              <p>{btnText}</p>
+              <p>Add card</p>
             </button>
           </form>
         )}
