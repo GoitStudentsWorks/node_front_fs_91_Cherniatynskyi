@@ -1,9 +1,11 @@
-import css from './Column.module.css';
+import css from './ColumnForm.module.css';
 import { useState } from 'react';
 import sprite from '../../../images/sprite.svg';
 
-export const Addcolumn = () => {
-  const [title, setTitle] = useState('');
+export const EditColumnForm = () => {
+  const existingColumns = [];
+
+  const [title, setTitle] = useState(existingColumns[0]);
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -16,19 +18,22 @@ export const Addcolumn = () => {
 
   return (
     <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Add column</h2>
+      <h2 className={css.formTitle}>Edit column</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
-          <input
-            autoComplete="false"
-            placeholder="Title"
-            onChange={e => handleChange(e)}
+          <select
             value={title}
+            onChange={e => handleChange(e)}
             className={css.formInput}
-            type="text"
             name="title"
             required
-          />
+          >
+            {existingColumns.map((column, index) => (
+              <option key={index} value={column}>
+                {column}
+              </option>
+            ))}
+          </select>
         </label>
 
         <button type="submit" className={css.formButton}>
@@ -37,7 +42,7 @@ export const Addcolumn = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Add
+          Edit
         </button>
       </form>
     </div>

@@ -4,6 +4,10 @@ import { closeModal } from '../../redux/modalSlice';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
 import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
+import { EditBoardForm } from 'components/Forms/BoardForm/EditBoardForm';
+import { AddColumnForm } from 'components/Forms/Column/AddColumnFrom';
+import { EditColumnForm } from 'components/Forms/Column/EditColumnFrom';
+import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 
 
 export const ModalBody = () => {
@@ -44,7 +48,13 @@ export const ModalBody = () => {
       case 'add-board':
         return <NewBoardForm/>;
       case 'edit-board':
-        return; //вставити компонент
+        return <EditBoardForm/>;
+      case 'add-column':
+        return <AddColumnForm/>;
+      case 'edit-column':
+        return <EditColumnForm/>;
+      case 'need-help':
+        return <NeedHelpForm/>;
       default:
         break;
     }

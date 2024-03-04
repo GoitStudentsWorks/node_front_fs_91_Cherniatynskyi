@@ -1,7 +1,7 @@
-import css from './Needhelp.module.css';
+import css from './NeedHelpForm.module.css';
 import { useState } from 'react';
 
-export const Needhelp = () => {
+export const NeedHelpForm = () => {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
 
