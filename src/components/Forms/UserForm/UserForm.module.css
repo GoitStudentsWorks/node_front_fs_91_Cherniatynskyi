@@ -1,0 +1,19 @@
+.formWrap {
+    width: 350px;
+    height: 453px;
+    background-color: var(--modalBgColor);
+    border-radius: 8px;
+    border: 0.1px solid var(--inputsBorderColor);
+    padding: 30px 24px;
+  }
+  
+  .formTitle {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: var(--mainTextColor);
+  
+    margin-bottom: 25px;
+  }
