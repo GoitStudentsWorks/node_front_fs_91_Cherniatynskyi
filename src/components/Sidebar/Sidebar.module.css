@@ -39,39 +39,6 @@
   }
 }
 
-/* має працювати як буде кнопка відкриття */
-
-/* .openSideBar {
-  min-height: 768px;
-  z-index: 2;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 0;
-  width: 225px;
-  height: 100vh;
-  flex-shrink: 0;
-  background-color: #121212;
-
-  transition: 500ms;
-  transform: translateX(0);
-}
-
-@media screen and (min-width: 768px) {
-  .openSideBar {
-    padding: 24px;
-    width: 260px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .openSideBar {
-    position: absolute;
-    width: 260px;
-  }
-} */
-
 .titleBox {
   padding: 14px 14px 30px 14px;
 }
@@ -196,14 +163,9 @@
 
   .bordList {
     color: var(--mainTextColor);
-
-    margin-bottom: auto;
-    /* overflow-y: auto; */
     margin: 0;
     margin-bottom: 20px;
   }
-
-
 }
 
 .helpBox {
