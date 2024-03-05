@@ -29,6 +29,6 @@ export const signUp = async(body) =>{
  }
 
  export const getProfile = async() =>{
-    const {data} = await instance('/users/current')
+    const {data} = await instance.get('/users/current')
     return data
  }

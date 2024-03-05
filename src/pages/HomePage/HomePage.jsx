@@ -16,7 +16,6 @@ const HomePage = () => {
     return(
     <div className={css.main} data-theme='dark'>
             <Sidebar/> 
-            {console.log(location.pathname)}
       <div className={css.mainPage}>
         <Navigation />
         {location.pathname === '/home' && <DefaultBoard />}

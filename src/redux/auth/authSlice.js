@@ -19,12 +19,14 @@ const handleFulfilledLogin = (state, {payload}) =>{
   state.isRefreshing = false
   state.error = ''
   state.token = payload.token
+  state.user = payload.user
 }
 
 const handleFulfilledRegister = (state, {payload}) =>{
   state.isRefreshing = false
   state.error = ''
   state.token = payload.token
+  state.user = payload.user
 }
 
 const handleFulfilledProfile = (state, {payload}) =>{
