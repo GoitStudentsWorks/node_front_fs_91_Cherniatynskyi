@@ -70,9 +70,10 @@ export const Login = () => {
               <div className={css.notError}></div>
             )}
 
-            <div className={css.fieldWrapper}>
+            <div className={`${css.fieldWrapper} ${css.passwordWrapper}`}>
               <Field
                 className={css.field}
+                id={css.field_password}
                 type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Confirm a password"

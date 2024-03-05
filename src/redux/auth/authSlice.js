@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { register, logIn, logOut, refreshUser } from './operations';
 
 // const initialState = {
 //   access_token: '',
@@ -14,8 +15,6 @@ import { createSlice } from '@reduxjs/toolkit';
 // });
 
 // export const authReducer = authSlice.reducer;
-
-import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
