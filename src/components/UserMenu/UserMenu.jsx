@@ -10,8 +10,6 @@ export const UserMenu = () => {
     dispatch(openModal({ content: 'edit-profile' }));
   };
 
-  
-
   return (
     <>
       <div className={css.userInfo}>
