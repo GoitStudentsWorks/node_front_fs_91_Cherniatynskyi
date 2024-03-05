@@ -13,24 +13,23 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 import { ModalSlice } from './modalSlice';
-import { authReducer, authSlice } from './auth/authSlice';
+import {authSlice } from './auth/authSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['access_token'],
+  whitelist: ['token'],
 };
 
-const persistedContactsReducer = persistReducer(
+const persistedAuthReducer = persistReducer(
   persistConfig,
   authSlice.reducer
-); // ще немає
+); 
 
 export const store = configureStore({
   reducer: {
     modal: ModalSlice.reducer,
-    auth_token: persistedContactsReducer,
-    auth: authReducer,
+    auth: persistedAuthReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

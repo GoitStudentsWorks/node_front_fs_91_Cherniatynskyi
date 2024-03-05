@@ -6,7 +6,7 @@ import { Form, Field, ErrorMessage } from 'formik';
 import css from './Auth.module.css';
 import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
+import { loginThunk } from '../../redux/auth/authThunks';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -32,15 +32,9 @@ export const Login = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+    const {email, password}=e
+    dispatch(loginThunk({email, password}));
+    // form.reset();
   };
 
   return (

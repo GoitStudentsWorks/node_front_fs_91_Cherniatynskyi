@@ -4,8 +4,8 @@ import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './Auth.module.css';
-import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerThunk } from '../../redux/auth/authThunks';
 import sprite from '../../images/sprite.svg';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -28,6 +28,7 @@ const schema = Yup.object().shape({
 
 export const Register = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.auth.token)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -36,16 +37,12 @@ export const Register = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+    const {name, email, password} = e
+    
+    dispatch(registerThunk({name,email,password}));
+    console.log(isAuth)
+    
+    // e.reset();
   };
 
   return (
@@ -57,7 +54,7 @@ export const Register = () => {
           password: '',
         }}
         validationSchema={schema}
-        onSubmit={handleSubmit}
+        onSubmit={(e)=>handleSubmit(e)}
       >
         {({ errors, touched }) => (
           <Form>
