@@ -155,17 +155,31 @@
 
 }
 
-@media screen and (min-width: 1440px) {
-  .bordListScroll {
-    max-height: 150px;
-    overflow-y: auto;
-  }
 
-  .bordList {
-    color: var(--mainTextColor);
-    margin: 0;
-    margin-bottom: 20px;
-  }
+.bordList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--mainTextColor);
+  margin: 0;
+  margin-bottom: 20px;
+  width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  direction:rtl; 
+}
+
+.bordList::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--sidebarBgColor);
+  border-radius: 12px;
+}
+
+.bordList::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: var(--accentColor);
+  border-radius: 12px;
 }
 
 .helpBox {
