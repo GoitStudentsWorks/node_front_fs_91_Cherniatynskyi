@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './Auth.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/authThunks';
 import sprite from '../../images/sprite.svg';
 
@@ -28,7 +28,6 @@ const schema = Yup.object().shape({
 
 export const Register = () => {
   const dispatch = useDispatch();
-  const isAuth = useSelector(state => state.auth.token)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -40,7 +39,6 @@ export const Register = () => {
     const {name, email, password} = e
     
     dispatch(registerThunk({name,email,password}));
-    console.log(isAuth)
     
     // e.reset();
   };
