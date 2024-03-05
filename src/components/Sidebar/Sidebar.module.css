@@ -155,6 +155,15 @@
 
 }
 
+.scrollArea{
+  overflow-x: hidden;
+  overflow-y: auto;
+  direction:rtl; 
+  min-height: 60px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 
 .bordList {
   display: flex;
@@ -162,21 +171,17 @@
   gap: 10px;
   color: var(--mainTextColor);
   margin: 0;
-  margin-bottom: 20px;
   width: 100%;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-  direction:rtl; 
+  direction: ltr;
 }
 
-.bordList::-webkit-scrollbar {
+.scrollArea::-webkit-scrollbar {
   width: 5px;
   background-color: var(--sidebarBgColor);
   border-radius: 12px;
 }
 
-.bordList::-webkit-scrollbar-thumb {
+.scrollArea::-webkit-scrollbar-thumb {
   width: 5px;
   background-color: var(--accentColor);
   border-radius: 12px;

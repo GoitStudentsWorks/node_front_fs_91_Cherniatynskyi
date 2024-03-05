@@ -23,7 +23,7 @@
     fill: var(--lightBgColor);
 }
 
-.boardItem::after {
+.boardItem:hover.boardItem::after {
     content: '';
     width: 4px;
     height: 61px;
@@ -32,7 +32,7 @@
     border-bottom-left-radius: 4px;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 4px;
 }
 
 @media screen and (min-width: 768px) {

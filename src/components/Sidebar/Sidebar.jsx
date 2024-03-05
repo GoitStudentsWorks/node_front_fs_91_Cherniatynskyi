@@ -62,9 +62,11 @@ export const Sidebar = () => {
             </div>
           </div>
         </div>
-          <ul className={css.bordList}>
-            <Board></Board>
-          </ul>
+          <div className={css.scrollArea}>
+            <ul className={css.bordList}>
+              <Board></Board>
+            </ul>
+          </div>
         {/* need help */}
         <div className={css.helpBox}>
           <div className={css.helpTextBox}>
