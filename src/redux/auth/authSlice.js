@@ -1,7 +1,12 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 // import { register, logIn, logOut, refreshUser } from './operations';
-import { fetchCurrentUser, getProfileThunk, loginThunk, logoutThunk, registerThunk } from "./authThunks";
-
+import {
+  fetchCurrentUser,
+  getProfileThunk,
+  loginThunk,
+  logoutThunk,
+  registerThunk,
+} from './authThunks';
 
 const initialState = {
   user: { name: null, email: null },
@@ -11,60 +16,81 @@ const initialState = {
   isRefreshing: false,
 };
 
-const handlePending = (state) =>{
-  state.isRefreshing = true
-}
+const handlePending = state => {
+  state.isRefreshing = true;
+};
 
-const handleFulfilledLogin = (state, {payload}) =>{
-  state.isRefreshing = false
-  state.error = ''
-  state.token = payload.token
-  state.user = payload.user
-}
+const handleFulfilledLogin = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = '';
+  state.token = payload.token;
+  state.user = payload.user;
+  state.isLoggedIn = true;
+};
 
-const handleFulfilledRegister = (state, {payload}) =>{
-  state.isRefreshing = false
-  state.error = ''
-  state.token = payload.token
-  state.user = payload.user
-}
+const handleFulfilledRegister = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = '';
+  state.token = payload.token;
+  state.user = payload.user;
+  state.isLoggedIn = true;
+};
 
-const handleFulfilledProfile = (state, {payload}) =>{
-  state.isRefreshing = false
-  state.error = ''
-  state.user = payload
-}
+const handleFulfilledProfile = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = '';
+  state.user = payload;
+};
 
-const handleFulfilledLogout = (state, {payload}) =>{
-  state.isRefreshing = false
-  state.error = ''
-  state.user = null
-  state.token = ''
-}
+const handleFulfilledLogout = (state, _) => {
+  state.isRefreshing = false;
+  state.error = '';
+  state.user = null;
+  state.token = null;
+  state.isLoggedIn = false;
+};
 
-const handleFulfilledFetchCurrentUser = (state, {payload}) =>{
-  state.user = payload
-}
+const handleFulfilledFetchCurrentUser = (state, { payload }) => {
+  state.user = payload;
+  state.isLoggedIn = true;
+};
 
-const handleRejected = (state, {payload}) =>{
-  state.isRefreshing = false
-  state.error = payload
-}
+const handleRejected = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = payload;
+  state.isLoggedIn = true;
+};
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: (builder) =>{
-      builder
+  extraReducers: builder => {
+    builder
       .addCase(loginThunk.fulfilled, handleFulfilledLogin)
       .addCase(registerThunk.fulfilled, handleFulfilledRegister)
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
       .addCase(fetchCurrentUser.fulfilled, handleFulfilledFetchCurrentUser)
       .addCase(logoutThunk.fulfilled, handleFulfilledLogout)
-      .addMatcher(isAnyOf(loginThunk.pending, getProfileThunk.pending, registerThunk.pending, logoutThunk.pending), handlePending)
-      .addMatcher(isAnyOf(loginThunk.rejected, getProfileThunk.rejected, registerThunk.rejected, logoutThunk.rejected), handleRejected)
-  }
-})
+      .addMatcher(
+        isAnyOf(
+          loginThunk.pending,
+          getProfileThunk.pending,
+          registerThunk.pending,
+          logoutThunk.pending
+        ),
+        handlePending
+      )
+      .addMatcher(
+        isAnyOf(
+          loginThunk.rejected,
+          getProfileThunk.rejected,
+          registerThunk.rejected,
+          logoutThunk.rejected
+        ),
+        handleRejected
+      );
+  },
+});
 
 // export const authSlice = createSlice({
 //   name: 'auth',
