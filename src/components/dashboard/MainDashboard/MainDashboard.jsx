@@ -38,7 +38,7 @@ const MainDashboard = () => {
       id: 5,
       title: 'card5',
       boardId: 1,
-      columnId: 3,
+      columnId: 2,
     },
     {
       id: 6,

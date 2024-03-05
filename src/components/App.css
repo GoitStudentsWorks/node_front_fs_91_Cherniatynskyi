@@ -36,9 +36,10 @@
   --authInactiveButtonColor: rgb(91,91,91);
 
    /*кольори значків пріоритетів */
-  --priorityColorWithout: rgba(22, 22, 22, 0.3);
+  --priorityColorWithout: #595959;
   --priorityColorLow: #8fa1d0;
   --priorityColorMedium: #e09cb5;
+  --priorityColorHight: #bedbb0;
 
   /* бекграунд для попапів и модалок  */
   --modalBgColor: rgb(21,21,21);

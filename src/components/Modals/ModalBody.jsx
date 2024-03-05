@@ -9,6 +9,7 @@ import { AddColumnForm } from 'components/Forms/Column/AddColumnForm';
 import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
 import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 import { UserForm } from 'components/Forms/UserForm/UserForm';
+import { AddCardForm } from 'components/Forms/BoardForm/AddCard';
 
 
 export const ModalBody = () => {
@@ -58,6 +59,8 @@ export const ModalBody = () => {
         return <NeedHelpForm/>;
       case 'edit-profile':
           return <UserForm/>;
+      case 'add-card':
+          return <AddCardForm/>;
       default:
         break;
     }

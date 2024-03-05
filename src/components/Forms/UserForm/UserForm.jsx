@@ -30,9 +30,6 @@ export const UserForm = () => {
   //     const [email, setEmail] = useState('');
   //     const [comment, setPassword] = useState('');
 
-  //   const handleEmailChange = e => {
-  //     setEmail(e.target.value);
-  //   };
 
   //   const handleCommentChange = e => {
   //     setCEmail(e.target.value);

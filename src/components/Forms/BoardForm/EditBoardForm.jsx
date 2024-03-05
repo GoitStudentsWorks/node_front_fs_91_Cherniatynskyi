@@ -113,7 +113,7 @@ export const EditBoardForm = () => {
         <button type="submit" className={css.formButton}>
           <div className={css.iconWrap}>
             <svg width="14" height="14" className={css.buttonIcon}>
-              <use href={`${sprite}#icon-edit`} />
+              <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
           Edit

@@ -6,28 +6,47 @@
   margin-left: 14px;
   justify-content: center;
 }
-.userName {
+
+.buttonOpen {
   font-weight: 500;
   font-size: 14px;
   line-height: 0.67;
   letter-spacing: -2%;
   color: var(--mainTextColor);
-  margin-right: 8px;
-}
 
-.buttonOpen {
-  width: 32px;
-  height: 32px;
+  padding: 10px;
+  
+
   display: flex;
+  gap: 8px;
   justify-content: center;
   align-items: center;
-  background-color: var(--secondaryBgColor);
+  background-color: inherit;
+  border-radius: 8px;
+
+  cursor: pointer;
 }
-.userIcon {
+
+.buttonOpen:hover{
+  background-color: var(--lightBgColor);
+}
+
+
+.userAvatarWrap{
   width: 32px;
   height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
   border-radius: 8px;
-  cursor: pointer;
-  object-fit: cover;
-  stroke: var(--mainTextColor);
+  background-color: var(--lightBgColor);
+}
+
+.userIcon {
+  width: 25px;
+  height: 25px;
+  stroke: var(--darkBgColor);
+  fill: var(--darkBgColor);
 }

@@ -1,0 +1,274 @@
+.formWrap {
+  width: 350px;
+  height: 453px;
+  background-color: var(--modalBgColor);
+  border-radius: 8px;
+  border: 0.1px solid var(--inputsBorderColor);
+  padding: 30px 24px;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
+
+  margin-bottom: 25px;
+}
+
+.formInput {
+  width: 300px;
+  height: 49px;
+  background-color: var(--inputsBgColor);
+  border: 1px solid var(--inputsBorderColor);
+  border-radius: 8px;
+  padding: 0 17px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  color: var(--mainTextColor);
+}
+
+.formInput::placeholder {
+  color: var(--inputsPlaceholderColor);
+}
+
+.iconsForm {
+  border: none;
+  margin-top: 30px;
+}
+
+.TitleCard {
+  padding-left: 18px;
+  outline: transparent;
+  outline-offset: -1px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  opacity: 0.4;
+  margin-bottom: 14px;
+  transition: var(--transition);
+  background-color: var();
+  color: var(--textColorcalendar);
+}
+
+.TitleCard:hover,
+.TitleCard:focus,
+.TitleCard:active {
+  opacity: 1;
+}
+
+.TitleCard::placeholder {
+  color: transparent;
+}
+
+@media only screen and (min-width: 375px) {
+  .TitleCard {
+    width: 287px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .TitleCard {
+    width: 302px;
+  }
+}
+
+.Label {
+  position: relative;
+  display: block;
+}
+
+.StyledDescription {
+  padding-left: 18px;
+  outline: transparent;
+  outline-offset: -1px;
+  padding-top: 14px;
+  border: 1px solid var();
+  border-radius: 8px;
+  width: 287px;
+  height: 154px;
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  opacity: 0.4;
+  margin-bottom: 24px;
+  resize: none;
+  color: var();
+  background: var();
+  transition: var();
+}
+
+.StyledDescription:hover,
+.StyledDescription:focus,
+.StyledDescription:active {
+  opacity: 1;
+}
+
+.StyledDescription::placeholder {
+  color: transparent;
+}
+
+@media only screen and (min-width: 375px) {
+  .StyledDescription {
+    width: 287px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .StyledDescription {
+    width: 302px;
+  }
+}
+
+.LabelColorStyle {
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var();
+  margin-bottom: 4px;
+}
+
+.DeadlineStyle {
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var();
+  margin-bottom: 4px;
+}
+
+.AddButton {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  background-color: var();
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var();
+}
+
+.AddButton:hover,
+.AddButton:focus,
+.AddButton:active {
+  background-color: var();
+}
+
+@media only screen and (min-width: 375px) {
+  .AddButton {
+    width: 287px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .AddButton {
+    width: 302px;
+  }
+}
+
+.StylePlus {
+  border: none;
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var();
+  margin-right: 8px;
+  stroke: var();
+}
+
+.Span {
+  font-family: 'Poppins-Medium';
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var();
+}
+
+
+.container {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 14px;
+  width: 14px;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+  
+}
+
+.iconsWrap{
+  display: flex;
+  gap: 8px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.noPriority {
+  background-color: var(--priorityColorWithout);
+}
+
+.lowPriority {
+  background-color: var(--priorityColorLow);
+}
+
+.medPriority {
+  background-color: var(--priorityColorMedium);
+}
+
+.highPriority {
+  background-color: var(--priorityColorHight);
+}
+
+
+.container:hover input ~ .checkmark {
+  opacity: 0.7;
+}
+
+.container input:checked ~ .checkmark {
+  transform: scale(1.1);
+}
+
+.container input:checked ~ .checkmark::after {
+  content: ' ';
+  position: absolute;
+  left: 11%;
+  top: 11%;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: inherit;
+  border: 3px solid var(--modalBgColor);
+
+}
+
+
