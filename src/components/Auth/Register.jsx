@@ -92,9 +92,10 @@ export const Register = () => {
               <div className={css.notError}></div>
             )}
 
-            <div className={css.fieldWrapper}>
+            <div className={`${css.fieldWrapper} ${css.passwordWrapper}`}>
               <Field
                 className={css.field}
+                id={css.field_password}
                 type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Create a password"
@@ -139,5 +140,4 @@ export const Register = () => {
   );
 };
 
-// * звірити валідації
 // * підключити зміну теми

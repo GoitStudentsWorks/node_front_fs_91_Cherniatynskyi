@@ -5,24 +5,20 @@ import { Login } from './Login';
 
 export const AuthNav = () => {
   const { id } = useParams();
-  // const location = useLocation();
-  // const isActive = path => {
-  //   return location.pathname === path ? 'active' : '';
-  // };
 
   return (
     <div className={css.authForm}>
       <div className={css.authNav}>
         <NavLink
-          // className={isActive('/auth/register')}
-          className={css.authLink1}
+          className={`${css.authLink1} ${
+            id === 'register' ? css.linkActive : ''
+          }`}
           to="/auth/register"
         >
           Registration
         </NavLink>
         <NavLink
-          className={css.authLink2}
-          // className={isActive('/auth/login')}
+          className={`${css.authLink2} ${id === 'login' ? css.linkActive : ''}`}
           to="/auth/login"
         >
           Log In
