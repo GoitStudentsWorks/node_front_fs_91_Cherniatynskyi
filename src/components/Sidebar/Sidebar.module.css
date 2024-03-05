@@ -2,7 +2,6 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   top: 0;
   left: 0;
   width: 225px;
@@ -191,6 +190,7 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
+  margin-top: auto;
 }
 
 .helpTextBox {
