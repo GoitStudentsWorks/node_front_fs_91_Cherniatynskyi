@@ -1,10 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {getBoards, addBoard} from '../../services/boardService'
 
-export const fetchBoards = createAsyncThunk(
-  'boards/fetchBoards',
-  async (_, thunkAPI) => {}
+export const fetchBoardsThunk = createAsyncThunk(
+  'board/fetchBoards',
+  async () => {
+    return await getBoards();
+  }
 );
+
+export const addBoardThunk = createAsyncThunk(
+  'board/addBoards',
+  async body => {
+    return await addBoard(body);
+  }
+);
+
 
 export const addCard = createAsyncThunk(
   'cards/add',
