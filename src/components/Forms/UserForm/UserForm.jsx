@@ -35,10 +35,10 @@ export const UserForm = () => {
   //     setCEmail(e.target.value);
   //   };
 
-  //   const onSubmitForm = e => {
-  //     e.preventDefault();
-  //     console.log({ email, comment });
-  //   };
+    const handleSubmit = e => {
+      e.preventDefault();
+      console.log();
+    };
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleClickPasswordVisibility = () => {
@@ -48,7 +48,7 @@ export const UserForm = () => {
   return (
     <>
       <div className={css.formWrap}>
-        <h2 className={css.formTitle}>Edit profil</h2>
+        <h2 className={css.formTitle}>Edit profile</h2>
         <Formik
           initialValues={{
             avatar: '',
@@ -58,33 +58,27 @@ export const UserForm = () => {
             password: '',
           }}
           validationSchema={schema}
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <Form>
-            <label htmlFor="avatar">
-              <ImageInput />
-              <div className={css.userAvaWrapper}>
-                <div className={css.imgWrapper}>
+            <div className={css.avatar} >
+              <label className={css.userAvaWrapper}>
                   <img
-                    // src={`${pot} 1x`}
+                    src={``}
                     alt=""
                     className={css.userImg}
                     width={68}
                   />
-                </div>
-                <button
+                <label htmlFor="avatar"
                   className={css.iconBtnPlus}
-                  // pushButton={() => {
-                  //   const fileInput = document.getElementById('avatar');
-                  //   fileInput.click();
-                  // }}
                 >
+                  <ImageInput />
                   <svg className={css.iconPlus} width="10" height="10">
                     <use xlinkHref={`${sprite}#icon-plus`} />
                   </svg>
-                </button>
-              </div>
-            </label>
+                </label>
+              </label> 
+            </div>
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}

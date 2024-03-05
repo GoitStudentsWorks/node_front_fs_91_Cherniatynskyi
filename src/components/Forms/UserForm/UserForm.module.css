@@ -1,6 +1,6 @@
 .formWrap {
-  /* width: 350px;
-  height: 453px; */
+  width: 400px;
+  height: 440px;
   background-color: var(--modalBgColor);
   border-radius: 8px;
   border: 0.1px solid var(--inputsBorderColor);
@@ -32,6 +32,11 @@
   }
 }
 
+.avatar{
+  display: flex;
+  justify-content: center;
+}
+
 .userAvaWrapper {
   display: flex;
 
@@ -41,10 +46,17 @@
   height: 79px;
 
   margin-top: 14px;
+  cursor: pointer;
 }
-/* .imgWrapper{
-  
-} */
+
+.userAvaWrapper:hover .userImg{
+  border: 2px solid var(--inputsBorderColor);
+}
+
+.userAvaWrapper:hover .iconBtnPlus{
+  background-color: var(--accentColorHover);
+}
+
 
 .userImg {
   position: absolute;
@@ -64,6 +76,9 @@
   height: 24px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconPlus {
@@ -117,6 +132,8 @@
   line-height: 0.67;
   letter-spacing: -0.02em;
   color: var(--mainTextColor);
+
+  padding: 0 10px;
 }
 
 .field:hover {
@@ -135,9 +152,7 @@
   }
 }
 
-.field::placeholder {
-  padding-left: 10px;
-}
+
 
 .btnSend {
   border: none;
