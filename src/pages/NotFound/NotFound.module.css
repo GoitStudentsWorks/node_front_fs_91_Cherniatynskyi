@@ -37,6 +37,7 @@
 
 .notFoundBtn {
   padding: 14px 0;
+  margin-top: 10px;
   margin-bottom: 14px;
   text-decoration: none;
   color: var(--reversedTextColor);
