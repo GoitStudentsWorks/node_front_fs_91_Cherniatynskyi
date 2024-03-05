@@ -45,9 +45,10 @@ export const Login = () => {
           password: '',
         }}
         validationSchema={schema}
+        onSubmit={(e)=>handleSubmit(e)}
       >
         {({ errors, touched }) => (
-          <Form onSubmit={handleSubmit} autoComplete="off">
+          <Form autoComplete="off">
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
