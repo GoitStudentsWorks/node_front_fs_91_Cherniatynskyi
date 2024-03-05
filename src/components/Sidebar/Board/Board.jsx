@@ -7,7 +7,7 @@ export const Board = () => {
   const dispatch = useDispatch();
 
   const handleEditBoard = () => {
-    dispatch(openModal({ content: 'edit-board' , }));
+    dispatch(openModal({ content: 'edit-board' }));
   };
 
   return (
@@ -52,7 +52,7 @@ export const Board = () => {
           </button>
         </div>
       </li>
-      <li className={css.boardItem}>
+      {/* <li className={css.boardItem}>
         <div className={css.boardTitleBox}>
           <svg width="18" height="18" className={css.boardIcon}>
             <use href={`${sprite}#icon-bell`} />
@@ -71,7 +71,7 @@ export const Board = () => {
             </svg>
           </button>
         </div>
-      </li>
+      </li> */}
     </>
   );
 };

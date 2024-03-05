@@ -12,7 +12,7 @@
   transition: 500ms transform;
 }
 
-.sidebarBackdrop{
+.sidebarBackdrop {
   position: absolute;
   z-index: 999;
   width: 100vw;
@@ -31,34 +31,23 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
-    .sideBar {
-      width: 260px;
-      position: static;
-      transform: none;
-    }
-  }
-
 @media screen and (min-width: 1440px) {
   .sideBar {
+    width: 275px;
     position: static;
-    width: 310px;
     transform: none;
   }
 }
 
 /* має працювати як буде кнопка відкриття */
 
-.openSideBar {
+/* .openSideBar {
   min-height: 768px;
   z-index: 2;
-
   position: absolute;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   top: 0;
   width: 225px;
   height: 100vh;
@@ -81,17 +70,22 @@
     position: absolute;
     width: 260px;
   }
-}
+} */
 
 .titleBox {
   padding: 14px 14px 30px 14px;
 }
 
+@media screen and (min-width: 768px) {
+  .titleBox {
+    padding: 20px 22px 20px 24px;
+  }
+}
 
-@media screen and (min-width: 1024px) {
-    .titleBox {
-        padding: 24px 24px 40px 24px;
-    }
+@media screen and (min-width: 1440px) {
+  .titleBox {
+    padding: 24px 24px 40px 24px;
+  }
 }
 
 .iconBox {
@@ -103,86 +97,86 @@
 }
 
 .logoIconContainer {
-    border-radius: 10px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--logoBgColor);
-    padding-left: 1px;
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--logoBgColor);
+  padding-left: 1px;
 }
 
-.iconLogo{
-    stroke: var(--logoIconColor);
-    fill: var(--logoIconColor)
+.iconLogo {
+  stroke: var(--logoIconColor);
+  fill: var(--logoIconColor)
 }
 
 .title {
-    color: var(--sidebarMainTextColor);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.64px;
-    margin: 0;
+  color: var(--sidebarMainTextColor);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.64px;
+  margin: 0;
 }
 
 .bordBox {
   margin-top: 70px;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .bordBox {
     margin-top: 60px;
   }
 }
 
 .bordTitle {
-    color: var(--sidebarLightColor);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.24px;
+  color: var(--sidebarLightColor);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
 }
 
 .buttonBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-    padding: 14px 0 14px;
-    border-top: 1px solid var(--sidebarLightColorEl);
-    border-bottom: 1px solid var(--sidebarLightColorEl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding: 14px 0 14px;
+  border-top: 1px solid var(--sidebarLightColorEl);
+  border-bottom: 1px solid var(--sidebarLightColorEl);
 }
 
 .buttonText {
-    width: 76px;
-    display: block;
-    color: var(--sidebarMainTextColor);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: -0.28px;
+  width: 76px;
+  display: block;
+  color: var(--sidebarMainTextColor);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.28px;
 }
 
 .buttonCreate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--boardAddIconBg);
-    transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--boardAddIconBg);
+  transition: background-color 0.3s ease;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .buttonCreate:hover {
@@ -190,17 +184,26 @@
 }
 
 .iconCreate {
-    stroke: var(--addIconPlusColor);
+  stroke: var(--addIconPlusColor);
 
 }
 
-.bordList {
-  color: var(--mainTextColor);
-  margin-bottom: auto;
-  overflow-y: auto;
-  margin: 0;
-  padding: 0 24px;
-  margin-bottom: 20px;
+@media screen and (min-width: 1440px) {
+  .bordListScroll {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .bordList {
+    color: var(--mainTextColor);
+
+    margin-bottom: auto;
+    /* overflow-y: auto; */
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+
 }
 
 .helpBox {
@@ -210,14 +213,23 @@
 }
 
 .helpTextBox {
-    box-sizing: border-box;
-    align-self: center;
-    padding: 14px 14px 18px 14px;
-    width: 197px;
-    height: 238px;
+  box-sizing: border-box;
+  align-self: center;
+  padding: 14px 14px 18px 14px;
+  width: 197px;
+  height: 238px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--helpBgColor);
+}
+
+@media screen and (min-width: 768px) {
+  .helpTextBox {
+    width: 212px;
+    height: 272px;
     flex-shrink: 0;
-    border-radius: 8px;
-    background: var(--helpBgColor);
+    padding: 20px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -225,25 +237,26 @@
     width: 212px;
     height: 272px;
     flex-shrink: 0;
-    padding: 20px 20px 18px 20px;
+    padding: 20px;
   }
 }
 
 .helpText {
-    margin: 0;
-    margin-top: 14px;
-    flex-shrink: 0;
-    color: var(--sidebarMainTextColor);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: -0.24px;
+  margin: 0;
+  margin-top: 14px;
+  flex-shrink: 0;
+  color: var(--sidebarMainTextColor);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.24px;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .helpText {
     width: 172px;
+    margin-bottom: 20px;
     height: 102px;
     flex-shrink: 0;
     font-size: 14px;
@@ -253,44 +266,44 @@
 }
 
 .helpTextLink {
-  cursor: 'pointer';
+  cursor: pointer;
   color: var(--accentColor);
 }
 
 .buttonHelp {
-    color: var(--sidebarMainTextColor);
-    padding: 0;
-    margin-top: 10px;
-    gap: 8px;
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: 200ms linear;
+  color: var(--sidebarMainTextColor);
+  padding: 0;
+  margin-top: 10px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 200ms linear;
 }
 
 .buttonHelp:hover {
-    color: var(--accentColor);
-    stroke: var(--accentColor);
+  color: var(--accentColor);
+  stroke: var(--accentColor);
 }
 
 .buttonHelp:hover .iconHelp {
-    stroke: var(--accentColor);
+  stroke: var(--accentColor);
 }
 
 .iconHelp {
-    stroke: var(--helpIconColor);
-    fill: var(--helpBgColor);
-    transition: 200ms linear;
+  stroke: var(--helpIconColor);
+  fill: var(--helpBgColor);
+  transition: 200ms linear;
 }
 
 .helpButtonText {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
 
 
 }
@@ -305,37 +318,36 @@
   border: none;
   cursor: pointer;
   padding: 10px;
-
   transition: 200ms linear;
 }
 
 .buttonLogOut:hover,
 .buttonLogOut:active {
-    background-color: var(--accentColorHover);
-    border-radius: 8px;
+  background-color: var(--accentColorHover);
+  border-radius: 8px;
 
-    .iconLogOut {
-        stroke: #ffffff
-    }
+  .iconLogOut {
+    stroke: #ffffff
+  }
 
-    .logOutButtonText {
-        color: #ffffff;
-    }
+  .logOutButtonText {
+    color: #ffffff;
+  }
 
 }
 
 .iconLogOut {
-    stroke: var(--logoutIconColor);
-    fill: transparent;
+  stroke: var(--logoutIconColor);
+  fill: transparent;
 }
 
 .logOutButtonText {
-    color: var(--sidebarMainTextColor);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.24px;
+  color: var(--sidebarMainTextColor);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
 }
 
 @media screen and (min-width: 1024px) {
