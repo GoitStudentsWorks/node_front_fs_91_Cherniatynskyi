@@ -1,48 +1,62 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as BoardsService from 'services/boardService';
+import axios from 'axios';
 
-export const getBoards = createAsyncThunk(
-  'boards/getBoards',
+axios.defaults.baseURL = 'https://task-pro-7x3t.onrender.com/';
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const fetchBoards = createAsyncThunk(
+  'boards/fetchAll',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
     try {
-      return await BoardsService.fetchGetBoards(persistedToken);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const resp = await axios.get('/boards');
+      return resp.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
-export const postBoard = createAsyncThunk(
-  'boards/postBoard',
-  async (newBoard, { rejectWithValue }) => {
+export const addBoard = createAsyncThunk(
+  'boards/addBoard',
+  async (newBoard, thunkAPI) => {
     try {
-      return await BoardsService.fetchAddBoard(newBoard);
-    } catch (error) {
-      return rejectWithValue(error);
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const resp = await axios.post('/boards', newBoard);
+      return resp.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
 export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
-  async (id, { rejectWithValue }) => {
+  async (_id, thunkAPI) => {
     try {
-      return await BoardsService.fetchDeleteBoard(id);
-    } catch (error) {
-      return rejectWithValue(error);
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      await axios.delete(`/boards/${_id}`);
+      return _id;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
-export const updateBoard = createAsyncThunk(
-  'boards/updateBoard',
-  async ({ id, newBoard }, { rejectWithValue }) => {
+export const addCard = createAsyncThunk(
+  'cards/add',
+  async ({ values, columnId }, thunkAPI) => {
     try {
-      return await BoardsService.fetchUpdateBoard(id, newBoard);
+      const res = await axios.post(`/cards/${columnId}`, values);
+
+      return res.data;
     } catch (error) {
-      return rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

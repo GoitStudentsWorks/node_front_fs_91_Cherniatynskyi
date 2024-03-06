@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { deleteBoard, getBoards, postBoard, updateBoard } from './boardThunks';
-import * as HelpersReducer from './helpersSlice';
+
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { addBoard, deleteBoard, fetchBoards } from './boardThunks';
+
 
 const initialState = {
   boards: [],
@@ -10,26 +11,55 @@ const initialState = {
   currentBoardId: null,
 };
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, { payload }) => {
+  state.isRefreshing = false;
+  state.error = payload;
+  state.isLoggedIn = true;
+};
+
+const handleFulfilledGetBoards = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.boards = payload;
+};
+
+const handleFulfilledAddBoards = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.currentBoardId = payload._id;
+  state.boards.push({ ...payload });
+};
+
+const handleFulfilledDeleteBoard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.currentBoardId = payload._id;
+  const index = state.boards.findIndex(
+    item => item._id === payload
+  );
+  state.boards.splice(index, 1);
+};
+
+
 export const boardSlice = createSlice({
-  name: 'board',
+  name: 'boards',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(getBoards.fulfilled, HelpersReducer.handleFulfilledGetBoards)
-      .addCase(postBoard.fulfilled, HelpersReducer.handleFulfilledAddBoard)
-      .addCase(deleteBoard.fulfilled, HelpersReducer.handleFulfilledDeleteBoard)
-      .addCase(updateBoard.fulfilled, HelpersReducer.handleFulfilledUpdateBoard)
+      .addCase(fetchBoards.fulfilled, handleFulfilledGetBoards)
+      .addCase(addBoard.fulfilled, handleFulfilledAddBoards)
+      .addCase(deleteBoard.fulfilled, handleFulfilledDeleteBoard)
       .addMatcher(
-        action => action.type.endsWith('fulfilled'),
-        HelpersReducer.handleFulfilled
+        isAnyOf(fetchBoards.pending, addBoard.pending, deleteBoard.pending),
+        handlePending
       )
       .addMatcher(
-        action => action.type.endsWith('pending'),
-        HelpersReducer.handlePending
-      )
-      .addMatcher(
-        action => action.type.endsWith('rejected'),
-        HelpersReducer.handleReject
+        isAnyOf(fetchBoards.rejected, addBoard.rejected, deleteBoard.rejected),
+        handleRejected
       );
   },
 });
