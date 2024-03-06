@@ -1,10 +1,23 @@
+
+
 .formWrap {
-  width: 350px;
-  height: 220px;
+  width: 335px;
+  height: 230px;
   background-color: var(--modalBgColor);
   border-radius: 8px;
   border: 0.1px solid var(--inputsBorderColor);
   padding: 30px 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .formWrap {
+    width: 350px;
+    height: 230px;
+    background-color: var(--modalBgColor);
+    border-radius: 8px;
+    border: 0.1px solid var(--inputsBorderColor);
+    padding: 30px 24px;
+  }
 }
 
 .formTitle {
@@ -14,25 +27,39 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: var(--mainTextColor);
-
   margin-bottom: 25px;
 }
 
 .formInput {
-  width: 300px;
+  width: 287px;
   height: 49px;
   background-color: var(--inputsBgColor);
   border: 1px solid var(--inputsBorderColor);
   border-radius: 8px;
   padding: 0 17px;
-
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: left;
-
   color: var(--mainTextColor);
+}
+
+@media screen and (min-width: 768px) {
+  .formInput {
+    width: 302px;
+    height: 49px;
+    background-color: var(--inputsBgColor);
+    border: 1px solid var(--inputsBorderColor);
+    border-radius: 8px;
+    padding: 0 17px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: var(--mainTextColor);
+  }
 }
 
 .formInput::placeholder {
