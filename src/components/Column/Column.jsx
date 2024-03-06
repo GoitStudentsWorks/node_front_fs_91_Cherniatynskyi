@@ -7,9 +7,9 @@ export const Column = ({ children, column }) => {
   const dispatch = useDispatch();
 
   const handleAddCard = () => {
-    // dispatch(openModal({ content: 'add-card' }));
     dispatch(openModal({ content: 'add-card' }));
   };
+
   return (
     <li className={css.columnWrap}>
       <div>

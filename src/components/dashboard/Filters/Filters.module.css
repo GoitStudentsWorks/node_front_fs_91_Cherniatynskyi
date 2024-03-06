@@ -1,0 +1,23 @@
+.filterButton {
+  display: flex;
+  align-items: center;
+  width: 64px;
+  height: 20px;
+  gap: 8px;
+  background-color: var(--lightBgColor);
+  color: var(--mainTextColor);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filterIcon {
+  width: 16px;
+  height: 16px;
+  fill: var(--lightBgColor);
+  stroke: var(--mainTextColor);
+}

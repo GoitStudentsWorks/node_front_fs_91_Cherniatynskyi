@@ -9,8 +9,7 @@ const MainDashboard = () => {
   const dispatch = useDispatch();
 
   const handleAddColumn = () => {
-    // dispatch(openModal({ content: 'add-column' }));
-    dispatch(openModal({ content: 'add-board' }));
+    dispatch(openModal({ content: 'add-column' }));
   };
 
   const columns = [

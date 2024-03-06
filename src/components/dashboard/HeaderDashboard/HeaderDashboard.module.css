@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 14px 20px 0 20px;
   margin-bottom: 39px;
 
   @media (min-width: 768px) {
@@ -14,8 +15,6 @@
 }
 
 .dashboardName {
-  padding: 14px 0 0 20px;
-
   font-weight: 500;
   font-size: 18px;
   letter-spacing: -0.02em;

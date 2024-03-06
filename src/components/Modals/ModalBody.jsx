@@ -10,7 +10,7 @@ import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
 import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 import { UserForm } from 'components/Forms/UserForm/UserForm';
 import { AddCardForm } from 'components/Forms/BoardForm/AddCard';
-
+import { FiltersForm } from 'components/Forms/FiltersForm/FiltersForm';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
@@ -48,19 +48,21 @@ export const ModalBody = () => {
     //ФУНКЦІЯ ВИЗНАЧЕННЯ РЕДНЕРУ КОНЕТНТУ. КОЖЕН КЕЙС ПОТРІБНО ПРОПИСАТИ
     switch (content) {
       case 'add-board':
-        return <NewBoardForm/>;
+        return <NewBoardForm />;
       case 'edit-board':
-        return <EditBoardForm/>;
+        return <EditBoardForm />;
       case 'add-column':
-        return <AddColumnForm/>;
+        return <AddColumnForm />;
       case 'edit-column':
-        return <EditColumnForm/>;
+        return <EditColumnForm />;
       case 'need-help':
-        return <NeedHelpForm/>;
+        return <NeedHelpForm />;
       case 'edit-profile':
-          return <UserForm/>;
+        return <UserForm />;
       case 'add-card':
-          return <AddCardForm/>;
+        return <AddCardForm />;
+      case 'filters':
+        return <FiltersForm />;
       default:
         break;
     }
