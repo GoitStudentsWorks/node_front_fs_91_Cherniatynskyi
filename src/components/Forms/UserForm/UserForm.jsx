@@ -8,33 +8,36 @@ import ImageInput from './ImgInput.jsx';
 import sprite from '../../../images/sprite.svg';
 import css from './UserForm.module.css';
 
-const nameRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z]).{2,32}$/;
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
 
 const schema = Yup.object().shape({
+  avatar: Yup.mixed().test('fileType', 'Invalid file format', value => {
+    if (!value) return true;
+    const supportedFormats = ['image/png', 'image/jpeg', 'image/jpg'];
+    return supportedFormats.includes(value.type);
+  }),
   name: Yup.string()
-    .matches(nameRegExp, 'Enter a valid name*')
+    .min(2, 'Name must be at least 6 characters')
+    .max(32, 'Name must be no more than 16 characters')
     .required('Name is required*'),
   email: Yup.string()
     .matches(emailRegExp, 'Enter a valid Email*')
     .email('Enter a valid Email*')
     .required('Email is required*'),
   password: Yup.string()
-    .required('Password is required*')
-    .matches(passwordRegExp, 'Password must meet the requirements*'),
+    .matches(/^(?=.*[a-z])/, 'Password must meet the requirements*')
+    .min(8, 'Password must be at least 6 characters')
+    .max(64, 'Password must be no more than 16 characters')
+    .required('Password is required*'),
 });
 
 export const UserForm = () => {
   // const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state => state.auth.user);
 
-
-    const handleSubmit = e => {
-      console.log(e);
-    };
+  const handleSubmit = e => {
+    console.log(e);
+  };
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleClickPasswordVisibility = () => {
@@ -51,29 +54,32 @@ export const UserForm = () => {
             avatarURL: user.avatarURL,
             name: user.name,
             email: user.email,
-            password: "",
+            password: '',
           }}
           validationSchema={schema}
           onSubmit={handleSubmit}
         >
           <Form>
-            <div className={css.avatar} >
+            <div className={css.avatar}>
               <label className={css.userAvaWrapper}>
-                  <img
-                    src={``}
-                    alt=""
-                    className={css.userImg}
-                    width={68}
-                  />
-                <label htmlFor="avatar"
-                  className={css.iconBtnPlus}
-                >
+                {user.avatarURL ? (
+                  <img src={``} alt="" className={css.userImg} width={68} />
+                ) : (
+                  <div className={css.userIconBtn}>
+                    <svg className={css.userIcon}>
+                      <use href={`${sprite}#icon-user2`} />
+                    </svg>
+                  </div>
+                )}
+
+                <label htmlFor="avatar" className={css.iconBtnPlus}>
                   <ImageInput />
+
                   <svg className={css.iconPlus} width="10" height="10">
                     <use xlinkHref={`${sprite}#icon-plus`} />
                   </svg>
                 </label>
-              </label> 
+              </label>
             </div>
             <div className={css.fieldWrapper}>
               <Field
