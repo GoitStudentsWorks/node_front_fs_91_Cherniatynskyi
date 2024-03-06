@@ -1,9 +1,28 @@
 .formWrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 300px;
-  height: 234px;
+  /* height: 234px; */
   background-color: var(--modalBgColor);
   border-radius: 8px;
+  border: 1px solid var(--lightBgColor);
+  top: 140%;
+  left: -350%;
+  z-index: 1;
+
+  transition: 200ms linear;
   padding: 24px;
+  cursor: default;
+}
+
+.menuListHidden {
+  padding: 0 15px;
+  opacity: 0;
+  top: 70%;
+  height: 0;
+  border: none;
+  overflow: hidden;
 }
 
 .formTitle {
@@ -14,20 +33,6 @@
   text-align: left;
   color: var(--mainTextColor);
   margin-bottom: 14px;
-}
-
-.filterCloseIcon,
-.closeFilters {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  stroke: var(--mainTextColor);
-  top: 14px;
-  right: 14px;
-  width: 18px;
-  height: 18px;
-  padding: 0;
-  cursor: pointer;
 }
 
 .filterLine {
@@ -66,6 +71,10 @@
   color: var(--secondaryTextColor);
   text-decoration: underline;
   cursor: pointer;
+}
+
+.iconsWrap label:last-child {
+  margin: 0;
 }
 
 .container {
