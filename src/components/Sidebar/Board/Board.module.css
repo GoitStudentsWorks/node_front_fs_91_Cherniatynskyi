@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 
-.boardItem:hover{
+.boardItem:hover {
     background-color: var(--lightBgColor);
 }
 

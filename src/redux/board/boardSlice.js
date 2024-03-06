@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addBoardThunk, fetchBoardsThunk } from './boardThunks';
+import { addBoard, deleteBoard, fetchBoards } from './boardThunks';
 
 const initialState = {
   boards: [],
@@ -29,25 +29,37 @@ const handleFulfilledAddBoards = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
   state.currentBoardId = payload._id;
-  state.boards.unshift({ ...payload });
+  state.boards.push({ ...payload });
 };
 
+const handleFulfilledDeleteBoard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.currentBoardId = payload._id;
+  const index = state.boards.findIndex(
+    item => item._id === payload
+  );
+  state.boards.splice(index, 1);
+};
+
+
 export const boardSlice = createSlice({
-  name: 'board',
+  name: 'boards',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchBoardsThunk.fulfilled, handleFulfilledGetBoards)
-      .addCase(addBoardThunk.fulfilled, handleFulfilledAddBoards)
+      .addCase(fetchBoards.fulfilled, handleFulfilledGetBoards)
+      .addCase(addBoard.fulfilled, handleFulfilledAddBoards)
+      .addCase(deleteBoard.fulfilled, handleFulfilledDeleteBoard)
       .addMatcher(
-        isAnyOf(fetchBoardsThunk.pending, addBoardThunk.pending),
+        isAnyOf(fetchBoards.pending, addBoard.pending, deleteBoard.pending),
         handlePending
       )
       .addMatcher(
-        isAnyOf(fetchBoardsThunk.rejected, addBoardThunk.rejected),
+        isAnyOf(fetchBoards.rejected, addBoard.rejected, deleteBoard.rejected),
         handleRejected
       );
   },
 });
 
-export const authReducer = boardSlice.reducer;
+export const boardReducer = boardSlice.reducer;

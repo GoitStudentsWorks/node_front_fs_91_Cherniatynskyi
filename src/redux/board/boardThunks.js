@@ -1,21 +1,52 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {getBoards, addBoard} from '../../services/boardService'
 
-export const fetchBoardsThunk = createAsyncThunk(
-  'board/fetchBoards',
-  async () => {
-    return await getBoards();
+axios.defaults.baseURL = 'https://task-pro-7x3t.onrender.com/';
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const fetchBoards = createAsyncThunk(
+  'boards/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const resp = await axios.get('/boards');
+      return resp.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
 );
 
-export const addBoardThunk = createAsyncThunk(
-  'board/addBoards',
-  async body => {
-    return await addBoard(body);
+export const addBoard = createAsyncThunk(
+  'boards/addBoard',
+  async (newBoard, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const resp = await axios.post('/boards', newBoard);
+      return resp.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
 );
 
+export const deleteBoard = createAsyncThunk(
+  'boards/deleteBoard',
+  async (_id, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      await axios.delete(`/boards/${_id}`);
+      return _id;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 export const addCard = createAsyncThunk(
   'cards/add',

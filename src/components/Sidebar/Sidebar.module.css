@@ -167,7 +167,7 @@
 
   overflow-x: hidden;
   overflow-y: auto;
-  direction:rtl; 
+  direction: rtl;
 }
 
 .bordList::-webkit-scrollbar {

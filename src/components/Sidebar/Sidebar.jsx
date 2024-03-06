@@ -6,18 +6,23 @@ import { Board } from './Board/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeSidebar } from '../../redux/modalSlice';
 import { logoutThunk } from '../../redux/auth/authThunks';
-import { useNavigate } from 'react-router-dom';
+import { selectBoards } from '../../redux/board/selectors';
+import { useEffect } from 'react';
+import { fetchBoards } from '../../redux/board/boardThunks';
 
 export const Sidebar = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const boards = useSelector(selectBoards);
+
+  useEffect(() => {
+    dispatch(fetchBoards());
+  }, [dispatch]);
 
   const { sideBarIsOpen } = useSelector(state => state.modal);
 
   const handleAddBoard = () => {
     dispatch(openModal({ content: 'add-board' }));
   };
-
 
   const handleNeddHelp = () => {
     dispatch(openModal({ content: 'need-help' }));
@@ -31,7 +36,6 @@ export const Sidebar = () => {
   const handleLogout = () => {
     dispatch(logoutThunk());
   };
-
 
   return (
     <div
@@ -62,9 +66,13 @@ export const Sidebar = () => {
             </div>
           </div>
         </div>
+        {boards.length > 0 && (
           <ul className={css.bordList}>
-            <Board></Board>
+            {boards.map(board => (
+              <Board key={board._id} board={board}></Board>
+            ))}
           </ul>
+        )}
         {/* need help */}
         <div className={css.helpBox}>
           <div className={css.helpTextBox}>
@@ -74,17 +82,8 @@ export const Sidebar = () => {
             </picture>
             <p className={css.helpText}>
               If you need help with{' '}
-
-              <span
-                onClick={() => {
-                  navigate('/home');
-                }}
-                className={css.helpTextLink}
-              >
-                TaskPro
-              </span>
-              , check out our support resources or reach out to our customer
-              support team.
+              <span className={css.helpTextLink}>TaskPro</span>, check out our
+              support resources or reach out to our customer support team.
             </p>
             <button onClick={handleNeddHelp} className={css.buttonHelp}>
               <svg className={css.iconHelp} width="20" height="20">
@@ -95,7 +94,6 @@ export const Sidebar = () => {
           </div>
           {/* logout */}
           <button onClick={handleLogout} className={css.buttonLogOut}>
-
             <svg className={css.iconLogOut} width="32" height="32">
               <use href={`${sprite}#icon-login`} />
             </svg>

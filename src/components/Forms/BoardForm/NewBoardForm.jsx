@@ -1,10 +1,12 @@
 import css from './BoardForm.module.css';
-
 import { useState } from 'react';
-// import { closeModal } from '../../../redux/modalSlice'
+import { closeModal } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { addBoard } from '../../../redux/board/boardThunks';
 
 export const NewBoardForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [iconValue, setIconValue] = useState('');
   const [bgValue, setBgValue] = useState('');
@@ -23,7 +25,16 @@ export const NewBoardForm = () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    console.log({ title, iconValue, bgValue });
+
+    const newBoard = {
+      name: title,
+      icon: iconValue,
+      background: bgValue,
+    };
+
+    dispatch(addBoard(newBoard));
+    e.target.reset();
+    dispatch(closeModal());
   };
 
   const icValues = [
