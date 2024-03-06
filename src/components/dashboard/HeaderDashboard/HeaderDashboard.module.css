@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px 0 20px;
+  padding: 10px 0 0 24px;
   margin-bottom: 39px;
 
   @media (min-width: 768px) {
@@ -21,7 +21,7 @@
   color: var(--mainTextColor);
 
   @media (min-width: 768px) {
-    padding: 26px 0 0 32px;
+    padding: 16px 0 0 22px;
   }
 
   @media screen and (min-width: 1440px) {
