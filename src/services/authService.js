@@ -38,3 +38,8 @@ export const getProfile = async () => {
   const { data } = await instance.get('/users/current');
   return data;
 };
+
+export const updateTheme = async (body) =>{
+  const { data } = await instance.patch('/users/theme', body);
+  return data;
+}

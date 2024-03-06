@@ -10,11 +10,12 @@ import { Navigation } from 'components/Navigation/Navigation';
 
 const HomePage = () => {
   const { isOpen } = useSelector(state => state.modal);
+  const {theme} = useSelector(state => state.auth.user)
   const location = useLocation();
 
 
     return(
-    <div className={css.main} data-theme='dark'>
+    <div className={css.main} data-theme={theme}>
             <Sidebar/> 
       <div className={css.mainPage}>
         <Navigation />

@@ -5,6 +5,7 @@ import {
   logOut,
   getProfile,
   setToken,
+  updateTheme,
 } from 'services/authService';
 
 export const loginThunk = createAsyncThunk('auth/login', async body => {
@@ -43,3 +44,10 @@ export const fetchCurrentUser = createAsyncThunk(
     return data;
   }
 );
+
+
+export const updaterUserTheme = createAsyncThunk('auth/theme',async (body) => {
+  return await updateTheme(body);
+});
+
+
