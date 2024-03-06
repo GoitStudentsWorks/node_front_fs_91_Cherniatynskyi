@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -8,7 +9,7 @@ import sprite from '../../../images/sprite.svg';
 import css from './UserForm.module.css';
 
 const nameRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{2,32}$/;
+  /^(?=.*?[A-Z])(?=.*?[a-z]).{2,32}$/;
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegExp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$/;
@@ -25,19 +26,14 @@ const schema = Yup.object().shape({
     .required('Password is required*')
     .matches(passwordRegExp, 'Password must meet the requirements*'),
 });
+
 export const UserForm = () => {
-  //     const [name, setName] = useState('');
-  //     const [email, setEmail] = useState('');
-  //     const [comment, setPassword] = useState('');
+  // const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user)
 
-
-  //   const handleCommentChange = e => {
-  //     setCEmail(e.target.value);
-  //   };
 
     const handleSubmit = e => {
-      e.preventDefault();
-      console.log();
+      console.log(e);
     };
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -52,10 +48,10 @@ export const UserForm = () => {
         <Formik
           initialValues={{
             avatar: '',
-            avatarURL: '',
-            name: '',
-            email: '',
-            password: '',
+            avatarURL: user.avatarURL,
+            name: user.name,
+            email: user.email,
+            password: "",
           }}
           validationSchema={schema}
           onSubmit={handleSubmit}
