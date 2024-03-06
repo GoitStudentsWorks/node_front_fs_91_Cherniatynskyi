@@ -41,28 +41,23 @@ export const EditBoardForm = () => {
     bgValues.push(i);
   }
 
-  const availableBoards = []; // список наявних дошок
+  
 
   return (
     <div className={css.formWrap}>
       <h2 className={css.formTitle}>Edit Board</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
-        {/* роблю випадаючий список наявних дошок */}
-        <label htmlFor="name">
-          <select
-            value={title}
+      <label htmlFor="name">
+          <input
+            autoComplete="false"
+            placeholder="Title"
             onChange={e => handleChange(e)}
+            value={title}
             className={css.formInput}
+            type="text"
             name="title"
             required
-          >
-            <option value="">Select a board</option>
-            {availableBoards.map(board => (
-              <option key={board} value={board}>
-                {board}
-              </option>
-            ))}
-          </select>
+          />
         </label>
         <fieldset className={css.iconsForm}>
           <legend className={css.iconsTitle}>Icons</legend>

@@ -20,20 +20,17 @@ export const EditColumnForm = () => {
     <div className={css.formWrap}>
       <h2 className={css.formTitle}>Edit column</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
-        <label htmlFor="name">
-          <select
-            value={title}
+      <label htmlFor="name">
+          <input
+            autoComplete="false"
+            placeholder="Title"
             onChange={e => handleChange(e)}
+            value={title}
             className={css.formInput}
+            type="text"
             name="title"
             required
-          >
-            {existingColumns.map((column, index) => (
-              <option key={index} value={column}>
-                {column}
-              </option>
-            ))}
-          </select>
+          />
         </label>
 
         <button type="submit" className={css.formButton}>
