@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { deleteBoard, getBoards, postBoard, updateBoard } from './boardThunks';
+import * as HelpersReducer from './helpersSlice';
 
 const initialState = {
   boards: [],
@@ -11,7 +13,25 @@ const initialState = {
 export const boardSlice = createSlice({
   name: 'board',
   initialState,
-  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(getBoards.fulfilled, HelpersReducer.handleFulfilledGetBoards)
+      .addCase(postBoard.fulfilled, HelpersReducer.handleFulfilledAddBoard)
+      .addCase(deleteBoard.fulfilled, HelpersReducer.handleFulfilledDeleteBoard)
+      .addCase(updateBoard.fulfilled, HelpersReducer.handleFulfilledUpdateBoard)
+      .addMatcher(
+        action => action.type.endsWith('fulfilled'),
+        HelpersReducer.handleFulfilled
+      )
+      .addMatcher(
+        action => action.type.endsWith('pending'),
+        HelpersReducer.handlePending
+      )
+      .addMatcher(
+        action => action.type.endsWith('rejected'),
+        HelpersReducer.handleReject
+      );
+  },
 });
 
-export const authReducer = boardSlice.reducer;
+export const boardReducer = boardSlice.reducer;
