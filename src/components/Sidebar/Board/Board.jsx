@@ -3,19 +3,32 @@ import sprite from '../../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../../redux/modalSlice';
 import { deleteBoard } from '../../../redux/board/boardThunks';
+import { useNavigate } from 'react-router-dom';
 
 export const Board = ({ board }) => {
   const dispatch = useDispatch();
+  const navigate= useNavigate()
 
   const handleEditBoard = () => {
     dispatch(openModal({ content: 'edit-board' }));
   };
 
+  const handleNavigate = (e) =>{
+    if(e.target !== e.currentTarget){
+      return
+    }
+    navigate(`/home/${board._id}`)
+  }
+
+  const handleDelete = () =>{
+    navigate('/home')
+    dispatch(deleteBoard(board._id))
+  }
   return (
-    <li className={css.boardItem}>
+    <li id='boardBtn' onClick={handleNavigate} className={css.boardItem}>
       <div className={css.boardTitleBox}>
         <svg width="18" height="18" className={css.boardIcon}>
-          <use href={`${sprite}#${board.icon}`} />
+          <use href={`${sprite}#icon-${board.icon}`} />
         </svg>
         <p className={css.boardText}>{board.name}</p>
       </div>
@@ -27,7 +40,7 @@ export const Board = ({ board }) => {
         </button>
         <button
           className={css.boardButton}
-          onClick={() => dispatch(deleteBoard(board._id))}
+          onClick={handleDelete}
         >
           <svg className={css.iconButton} width="16" height="16">
             <use href={`${sprite}#icon-trash`} />

@@ -2,12 +2,15 @@ import css from './MainDashboard.module.css';
 import sprite from '../../../images/sprite.svg';
 import { Column } from 'components/Column/Column';
 import { Card } from 'components/Card/Card';
+
 import { openModal } from '../../../redux/modalSlice';
 import { useDispatch } from 'react-redux';
 
-const MainDashboard = () => {
-  const dispatch = useDispatch();
 
+const MainDashboard = ({board}) => {
+  const dispatch = useDispatch();
+  
+  
   const handleAddColumn = () => {
     dispatch(openModal({ content: 'add-column' }));
   };
