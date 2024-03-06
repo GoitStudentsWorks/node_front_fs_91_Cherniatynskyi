@@ -1,0 +1,138 @@
+.formWrap {
+  width: 300px;
+  height: 234px;
+  background-color: var(--modalBgColor);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--mainTextColor);
+  margin-bottom: 14px;
+}
+
+.filterCloseIcon,
+.closeFilters {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  stroke: var(--mainTextColor);
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.filterLine {
+  width: 252px;
+  height: 1px;
+  background-color: var(--mainTextColor);
+  opacity: 0.1;
+  margin-bottom: 14px;
+}
+
+.iconsForm {
+  border: none;
+}
+
+.labelTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.iconsTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+}
+
+.iconsAll {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  background-color: var(--modalBgColor);
+  color: var(--secondaryTextColor);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 18px;
+  gap: 8px;
+  margin-bottom: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.iconName {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: var(--secondaryTextColor);
+  z-index: 10;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.noPriority {
+  background-color: var(--priorityColorWithout);
+}
+
+.lowPriority {
+  background-color: var(--priorityColorLow);
+}
+
+.medPriority {
+  background-color: var(--priorityColorMedium);
+}
+
+.highPriority {
+  background-color: var(--priorityColorHight);
+}
+
+.container:hover input ~ .checkmark {
+  opacity: 0.7;
+}
+
+.container input:checked ~ .checkmark {
+  transform: scale(1.1);
+}
+
+.container input:checked ~ .checkmark::after {
+  content: ' ';
+  position: absolute;
+  left: 11%;
+  top: 11%;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: inherit;
+  border: 3px solid var(--modalBgColor);
+}
