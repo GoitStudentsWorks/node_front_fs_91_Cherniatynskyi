@@ -73,6 +73,7 @@ export const Sidebar = () => {
             ))}
           </ul>
         )}
+
         {/* need help */}
         <div className={css.helpBox}>
           <div className={css.helpTextBox}>

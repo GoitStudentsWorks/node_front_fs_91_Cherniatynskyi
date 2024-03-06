@@ -2,8 +2,16 @@ import css from './MainDashboard.module.css';
 import sprite from '../../../images/sprite.svg';
 import { Column } from 'components/Column/Column';
 import { Card } from 'components/Card/Card';
+import { openModal } from '../../../redux/modalSlice';
+import { useDispatch } from 'react-redux';
 
 const MainDashboard = () => {
+  const dispatch = useDispatch();
+
+  const handleAddColumn = () => {
+    dispatch(openModal({ content: 'add-column' }));
+  };
+
   const columns = [
     { id: 1, title: 'colum1 A', boardId: '1' },
     { id: 2, title: 'colum1 B', boardId: '1' },
@@ -71,16 +79,16 @@ const MainDashboard = () => {
       <ul className={css.columnsList}>
         {columns.map(col => {
           return (
-
             <Column key={col.id} column={col}>
-              {cards.filter(card => card.columnId === col.id).map(card => {
-                        return (<Card key={card.id} card={card}/>)
-                    })}
-
+              {cards
+                .filter(card => card.columnId === col.id)
+                .map(card => {
+                  return <Card key={card.id} card={card} />;
+                })}
             </Column>
           );
         })}
-        <button className={css.addColumnBtn}>
+        <button onClick={handleAddColumn} className={css.addColumnBtn}>
           <div className={css.addColumnWrap}>
             <svg className={css.addColumnIcon}>
               <use href={`${sprite}#icon-plus`}></use>

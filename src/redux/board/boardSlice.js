@@ -1,5 +1,7 @@
+
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addBoard, deleteBoard, fetchBoards } from './boardThunks';
+
 
 const initialState = {
   boards: [],

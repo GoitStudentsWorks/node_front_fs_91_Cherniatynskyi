@@ -26,7 +26,7 @@ export const store = configureStore({
   reducer: {
     modal: ModalSlice.reducer,
     auth: persistedAuthReducer,
-    boards:boardReducer,
+    boards: boardReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
