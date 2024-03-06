@@ -10,6 +10,10 @@ export const Column = ({ children, column }) => {
     dispatch(openModal({ content: 'add-card' }));
   };
 
+  // const handleEditColumn = () => {
+  //   dispatch(openModal({ content: 'edit-column' }));
+  // };
+
   return (
     <li className={css.columnWrap}>
       <div>

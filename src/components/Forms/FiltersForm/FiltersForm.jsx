@@ -1,8 +1,5 @@
 import css from './FiltersForm.module.css';
-import sprite from '../../../images/sprite.svg';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { closeModal } from '../../../redux/modalSlice';
 import * as Yup from 'yup';
 
 const priority = ['without', 'low', 'medium', 'high'];
@@ -10,23 +7,13 @@ const formFiltersSchema = Yup.object().shape({
   priority: Yup.string().oneOf(priority),
 });
 
-export const FiltersForm = () => {
-  const dispatch = useDispatch();
-
-  const handleCloseFilter = () => {
-    dispatch(closeModal({ content: 'filters' }));
-  };
-
+export const FiltersForm = ({ onSelectClose, isOpen }) => {
   return (
-    <div className={css.formWrap}>
-      <div>
-        <h2 className={css.formTitle}>Filters</h2>
-        <button onClick={handleCloseFilter} className={css.closeFilters}>
-          <svg className={css.filterCloseIcon}>
-            <use href={`${sprite}#icon-close`} />
-          </svg>
-        </button>
-      </div>
+    <div
+      data-popup="menu"
+      className={`${css.formWrap} ${!isOpen && css.menuListHidden}`}
+    >
+      <h2 className={css.formTitle}>Filters</h2>
       <div className={css.filterLine}></div>
       <Formik
         initialValues={{

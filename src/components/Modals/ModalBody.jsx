@@ -10,7 +10,6 @@ import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
 import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 import { UserForm } from 'components/Forms/UserForm/UserForm';
 import { AddCardForm } from 'components/Forms/BoardForm/AddCard';
-import { FiltersForm } from 'components/Forms/FiltersForm/FiltersForm';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
@@ -61,8 +60,6 @@ export const ModalBody = () => {
         return <UserForm />;
       case 'add-card':
         return <AddCardForm />;
-      case 'filters':
-        return <FiltersForm />;
       default:
         break;
     }
