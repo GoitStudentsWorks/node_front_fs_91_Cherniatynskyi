@@ -1,21 +1,21 @@
 import { instance } from './authService';
 
-export const getCards = async id => {
+export const fetchGetCards = async id => {
   const { data } = await instance.get(`/cards/${id}`);
   return data;
 };
 
-export const addCard = async body => {
+export const fetchAddCard = async body => {
   const { data } = await instance.post('/cards', body);
   return data;
 };
 
-export const deleteCard = async id => {
+export const fetchDeleteCard = async id => {
   const { data } = await instance.delete(`/cards/${id}`);
-  return data;
+  return { data, id };
 };
 
-export const updateCard = async (id, body) => {
+export const fetchUpdateCard = async (id, body) => {
   const { data } = await instance.put(`/cards/${id}`, body);
   return data;
 };
