@@ -1,21 +1,21 @@
 import { instance } from './authService';
 
-export const getColumn = async id => {
+export const fetchGetColumn = async id => {
   const { data } = await instance.get(`/columns/${id}`);
   return data;
 };
 
-export const addColumn = async body => {
+export const fetchAddColumn = async body => {
   const { data } = await instance.post('/columns', body);
   return data;
 };
 
-export const deleteColumn = async id => {
+export const fetchDeleteColumn = async id => {
   const { data } = await instance.delete(`/columns/${id}`);
-  return data;
+  return { data, id };
 };
 
-export const updateColumn = async (id, body) => {
+export const fetchUpdateColumn = async (id, body) => {
   const { data } = await instance.put(`/columns/${id}`, body);
   return data;
 };

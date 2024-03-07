@@ -6,11 +6,9 @@ import { Card } from 'components/Card/Card';
 import { openModal } from '../../../redux/modalSlice';
 import { useDispatch } from 'react-redux';
 
-
-const MainDashboard = ({board}) => {
+const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
-  
-  
+
   const handleAddColumn = () => {
     dispatch(openModal({ content: 'add-column' }));
   };
@@ -20,6 +18,7 @@ const MainDashboard = ({board}) => {
     { id: 2, title: 'colum1 B', boardId: '1' },
     { id: 3, title: 'colum1 C', boardId: '1' },
   ];
+
   const cards = [
     {
       id: 1,

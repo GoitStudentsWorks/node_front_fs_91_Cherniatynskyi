@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import { ModalSlice } from './modalSlice';
 import { authSlice } from './auth/authSlice';
 import { boardReducer } from './board/boardSlice';
+import { columnReducer } from './column/columnSlice';
+import { cardReducer } from './card/cardSlice';
 
 const persistConfig = {
   key: 'root',
@@ -27,6 +29,8 @@ export const store = configureStore({
     modal: ModalSlice.reducer,
     auth: persistedAuthReducer,
     boards: boardReducer,
+    columns: columnReducer,
+    cards: cardReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
