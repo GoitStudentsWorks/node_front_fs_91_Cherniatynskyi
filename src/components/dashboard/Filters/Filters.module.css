@@ -1,7 +1,6 @@
 .menuFilterTheme {
   position: relative;
   color: var(--mainTextColor);
-  background-color: var(--secondaryBgColor);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -13,7 +12,7 @@
   width: 64px;
   height: 20px;
   gap: 8px;
-  background-color: var(--lightBgColor);
+  background-color: transparent;
   color: var(--mainTextColor);
   font-weight: 500;
   font-size: 14px;
@@ -24,6 +23,6 @@
 .filterIcon {
   width: 16px;
   height: 16px;
-  fill: var(--lightBgColor);
+  fill: transparent;
   stroke: var(--mainTextColor);
 }

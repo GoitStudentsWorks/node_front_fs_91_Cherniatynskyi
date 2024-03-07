@@ -91,6 +91,10 @@
   cursor: pointer;
 }
 
+.container input {
+  opacity: 0;
+}
+
 .iconName {
   font-size: 14px;
   font-weight: 500;

@@ -4,51 +4,51 @@ import { useEffect, useState } from 'react';
 import { FiltersForm } from 'components/Forms/FiltersForm/FiltersForm';
 
 const Filters = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.addEventListener('click', handlePopupClose);
+    if (isFiltersOpen) {
+      document.body.addEventListener('click', handleFiltersClose);
     }
     return () => {
-      document.body.removeEventListener('click', handlePopupClose);
+      document.body.removeEventListener('click', handleFiltersClose);
     };
   });
 
-  const handleOpenPopup = e => {
+  const handleFiltersOpen = e => {
     if (e.target.popup === 'menu' || e.target.popup === 'el') {
       return;
     }
-    setIsOpen(prev => !prev);
+    setIsFiltersOpen(prev => !prev);
   };
 
-  const handlePopupClose = e => {
+  const handleFiltersClose = e => {
     if (
-      e.target.dataset.popup !== 'popupBtn' &&
+      e.target.dataset.popup !== 'popupFiltersBtn' &&
       e.target.popup !== 'menu' &&
       e.target.popup !== 'el'
     ) {
-      setIsOpen(prev => !prev);
+      setIsFiltersOpen(prev => !prev);
     }
   };
 
-  const onSelectClose = () => {
-    setIsOpen(prev => !prev);
+  const onFiltersClose = () => {
+    setIsFiltersOpen(prev => !prev);
   };
 
   return (
     <div
-      data-popup="popupBtn"
-      onClick={e => handleOpenPopup(e)}
+      data-popup="popupFiltersBtn"
+      onClick={e => handleFiltersOpen(e)}
       className={css.menuFilterTheme}
     >
-      <button data-popup="popupBtn" className={css.filterButton}>
-        <svg data-popup="popupBtn" className={css.filterIcon}>
-          <use data-popup="popupBtn" href={`${sprite}#icon-filter`} />
+      <button data-popup="popupFiltersBtn" className={css.filterButton}>
+        <svg data-popup="popupFiltersBtn" className={css.filterIcon}>
+          <use data-popup="popupFiltersBtn" href={`${sprite}#icon-filter`} />
         </svg>
         Filters
       </button>
-      <FiltersForm onSelectClose={onSelectClose} isOpen={isOpen} />
+      <FiltersForm onSelectClose={onFiltersClose} isOpen={isFiltersOpen} />
     </div>
   );
 };
