@@ -63,11 +63,12 @@
 .columnList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   overflow-y: auto;
   max-height: 60vh;
   padding-right: 4px;
   margin-bottom: 14px;
+  transition: 6000ms linear;
 
   @media (min-width: 768px) {
     padding-right: 8px;

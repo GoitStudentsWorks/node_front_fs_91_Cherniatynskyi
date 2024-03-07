@@ -27,7 +27,7 @@ export const Card = ({card}) =>{
                             </div>
                             <div className={css.cardDeadline}>
                                 <h5 className={css.cardFooterTitle}>Deadline</h5>
-                                <p className={css.cardDeadlineDate}>{card.deadline}</p>
+                                <p className={css.cardDeadlineDate}>deadline</p>
                             </div>
                             <ul className={css.cardIconsList}>
                                 <li className={css.cardIconItem}>

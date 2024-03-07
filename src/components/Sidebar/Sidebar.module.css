@@ -255,7 +255,6 @@
 .buttonHelp {
   color: var(--sidebarMainTextColor);
   padding: 0;
-  margin-top: 10px;
   gap: 8px;
   display: flex;
   align-items: center;
