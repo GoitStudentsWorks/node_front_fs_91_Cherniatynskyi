@@ -9,6 +9,7 @@ export const EditColumnForm = () => {
   const { selectedElId } = useSelector(state => state.modal);
   const stateColumns = useSelector(state => state.columns.columns)
   const currentColumn = stateColumns.find(col=> col._id === selectedElId)
+  
   const [title, setTitle] = useState(currentColumn.title);
   const dispatch = useDispatch()
 

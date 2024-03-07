@@ -18,7 +18,7 @@ export const Sidebar = () => {
 
   useEffect(() => {
     dispatch(fetchBoards());
-  }, [dispatch]);
+  }, [dispatch, boards]);
 
   const { sideBarIsOpen } = useSelector(state => state.modal);
 

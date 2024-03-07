@@ -12,7 +12,7 @@ export const Board = ({ board }) => {
   const navigate= useNavigate()
 
   const handleEditBoard = () => {
-    dispatch(openModal({ content: 'edit-board' }));
+    dispatch(openModal({ content: 'edit-board', id: `${board._id}` }));
   };
 
   const handleNavigate = (e) =>{

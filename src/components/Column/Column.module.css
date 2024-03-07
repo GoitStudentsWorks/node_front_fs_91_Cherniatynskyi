@@ -46,7 +46,8 @@
 }
 
 .columnButton:hover .columnIcon{
-  stroke: var(--accentColorHover);
+  stroke: var(--accentColor);
+  transform: scale(1.2);
 }
 
 .columnIcon {
@@ -77,6 +78,7 @@
 .columnList::-webkit-scrollbar {
   width: 8px;
   background-color: var(--darkBgColor);
+  border-radius: 8px;
 }
 
 .columnList::-webkit-scrollbar-thumb {

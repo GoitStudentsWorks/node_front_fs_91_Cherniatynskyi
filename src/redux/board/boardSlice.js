@@ -46,10 +46,9 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
 const handleFulfilledUpdateBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
-  const index = state.boards.findIndex(
-    item => item._id === payload
+  state.boards = state.boards.map(board =>
+    board._id === payload._id ? { ...board, ...payload } : board
   );
-  state.boards[index] = payload;
 };
 
 

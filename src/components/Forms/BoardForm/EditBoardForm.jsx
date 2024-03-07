@@ -1,12 +1,19 @@
 import css from './BoardForm.module.css';
-
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateBoard } from '../../../redux/board/boardThunks';
+import { closeModal } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
 
 export const EditBoardForm = () => {
-  const [title, setTitle] = useState('');
-  const [iconValue, setIconValue] = useState('');
-  const [bgValue, setBgValue] = useState('');
+  const { selectedElId } = useSelector(state => state.modal);
+  const stateBoards = useSelector(state => state.boards.boards)
+  const currentBoard = stateBoards.find(brd=> brd._id === selectedElId)
+  const [title, setTitle] = useState(currentBoard.name);
+  const [iconValue, setIconValue] = useState(currentBoard.icon);
+  const [bgValue, setBgValue] = useState(currentBoard.background);
+
+  const dispatch = useDispatch()
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -21,8 +28,15 @@ export const EditBoardForm = () => {
   };
 
   const onSubmitForm = e => {
+    const brdId = currentBoard._id
     e.preventDefault();
-    console.log({ title, iconValue, bgValue });
+    const updatedBoard= {
+      name: title,
+      icon: iconValue,
+      background: bgValue
+    }
+    dispatch(updateBoard({id: brdId, updatedBoard}))
+    dispatch(closeModal())
   };
 
   const icValues = [
@@ -87,7 +101,7 @@ export const EditBoardForm = () => {
                   <input
                     onChange={e => handleBgChange(e)}
                     type="radio"
-                    id={bg}
+                    id={`bg${bg}`}
                     name="bg"
                     value={bg}
                   />
@@ -112,6 +126,8 @@ export const EditBoardForm = () => {
           Edit
         </button>
       </form>
-    </div>
+    </div> 
   );
+
+  
 };

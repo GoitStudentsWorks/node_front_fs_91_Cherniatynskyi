@@ -80,7 +80,6 @@ gap: 4px;
 margin-right: 14px;
 }
 
-/* Фон потрібно буде передавати через функцію в залежності від даних, що прийдуть з юзера за допомогою доп класу*/
 
 .cardPriorityCircle{
     width: 12px;
@@ -117,10 +116,13 @@ margin-right: 14px;
 }
 .cardIconItem:not(:first-child){
     stroke: var(--secondaryTextColor);
-    &:hover{
-        stroke: var(--accentColor); 
-    }
 }
+
+.cardIconItem:not(:first-child):hover{
+    stroke: var(--accentColor); 
+    transform: scale(1.1);
+}
+
 .cardSvg{
     width: 16px;
     height: 15px;
