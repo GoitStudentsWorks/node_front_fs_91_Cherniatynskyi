@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -35,7 +35,7 @@ const schema = Yup.object().shape({
 });
 
 export const UserForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [user, setUser] = useState(useSelector(selectUser));
 
   const handleChange = e => {
