@@ -1,6 +1,6 @@
 
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addBoard, deleteBoard, fetchBoards } from './boardThunks';
+import { addBoard, deleteBoard, fetchBoards, updateBoard } from './boardThunks';
 
 
 const initialState = {
@@ -20,13 +20,13 @@ const handleRejected = (state, { payload }) => {
   state.isLoggedIn = true;
 };
 
-const handleFulfilledGetBoards = (state, { payload }) => {
+const handleFulfilledGetBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
   state.boards = payload;
 };
 
-const handleFulfilledAddBoards = (state, { payload }) => {
+const handleFulfilledAddBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
   state.currentBoardId = payload._id;
@@ -43,6 +43,15 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.boards.splice(index, 1);
 };
 
+const handleFulfilledUpdateBoard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  const index = state.boards.findIndex(
+    item => item._id === payload
+  );
+  state.boards[index] = payload;
+};
+
 
 export const boardSlice = createSlice({
   name: 'boards',
@@ -54,15 +63,16 @@ export const boardSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchBoards.fulfilled, handleFulfilledGetBoards)
-      .addCase(addBoard.fulfilled, handleFulfilledAddBoards)
+      .addCase(fetchBoards.fulfilled, handleFulfilledGetBoard)
+      .addCase(addBoard.fulfilled, handleFulfilledAddBoard)
       .addCase(deleteBoard.fulfilled, handleFulfilledDeleteBoard)
+      .addCase(updateBoard.fulfilled, handleFulfilledUpdateBoard)
       .addMatcher(
-        isAnyOf(fetchBoards.pending, addBoard.pending, deleteBoard.pending),
+        isAnyOf(fetchBoards.pending, addBoard.pending, deleteBoard.pending, updateBoard.pending),
         handlePending
       )
       .addMatcher(
-        isAnyOf(fetchBoards.rejected, addBoard.rejected, deleteBoard.rejected),
+        isAnyOf(fetchBoards.rejected, addBoard.rejected, deleteBoard.rejected, updateBoard.rejected),
         handleRejected
       );
   },

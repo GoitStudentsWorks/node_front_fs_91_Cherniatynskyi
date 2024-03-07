@@ -41,13 +41,11 @@ export const EditBoardForm = () => {
     bgValues.push(i);
   }
 
-  
-
   return (
     <div className={css.formWrap}>
       <h2 className={css.formTitle}>Edit Board</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
-      <label htmlFor="name">
+        <label htmlFor="name">
           <input
             autoComplete="false"
             placeholder="Title"

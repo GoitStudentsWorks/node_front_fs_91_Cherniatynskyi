@@ -1,6 +1,6 @@
 import css from './BoardForm.module.css';
 import { useState } from 'react';
-import { closeModal } from '../../../redux/modalSlice';
+import { closeModal, closeSidebar } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addBoard } from '../../../redux/board/boardThunks';
@@ -35,6 +35,7 @@ export const NewBoardForm = () => {
     dispatch(addBoard(newBoard));
     e.target.reset();
     dispatch(closeModal());
+    dispatch(closeSidebar());
   };
 
   const icValues = [

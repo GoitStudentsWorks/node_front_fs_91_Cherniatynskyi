@@ -154,10 +154,10 @@
 
 }
 
-.scrollArea{
+.scrollArea {
   overflow-x: hidden;
   overflow-y: auto;
-  direction:rtl; 
+  direction: rtl;
   min-height: 60px;
   width: 100%;
   margin-bottom: 20px;
@@ -199,7 +199,7 @@
   align-self: center;
   padding: 14px 14px 18px 14px;
   width: 197px;
-  height: 238px;
+  /* height: 100%; */
   flex-shrink: 0;
   border-radius: 8px;
   background: var(--helpBgColor);
@@ -208,16 +208,16 @@
 @media screen and (min-width: 768px) {
   .helpTextBox {
     width: 212px;
-    height: 272px;
+    /* height: 272px; */
     flex-shrink: 0;
     padding: 20px;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1440px) {
   .helpTextBox {
     width: 212px;
-    height: 272px;
+    /* height: 272px; */
     flex-shrink: 0;
     padding: 20px;
   }

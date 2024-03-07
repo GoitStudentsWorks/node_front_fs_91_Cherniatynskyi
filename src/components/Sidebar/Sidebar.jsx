@@ -77,15 +77,20 @@ export const Sidebar = () => {
         {/* need help */}
         <div className={css.helpBox}>
           <div className={css.helpTextBox}>
-            <picture className={css.imgHelp}>
-              <source srcSet={`${pot} 1x, ${pot2x} 2x`} />
-              <img srcSet={`${pot} 1x`} alt="pot" />
-            </picture>
-            <p className={css.helpText}>
-              If you need help with{' '}
-              <span className={css.helpTextLink}>TaskPro</span>, check out our
-              support resources or reach out to our customer support team.
-            </p>
+            {boards.length <= 2 && (
+              <>
+                <picture className={css.imgHelp}>
+                  <source srcSet={`${pot} 1x, ${pot2x} 2x`} />
+                  <img srcSet={`${pot} 1x`} alt="pot" />
+                </picture>
+                <p className={css.helpText}>
+                  If you need help with{' '}
+                  <span className={css.helpTextLink}>TaskPro</span>, check out
+                  our support resources or reach out to our customer support
+                  team.
+                </p>
+              </>
+            )}
             <button onClick={handleNeddHelp} className={css.buttonHelp}>
               <svg className={css.iconHelp} width="20" height="20">
                 <use href={`${sprite}#icon-help`} />
