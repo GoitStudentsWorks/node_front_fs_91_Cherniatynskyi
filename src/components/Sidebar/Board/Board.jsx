@@ -3,6 +3,7 @@ import sprite from '../../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../../redux/modalSlice';
 import { deleteBoard } from '../../../redux/board/boardThunks';
+import { closeSidebar } from '../../../redux/modalSlice';
 import { useNavigate } from 'react-router-dom';
 import { setCurrentBoardId } from '../../../redux/board/boardSlice';
 
@@ -20,6 +21,7 @@ export const Board = ({ board }) => {
     }
     navigate(`/home/${board._id}`)
     dispatch(setCurrentBoardId(board._id))
+    dispatch(closeSidebar())
   }
 
   const handleDelete = () =>{
