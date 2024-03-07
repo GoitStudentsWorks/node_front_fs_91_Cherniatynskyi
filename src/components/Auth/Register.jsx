@@ -36,10 +36,10 @@ export const Register = () => {
   };
 
   const handleSubmit = e => {
-    const {name, email, password} = e
-    
-    dispatch(registerThunk({name,email,password}));
-    
+    const { name, email, password } = e;
+
+    dispatch(registerThunk({ name, email, password }));
+
     // e.reset();
   };
 
@@ -52,7 +52,7 @@ export const Register = () => {
           password: '',
         }}
         validationSchema={schema}
-        onSubmit={(e)=>handleSubmit(e)}
+        onSubmit={e => handleSubmit(e)}
       >
         {({ errors, touched }) => (
           <Form>
@@ -63,14 +63,15 @@ export const Register = () => {
                 name="name"
                 placeholder="Enter your name"
               />
+              {errors.name && touched.name && (
+                <ErrorMessage name="name">
+                  {errorMsg => (
+                    <div className={css.errorMessage}>{errorMsg}</div>
+                  )}
+                </ErrorMessage>
+              )}
             </div>
-            {errors.name && touched.name ? (
-              <ErrorMessage name="name">
-                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-              </ErrorMessage>
-            ) : (
-              <div className={css.notError}></div>
-            )}
+            <div className={css.notError}></div>
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
@@ -78,14 +79,15 @@ export const Register = () => {
                 name="email"
                 placeholder="Enter your email"
               />
+              {errors.email && touched.email && (
+                <ErrorMessage name="email">
+                  {errorMsg => (
+                    <div className={css.errorMessage}>{errorMsg}</div>
+                  )}
+                </ErrorMessage>
+              )}
             </div>
-            {errors.email && touched.email ? (
-              <ErrorMessage name="email">
-                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-              </ErrorMessage>
-            ) : (
-              <div className={css.notError}></div>
-            )}
+            <div className={css.notError}></div>
 
             <div className={`${css.fieldWrapper} ${css.passwordWrapper}`}>
               <Field
@@ -116,15 +118,15 @@ export const Register = () => {
                   </svg>
                 </button>
               )}
+              {errors.password && touched.password && (
+                <ErrorMessage name="password">
+                  {errorMsg => (
+                    <div className={css.errorMessage}>{errorMsg}</div>
+                  )}
+                </ErrorMessage>
+              )}
             </div>
-            {errors.password && touched.password ? (
-              <ErrorMessage name="password">
-                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-              </ErrorMessage>
-            ) : (
-              <div className={css.notError}></div>
-            )}
-
+            <div className={css.notError}></div>
             <button className={css.button} type="submit">
               Register Now
             </button>

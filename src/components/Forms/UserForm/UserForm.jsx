@@ -1,9 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+
+import { selectUser } from '../../../redux/auth/selector.js';
+// import {} from '../../../redux/auth/authThunk.js';
+
 import ImageInput from './ImgInput.jsx';
 import sprite from '../../../images/sprite.svg';
 import css from './UserForm.module.css';
@@ -33,11 +36,17 @@ const schema = Yup.object().shape({
 
 export const UserForm = () => {
   // const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
+  const [user, setUser] = useState(useSelector(selectUser));
+
+  const handleChange = e => {
+    setUser(prevUser => ({ ...prevUser, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = e => {
-    console.log(e);
+    e.preventDefault();
+    // dispatch(updateUser({ ...user })); //заімпортувати функцію апдейту з кувфх.ацуз.оперейшин
   };
+
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleClickPasswordVisibility = () => {
@@ -59,11 +68,16 @@ export const UserForm = () => {
           validationSchema={schema}
           onSubmit={handleSubmit}
         >
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <div className={css.avatar}>
               <label className={css.userAvaWrapper}>
                 {user.avatarURL ? (
-                  <img src={``} alt="" className={css.userImg} width={68} />
+                  <img
+                    src={user.avatarURL}
+                    alt=""
+                    className={css.userImg}
+                    width={68}
+                  />
                 ) : (
                   <div className={css.userIconBtn}>
                     <svg className={css.userIcon}>
@@ -87,6 +101,8 @@ export const UserForm = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
+                onChange={handleChange}
+                value={user.name}
               />
             </div>
             <ErrorMessage name="name">
@@ -98,6 +114,8 @@ export const UserForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
+                onChange={handleChange}
+                value={user.email}
               />
             </div>
             <ErrorMessage name="email">
@@ -109,6 +127,8 @@ export const UserForm = () => {
                 type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Create a password"
+                onChange={handleChange}
+                value={user.password}
               />
               {passwordVisible ? (
                 <button
