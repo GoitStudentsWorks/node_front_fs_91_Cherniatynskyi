@@ -9,7 +9,7 @@ import { AddColumnForm } from 'components/Forms/Column/AddColumnForm';
 import { EditColumnForm } from 'components/Forms/Column/EditColumnForm';
 import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 import { UserForm } from 'components/Forms/UserForm/UserForm';
-import { AddCardForm } from 'components/Forms/BoardForm/AddCard';
+import { AddCardForm } from 'components/Forms/CardForm/AddCard';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();

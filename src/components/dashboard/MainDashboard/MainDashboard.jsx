@@ -2,90 +2,40 @@ import css from './MainDashboard.module.css';
 import sprite from '../../../images/sprite.svg';
 import { Column } from 'components/Column/Column';
 import { Card } from 'components/Card/Card';
+import { useEffect } from 'react';
 
 import { openModal } from '../../../redux/modalSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {getCards} from '../../../redux/card/cardThunk';
+import {getColumns} from '../../../redux/column/columnThunk';
 
 const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
+  const stateColumns = useSelector(state => state.columns.columns)
+  const stateCards = useSelector(state => state.cards.cards)
+
+  useEffect(() => {
+    if(board){
+      dispatch(getColumns(board._id))
+      dispatch(getCards(board._id))
+    }
+  }, [dispatch, board]);
+
 
   const handleAddColumn = () => {
     dispatch(openModal({ content: 'add-column' }));
   };
 
-  const columns = [
-    { id: 1, title: 'colum1 A', boardId: '1' },
-    { id: 2, title: 'colum1 B', boardId: '1' },
-    { id: 3, title: 'colum1 C', boardId: '1' },
-  ];
-
-  const cards = [
-    {
-      id: 1,
-      title: 'card 1',
-      boardId: 1,
-      columnId: 1,
-    },
-    {
-      id: 2,
-      title: 'card2',
-      boardId: 1,
-      columnId: 1,
-    },
-    {
-      id: 3,
-      title: 'card3',
-      boardId: 1,
-      columnId: 2,
-    },
-    {
-      id: 4,
-      title: 'card4',
-      boardId: 1,
-      columnId: 2,
-    },
-    {
-      id: 5,
-      title: 'card5',
-      boardId: 1,
-      columnId: 2,
-    },
-    {
-      id: 6,
-      title: 'card5',
-      boardId: 1,
-      columnId: 1,
-    },
-    {
-      id: 7,
-      title: 'card5',
-      boardId: 1,
-      columnId: 1,
-    },
-    {
-      id: 8,
-      title: 'card5',
-      boardId: 1,
-      columnId: 1,
-    },
-    {
-      id: 9,
-      title: 'card5',
-      boardId: 1,
-      columnId: 1,
-    },
-  ];
-
   return (
     <div className={css.boardWrap}>
       <ul className={css.columnsList}>
-        {columns.map(col => {
+        {stateColumns && stateColumns.map(col => {
           return (
-            <Column key={col.id} column={col}>
-              {cards
-                .filter(card => card.columnId === col.id)
+            <Column key={col._id} column={col}>
+              {stateCards && stateCards
+                .filter(card => card.columnId === col._id)
                 .map(card => {
-                  return <Card key={card.id} card={card} />;
+                  return <Card key={card._id} card={card} />;
                 })}
             </Column>
           );

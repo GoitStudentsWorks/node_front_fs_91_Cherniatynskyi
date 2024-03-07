@@ -11,11 +11,17 @@ const initialState = {
   columns: [],
   isLoadding: false,
   error: null,
+  currentColumnId: null
 };
 
 const columnSlice = createSlice({
   name: 'column',
   initialState,
+  reducers: {
+    setCurrentColumnId(state, {payload}){
+      state.currentColumnId = payload
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(getColumns.fulfilled, HelpersReducer.handleFulfilledGetColumns)
@@ -44,3 +50,4 @@ const columnSlice = createSlice({
 });
 
 export const columnReducer = columnSlice.reducer;
+export const {setCurrentColumnId} = columnSlice.actions

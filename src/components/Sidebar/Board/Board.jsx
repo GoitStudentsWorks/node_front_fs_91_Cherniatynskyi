@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { openModal } from '../../../redux/modalSlice';
 import { deleteBoard } from '../../../redux/board/boardThunks';
 import { useNavigate } from 'react-router-dom';
+import { setCurrentBoardId } from '../../../redux/board/boardSlice';
 
 export const Board = ({ board }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export const Board = ({ board }) => {
       return
     }
     navigate(`/home/${board._id}`)
+    dispatch(setCurrentBoardId(board._id))
   }
 
   const handleDelete = () =>{

@@ -7,7 +7,6 @@ const initialState = {
   boards: [],
   isLoading: false,
   error: null,
-  currentBoard: null,
   currentBoardId: null,
 };
 
@@ -48,6 +47,11 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
 export const boardSlice = createSlice({
   name: 'boards',
   initialState,
+  reducers: {
+    setCurrentBoardId(state, {payload}){
+      state.currentBoardId = payload
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchBoards.fulfilled, handleFulfilledGetBoards)
@@ -65,3 +69,4 @@ export const boardSlice = createSlice({
 });
 
 export const boardReducer = boardSlice.reducer;
+export const {setCurrentBoardId} = boardSlice.actions

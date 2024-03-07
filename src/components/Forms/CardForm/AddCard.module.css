@@ -232,19 +232,19 @@
   border-radius: 50%;
 }
 
-.noPriority {
+.no {
   background-color: var(--priorityColorWithout);
 }
 
-.lowPriority {
+.low {
   background-color: var(--priorityColorLow);
 }
 
-.medPriority {
+.med {
   background-color: var(--priorityColorMedium);
 }
 
-.highPriority {
+.high {
   background-color: var(--priorityColorHight);
 }
 

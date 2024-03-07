@@ -19,7 +19,6 @@ export const UserMenu = () => {
           onClick={handleUserModalOpen}
         >
           {user.name}
-          {console.log(user)}
           <div className={css.userAvatarWrap}>
             <svg className={css.userIcon}>
               <use href={`${sprite}#icon-user2`} />

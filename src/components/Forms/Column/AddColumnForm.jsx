@@ -1,9 +1,14 @@
 import css from './ColumnForm.module.css';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../../images/sprite.svg';
+import { postColumn } from '../../../redux/column/columnThunk';
+import { closeModal } from '../../../redux/modalSlice';
 
 export const AddColumnForm= () => {
   const [title, setTitle] = useState('');
+  const currentBoardId = useSelector(state => state.boards.currentBoardId)
+  const dispatch = useDispatch()
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -11,7 +16,8 @@ export const AddColumnForm= () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    console.log({ title });
+    dispatch(postColumn({title: title, boardId: currentBoardId}))
+    dispatch(closeModal());
   };
 
   return (

@@ -2,13 +2,20 @@ import css from './Column.module.css';
 import sprite from '../../images/sprite.svg';
 import { openModal } from '../../redux/modalSlice';
 import { useDispatch } from 'react-redux';
+import { setCurrentColumnId } from '../../redux/column/columnSlice';
+import { deleteColumn } from '../../redux/column/columnThunk';
 
 export const Column = ({ children, column }) => {
   const dispatch = useDispatch();
 
   const handleAddCard = () => {
     dispatch(openModal({ content: 'add-card' }));
+    dispatch(setCurrentColumnId(column._id))
   };
+
+  const handleColumnDelete = () =>{
+    dispatch(deleteColumn(column._id))
+  }
 
   // const handleEditColumn = () => {
   //   dispatch(openModal({ content: 'edit-column' }));
@@ -25,7 +32,7 @@ export const Column = ({ children, column }) => {
                 <use href={`${sprite}#icon-pencil`}></use>
               </svg>
             </button>
-            <button className={css.columnButton}>
+            <button onClick={handleColumnDelete} className={css.columnButton}>
               <svg className={css.columnIconTrash}>
                 <use href={`${sprite}#icon-trash`}></use>
               </svg>
