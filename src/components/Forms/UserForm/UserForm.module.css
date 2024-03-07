@@ -32,7 +32,7 @@
   }
 }
 
-.avatar{
+.avatar {
   display: flex;
   justify-content: center;
 }
@@ -45,18 +45,17 @@
   width: 68px;
   height: 79px;
 
-  margin-top: 14px;
+  /* margin-top: 14px; */
   cursor: pointer;
 }
 
-.userAvaWrapper:hover .userImg{
+.userAvaWrapper:hover .userImg {
   border: 2px solid var(--inputsBorderColor);
 }
 
-.userAvaWrapper:hover .iconBtnPlus{
+.userAvaWrapper:hover .iconBtnPlus {
   background-color: var(--accentColorHover);
 }
-
 
 .userImg {
   position: absolute;
@@ -152,9 +151,14 @@
   }
 }
 
-
-
 .btnSend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: auto;
+  margin-left: auto;
+
   border: none;
   border-radius: 8px;
   text-decoration: none;
@@ -178,7 +182,7 @@
   }
 }
 
-/* .btnSend:hover {
+.btnSend:hover {
   background: #9dc888;
   position: relative;
   cursor: pointer;
@@ -187,34 +191,30 @@
 .btnSend:active {
   background: #9dc888;
   box-shadow: none;
-} */
+}
 
 .iconBtn {
   position: absolute;
-  top: 0;
-  right: 0;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  right: 15px;
   width: 18px;
   height: 18px;
-  right: 15px;
-  /* background-color: inherit; */
+  background-color: inherit;
+  background-color: transparent;
   border: none;
-  /* border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px; */
   cursor: pointer;
   margin-left: auto;
-  background-color: transparent;
-  padding: 15px;
-  /* margin-top: 15px; */
 }
 
 .iconEye {
-  margin-right: 15px;
   stroke-width: 1.3px;
-  stroke: #fff;
+  stroke: var(--mainTextColor);
 }
 
-.active {
-  fill: #9dc888;
+.iconEye:hover {
+  stroke: var(--accentColor);
 }
 
 .errorMessage {
@@ -228,4 +228,30 @@
   padding-left: 12px;
   font-size: 12px;
   font-weight: 400;
+}
+
+.userIconBtn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 70px;
+  height: 70px;
+  background-color: var(--lightBgColor);
+  border-radius: 5px;
+}
+
+.userIconBtn:hover {
+  background-color: var(--darkBgColor);
+}
+
+.userIcon {
+  width: 68px;
+  height: 68px;
+  stroke: var(--lightBgColor);
+  fill: var(--darkBgColor);
+}
+
+.userIcon:hover {
+  stroke: var(--darkBgColor);
+  fill: var(--lightBgColor);
 }
