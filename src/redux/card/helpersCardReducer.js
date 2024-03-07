@@ -25,6 +25,12 @@ export const handleFulfilledUpdateCard = (state, { payload }) => {
   );
 };
 
+export const handleFulfilledUpdateColumnId = (state, { payload }) => {
+  state.cards = state.cards.map(card =>
+    card._id === payload._id ? { ...card, columnId: payload.columnId } : card
+  );
+};
+
 export const handleRejected = (state, { payload }) => {
   state.isLoadding = false;
   state.error = payload;

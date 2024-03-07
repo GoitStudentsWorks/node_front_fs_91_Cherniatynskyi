@@ -6,6 +6,7 @@ import {
   loginThunk,
   logoutThunk,
   registerThunk,
+  updaterUserData,
   updaterUserTheme,
 } from './authThunks';
 
@@ -28,8 +29,6 @@ const handleFulfilledLogin = (state, { payload }) => {
   state.user = payload.user;
   state.isLoggedIn = true;
 };
-
-
 
 const handleFulfilledRegister = (state, { payload }) => {
   state.isRefreshing = false;
@@ -58,6 +57,10 @@ const handleFulfilledFetchCurrentUser = (state, { payload }) => {
   state.isLoggedIn = true;
 };
 
+const handleFulfilledUpdateUserData = (state, { payload }) => {
+  state.user = payload;
+};
+
 const handleUpdateTheme = (state, { payload }) => {
   state.isRefreshing = false;
   state.error = '';
@@ -79,6 +82,7 @@ export const authSlice = createSlice({
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
       .addCase(fetchCurrentUser.fulfilled, handleFulfilledFetchCurrentUser)
       .addCase(logoutThunk.fulfilled, handleFulfilledLogout)
+      .addCase(updaterUserData.fulfilled, handleFulfilledUpdateUserData)
       .addCase(updaterUserTheme.fulfilled, handleUpdateTheme)
       .addMatcher(
         isAnyOf(
@@ -86,6 +90,7 @@ export const authSlice = createSlice({
           getProfileThunk.pending,
           registerThunk.pending,
           logoutThunk.pending,
+          updaterUserData.pending,
           updaterUserTheme.pending
         ),
         handlePending
@@ -96,6 +101,7 @@ export const authSlice = createSlice({
           getProfileThunk.rejected,
           registerThunk.rejected,
           logoutThunk.rejected,
+          updaterUserData.rejected,
           updaterUserTheme.rejected
         ),
         handleRejected

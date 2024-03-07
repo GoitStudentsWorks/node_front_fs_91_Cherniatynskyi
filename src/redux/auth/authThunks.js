@@ -5,6 +5,7 @@ import {
   logOut,
   getProfile,
   setToken,
+  updateUser,
   updateTheme,
 } from 'services/authService';
 
@@ -45,9 +46,17 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-
-export const updaterUserTheme = createAsyncThunk('auth/theme',async (body) => {
+export const updaterUserTheme = createAsyncThunk('auth/theme', async body => {
   return await updateTheme(body);
 });
 
-
+export const updaterUserData = createAsyncThunk(
+  'auth/updateUser',
+  async (body, { rejectWithValue }) => {
+    try {
+      return await updateUser(body);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

@@ -44,3 +44,14 @@ export const updateCard = createAsyncThunk(
     }
   }
 );
+
+export const updateColumnId = createAsyncThunk(
+  'cards/updateColumnID',
+  async ({ id, newCard }, { rejectWithValue }) => {
+    try {
+      return CardServices.fetchUpdateColumnIdInCard(id, newCard);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
