@@ -19,9 +19,9 @@ export const Column = ({ children, column }) => {
     dispatch(deleteColumn(column._id))
   }
 
-  // const handleEditColumn = () => {
-  //   dispatch(openModal({ content: 'edit-column' }));
-  // };
+  const handleEditColumn = () => {
+    dispatch(openModal({ content: 'edit-column', id:`${column._id}`}));
+  };
 
   return (
     <li className={css.columnWrap}>
@@ -30,12 +30,12 @@ export const Column = ({ children, column }) => {
           <h2 className={css.columnTitle}>{column.title}</h2>
           <div className={css.columnBtnWrap}>
             <button className={css.columnButton}>
-              <svg className={css.columnIconPensil}>
+              <svg onClick={handleEditColumn} className={css.columnIcon}>
                 <use href={`${sprite}#icon-pencil`}></use>
               </svg>
             </button>
             <button onClick={handleColumnDelete} className={css.columnButton}>
-              <svg className={css.columnIconTrash}>
+              <svg className={css.columnIcon}>
                 <use href={`${sprite}#icon-trash`}></use>
               </svg>
             </button>

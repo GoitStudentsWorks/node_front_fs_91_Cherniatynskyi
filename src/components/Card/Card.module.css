@@ -1,5 +1,16 @@
 .cardHeight{
     width: 335px;
+    cursor: pointer;
+    transition: 200ms linear;
+}
+
+.cardHeight:hover{
+    transform: translateY(-4px);
+    transform: translateX(2px);
+}
+
+.cardHeight:hover .cardContainer{
+    background-color: var(--secondaryBgColor);
 }
 
 /* Фоновий колір потрібно буде передати через функцію в залежності від того які дані прийдуть з юзера, за допомогою доп класа */
@@ -34,25 +45,13 @@
     margin-bottom: 8px;
 }
 .cardDiscription{
-    display: -webkit-box;
-   
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow:hidden;
-    text-overflow: ellipsis;
-
+    word-wrap: break-word;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: -0.24px;
     margin-bottom: 14px;
     line-height: 16px;
     transition: all 250ms linear;
-    &:hover{
-        -webkit-line-clamp:initial;
-    overflow:auto;
-    text-overflow:clip;
-    };
-   
 
 }
 
@@ -99,24 +98,22 @@ margin-right: 14px;
     display: flex;
     margin-left: auto;
     align-items: flex-end;
-    
-    
+    gap: 8px;
+       
 }
 
-.cardIconItem:not(:last-child){
-    margin-right: 8px;
-    
-   
-}
+
 
 .cardIconItem:first-child{
-    margin-right: 12px;
     stroke: var(--accentColor);
+    filter: drop-shadow(0 0 5px var(--accentColor));
+    fill: transparent;
 }
 .cardIconButton{
     background-color: inherit;
     width: 16px;
     height: 15px;
+    cursor: pointer;
 }
 .cardIconItem:not(:first-child){
     stroke: var(--secondaryTextColor);
@@ -127,24 +124,7 @@ margin-right: 14px;
 .cardSvg{
     width: 16px;
     height: 15px;
-    fill: var(--darkBgColor);
+    fill: transparent;
     
 }
 
-
-/* Доп клас для приорити */
-.cardPriorityWithout{
-    background-color: var(--priorityColorWithout);
-}
-
-.cardPriorityLow{
-    background-color: var(--priorityColorLow);
-}
-
-.cardPriorityMedium{
-    background-color: var(--priorityColorMedium);
-}
-
-.cardPriorityHigh{
-    background-color: var(--accentColor);
-}

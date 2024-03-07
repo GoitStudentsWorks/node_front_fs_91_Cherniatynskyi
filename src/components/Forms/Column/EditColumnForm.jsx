@@ -1,11 +1,16 @@
 import css from './ColumnForm.module.css';
 import { useState } from 'react';
 import sprite from '../../../images/sprite.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateColumn } from '../../../redux/column/columnThunk';
+import { closeModal } from '../../../redux/modalSlice';
 
 export const EditColumnForm = () => {
-  const existingColumns = [];
-
-  const [title, setTitle] = useState(existingColumns[0]);
+  const { selectedElId } = useSelector(state => state.modal);
+  const stateColumns = useSelector(state => state.columns.columns)
+  const currentColumn = stateColumns.find(col=> col._id === selectedElId)
+  const [title, setTitle] = useState(currentColumn.title);
+  const dispatch = useDispatch()
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -13,7 +18,8 @@ export const EditColumnForm = () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    console.log({ title });
+    dispatch(updateColumn({id: selectedElId, newColumn: {title}}))
+    dispatch(closeModal())
   };
 
   return (

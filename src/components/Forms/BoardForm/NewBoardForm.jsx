@@ -81,6 +81,7 @@ export const NewBoardForm = () => {
                     id={ic}
                     name="icon"
                     value={ic}
+                    required
                   />
                   <svg className={css.checkmark}>
                     <use href={`${sprite}#icon-${ic}`} />
@@ -102,6 +103,7 @@ export const NewBoardForm = () => {
                     id={bg}
                     name="bg"
                     value={bg}
+                    required
                   />
                   <img
                     className={css.bgCheckmark}

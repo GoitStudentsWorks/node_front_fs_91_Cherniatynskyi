@@ -5,7 +5,8 @@ export const ModalSlice = createSlice({
     initialState: {
         isOpen: false,
         modalContent: null,
-        sideBarIsOpen: false
+        sideBarIsOpen: false,
+        selectedElId: null
     },
     reducers:{
         openModal: (state, {payload}) =>{

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postCard } from '../../../redux/card/cardThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import css from './AddCard.module.css';
+import { priorityEnum } from 'utils/priorityObject';
 
 export const AddCardForm = () =>{
   const [title, setTitle] = useState('');
@@ -15,11 +16,7 @@ export const AddCardForm = () =>{
   const currBoardId = useSelector(state => state.boards.currentBoardId)
   const currColumnId = useSelector(state => state.columns.currentColumnId)
   const dispatch = useDispatch();
-  const priorityEnum = [
-    {title: 'Without priority', color: "#595959"},
-    {title: 'Low', color: "#8fa1d0"},
-    {title: 'Medium', color: "#e09cb5"},
-    {title: 'High', color: "#bedbb0"}];
+  
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
@@ -58,6 +55,7 @@ export const AddCardForm = () =>{
               name="title"
               placeholder="Title"
               onChange={e => handleTitleChange(e)}
+              required
             />
             <p className={css.errMsg} name="title" />
             <label>
@@ -67,6 +65,7 @@ export const AddCardForm = () =>{
                 name="text"
                 placeholder="Description"
                 onChange={e => handleDescChange(e)}
+                required
               />
               <p className={css.errMsg} name="text" />
             </label>
@@ -82,6 +81,7 @@ export const AddCardForm = () =>{
                         name="icon"
                         value={pr.title}
                         onChange={e=>handlePriorityChange(e)}
+                        required
                       />
                       <span style={{backgroundColor: `${pr.color}`}} className={`${css.checkmark}`}></span>
                     </label>)

@@ -42,9 +42,14 @@
 .columnButton {
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 
-.columnIconPensil {
+.columnButton:hover .columnIcon{
+  stroke: var(--accentColorHover);
+}
+
+.columnIcon {
   width: 16px;
   height: 16px;
   background-color: var(--darkBgColor);
@@ -52,13 +57,6 @@
   fill: var(--darkBgColor);
 }
 
-.columnIconTrash {
-  width: 16px;
-  height: 16px;
-  background-color: var(--darkBgColor);
-  stroke: var(--secondaryTextColor);
-  fill: var(--darkBgColor);
-}
 
 .columnList {
   display: flex;
@@ -67,6 +65,7 @@
   overflow-y: auto;
   max-height: 60vh;
   padding-right: 4px;
+  padding-top: 4px;
   margin-bottom: 14px;
   transition: 600ms linear;
 
