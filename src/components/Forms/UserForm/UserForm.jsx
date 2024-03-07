@@ -115,7 +115,7 @@ export const UserForm = () => {
                 name="email"
                 placeholder="Enter your email"
                 onChange={handleChange}
-                value={user.name}
+                value={user.email}
               />
             </div>
             <ErrorMessage name="email">
