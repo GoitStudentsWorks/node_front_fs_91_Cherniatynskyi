@@ -1,9 +1,16 @@
+import { useDispatch } from 'react-redux';
 import css from './NeedHelpForm.module.css';
 import { useState } from 'react';
+import { needHelpAction } from '../../../redux/needHelp/needHelpThunks';
+
+// case 'need-help':
+// return <NeedHelpForm />; при рендері у ModalBody спінер додати
 
 export const NeedHelpForm = () => {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
@@ -15,7 +22,17 @@ export const NeedHelpForm = () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    console.log({ email, comment });
+
+    if (email.trim() === '' || comment.trim() === '') return;
+
+    try {
+      dispatch(needHelpAction({ email, comment }));
+    } catch (error) {
+      console.log(error);
+    }
+
+    setEmail('');
+    setComment('');
   };
 
   return (
