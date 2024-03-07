@@ -14,8 +14,6 @@ const HomePage = () => {
   const { theme } = useSelector(state => state.auth.user);
   const location = useLocation();
 
-
- 
   return (
     <div className={css.main} data-theme={theme}>
       <Sidebar />

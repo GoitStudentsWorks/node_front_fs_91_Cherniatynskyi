@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { closeModal } from '../../redux/modalSlice';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
+import {motion} from 'framer-motion'
 import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
 import { EditBoardForm } from 'components/Forms/BoardForm/EditBoardForm';
 import { AddColumnForm } from 'components/Forms/Column/AddColumnForm';
@@ -66,8 +67,9 @@ export const ModalBody = () => {
   };
 
   return (
-    <div onClick={e => backdropClose(e)} className={css.modalBackdrop}>
-      <div className={css.modalBody}>{handleContent(modalContent)}</div>
+    <div onClick={e => backdropClose(e)} className={css.modalBackdrop} >
+      <motion.div animate={{y: '0%'}} initial={{y: '100%'}}
+       className={css.modalBody}>{handleContent(modalContent)}</motion.div>
     </div>
   );
 };
