@@ -3,7 +3,7 @@ import sprite from '../../../images/sprite.svg';
 import { Column } from 'components/Column/Column';
 import { Card } from 'components/Card/Card';
 import { useEffect } from 'react';
-
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { openModal } from '../../../redux/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCards} from '../../../redux/card/cardThunk';
@@ -13,6 +13,7 @@ const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
   const stateColumns = useSelector(state => state.columns.columns)
   const stateCards = useSelector(state => state.cards.cards)
+  const [listRef] = useAutoAnimate()
 
   useEffect(() => {
     if(board){
@@ -28,10 +29,10 @@ const MainDashboard = ({ board }) => {
 
   return (
     <div className={css.boardWrap}>
-      <ul className={css.columnsList}>
+      <ul className={css.columnsList} ref={listRef}>
         {stateColumns && stateColumns.map(col => {
           return (
-            <Column key={col._id} column={col}>
+            <Column key={col._id} column={col} >
               {stateCards && stateCards
                 .filter(card => card.columnId === col._id)
                 .map(card => {

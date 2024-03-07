@@ -68,7 +68,7 @@
   max-height: 60vh;
   padding-right: 4px;
   margin-bottom: 14px;
-  transition: 6000ms linear;
+  transition: 600ms linear;
 
   @media (min-width: 768px) {
     padding-right: 8px;

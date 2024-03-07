@@ -2,6 +2,7 @@ import css from './Sidebar.module.css';
 import sprite from '../../images/sprite.svg';
 import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Board } from './Board/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeSidebar } from '../../redux/modalSlice';
@@ -13,6 +14,7 @@ import { fetchBoards } from '../../redux/board/boardThunks';
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
+  const [listRef] = useAutoAnimate()
 
   useEffect(() => {
     dispatch(fetchBoards());
@@ -67,7 +69,7 @@ export const Sidebar = () => {
           </div>
         </div>
         {boards.length > 0 && (
-          <ul className={css.bordList}>
+          <ul className={css.bordList} ref={listRef}>
             {boards.map(board => (
               <Board key={board._id} board={board}></Board>
             ))}
