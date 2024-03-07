@@ -89,8 +89,14 @@
     fill: var(--sidebarBgColor);
 }
 
+
 .iconButton {
     stroke: var(--logoIconColor);
     opacity: 0.5;
     cursor: pointer;
+}
+
+.iconButton:hover,
+.iconButton:active {
+    stroke: var(--accentColorHover);
 }

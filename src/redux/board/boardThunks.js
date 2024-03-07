@@ -48,6 +48,20 @@ export const deleteBoard = createAsyncThunk(
   }
 );
 
+export const updateBoard = createAsyncThunk(
+  'boards/updateBoard',
+  async ( {id, updatedBoard} , thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      await axios.put(`/boards/${id}`, updatedBoard);
+      return updatedBoard;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const addCard = createAsyncThunk(
   'cards/add',
   async ({ values, columnId }, thunkAPI) => {
