@@ -11,6 +11,18 @@ export const Card = ({card}) =>{
     const handleDeleteCard = (e) =>{
         dispatch(deleteCard(card._id))
     }
+    const addZero= (num)=> {
+        if (num >= 0 && num <= 9) {
+            return '0' + num;
+        } else {
+            return num;
+        }
+    }
+    let dateNow =new Date();
+    let deadline = new Date(card.deadline);
+    console.log(deadline.toLocaleDateString());
+    let countdown = deadline-dateNow;
+    const warningTime = 86400000*2;
     //Логіка: Дані передаються в компонент з отриманого з бекенду юзера в тому числі додаткові класи; дзвіночок створюється за умови якщо сьогоднішня дата на 1 більша за дату дедлайну; додати функції при кліку на іконки 
     return (
         <div className={css.cardHeight}>
@@ -29,16 +41,16 @@ export const Card = ({card}) =>{
                             </div>
                             <div className={css.cardDeadline}>
                                 <h5 className={css.cardFooterTitle}>Deadline</h5>
-                                <p className={css.cardDeadlineDate}>{card.deadline.split("T")[0]}</p>
+                                <p className={css.cardDeadlineDate}>{addZero(deadline.getDate())}/{addZero(deadline.getMonth()+1)}/{addZero(deadline.getFullYear())}</p>
                             </div>
                             <ul className={css.cardIconsList}>
-                                <li className={css.cardIconItem}>
+                               {countdown<warningTime && (<li className={css.cardIconItemBell}>
                                     <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-bell`}/>
                                     </svg>
                                     </button>
-                                </li>
+                                </li>)}
                                 <li className={css.cardIconItem} >
                                     <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>

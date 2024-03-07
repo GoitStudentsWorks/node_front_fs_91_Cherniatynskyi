@@ -103,7 +103,7 @@ margin-right: 14px;
 
 
 
-.cardIconItem:first-child{
+.cardIconItemBell{
     stroke: var(--accentColor);
     filter: drop-shadow(0 0 5px var(--accentColor));
     fill: transparent;
@@ -114,11 +114,11 @@ margin-right: 14px;
     height: 15px;
     cursor: pointer;
 }
-.cardIconItem:not(:first-child){
+.cardIconItem{
     stroke: var(--secondaryTextColor);
 }
 
-.cardIconItem:not(:first-child):hover{
+.cardIconItem:hover{
     stroke: var(--accentColor); 
     transform: scale(1.1);
 }
