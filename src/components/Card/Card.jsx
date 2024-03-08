@@ -3,6 +3,7 @@ import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../redux/card/cardThunk';
 import { priorityEnum } from 'utils/priorityObject';
+import { openModal } from '../../redux/modalSlice';
 
 
 export const Card = ({card}) =>{
@@ -10,6 +11,10 @@ export const Card = ({card}) =>{
     const priorityColor = priorityEnum.find(pr => pr.title === card.priority)
     const handleDeleteCard = (e) =>{
         dispatch(deleteCard(card._id))
+    }
+
+    const handleEditCard = () =>{
+        dispatch(openModal({content: "edit-card", id: `${card._id}`}))
     }
     //Логіка: Дані передаються в компонент з отриманого з бекенду юзера в тому числі додаткові класи; дзвіночок створюється за умови якщо сьогоднішня дата на 1 більша за дату дедлайну; додати функції при кліку на іконки 
     return (
@@ -47,14 +52,14 @@ export const Card = ({card}) =>{
                                     </button>
                                 </li>
                                 <li className={css.cardIconItem}>
-                                    <button type='button' className={css.cardIconButton}>
+                                    <button onClick={e=>handleEditCard(e)} type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-pencil`}/>
                                     </svg>
                                     </button>
                                 </li>
                                 <li className={css.cardIconItem}>
-                                    <button onClick={e=>handleDeleteCard(e)} type='button' className={css.cardIconButton}>
+                                    <button onClick={handleDeleteCard} type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-trash`}/>
                                     </svg>

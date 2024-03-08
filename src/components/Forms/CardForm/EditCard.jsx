@@ -1,30 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Calendar } from 'components/Calendar';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { postCard, updateCard } from '../../../redux/card/cardThunk';
+import { updateCard } from '../../../redux/card/cardThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import css from './AddCard.module.css';
 import { priorityEnum } from 'utils/priorityObject';
 
-export const EditCardForm = ({ editedCard }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('');
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const currBoardId = useSelector(state => state.boards.currentBoardId);
-  const currColumnId = useSelector(state => state.columns.currentColumnId);
+export const EditCardForm = () => {
+  const { selectedElId } = useSelector(state => state.modal);
+  const stateCards = useSelector(state => state.cards.cards)
+  const currentCard = stateCards.find(card=> card._id === selectedElId)
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (editedCard) {
-      setTitle(editedCard.title);
-      setDescription(editedCard.description);
-      setPriority(editedCard.priority);
-      setSelectedDate(new Date(editedCard.deadline));
-    }
-  }, [editedCard]);
+  const [title, setTitle] = useState(currentCard.title);
+  const [description, setDescription] = useState(currentCard.description);
+  const [priority, setPriority] = useState(currentCard.priority);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
@@ -45,15 +38,12 @@ export const EditCardForm = ({ editedCard }) => {
       description,
       priority,
       deadline: selectedDate.getTime(),
-      boardId: currBoardId,
-      columnId: currColumnId,
     };
 
-    if (editedCard) {
-      dispatch(updateCard({ ...editedCard, ...cardData }));
-    } else {
-      dispatch(postCard(cardData));
-    }
+    console.log(cardData)
+
+    dispatch(updateCard({id: currentCard._id, newCard: cardData}))
+
 
     dispatch(closeModal());
   };

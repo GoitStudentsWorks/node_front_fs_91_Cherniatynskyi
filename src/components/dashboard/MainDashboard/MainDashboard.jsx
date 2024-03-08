@@ -43,7 +43,6 @@ const MainDashboard = ({ board }) => {
                     return true
                   }
                   return false
-                  
                 })
                 .map(card => {
                   return <Card key={card._id} card={card} />;
