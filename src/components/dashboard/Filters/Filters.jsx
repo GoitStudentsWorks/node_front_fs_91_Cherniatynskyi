@@ -1,10 +1,14 @@
 import css from './Filters.module.css';
 import sprite from '../../../images/sprite.svg';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { FiltersForm } from 'components/Forms/FiltersForm/FiltersForm';
+import { priorityEnum } from 'utils/priorityObject';
 
 const Filters = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const filterValue = useSelector(state => state.filter.filterValue)
+  const filterColor = priorityEnum.find(pr => (pr.title === filterValue))
 
   useEffect(() => {
     if (isFiltersOpen) {
@@ -25,7 +29,7 @@ const Filters = () => {
   const handleFiltersClose = e => {
     if (
       e.target.dataset.popup !== 'popupFiltersBtn' &&
-      e.target.popup !== 'menu' &&
+      e.target.dataset.popup !== 'menu' &&
       e.target.popup !== 'el'
     ) {
       setIsFiltersOpen(prev => !prev);
@@ -42,6 +46,7 @@ const Filters = () => {
       onClick={e => handleFiltersOpen(e)}
       className={css.menuFilterTheme}
     >
+      {filterColor && <div style={{backgroundColor: `${filterColor.color}`}} className={css.filterIndicator}></div>}
       <button data-popup="popupFiltersBtn" className={css.filterButton}>
         <svg data-popup="popupFiltersBtn" className={css.filterIcon}>
           <use data-popup="popupFiltersBtn" href={`${sprite}#icon-filter`} />

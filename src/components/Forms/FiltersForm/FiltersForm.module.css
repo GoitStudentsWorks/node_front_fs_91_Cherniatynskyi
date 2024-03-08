@@ -73,13 +73,16 @@
   cursor: pointer;
 }
 
-.iconsWrap label:last-child {
-  margin: 0;
+.iconsWrap{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
 }
 
 .container {
   position: relative;
   display: flex;
+  align-items: center;
   flex-direction: row;
   height: 18px;
   gap: 8px;
@@ -113,21 +116,6 @@
   border-radius: 50%;
 }
 
-.noPriority {
-  background-color: var(--priorityColorWithout);
-}
-
-.lowPriority {
-  background-color: var(--priorityColorLow);
-}
-
-.medPriority {
-  background-color: var(--priorityColorMedium);
-}
-
-.highPriority {
-  background-color: var(--priorityColorHight);
-}
 
 .container:hover input ~ .checkmark {
   opacity: 0.7;

@@ -13,6 +13,7 @@ const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
   const stateColumns = useSelector(state => state.columns.columns)
   const stateCards = useSelector(state => state.cards.cards)
+  const filterValue = useSelector(state => state.filter.filterValue)
   const [listRef] = useAutoAnimate()
 
   useEffect(() => {
@@ -34,7 +35,16 @@ const MainDashboard = ({ board }) => {
           return (
             <Column key={col._id} column={col} >
               {stateCards && stateCards
-                .filter(card => card.columnId === col._id)
+                .filter(card => {
+                  if(card.columnId === col._id){
+                    if(filterValue){
+                      return (card.priority === filterValue)
+                    }
+                    return true
+                  }
+                  return false
+                  
+                })
                 .map(card => {
                   return <Card key={card._id} card={card} />;
                 })}

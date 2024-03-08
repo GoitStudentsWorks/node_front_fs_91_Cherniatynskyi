@@ -1,13 +1,22 @@
 import css from './FiltersForm.module.css';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { priorityEnum } from 'utils/priorityObject';
+import { useDispatch } from 'react-redux';
+import { setFilterValue, clearFilter } from '../../../redux/filterSlice';
 
-const priority = ['without', 'low', 'medium', 'high'];
-const formFiltersSchema = Yup.object().shape({
-  priority: Yup.string().oneOf(priority),
-});
 
-export const FiltersForm = ({ onSelectClose, isOpen }) => {
+
+export const FiltersForm = ({  isOpen }) => {
+  const dispatch = useDispatch()
+
+  const handleChangeFilter = (e)=>{
+    dispatch(setFilterValue(e.target.value))
+  }
+
+  const handleClearFilter = (e)=>{
+    e.preventDefault()
+    dispatch(clearFilter())
+  }
   return (
     <div
       data-popup="menu"
@@ -18,53 +27,33 @@ export const FiltersForm = ({ onSelectClose, isOpen }) => {
       <Formik
         initialValues={{
           priority: 'without',
-        }}
-        validationSchema={formFiltersSchema}
+        }}     
       >
-        {({ handleSubmit, setFieldValue }) => (
-          <form className={css.from} onSubmit={handleSubmit}>
-            <fieldset className={css.iconsForm}>
-              <div className={css.labelTitle}>
+          <form className={css.from}>
+           <fieldset className={css.iconsForm}>
+           <div className={css.labelTitle}>
                 <legend className={css.iconsTitle}>Label color</legend>
-                <button className={css.iconsAll}>Show all</button>
+                <button onClick={(e)=>handleClearFilter(e)} className={css.iconsAll}>Show all</button>
               </div>
-
-              <div className={css.iconsWrap}>
-                <label className={css.container}>
-                  <input type="radio" id="1" name="icon" value="no-priority" />
-                  <span className={`${css.checkmark} ${css.noPriority}`}></span>
-                  <p className={css.iconName}>Without priority</p>
-                </label>
-                <label className={css.container}>
-                  <input type="radio" id="2" name="icon" value="low-priority" />
-                  <span
-                    className={`${css.checkmark} ${css.lowPriority}`}
-                  ></span>
-                  <p className={css.iconName}>Low</p>
-                </label>
-                <label className={css.container}>
-                  <input type="radio" id="3" name="icon" value="med-priority" />
-                  <span
-                    className={`${css.checkmark} ${css.medPriority}`}
-                  ></span>
-                  <p className={css.iconName}>Medium</p>
-                </label>
-                <label className={css.container}>
-                  <input
-                    type="radio"
-                    id="4"
-                    name="icon"
-                    value="high-priority"
-                  />
-                  <span
-                    className={`${css.checkmark} ${css.highPriority}`}
-                  ></span>
-                  <p className={css.iconName}>High</p>
-                </label>
-              </div>
-            </fieldset>
+            <div className={css.iconsWrap}>
+                  {priorityEnum.map(pr => {
+                    return(
+                    <label key={pr.title} className={css.container}>
+                      <input 
+                        type="radio"
+                        id="1"
+                        name="icon"
+                        value={pr.title}
+                        required
+                        onChange={e=>handleChangeFilter(e)}
+                      />
+                      <p className={css.iconName}>{pr.title}</p>
+                      <span style={{backgroundColor: `${pr.color}`}} className={`${css.checkmark}`}></span>
+                    </label>)
+                  })}
+            </div>
+          </fieldset>
           </form>
-        )}
       </Formik>
     </div>
   );
