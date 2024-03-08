@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar } from 'components/Calendar';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { postCard } from '../../../redux/card/cardThunk';
+import { postCard, updateCard } from '../../../redux/card/cardThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import css from './AddCard.module.css';
 import { priorityEnum } from 'utils/priorityObject';
 
-export const AddCardForm = () => {
+export const EditCardForm = ({ editedCard }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
@@ -16,6 +16,15 @@ export const AddCardForm = () => {
   const currBoardId = useSelector(state => state.boards.currentBoardId);
   const currColumnId = useSelector(state => state.columns.currentColumnId);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (editedCard) {
+      setTitle(editedCard.title);
+      setDescription(editedCard.description);
+      setPriority(editedCard.priority);
+      setSelectedDate(new Date(editedCard.deadline));
+    }
+  }, [editedCard]);
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
@@ -31,7 +40,7 @@ export const AddCardForm = () => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    const newCard = {
+    const cardData = {
       title,
       description,
       priority,
@@ -39,20 +48,27 @@ export const AddCardForm = () => {
       boardId: currBoardId,
       columnId: currColumnId,
     };
-    dispatch(postCard(newCard));
+
+    if (editedCard) {
+      dispatch(updateCard({ ...editedCard, ...cardData }));
+    } else {
+      dispatch(postCard(cardData));
+    }
+
     dispatch(closeModal());
   };
 
   return (
     <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Add Card</h2>
+      <h2 className={css.formTitle}>Edit Card</h2>
       <form className={css.from} onSubmit={handleSubmitForm}>
         <input
           className={css.formInputTitle}
           type="text"
           name="title"
           placeholder="Title"
-          onChange={e => handleTitleChange(e)}
+          value={title}
+          onChange={handleTitleChange}
           required
         />
         <p className={css.errMsg} name="title" />
@@ -62,7 +78,8 @@ export const AddCardForm = () => {
             rows={4}
             name="text"
             placeholder="Description"
-            onChange={e => handleDescChange(e)}
+            value={description}
+            onChange={handleDescChange}
             required
           />
           <p className={css.errMsg} name="text" />
@@ -70,24 +87,23 @@ export const AddCardForm = () => {
         <fieldset className={css.iconsForm}>
           <legend className={css.iconsTitle}>Label color</legend>
           <div className={css.iconsWrap}>
-            {priorityEnum.map(pr => {
-              return (
-                <label key={pr.title} className={css.container}>
-                  <input
-                    type="radio"
-                    id="1"
-                    name="icon"
-                    value={pr.title}
-                    onChange={e => handlePriorityChange(e)}
-                    required
-                  />
-                  <span
-                    style={{ backgroundColor: `${pr.color}` }}
-                    className={`${css.checkmark}`}
-                  ></span>
-                </label>
-              );
-            })}
+            {priorityEnum.map(pr => (
+              <label key={pr.title} className={css.container}>
+                <input
+                  type="radio"
+                  id={pr.title}
+                  name="icon"
+                  value={pr.title}
+                  checked={priority === pr.title}
+                  onChange={handlePriorityChange}
+                  required
+                />
+                <span
+                  style={{ backgroundColor: `${pr.color}` }}
+                  className={`${css.checkmark}`}
+                ></span>
+              </label>
+            ))}
           </div>
         </fieldset>
         <p className={css.deadlineStyle}>Deadline</p>
@@ -98,7 +114,6 @@ export const AddCardForm = () => {
             <span className={css.span}> Today,</span>
           ) : null}
           <Calendar
-           
             selectedDate={selectedDate}
             onDateChange={date => {
               setSelectedDate(date);
@@ -111,7 +126,7 @@ export const AddCardForm = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Add
+          Edit
         </button>
       </form>
     </div>
