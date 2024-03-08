@@ -5,8 +5,7 @@
 }
 
 .cardHeight:hover{
-    transform: translateY(-4px);
-    transform: translateX(2px);
+    transform: scale(0.98);
 }
 
 .cardHeight:hover .cardContainer{
