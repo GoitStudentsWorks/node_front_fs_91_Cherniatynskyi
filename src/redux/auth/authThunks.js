@@ -9,28 +9,49 @@ import {
   updateTheme,
 } from 'services/authService';
 
-export const loginThunk = createAsyncThunk('auth/login', async body => {
-  return await logIn(body);
-});
-
-export const registerThunk = createAsyncThunk('auth/register', async body => {
-  return await signUp(body);
-});
-
-export const logoutThunk = createAsyncThunk(
-  'auth/logout',
-  async (_, thunkAPI) => {
+export const loginThunk = createAsyncThunk(
+  'auth/login',
+  async (body, { rejectWithValue }) => {
     try {
-      return await logOut();
+      return await logIn(body);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const getProfileThunk = createAsyncThunk('auth/profile', async () => {
-  return await getProfile();
-});
+export const registerThunk = createAsyncThunk(
+  'auth/register',
+  async (body, { rejectWithValue }) => {
+    try {
+      return await signUp(body);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await logOut();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProfileThunk = createAsyncThunk(
+  'auth/profile',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await getProfile();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -41,14 +62,24 @@ export const fetchCurrentUser = createAsyncThunk(
       return;
     }
     setToken(`Bearer ${token}`);
-    const data = await getProfile();
-    return data;
+    try {
+      return await getProfile();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
-export const updaterUserTheme = createAsyncThunk('auth/theme', async body => {
-  return await updateTheme(body);
-});
+export const updaterUserTheme = createAsyncThunk(
+  'auth/theme',
+  async (body, { rejectWithValue }) => {
+    try {
+      return await updateTheme(body);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const updaterUserData = createAsyncThunk(
   'auth/updateUser',
@@ -56,7 +87,7 @@ export const updaterUserData = createAsyncThunk(
     try {
       return await updateUser(body);
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
