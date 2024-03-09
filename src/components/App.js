@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from '../redux/auth/authThunks';
 import { NotFound } from '../pages/NotFound/NotFound.jsx';
 import { Spinner } from '../components/Spinner/Spinner.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const ScreensPages = lazy(() =>
@@ -34,6 +36,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer autoClose={3000} />
     </Suspense>
   );
 }

@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as BoardsService from 'services/boardService';
 
 export const fetchBoards = createAsyncThunk(
@@ -9,6 +11,9 @@ export const fetchBoards = createAsyncThunk(
     try {
       return await BoardsService.fetchGetBoards(persostedToken);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -20,6 +25,9 @@ export const addBoard = createAsyncThunk(
     try {
       return await BoardsService.fetchAddBoard(newBoard);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -31,6 +39,9 @@ export const deleteBoard = createAsyncThunk(
     try {
       return await BoardsService.fetchDeleteBoard(_id);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -40,8 +51,12 @@ export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
   async ({ id, updatedBoard }, thunkAPI) => {
     try {
+      toast.success('Your board was successfully updated');
       return await BoardsService.fetchUpdateBoard(id, updatedBoard);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
