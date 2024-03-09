@@ -2,9 +2,10 @@
     width: 335px;
     cursor: pointer;
     transition: 200ms linear;
+    cursor: grabbing;
 }
 
-.cardHeight:hover{
+.cardHeight:hover {
     transform: scale(0.98);
 }
 
@@ -118,7 +119,7 @@
     stroke: var(--secondaryTextColor);
 }
 
-.cardIconItem:not(:first-child):hover{
+.cardIconItem:not(:first-child):hover .cardSvg{
     stroke: var(--accentColor); 
     transform: scale(1.1);
 }
@@ -132,15 +133,18 @@
 
 
 .popupMenuList{
+    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
-    background-color: antiquewhite;
     width: 135px;
     padding: 15px;
     z-index: 20;
-    margin-top: 15px;
+    overflow-y: auto;
+    max-height: 90px;
+
+    left: -55px;
+    top: -100px;
 
     background-color: var(--modalBgColor);
     border-radius: 8px;
@@ -148,10 +152,21 @@
     transition: 200ms linear;
 }
 
+.popupMenuList::-webkit-scrollbar{
+    width: 3px;
+    border-radius: 12px;
+}
+
+.popupMenuList::-webkit-scrollbar-thumb{
+    border-radius: 12px;
+    background-color: var(--accentColor);
+}
+
 .popupHidden{
+    transform: scale(0.1);
     height: 0;
+    top: 0;
     overflow: hidden;
-    padding: 0 15px;
     opacity: 0;
 }
 
