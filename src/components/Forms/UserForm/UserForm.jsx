@@ -30,8 +30,7 @@ const schema = Yup.object().shape({
   password: Yup.string()
     .matches(/^(?=.*[a-z])/, 'Password must meet the requirements*')
     .min(8, 'Password must be at least 6 characters')
-    .max(64, 'Password must be no more than 16 characters')
-    .required('Password is required*'),
+    .max(64, 'Password must be no more than 16 characters'),
 });
 
 export const UserForm = () => {
@@ -49,7 +48,9 @@ export const UserForm = () => {
       name: values.name,
       email: values.email,
       avatarURL: values.avatar,
-      password: values.password,
+      ...(values.password
+        ? { password: values.password }
+        : { password: user.password }),
     };
 
     const formData = new FormData();
@@ -88,7 +89,7 @@ export const UserForm = () => {
           <Form>
             <div className={css.avatar}>
               <label className={css.userAvaWrapper}>
-                {user.avatarURL ? (
+                {image || user.avatarURL ? (
                   <img
                     src={image ? image : user.avatarURL}
                     alt=""

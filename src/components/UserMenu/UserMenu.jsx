@@ -20,19 +20,23 @@ export const UserMenu = () => {
         >
           {user.name}
 
-          <div className={css.userAvatarWrap}>
+          <div>
             {user.avatarURL ? (
-              <img
-                src={user.avatarURL}
-                alt=""
-                className={css.userImg}
-                width={68}
-              />
+              <div className={css.userAvatar}>
+                <img
+                  src={user.avatarURL}
+                  alt=""
+                  className={css.userAvatar}
+                  width={68}
+                />
+              </div>
             ) : (
-              <div className={css.userIcon}>
-                <svg className={css.userIcon}>
-                  <use href={`${sprite}#icon-user2`} />
-                </svg>
+              <div className={css.userAvatarWrap}>
+                <div className={css.userIcon}>
+                  <svg className={css.userIcon}>
+                    <use href={`${sprite}#icon-user2`} />
+                  </svg>
+                </div>
               </div>
             )}
             {/* <svg className={css.userIcon}>
