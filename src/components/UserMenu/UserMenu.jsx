@@ -5,7 +5,7 @@ import sprite from '../../images/sprite.svg';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state => state.auth.user);
   const handleUserModalOpen = () => {
     dispatch(openModal({ content: 'edit-profile' }));
   };
@@ -19,10 +19,25 @@ export const UserMenu = () => {
           onClick={handleUserModalOpen}
         >
           {user.name}
+
           <div className={css.userAvatarWrap}>
-            <svg className={css.userIcon}>
+            {user.avatarURL ? (
+              <img
+                src={user.avatarURL}
+                alt=""
+                className={css.userImg}
+                width={68}
+              />
+            ) : (
+              <div className={css.userIcon}>
+                <svg className={css.userIcon}>
+                  <use href={`${sprite}#icon-user2`} />
+                </svg>
+              </div>
+            )}
+            {/* <svg className={css.userIcon}>
               <use href={`${sprite}#icon-user2`} />
-            </svg>
+            </svg> */}
           </div>
         </button>
       </div>

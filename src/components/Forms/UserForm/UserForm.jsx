@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { selectUser } from '../../../redux/auth/selector.js';
-// import {} from '../../../redux/auth/authThunk.js';
+import { updaterUserData } from '../../../redux/auth/authThunks.js';
 
 import ImageInput from './ImgInput.jsx';
 import sprite from '../../../images/sprite.svg';
@@ -35,19 +35,22 @@ const schema = Yup.object().shape({
 });
 
 export const UserForm = () => {
-  // const dispatch = useDispatch();
-  const [user, setUser] = useState(useSelector(selectUser));
-
-  const handleChange = e => {
-    setUser(prevUser => ({ ...prevUser, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    // dispatch(updateUser({ ...user })); //заімпортувати функцію апдейту з кувфх.ацуз.оперейшин
-  };
-
+  const user = useSelector(selectUser);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    const newDataUser = {
+      name: values.name,
+      email: values.email,
+      avatarUrl: values.avatar,
+      password: values.password,
+    };
+
+    dispatch(updaterUserData(newDataUser));
+
+    resetForm();
+  };
 
   const handleClickPasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -68,7 +71,7 @@ export const UserForm = () => {
           validationSchema={schema}
           onSubmit={handleSubmit}
         >
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <div className={css.avatar}>
               <label className={css.userAvaWrapper}>
                 {user.avatarURL ? (
@@ -101,8 +104,6 @@ export const UserForm = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-                onChange={handleChange}
-                value={user.name}
               />
             </div>
             <ErrorMessage name="name">
@@ -114,8 +115,6 @@ export const UserForm = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                onChange={handleChange}
-                value={user.email}
               />
             </div>
             <ErrorMessage name="email">
@@ -127,8 +126,6 @@ export const UserForm = () => {
                 type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Create a password"
-                onChange={handleChange}
-                value={user.password}
               />
               {passwordVisible ? (
                 <button
