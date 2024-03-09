@@ -8,7 +8,7 @@
   border-radius: 8px;
   border: 1px solid var(--lightBgColor);
   top: 140%;
-  left: -350%;
+  right: 16%;
   z-index: 1;
 
   transition: 200ms linear;
@@ -17,10 +17,12 @@
 }
 
 .menuListHidden {
-  padding: 0 15px;
+  padding: 0;
   opacity: 0;
-  top: 70%;
+  top: 100px;
   height: 0;
+  width: 0;
+  transform: scale(0.1);
   border: none;
   overflow: hidden;
 }

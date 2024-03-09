@@ -23,8 +23,6 @@ export function Calendar({ selectedDate, onDateChange }) {
         
         renderCustomHeader={({
           date,
-          changeYear,
-          changeMonth,
           decreaseMonth,
           increaseMonth,
           prevMonthButtonDisabled,

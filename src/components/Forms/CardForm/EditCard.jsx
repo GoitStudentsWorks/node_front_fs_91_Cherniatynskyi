@@ -39,12 +39,8 @@ export const EditCardForm = () => {
       priority,
       deadline: selectedDate.getTime(),
     };
-
     console.log(cardData)
-
     dispatch(updateCard({id: currentCard._id, newCard: cardData}))
-
-
     dispatch(closeModal());
   };
 
