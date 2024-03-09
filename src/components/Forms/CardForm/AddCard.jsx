@@ -75,7 +75,6 @@ export const AddCardForm = () => {
                 <label key={pr.title} className={css.container}>
                   <input
                     type="radio"
-                    id="1"
                     name="icon"
                     value={pr.title}
                     onChange={e => handlePriorityChange(e)}
