@@ -1,7 +1,6 @@
-
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { addBoard, deleteBoard, fetchBoards, updateBoard } from './boardThunks';
-
+import * as HelpersReducer from './helpersBoardReducer';
 
 const initialState = {
   boards: [],
@@ -10,72 +9,34 @@ const initialState = {
   currentBoardId: null,
 };
 
-const handlePending = state => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = payload;
-  state.isLoggedIn = true;
-};
-
-const handleFulfilledGetBoard = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.boards = payload;
-};
-
-const handleFulfilledAddBoard = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.currentBoardId = payload._id;
-  state.boards.push({ ...payload });
-};
-
-const handleFulfilledDeleteBoard = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.currentBoardId = payload._id;
-  const index = state.boards.findIndex(
-    item => item._id === payload
-  );
-  state.boards.splice(index, 1);
-};
-
-const handleFulfilledUpdateBoard = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.boards = state.boards.map(board =>
-    board._id === payload._id ? { ...board, ...payload } : board
-  );
-};
-
-
 export const boardSlice = createSlice({
   name: 'boards',
   initialState,
   reducers: {
-    setCurrentBoardId(state, {payload}){
-      state.currentBoardId = payload
-    }
+    setCurrentBoardId(state, { payload }) {
+      state.currentBoardId = payload;
+    },
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchBoards.fulfilled, handleFulfilledGetBoard)
-      .addCase(addBoard.fulfilled, handleFulfilledAddBoard)
-      .addCase(deleteBoard.fulfilled, handleFulfilledDeleteBoard)
-      .addCase(updateBoard.fulfilled, handleFulfilledUpdateBoard)
+      .addCase(fetchBoards.fulfilled, HelpersReducer.handleFulfilledGetBoard)
+      .addCase(addBoard.fulfilled, HelpersReducer.handleFulfilledAddBoard)
+      .addCase(deleteBoard.fulfilled, HelpersReducer.handleFulfilledDeleteBoard)
+      .addCase(updateBoard.fulfilled, HelpersReducer.handleFulfilledUpdateBoard)
       .addMatcher(
-        isAnyOf(fetchBoards.pending, addBoard.pending, deleteBoard.pending, updateBoard.pending),
-        handlePending
+        action => action.type.endsWith('fulfilled'),
+        HelpersReducer.handleFulfilled
       )
       .addMatcher(
-        isAnyOf(fetchBoards.rejected, addBoard.rejected, deleteBoard.rejected, updateBoard.rejected),
-        handleRejected
+        action => action.type.endsWith('pending'),
+        HelpersReducer.handlePending
+      )
+      .addMatcher(
+        action => action.type.endsWith('rejected'),
+        HelpersReducer.handleRejected
       );
   },
 });
 
 export const boardReducer = boardSlice.reducer;
-export const {setCurrentBoardId} = boardSlice.actions
+export const { setCurrentBoardId } = boardSlice.actions;
