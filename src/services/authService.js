@@ -46,5 +46,5 @@ export const updateTheme = async body => {
 
 export const updateUser = async body => {
   const { data } = await instance.put('/users/update', body);
-  return data;
+  return data.updatedUser;
 };

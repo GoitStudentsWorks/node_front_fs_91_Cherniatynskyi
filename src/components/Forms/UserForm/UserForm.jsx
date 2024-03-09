@@ -37,19 +37,33 @@ const schema = Yup.object().shape({
 export const UserForm = () => {
   const user = useSelector(selectUser);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [image, setPreviewImage] = useState(null);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleImageChange = imageUrl => {
+    setPreviewImage(imageUrl);
+  };
+
+  const handleSubmit = (values, { resetForm, setFieldValue }) => {
     const newDataUser = {
       name: values.name,
       email: values.email,
-      avatarUrl: values.avatar,
+      avatarURL: values.avatar,
       password: values.password,
     };
 
-    dispatch(updaterUserData(newDataUser));
+    const formData = new FormData();
+    formData.append('name', newDataUser.name);
+    formData.append('email', newDataUser.email);
+    formData.append('password', newDataUser.password);
+    formData.append('avatarURL', newDataUser.avatarURL);
+
+    dispatch(updaterUserData(formData));
 
     resetForm();
+
+    setFieldValue('name', values.name);
+    setFieldValue('email', values.email);
   };
 
   const handleClickPasswordVisibility = () => {
@@ -76,7 +90,7 @@ export const UserForm = () => {
               <label className={css.userAvaWrapper}>
                 {user.avatarURL ? (
                   <img
-                    src={user.avatarURL}
+                    src={image ? image : user.avatarURL}
                     alt=""
                     className={css.userImg}
                     width={68}
@@ -90,7 +104,7 @@ export const UserForm = () => {
                 )}
 
                 <label htmlFor="avatar" className={css.iconBtnPlus}>
-                  <ImageInput />
+                  <ImageInput handleChange={handleImageChange} />
 
                   <svg className={css.iconPlus} width="10" height="10">
                     <use xlinkHref={`${sprite}#icon-plus`} />
