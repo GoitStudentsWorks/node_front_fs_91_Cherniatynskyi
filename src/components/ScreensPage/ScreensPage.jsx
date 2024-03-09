@@ -13,7 +13,7 @@ const ScreensPage = () => {
   const {boardId} = useParams()
   const boards = useSelector(selectBoards);
   const currentBoard = boards.find((board) => board._id === boardId)
-  const bgImg = require(`../../images/card/background-desktop/${currentBoard?.background ?? "2"}.jpg`)
+  const bgImg = require(`../../images/card/background-desktop/${currentBoard?.background ?? "2"}@2x.jpg`)
   const dispatch = useDispatch()
 
   useEffect(() => {
