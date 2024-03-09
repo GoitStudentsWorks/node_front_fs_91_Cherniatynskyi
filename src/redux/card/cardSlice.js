@@ -10,7 +10,7 @@ import * as HelpersReducer from './helpersCardReducer';
 
 const initialState = {
   cards: [],
-  isLoadding: false,
+  isLoading: false,
   error: null,
 };
 
