@@ -8,8 +8,8 @@ import { addBoard } from '../../../redux/board/boardThunks';
 export const NewBoardForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [iconValue, setIconValue] = useState('');
-  const [bgValue, setBgValue] = useState('');
+  const [iconValue, setIconValue] = useState('four-circles');
+  const [bgValue, setBgValue] = useState('1');
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -50,7 +50,7 @@ export const NewBoardForm = () => {
   const bgValues = [];
 
   for (let i = 1; i <= 16; i++) {
-    bgValues.push(i);
+    bgValues.push(`${i}`);
   }
 
   return (
@@ -82,6 +82,7 @@ export const NewBoardForm = () => {
                     name="icon"
                     value={ic}
                     required
+                    checked={iconValue === ic}
                   />
                   <svg className={css.checkmark}>
                     <use href={`${sprite}#icon-${ic}`} />
@@ -104,6 +105,7 @@ export const NewBoardForm = () => {
                     name="bg"
                     value={bg}
                     required
+                    checked={bgValue === bg}
                   />
                   <img
                     className={css.bgCheckmark}
