@@ -42,11 +42,7 @@ export const ChangeColumnMenu = ({card}) => {
             <svg data-popup="popupChange" className={css.cardSvg}>
                 <use data-popup="popupChange" href={`${sprite}#icon-arrow-in-circle`}/>
             </svg>
-            
-   
-              <ChangeColumnPopup isOpen={isChangeOpen}  handleMove={handleMoveCard}/>
-     
-            
+              <ChangeColumnPopup filterVal={card.columnId} isOpen={isChangeOpen}  handleMove={handleMoveCard}/>       
     </button>
   )
 }

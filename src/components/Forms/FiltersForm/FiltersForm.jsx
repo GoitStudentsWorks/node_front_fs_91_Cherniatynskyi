@@ -41,7 +41,6 @@ export const FiltersForm = ({  isOpen }) => {
                     <label key={pr.title} className={css.container}>
                       <input 
                         type="radio"
-                        id="1"
                         name="icon"
                         value={pr.title}
                         required
