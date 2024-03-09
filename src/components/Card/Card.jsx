@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../redux/card/cardThunk';
 import { priorityEnum } from 'utils/priorityObject';
 import { openModal } from '../../redux/modalSlice';
+import { ChangeColumnMenu } from './ChangeColumn/ChangeColumnMenu';
 
 
 export const Card = ({card}) =>{
@@ -45,11 +46,7 @@ export const Card = ({card}) =>{
                                     </button>
                                 </li>
                                 <li className={css.cardIconItem} >
-                                    <button type='button' className={css.cardIconButton}>
-                                    <svg className={css.cardSvg}>
-                                        <use href={`${sprite}#icon-arrow-in-circle`}/>
-                                    </svg>
-                                    </button>
+                                    <ChangeColumnMenu card={card}/>
                                 </li>
                                 <li className={css.cardIconItem}>
                                     <button onClick={e=>handleEditCard(e)} type='button' className={css.cardIconButton}>

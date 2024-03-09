@@ -21,7 +21,7 @@ const ScreensPage = () => {
   })
   
   return (
-    <div style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImg})`, backgroundPosition: "center", backgroundSize: "cover"}} className={css.screensWrap}>
+    <div  style={ currentBoard?.background!=='1' ? {backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImg})`, backgroundPosition: "center", backgroundSize: "cover"} : {}} className={css.screensWrap}>
         <HeaderDashboard board={currentBoard} />
         <MainDashboard board = {currentBoard} />
     </div>
