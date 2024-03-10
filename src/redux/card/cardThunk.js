@@ -47,9 +47,9 @@ export const updateCard = createAsyncThunk(
 
 export const updateColumnId = createAsyncThunk(
   'cards/updateColumnID',
-  async ({ id, newCard }, { rejectWithValue }) => {
+  async ({ id, columnId, index }, { rejectWithValue }) => {
     try {
-      return CardServices.fetchUpdateColumnIdInCard(id, newCard);
+      return CardServices.fetchUpdateColumnIdInCard(id, { columnId, index });
     } catch (error) {
       return rejectWithValue(error);
     }
