@@ -1,101 +1,110 @@
 .boardItem {
-    display: flex;
-    gap: 80px;
-    justify-content: space-between;
-    width: 100%;
-    height: 61px;
-    padding: 22px 10px 22px 14px;
-    transition: 250ms;
-    margin: 0;
-    position: relative;
-    cursor: pointer;
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+  width: 100%;
+  height: 61px;
+  padding: 22px 10px 22px 14px;
+  transition: 250ms;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
 }
 
 .boardItem:hover {
-    background-color: var(--lightBgColor);
+  background-color: var(--lightBgColor);
 }
 
 .boardItem:hover .boardButton {
-    fill: var(--lightBgColor);
+  fill: var(--lightBgColor);
 }
 
 .boardItem:hover .boardIcon {
-    fill: var(--lightBgColor);
+  fill: var(--lightBgColor);
 }
 
 .boardItem:hover.boardItem::after {
-    content: '';
-    width: 4px;
-    height: 61px;
-    background-color: var(--boardAddIconBg);
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    position: absolute;
-    top: 0;
-    right: 4px;
+  content: '';
+  width: 4px;
+  height: 61px;
+  background-color: var(--boardAddIconBg);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: absolute;
+  top: 0;
+  right: 4px;
 }
 
 @media screen and (min-width: 768px) {
-    .boardItem {
-        width: 260px;
-        padding: 20px 22px 20px 24px;
-    }
+  .boardItem {
+    width: 260px;
+    padding: 20px 22px 20px 24px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .boardItem {
-        width: 275px;
-    }
+  .boardItem {
+    width: 275px;
+  }
 }
 
 .boardTitleBox {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .boardIcon {
-    stroke: var(--logoIconColor);
-    fill: var(--sidebarBgColor);
+  stroke: var(--sidebarLightColor);
+  fill: var(--sidebarBgColor);
+}
+
+.boardItem:hover .boardIcon {
+  stroke: var(--sidebarMainTextColor);
+  fill: var(--lightBgColor);
 }
 
 .boardText {
-    color: var(--logoIconColor);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
+  color: var(--sidebarLightColor);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
 
-    line-height: normal;
-    letter-spacing: -0.28px;
-    margin-left: 4px;
-    max-width: 88px;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  margin-left: 4px;
+  max-width: 88px;
+}
+
+.boardItem:hover .boardText {
+  color: var(--sidebarMainTextColor);
 }
 
 @media screen and (min-width: 768px) {
-    .boardTittle {
-        margin-left: 8px;
-    }
+  .boardTittle {
+    margin-left: 8px;
+  }
 }
 
 .boardButtonBox {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .boardButton {
-    padding: 0;
-    background-color: transparent;
-    border: transparent;
-    fill: var(--sidebarBgColor);
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  fill: var(--sidebarBgColor);
 }
 
-
 .iconButton {
-    stroke: var(--logoIconColor);
-    cursor: pointer;
+  stroke: var(--sidebarLightColor);
+  cursor: pointer;
 }
 
 .iconButton:hover,
 .iconButton:active {
-    stroke: var(--accentColor);
+  stroke: var(--sidebarMainTextColor);
+  fill: var(--lightBgColor);
 }
