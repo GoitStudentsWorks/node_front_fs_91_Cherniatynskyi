@@ -7,16 +7,24 @@ import { openModal } from '../../redux/modalSlice';
 import { ChangeColumnMenu } from './ChangeColumn/ChangeColumnMenu';
 
 
+
 export const Card = ({card}) =>{
     const dispatch = useDispatch()
     const priorityColor = priorityEnum.find(pr => pr.title === card.priority)
     const handleDeleteCard = (e) =>{
         dispatch(deleteCard(card._id))
     }
+    
+ 
+    let dateNow =new Date();
+    let deadline = new Date(card.deadline);
+    let countdown = deadline-dateNow;
+    const warningTime = 86400000*2;
 
     const handleEditCard = () =>{
         dispatch(openModal({content: "edit-card", id: `${card._id}`}))
     }
+  
     //Логіка: Дані передаються в компонент з отриманого з бекенду юзера в тому числі додаткові класи; дзвіночок створюється за умови якщо сьогоднішня дата на 1 більша за дату дедлайну; додати функції при кліку на іконки 
     return (
         <div className={css.cardHeight}>
@@ -35,16 +43,17 @@ export const Card = ({card}) =>{
                             </div>
                             <div className={css.cardDeadline}>
                                 <h5 className={css.cardFooterTitle}>Deadline</h5>
-                                <p className={css.cardDeadlineDate}>{card.deadline.split("T")[0]}</p>
+                                <p className={css.cardDeadlineDate}>{deadline.toLocaleDateString('en-GB')}</p>
+                                <p className={css.cardDeadlineDate}>{}</p>
                             </div>
                             <ul className={css.cardIconsList}>
-                                <li className={css.cardIconItem}>
+                               {countdown<warningTime && (<li className={css.cardIconItemBell}>
                                     <button type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-bell`}/>
                                     </svg>
                                     </button>
-                                </li>
+                                </li>)}
                                 <li className={css.cardIconItem} >
                                     <ChangeColumnMenu card={card}/>
                                 </li>

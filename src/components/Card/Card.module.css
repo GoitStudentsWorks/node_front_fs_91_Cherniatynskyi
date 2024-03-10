@@ -103,7 +103,7 @@
 
 
 
-.cardIconItem:first-child{
+.cardIconItemBell .cardSvg{
     stroke: var(--accentColor);
     filter: drop-shadow(0 0 5px var(--accentColor));
     fill: transparent;
@@ -115,11 +115,11 @@
     height: 15px;
     cursor: pointer;
 }
-.cardIconItem:not(:first-child){
+.cardIconItem{
     stroke: var(--secondaryTextColor);
 }
 
-.cardIconItem:not(:first-child):hover .cardSvg{
+.cardIconItem:hover .cardSvg{
     stroke: var(--accentColor); 
     transform: scale(1.1);
 }
