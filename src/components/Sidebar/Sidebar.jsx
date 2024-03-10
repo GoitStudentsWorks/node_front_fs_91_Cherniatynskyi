@@ -35,10 +35,12 @@ export const Sidebar = () => {
     }
   };
 
-  const handleLogout = () => {
-    dispatch(logoutThunk());
-  };
-
+  // const handleLogout = () => {
+  //   dispatch(logoutThunk());
+  // };
+  const handleLogout =()=>{
+    dispatch (openModal({content:'warning-logout'}))
+  }
   return (
     <div
       onClick={e => handleCloseSidebar(e)}

@@ -14,7 +14,7 @@ export const Board = ({ board }) => {
   const handleEditBoard = () => {
     dispatch(openModal({ content: 'edit-board', id: `${board._id}` }));
   };
-
+console.log(board);
   const handleNavigate = (e) =>{
     if(e.dataset === 'icon'){
       return
@@ -24,9 +24,12 @@ export const Board = ({ board }) => {
     dispatch(closeSidebar())
   }
 
-  const handleDelete = () =>{
-    navigate('/home')
-    dispatch(deleteBoard(board._id))
+  // const handleDelete = () =>{
+  //   navigate('/home')
+  //   dispatch(deleteBoard(board._id))
+  // }
+  const handleWarningBoard =()=>{
+    dispatch (openModal({content:'warning-dell', id: board}))
   }
   return (
     <li id='boardBtn' onClick={handleNavigate} className={css.boardItem}>
@@ -44,7 +47,7 @@ export const Board = ({ board }) => {
         </button>
         <button
           className={css.boardButton}
-          onClick={handleDelete}
+          onClick={handleWarningBoard}
           data-icon="icon"
         >
           <svg data-icon="icon" className={css.iconButton} width="16" height="16">
