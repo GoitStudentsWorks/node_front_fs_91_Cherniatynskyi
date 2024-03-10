@@ -1,4 +1,4 @@
-import css from './WarningList.module.css';
+import css from './Warning.module.css';
 
 
 export const WarningList = ({confirm})=> {

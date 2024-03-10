@@ -103,7 +103,7 @@
 
 
 
-.cardIconItemBell{
+.cardIconItemBell .cardSvg{
     stroke: var(--accentColor);
     filter: drop-shadow(0 0 5px var(--accentColor));
     fill: transparent;

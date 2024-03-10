@@ -12,6 +12,7 @@ import { NeedHelpForm } from 'components/Forms/Help/NeedHelpForm';
 import { UserForm } from 'components/Forms/UserForm/UserForm';
 import { AddCardForm } from 'components/Forms/CardForm/AddCard';
 import { EditCardForm } from 'components/Forms/CardForm/EditCard';
+import { WarningDell } from 'components/Warning/WarningDell';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,8 @@ export const ModalBody = () => {
         return <EditCardForm />;
       case 'add-card':
         return <AddCardForm />;
+      case 'warning-dell':
+        return <WarningDell/>
 
       default:
         break;
