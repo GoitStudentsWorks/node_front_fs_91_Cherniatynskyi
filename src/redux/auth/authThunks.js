@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   signUp,
   logIn,
@@ -15,6 +17,9 @@ export const loginThunk = createAsyncThunk(
     try {
       return await logIn(body);
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -26,6 +31,9 @@ export const registerThunk = createAsyncThunk(
     try {
       return await signUp(body);
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -37,6 +45,9 @@ export const logoutThunk = createAsyncThunk(
     try {
       return await logOut();
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -48,6 +59,9 @@ export const getProfileThunk = createAsyncThunk(
     try {
       return await getProfile();
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -65,6 +79,9 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       return await getProfile();
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -76,6 +93,9 @@ export const updaterUserTheme = createAsyncThunk(
     try {
       return await updateTheme(body);
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -85,8 +105,12 @@ export const updaterUserData = createAsyncThunk(
   'auth/updateUser',
   async (body, { rejectWithValue }) => {
     try {
+      toast.success('Your information successfully updated');
       return await updateUser(body);
     } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return rejectWithValue(error.message);
     }
   }
