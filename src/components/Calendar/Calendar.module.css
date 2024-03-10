@@ -1,7 +1,6 @@
 .react-datepicker {
   border: 1px solid var();
   border-radius: 8px;
-  
 }
 
 .react-datepicker__input-container input {
@@ -34,11 +33,9 @@
   border-bottom: 1px solid;
   border-color: var();
   color: var();
-  
 }
 .react-datepicker__navigation {
   top: 18px;
-  
 }
 
 .react-datepicker__day-name {
@@ -49,7 +46,6 @@
   font-size: 14px;
   letter-spacing: -0.02em;
   color: var();
-  
 }
 
 .react-datepicker__day-name,
@@ -66,8 +62,6 @@
   background-color: var(--accentColor);
   color: var(--calendarBgColor);
 }
-
-
 
 .react-datepicker__day {
   gap: 5px;
@@ -129,8 +123,6 @@
   background-color: var(--calendarBgColor);
   border-color: var(--inputsBorderColor);
   color: aquamarine;
-  
-  
 }
 
 .day {
@@ -146,7 +138,7 @@
 }
 
 .header {
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
@@ -156,7 +148,7 @@
   border-top-left-radius: 4px;
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   padding-top: 18px;
   padding-bottom: 14px;
 }
@@ -192,6 +184,7 @@
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: left;
+  cursor: pointer;
 }
 
 .weekDay {

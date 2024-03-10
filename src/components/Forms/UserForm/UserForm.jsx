@@ -43,23 +43,30 @@ export const UserForm = () => {
     setPreviewImage(imageUrl);
   };
 
+  const createUserDataFormData = infoUser => {
+    const formData = new FormData();
+    console.log(infoUser);
+    if (infoUser.password) {
+      formData.append('password', infoUser.password);
+    }
+    formData.append('name', infoUser.name);
+    formData.append('email', infoUser.email);
+    formData.append('avatarURL', infoUser.avatarURL);
+
+    return formData;
+  };
+
   const handleSubmit = (values, { resetForm, setFieldValue }) => {
-    const newDataUser = {
+    const newUserData = {
       name: values.name,
       email: values.email,
       avatarURL: values.avatar,
-      ...(values.password
-        ? { password: values.password }
-        : { password: user.password }),
+      ...(values.password && { password: values.password }),
     };
 
-    const formData = new FormData();
-    formData.append('name', newDataUser.name);
-    formData.append('email', newDataUser.email);
-    formData.append('password', newDataUser.password);
-    formData.append('avatarURL', newDataUser.avatarURL);
+    const userData = createUserDataFormData(newUserData);
 
-    dispatch(updaterUserData(formData));
+    dispatch(updaterUserData(userData));
 
     resetForm();
 
