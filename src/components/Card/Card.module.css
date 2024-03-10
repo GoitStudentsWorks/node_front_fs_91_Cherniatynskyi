@@ -187,6 +187,11 @@
 
 }
 
+.popupMenuDef{
+    color: var(--secondaryTextColor);
+    font-size: 12px;
+}
+
 .popupMenuItem:hover{
     color: var(--accentColor);
     stroke: var(--accentColor);

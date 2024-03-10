@@ -5,9 +5,11 @@ import { useEffect } from 'react';
 import { ChangeColumnPopup } from './ChangeColumnPopup';
 import { useDispatch } from 'react-redux';
 import { updateCard } from '../../../redux/card/cardThunk';
+// import { useSelector } from 'react-redux';
 
 export const ChangeColumnMenu = ({card}) => {
   const [isChangeOpen, setIsChangeOpen] = useState(false)
+  // const allCards = useSelector(state=> state.cards.cards)
 
   const dispatch = useDispatch()
 
@@ -33,7 +35,11 @@ export const ChangeColumnMenu = ({card}) => {
   }
 
   const handleMoveCard = (colId) =>{
-    dispatch(updateCard({id: card._id, newCard: {columnId: colId}}))
+    // const currColumnCardsLgth = allCards.filter(card => card.columnId === colId).length
+    const newCard = {
+      columnId: colId,
+    }
+    dispatch(updateCard({id: card._id, newCard: newCard}))
   }
 
 

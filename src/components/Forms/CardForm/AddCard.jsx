@@ -15,9 +15,12 @@ export const AddCardForm = () => {
 
   const currBoardId = useSelector(state => state.boards.currentBoardId);
   const currColumnId = useSelector(state => state.columns.currentColumnId);
+  const allCards = useSelector(state=> state.cards.cards)
+  const currColumnCardsLgth = allCards.filter(card => card.columnId === currColumnId).length
   const dispatch = useDispatch();
 
   const handleTitleChange = e => {
+    console.log(allCards)
     setTitle(e.target.value);
   };
 
@@ -31,6 +34,7 @@ export const AddCardForm = () => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
+    const index = currColumnCardsLgth
     const newCard = {
       title,
       description,
@@ -38,7 +42,9 @@ export const AddCardForm = () => {
       deadline: selectedDate.getTime(),
       boardId: currBoardId,
       columnId: currColumnId,
+      index: index
     };
+    console.log(newCard)
     dispatch(postCard(newCard));
     dispatch(closeModal());
   };
