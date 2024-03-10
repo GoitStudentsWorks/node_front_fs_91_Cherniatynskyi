@@ -1,7 +1,7 @@
 
 import css from './Warning.module.css';
 import { WarningList } from './WarningList';
-import { useDispatch} from 'react-redux';
+// import { useDispatch} from 'react-redux';
 
 
 export const WarningDell = ({title, del})=> {
