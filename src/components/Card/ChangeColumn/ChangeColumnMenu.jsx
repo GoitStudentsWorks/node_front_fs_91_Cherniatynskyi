@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { ChangeColumnPopup } from './ChangeColumnPopup';
 import { useDispatch } from 'react-redux';
-import { updateCard } from '../../../redux/card/cardThunk';
-// import { useSelector } from 'react-redux';
+import { updateColumnId } from '../../../redux/card/cardThunk';
+import { useSelector } from 'react-redux';
 
 export const ChangeColumnMenu = ({card}) => {
   const [isChangeOpen, setIsChangeOpen] = useState(false)
-  // const allCards = useSelector(state=> state.cards.cards)
+  const allCards = useSelector(state=> state.cards.cards)
 
   const dispatch = useDispatch()
 
@@ -35,11 +35,15 @@ export const ChangeColumnMenu = ({card}) => {
   }
 
   const handleMoveCard = (colId) =>{
-    // const currColumnCardsLgth = allCards.filter(card => card.columnId === colId).length
-    const newCard = {
-      columnId: colId,
-    }
-    dispatch(updateCard({id: card._id, newCard: newCard}))
+    const currColumnCardsLgth = allCards.filter(card => card.columnId === colId).length
+    dispatch(updateColumnId({id: card._id, columnId: colId, index: currColumnCardsLgth}))
+    const test = allCards.filter(c => c.columnId === card.columnId)
+    test.forEach(c => {
+      if((c.index === 0) || (c._id === card._id)){
+        return
+      }
+      dispatch(updateColumnId({id: c._id, columnId: c.columnId, index: c.index - 1}))
+    });
   }
 
 

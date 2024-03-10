@@ -8,6 +8,7 @@ import { openModal } from '../../../redux/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCards} from '../../../redux/card/cardThunk';
 import {getColumns} from '../../../redux/column/columnThunk';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
@@ -29,7 +30,8 @@ const MainDashboard = ({ board }) => {
   };
 
   return (
-    <div className={css.boardWrap}>
+    <DragDropContext>
+      <div className={css.boardWrap}>
       <ul className={css.columnsList} ref={listRef}>
         {stateColumns && stateColumns.map(col => {
           return (
@@ -43,7 +45,7 @@ const MainDashboard = ({ board }) => {
                     return true
                   }
                   return false
-                })
+                }).sort(function(a,b){return a.index-b.index})
                 .map(card => {
                   return <Card key={card._id} card={card} />;
                 })}
@@ -60,6 +62,8 @@ const MainDashboard = ({ board }) => {
         </button>
       </ul>
     </div>
+    </DragDropContext>
+    
   );
 };
 
