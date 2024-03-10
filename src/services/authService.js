@@ -39,7 +39,12 @@ export const getProfile = async () => {
   return data;
 };
 
-export const updateTheme = async (body) =>{
+export const updateTheme = async body => {
   const { data } = await instance.patch('/users/theme', body);
   return data;
-}
+};
+
+export const updateUser = async body => {
+  const { data } = await instance.put('/users/update', body);
+  return data.updatedUser;
+};

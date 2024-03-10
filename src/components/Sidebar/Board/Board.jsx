@@ -16,7 +16,7 @@ export const Board = ({ board }) => {
   };
 
   const handleNavigate = (e) =>{
-    if(e.target !== e.currentTarget){
+    if(e.dataset === 'icon'){
       return
     }
     navigate(`/home/${board._id}`)
@@ -37,17 +37,18 @@ export const Board = ({ board }) => {
         <p className={css.boardText}>{board.name}</p>
       </div>
       <div className={css.boardButtonBox}>
-        <button onClick={handleEditBoard} className={css.boardButton}>
-          <svg className={css.iconButton} width="16" height="16">
-            <use href={`${sprite}#icon-pencil`} />
+        <button data-icon="icon" onClick={handleEditBoard} className={css.boardButton}>
+          <svg data-icon="icon" className={css.iconButton} width="16" height="16">
+            <use data-icon="icon" href={`${sprite}#icon-pencil`} />
           </svg>
         </button>
         <button
           className={css.boardButton}
           onClick={handleDelete}
+          data-icon="icon"
         >
-          <svg className={css.iconButton} width="16" height="16">
-            <use href={`${sprite}#icon-trash`} />
+          <svg data-icon="icon" className={css.iconButton} width="16" height="16">
+            <use data-icon="icon" href={`${sprite}#icon-trash`} />
           </svg>
         </button>
       </div>

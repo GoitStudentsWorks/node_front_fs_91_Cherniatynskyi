@@ -1,6 +1,6 @@
 .formWrap {
   width: 350px;
-  height: 453px;
+  height: 552px;
   background-color: var(--modalBgColor);
   border-radius: 8px;
   border: 0.1px solid var(--inputsBorderColor);
@@ -14,24 +14,43 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: var(--mainTextColor);
-
-  margin-bottom: 25px;
 }
 
-.formInput {
+.formInputTitle {
+  font-family: 'Poppins';
+  outline: none;
   width: 300px;
   height: 49px;
   background-color: var(--inputsBgColor);
   border: 1px solid var(--inputsBorderColor);
   border-radius: 8px;
-  padding: 0 17px;
-
+  padding: 0px 17px;
+  margin-top: 24px;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   letter-spacing: -0.02em;
   text-align: left;
+  color: var(--mainTextColor);
+}
 
+.formInput {
+  font-family: 'Poppins';
+  outline: none;
+  resize: none;
+  width: 300px;
+  height: 154px;
+  background-color: var(--inputsBgColor);
+  border: 1px solid var(--inputsBorderColor);
+  border-radius: 8px;
+  padding: 14px 17px;
+  margin-top: 14px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
   color: var(--mainTextColor);
 }
 
@@ -41,10 +60,172 @@
 
 .iconsForm {
   border: none;
-  margin-top: 30px;
+  margin: 0;
+  /* margin-bottom: 14px; */
 }
 
-.TitleCard {
+.iconsWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.iconsTitle {
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+  margin-bottom: 4px;
+}
+
+.formInputcal {
+  background-color: yellow;
+  /* Інші стилі, які вам потрібні */
+}
+
+.Span {
+  font-family: 'Poppins-Medium';
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var();
+}
+
+.no {
+  background-color: var(--priorityColorWithout);
+}
+
+.low {
+  background-color: var(--priorityColorLow);
+}
+
+.med {
+  background-color: var(--priorityColorMedium);
+}
+
+.high {
+  background-color: var(--priorityColorHight);
+}
+
+.container:hover input ~ .checkmark {
+  opacity: 0.7;
+}
+
+.container input:checked ~ .checkmark {
+  transform: scale(1.1);
+}
+
+.container input:checked ~ .checkmark::after {
+  content: ' ';
+  position: absolute;
+  left: 11%;
+  top: 11%;
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: inherit;
+  border: 3px solid var(--modalBgColor);
+}
+
+.container {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 14px;
+  width: 14px;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.deadlineStyle {
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+  margin-bottom: 4px;
+}
+
+.deadlineContainer {
+  display: flex;
+  align-items: center;
+  color: #bedbb0;
+}
+
+.span {
+  margin-right: 5px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.AddButton {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  background-color: var();
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var();
+}
+
+.AddButton:hover,
+.AddButton:focus,
+.AddButton:active {
+  background-color: var();
+}
+
+@media only screen and (min-width: 375px) {
+  .AddButton {
+    width: 287px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .AddButton {
+    width: 302px;
+  }
+}
+
+.StylePlus {
+  border: none;
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var();
+  margin-right: 8px;
+  stroke: var();
+}
+
+/* .TitleCard {
   padding-left: 18px;
   outline: transparent;
   outline-offset: -1px;
@@ -127,148 +308,52 @@
   }
 }
 
-.LabelColorStyle {
-  font-size: 12px;
-  letter-spacing: -0.02em;
-  color: var();
-  margin-bottom: 4px;
-}
-
-.DeadlineStyle {
-  font-size: 12px;
-  letter-spacing: -0.02em;
-  color: var();
-  margin-bottom: 4px;
-}
-
-.AddButton {
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 8px;
-  width: 287px;
-  height: 49px;
-  background-color: var();
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: var();
-}
-
-.AddButton:hover,
-.AddButton:focus,
-.AddButton:active {
-  background-color: var();
-}
-
-@media only screen and (min-width: 375px) {
-  .AddButton {
-    width: 287px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .AddButton {
-    width: 302px;
-  }
-}
-
-.StylePlus {
-  border: none;
-  border-radius: 8px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var();
-  margin-right: 8px;
-  stroke: var();
-}
-
-.Span {
-  font-family: 'Poppins-Medium';
-  font-size: 14px;
-  letter-spacing: -0.02em;
-  color: var();
-}
 
 
-.container {
-  display: block;
-  position: relative;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  height: 14px;
-  width: 14px;
-}
 
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 14px;
-  width: 14px;
-  
-}
 
-.iconsWrap{
+
+
+
+
+
+
+ */
+
+.formButton {
   display: flex;
   gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+  background-color: var(--accentColor);
+  height: 49px;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+
+  color: var(--reversedTextColor);
+  cursor: pointer;
 }
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
+.formButton:hover {
+  background-color: var(--accentColorHover);
 }
 
-.no {
-  background-color: var(--priorityColorWithout);
+.iconWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--modalBgColor);
 }
 
-.low {
-  background-color: var(--priorityColorLow);
+.buttonIcon {
+  stroke: var(--mainTextColor);
 }
-
-.med {
-  background-color: var(--priorityColorMedium);
-}
-
-.high {
-  background-color: var(--priorityColorHight);
-}
-
-
-.container:hover input ~ .checkmark {
-  opacity: 0.7;
-}
-
-.container input:checked ~ .checkmark {
-  transform: scale(1.1);
-}
-
-.container input:checked ~ .checkmark::after {
-  content: ' ';
-  position: absolute;
-  left: 11%;
-  top: 11%;
-  display: block;
-  border-radius: 50%;
-  width: 11px;
-  height: 11px;
-  background-color: inherit;
-  border: 3px solid var(--modalBgColor);
-
-}
-
-

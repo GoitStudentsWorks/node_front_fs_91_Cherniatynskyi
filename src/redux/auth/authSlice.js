@@ -1,13 +1,14 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import { register, logIn, logOut, refreshUser } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchCurrentUser,
   getProfileThunk,
   loginThunk,
   logoutThunk,
   registerThunk,
+  updaterUserData,
   updaterUserTheme,
 } from './authThunks';
+import * as HelpersReducer from './helpersAuthReducer';
 
 const initialState = {
   user: { name: null, email: null },
@@ -17,88 +18,31 @@ const initialState = {
   isRefreshing: false,
 };
 
-const handlePending = state => {
-  state.isRefreshing = true;
-};
-
-const handleFulfilledLogin = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = '';
-  state.token = payload.token;
-  state.user = payload.user;
-  state.isLoggedIn = true;
-};
-
-
-
-const handleFulfilledRegister = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = '';
-  state.token = payload.token;
-  state.user = payload.user;
-  state.isLoggedIn = true;
-};
-
-const handleFulfilledProfile = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = '';
-  state.user = payload;
-};
-
-const handleFulfilledLogout = (state, _) => {
-  state.isRefreshing = false;
-  state.error = '';
-  state.user = null;
-  state.token = null;
-  state.isLoggedIn = false;
-};
-
-const handleFulfilledFetchCurrentUser = (state, { payload }) => {
-  state.user = payload;
-  state.isLoggedIn = true;
-};
-
-const handleUpdateTheme = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = '';
-  state.user.theme = payload.theme;
-};
-
-const handleRejected = (state, { payload }) => {
-  state.isRefreshing = false;
-  state.error = payload;
-};
-
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(loginThunk.fulfilled, handleFulfilledLogin)
-      .addCase(registerThunk.fulfilled, handleFulfilledRegister)
-      .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
-      .addCase(fetchCurrentUser.fulfilled, handleFulfilledFetchCurrentUser)
-      .addCase(logoutThunk.fulfilled, handleFulfilledLogout)
-      .addCase(updaterUserTheme.fulfilled, handleUpdateTheme)
+      .addCase(loginThunk.fulfilled, HelpersReducer.handleFulfilledLogin)
+      .addCase(registerThunk.fulfilled, HelpersReducer.handleFulfilledRegister)
+      .addCase(getProfileThunk.fulfilled, HelpersReducer.handleFulfilledProfile)
+      .addCase(
+        fetchCurrentUser.fulfilled,
+        HelpersReducer.handleFulfilledFetchCurrentUser
+      )
+      .addCase(logoutThunk.fulfilled, HelpersReducer.handleFulfilledLogout)
+      .addCase(
+        updaterUserData.fulfilled,
+        HelpersReducer.handleFulfilledUpdateUserData
+      )
+      .addCase(updaterUserTheme.fulfilled, HelpersReducer.handleUpdateTheme)
       .addMatcher(
-        isAnyOf(
-          loginThunk.pending,
-          getProfileThunk.pending,
-          registerThunk.pending,
-          logoutThunk.pending,
-          updaterUserTheme.pending
-        ),
-        handlePending
+        action => action.type.endsWith('pending'),
+        HelpersReducer.handlePending
       )
       .addMatcher(
-        isAnyOf(
-          loginThunk.rejected,
-          getProfileThunk.rejected,
-          registerThunk.rejected,
-          logoutThunk.rejected,
-          updaterUserTheme.rejected
-        ),
-        handleRejected
+        action => action.type.endsWith('rejected'),
+        HelpersReducer.handleRejected
       );
   },
 });

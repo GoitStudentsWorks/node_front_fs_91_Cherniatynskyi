@@ -1,7 +1,7 @@
 .react-datepicker {
   border: 1px solid var();
   border-radius: 8px;
-  background-color: var();
+  
 }
 
 .react-datepicker__input-container input {
@@ -20,6 +20,7 @@
 .react-datepicker__header {
   padding-bottom: 0;
   padding-top: 0;
+
   background-color: var();
   border: none;
 }
@@ -33,9 +34,11 @@
   border-bottom: 1px solid;
   border-color: var();
   color: var();
+  
 }
 .react-datepicker__navigation {
   top: 18px;
+  
 }
 
 .react-datepicker__day-name {
@@ -46,7 +49,26 @@
   font-size: 14px;
   letter-spacing: -0.02em;
   color: var();
+  
 }
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 2px;
+  font-family: 'Poppins-Medium';
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--mainTextColor);
+  background-color: var(--calendarBgColor);
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--accentColor);
+  color: var(--calendarBgColor);
+}
+
+
+
 .react-datepicker__day {
   gap: 5px;
   display: flex;
@@ -103,25 +125,28 @@
   visibility: visible;
 }
 
-
-.calendar{
+.calendar {
   background-color: var(--calendarBgColor);
   border-color: var(--inputsBorderColor);
+  color: aquamarine;
+  
+  
 }
 
-.day{
+.day {
   color: var(--mainTextColor);
   border-radius: 50%;
 }
 
-.day:hover, .day:active{
+.day:hover,
+.day:active {
   color: var(--calendarBgColor);
   background-color: var(--accentColor);
   border-radius: 50%;
 }
 
-.header{
-  position: absolute;
+.header {
+  position:absolute;
   top: 0;
   left: 0;
   height: 100%;
@@ -129,8 +154,47 @@
   background-color: var(--calendarBgColor);
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
-  border-bottom: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  padding-top: 18px;
+  padding-bottom: 14px;
 }
 
-  
+.header button {
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: azure;
+}
 
+.header button:focus {
+  outline: none;
+}
+
+.header span {
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+.inputCalendar {
+  color: #bedbb0;
+  background-color: var(--modalBgColor);
+  border: none;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.weekDay {
+  color: #ffffff80;
+  background-color: var(--calendarBgColor);
+}

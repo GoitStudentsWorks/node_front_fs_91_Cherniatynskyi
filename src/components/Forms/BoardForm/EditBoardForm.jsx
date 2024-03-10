@@ -52,7 +52,7 @@ export const EditBoardForm = () => {
   const bgValues = [];
 
   for (let i = 1; i <= 16; i++) {
-    bgValues.push(i);
+    bgValues.push(`${i}`);
   }
 
   return (
@@ -83,6 +83,7 @@ export const EditBoardForm = () => {
                     id={ic}
                     name="icon"
                     value={ic}
+                    checked={iconValue === ic}
                   />
                   <svg className={css.checkmark}>
                     <use href={`${sprite}#icon-${ic}`} />
@@ -104,6 +105,7 @@ export const EditBoardForm = () => {
                     id={`bg${bg}`}
                     name="bg"
                     value={bg}
+                    checked={bgValue === bg}
                   />
                   <img
                     className={css.bgCheckmark}

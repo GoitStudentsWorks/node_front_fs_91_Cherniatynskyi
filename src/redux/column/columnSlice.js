@@ -9,7 +9,7 @@ import * as HelpersReducer from './helpersColumnReducer';
 
 const initialState = {
   columns: [],
-  isLoadding: false,
+  isLoading: false,
   error: null,
   currentColumnId: null
 };

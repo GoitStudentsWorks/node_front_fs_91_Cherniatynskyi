@@ -1,35 +1,71 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   signUp,
   logIn,
   logOut,
   getProfile,
   setToken,
+  updateUser,
   updateTheme,
 } from 'services/authService';
 
-export const loginThunk = createAsyncThunk('auth/login', async body => {
-  return await logIn(body);
-});
-
-export const registerThunk = createAsyncThunk('auth/register', async body => {
-  return await signUp(body);
-});
-
-export const logoutThunk = createAsyncThunk(
-  'auth/logout',
-  async (_, thunkAPI) => {
+export const loginThunk = createAsyncThunk(
+  'auth/login',
+  async (body, { rejectWithValue }) => {
     try {
-      return await logOut();
+      return await logIn(body);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const getProfileThunk = createAsyncThunk('auth/profile', async () => {
-  return await getProfile();
-});
+export const registerThunk = createAsyncThunk(
+  'auth/register',
+  async (body, { rejectWithValue }) => {
+    try {
+      return await signUp(body);
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await logOut();
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProfileThunk = createAsyncThunk(
+  'auth/profile',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await getProfile();
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -40,14 +76,42 @@ export const fetchCurrentUser = createAsyncThunk(
       return;
     }
     setToken(`Bearer ${token}`);
-    const data = await getProfile();
-    return data;
+    try {
+      return await getProfile();
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
+export const updaterUserTheme = createAsyncThunk(
+  'auth/theme',
+  async (body, { rejectWithValue }) => {
+    try {
+      return await updateTheme(body);
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-export const updaterUserTheme = createAsyncThunk('auth/theme',async (body) => {
-  return await updateTheme(body);
-});
-
-
+export const updaterUserData = createAsyncThunk(
+  'auth/updateUser',
+  async (body, { rejectWithValue }) => {
+    try {
+      toast.success('Your information successfully updated');
+      return await updateUser(body);
+    } catch (error) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);

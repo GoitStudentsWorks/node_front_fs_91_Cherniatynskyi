@@ -3,6 +3,8 @@ import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../redux/card/cardThunk';
 import { priorityEnum } from 'utils/priorityObject';
+import { openModal } from '../../redux/modalSlice';
+import { ChangeColumnMenu } from './ChangeColumn/ChangeColumnMenu';
 
 
 export const Card = ({card}) =>{
@@ -11,18 +13,16 @@ export const Card = ({card}) =>{
     const handleDeleteCard = (e) =>{
         dispatch(deleteCard(card._id))
     }
-    const addZero= (num)=> {
-        if (num >= 0 && num <= 9) {
-            return '0' + num;
-        } else {
-            return num;
-        }
-    }
+ 
     let dateNow =new Date();
     let deadline = new Date(card.deadline);
     console.log(deadline.toLocaleDateString());
     let countdown = deadline-dateNow;
     const warningTime = 86400000*2;
+
+    const handleEditCard = () =>{
+        dispatch(openModal({content: "edit-card", id: `${card._id}`}))
+    }
     //Логіка: Дані передаються в компонент з отриманого з бекенду юзера в тому числі додаткові класи; дзвіночок створюється за умови якщо сьогоднішня дата на 1 більша за дату дедлайну; додати функції при кліку на іконки 
     return (
         <div className={css.cardHeight}>
@@ -33,7 +33,7 @@ export const Card = ({card}) =>{
                     <div className={css.cardFooterWrapper}>
                         <div className={css.cardFooter}>
                             <div className={css.cardPriority}>
-                                <h5 className={css.cardFooterTitle}>Priority</h5>
+                                <h5 className={css.cardFooterTitle}>Priority {card.index}</h5>
                                 <div className={css.cardPriorityInfo}>
                                     <div style={{backgroundColor: `${priorityColor.color}`}} className={`${css.cardPriorityCircle}`}></div>
                                     <p className={css.cardPriorityName}>{card.priority.split(' ')[0]}</p>
@@ -41,7 +41,7 @@ export const Card = ({card}) =>{
                             </div>
                             <div className={css.cardDeadline}>
                                 <h5 className={css.cardFooterTitle}>Deadline</h5>
-                                <p className={css.cardDeadlineDate}>{addZero(deadline.getDate())}/{addZero(deadline.getMonth()+1)}/{addZero(deadline.getFullYear())}</p>
+                                <p className={css.cardDeadlineDate}>{}</p>
                             </div>
                             <ul className={css.cardIconsList}>
                                {countdown<warningTime && (<li className={css.cardIconItemBell}>
@@ -52,21 +52,17 @@ export const Card = ({card}) =>{
                                     </button>
                                 </li>)}
                                 <li className={css.cardIconItem} >
-                                    <button type='button' className={css.cardIconButton}>
-                                    <svg className={css.cardSvg}>
-                                        <use href={`${sprite}#icon-arrow-in-circle`}/>
-                                    </svg>
-                                    </button>
+                                    <ChangeColumnMenu card={card}/>
                                 </li>
                                 <li className={css.cardIconItem}>
-                                    <button type='button' className={css.cardIconButton}>
+                                    <button onClick={e=>handleEditCard(e)} type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-pencil`}/>
                                     </svg>
                                     </button>
                                 </li>
                                 <li className={css.cardIconItem}>
-                                    <button onClick={e=>handleDeleteCard(e)} type='button' className={css.cardIconButton}>
+                                    <button onClick={handleDeleteCard} type='button' className={css.cardIconButton}>
                                     <svg className={css.cardSvg}>
                                         <use href={`${sprite}#icon-trash`}/>
                                     </svg>

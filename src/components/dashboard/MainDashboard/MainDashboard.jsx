@@ -8,11 +8,13 @@ import { openModal } from '../../../redux/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCards} from '../../../redux/card/cardThunk';
 import {getColumns} from '../../../redux/column/columnThunk';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
   const stateColumns = useSelector(state => state.columns.columns)
   const stateCards = useSelector(state => state.cards.cards)
+  const filterValue = useSelector(state => state.filter.filterValue)
   const [listRef] = useAutoAnimate()
 
   useEffect(() => {
@@ -28,13 +30,22 @@ const MainDashboard = ({ board }) => {
   };
 
   return (
-    <div className={css.boardWrap}>
+    <DragDropContext>
+      <div className={css.boardWrap}>
       <ul className={css.columnsList} ref={listRef}>
         {stateColumns && stateColumns.map(col => {
           return (
             <Column key={col._id} column={col} >
               {stateCards && stateCards
-                .filter(card => card.columnId === col._id)
+                .filter(card => {
+                  if(card.columnId === col._id){
+                    if(filterValue){
+                      return (card.priority === filterValue)
+                    }
+                    return true
+                  }
+                  return false
+                }).sort(function(a,b){return a.index-b.index})
                 .map(card => {
                   return <Card key={card._id} card={card} />;
                 })}
@@ -51,6 +62,8 @@ const MainDashboard = ({ board }) => {
         </button>
       </ul>
     </div>
+    </DragDropContext>
+    
   );
 };
 

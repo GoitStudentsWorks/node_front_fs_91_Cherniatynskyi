@@ -18,6 +18,5 @@ export const fetchDeleteBoard = async id => {
 
 export const fetchUpdateBoard = async (id, body) => {
   const { data } = await instance.put(`/boards/${id}`, body);
-  console.log(data);
   return data;
 };

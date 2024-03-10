@@ -1,9 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+
+import { selectUser } from '../../../redux/auth/selector.js';
+import { updaterUserData } from '../../../redux/auth/authThunks.js';
+
 import ImageInput from './ImgInput.jsx';
 import sprite from '../../../images/sprite.svg';
 import css from './UserForm.module.css';
@@ -27,18 +30,42 @@ const schema = Yup.object().shape({
   password: Yup.string()
     .matches(/^(?=.*[a-z])/, 'Password must meet the requirements*')
     .min(8, 'Password must be at least 6 characters')
-    .max(64, 'Password must be no more than 16 characters')
-    .required('Password is required*'),
+    .max(64, 'Password must be no more than 16 characters'),
 });
 
 export const UserForm = () => {
-  // const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
-
-  const handleSubmit = e => {
-    console.log(e);
-  };
+  const user = useSelector(selectUser);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [image, setPreviewImage] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleImageChange = imageUrl => {
+    setPreviewImage(imageUrl);
+  };
+
+  const handleSubmit = (values, { resetForm, setFieldValue }) => {
+    const newDataUser = {
+      name: values.name,
+      email: values.email,
+      avatarURL: values.avatar,
+      ...(values.password
+        ? { password: values.password }
+        : { password: user.password }),
+    };
+
+    const formData = new FormData();
+    formData.append('name', newDataUser.name);
+    formData.append('email', newDataUser.email);
+    formData.append('password', newDataUser.password);
+    formData.append('avatarURL', newDataUser.avatarURL);
+
+    dispatch(updaterUserData(formData));
+
+    resetForm();
+
+    setFieldValue('name', values.name);
+    setFieldValue('email', values.email);
+  };
 
   const handleClickPasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -62,8 +89,13 @@ export const UserForm = () => {
           <Form>
             <div className={css.avatar}>
               <label className={css.userAvaWrapper}>
-                {user.avatarURL ? (
-                  <img src={``} alt="" className={css.userImg} width={68} />
+                {image || user.avatarURL ? (
+                  <img
+                    src={image ? image : user.avatarURL}
+                    alt=""
+                    className={css.userImg}
+                    width={68}
+                  />
                 ) : (
                   <div className={css.userIconBtn}>
                     <svg className={css.userIcon}>
@@ -73,7 +105,7 @@ export const UserForm = () => {
                 )}
 
                 <label htmlFor="avatar" className={css.iconBtnPlus}>
-                  <ImageInput />
+                  <ImageInput handleChange={handleImageChange} />
 
                   <svg className={css.iconPlus} width="10" height="10">
                     <use xlinkHref={`${sprite}#icon-plus`} />

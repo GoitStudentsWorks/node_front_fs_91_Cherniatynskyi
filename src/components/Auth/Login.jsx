@@ -32,8 +32,8 @@ export const Login = () => {
   };
 
   const handleSubmit = e => {
-    const {email, password}=e
-    dispatch(loginThunk({email, password}));
+    const { email, password } = e;
+    dispatch(loginThunk({ email, password }));
     // form.reset();
   };
 
@@ -45,7 +45,7 @@ export const Login = () => {
           password: '',
         }}
         validationSchema={schema}
-        onSubmit={(e)=>handleSubmit(e)}
+        onSubmit={e => handleSubmit(e)}
       >
         {({ errors, touched }) => (
           <Form autoComplete="off">
@@ -56,14 +56,15 @@ export const Login = () => {
                 name="email"
                 placeholder="Enter your email"
               />
+              {errors.email && touched.email && (
+                <ErrorMessage name="email">
+                  {errorMsg => (
+                    <div className={css.errorMessage}>{errorMsg}</div>
+                  )}
+                </ErrorMessage>
+              )}
             </div>
-            {errors.email && touched.email ? (
-              <ErrorMessage name="email">
-                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-              </ErrorMessage>
-            ) : (
-              <div className={css.notError}></div>
-            )}
+            <div className={css.notError}></div>
 
             <div className={`${css.fieldWrapper} ${css.passwordWrapper}`}>
               <Field
@@ -94,14 +95,15 @@ export const Login = () => {
                   </svg>
                 </button>
               )}
+              {errors.password && touched.password && (
+                <ErrorMessage name="password">
+                  {errorMsg => (
+                    <div className={css.errorMessage}>{errorMsg}</div>
+                  )}
+                </ErrorMessage>
+              )}
             </div>
-            {errors.password && touched.password ? (
-              <ErrorMessage name="password">
-                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-              </ErrorMessage>
-            ) : (
-              <div className={css.notError}></div>
-            )}
+            <div className={css.notError}></div>
 
             <button className={css.button} type="submit">
               Log In Now

@@ -19,3 +19,8 @@ export const fetchUpdateCard = async (id, body) => {
   const { data } = await instance.put(`/cards/${id}`, body);
   return data;
 };
+
+export const fetchUpdateColumnIdInCard = async (id, body) => {
+  const { data } = await instance.patch(`/cards/${id}`, body);
+  return data;
+};

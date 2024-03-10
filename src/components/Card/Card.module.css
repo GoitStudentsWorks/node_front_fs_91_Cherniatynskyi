@@ -2,11 +2,11 @@
     width: 335px;
     cursor: pointer;
     transition: 200ms linear;
+    cursor: grabbing;
 }
 
-.cardHeight:hover{
-    transform: translateY(-4px);
-    transform: translateX(2px);
+.cardHeight:hover {
+    transform: scale(0.98);
 }
 
 .cardHeight:hover .cardContainer{
@@ -75,10 +75,10 @@
     margin-bottom: 4px;
 }
 .cardPriorityInfo{
-display: flex;
-gap: 4px;
-margin-right: 14px;
-}
+    display: flex;
+    gap: 4px;
+    margin-right: 14px;
+    }
 
 
 .cardPriorityCircle{
@@ -109,6 +109,7 @@ margin-right: 14px;
     fill: transparent;
 }
 .cardIconButton{
+    position: relative;
     background-color: inherit;
     width: 16px;
     height: 15px;
@@ -118,7 +119,7 @@ margin-right: 14px;
     stroke: var(--secondaryTextColor);
 }
 
-.cardIconItem:hover{
+.cardIconItem:hover .cardSvg{
     stroke: var(--accentColor); 
     transform: scale(1.1);
 }
@@ -129,4 +130,78 @@ margin-right: 14px;
     fill: transparent;
     
 }
+
+
+.popupMenuList{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 135px;
+    padding: 15px;
+    z-index: 20;
+    overflow-y: auto;
+    max-height: 90px;
+
+    left: -55px;
+    top: -100px;
+
+    background-color: var(--modalBgColor);
+    border-radius: 8px;
+    border: 0.1px solid var(--inputsBorderColor);
+    transition: 200ms linear;
+}
+
+.popupMenuList::-webkit-scrollbar{
+    width: 3px;
+    border-radius: 12px;
+}
+
+.popupMenuList::-webkit-scrollbar-thumb{
+    border-radius: 12px;
+    background-color: var(--accentColor);
+}
+
+.popupHidden{
+    transform: scale(0.1);
+    height: 0;
+    top: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.popupMenuItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    color: var(--secondaryTextColor);
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    stroke: var(--secondaryTextColor);
+
+}
+
+.popupMenuDef{
+    color: var(--secondaryTextColor);
+    font-size: 12px;
+}
+
+.popupMenuItem:hover{
+    color: var(--accentColor);
+    stroke: var(--accentColor);
+}
+
+.selectCardSvg{
+    width: 16px;
+    height: 16px;
+    stroke: inherit;
+    fill: transparent;
+}
+
 

@@ -2,25 +2,24 @@ import { useState } from 'react';
 import { Calendar } from 'components/Calendar';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { postCard } from '../../../redux/card/cardThunk';
+import { updateCard } from '../../../redux/card/cardThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import css from './AddCard.module.css';
 import { priorityEnum } from 'utils/priorityObject';
 
-export const AddCardForm = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('');
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const currBoardId = useSelector(state => state.boards.currentBoardId);
-  const currColumnId = useSelector(state => state.columns.currentColumnId);
-  const allCards = useSelector(state=> state.cards.cards)
-  const currColumnCardsLgth = allCards.filter(card => card.columnId === currColumnId).length
+export const EditCardForm = () => {
+  const { selectedElId } = useSelector(state => state.modal);
+  const stateCards = useSelector(state => state.cards.cards)
+  const currentCard = stateCards.find(card=> card._id === selectedElId)
   const dispatch = useDispatch();
 
+  const [title, setTitle] = useState(currentCard.title);
+  const [description, setDescription] = useState(currentCard.description);
+  const [priority, setPriority] = useState(currentCard.priority);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+
   const handleTitleChange = e => {
-    console.log(allCards)
     setTitle(e.target.value);
   };
 
@@ -34,31 +33,28 @@ export const AddCardForm = () => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    const index = currColumnCardsLgth
-    const newCard = {
+    const cardData = {
       title,
       description,
       priority,
       deadline: selectedDate.getTime(),
-      boardId: currBoardId,
-      columnId: currColumnId,
-      index: index
     };
-    console.log(newCard)
-    dispatch(postCard(newCard));
+    console.log(cardData)
+    dispatch(updateCard({id: currentCard._id, newCard: cardData}))
     dispatch(closeModal());
   };
 
   return (
     <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Add Card</h2>
+      <h2 className={css.formTitle}>Edit Card</h2>
       <form className={css.from} onSubmit={handleSubmitForm}>
         <input
           className={css.formInputTitle}
           type="text"
           name="title"
           placeholder="Title"
-          onChange={e => handleTitleChange(e)}
+          value={title}
+          onChange={handleTitleChange}
           required
         />
         <p className={css.errMsg} name="title" />
@@ -68,7 +64,8 @@ export const AddCardForm = () => {
             rows={4}
             name="text"
             placeholder="Description"
-            onChange={e => handleDescChange(e)}
+            value={description}
+            onChange={handleDescChange}
             required
           />
           <p className={css.errMsg} name="text" />
@@ -76,23 +73,23 @@ export const AddCardForm = () => {
         <fieldset className={css.iconsForm}>
           <legend className={css.iconsTitle}>Label color</legend>
           <div className={css.iconsWrap}>
-            {priorityEnum.map(pr => {
-              return (
-                <label key={pr.title} className={css.container}>
-                  <input
-                    type="radio"
-                    name="icon"
-                    value={pr.title}
-                    onChange={e => handlePriorityChange(e)}
-                    required
-                  />
-                  <span
-                    style={{ backgroundColor: `${pr.color}` }}
-                    className={`${css.checkmark}`}
-                  ></span>
-                </label>
-              );
-            })}
+            {priorityEnum.map(pr => (
+              <label key={pr.title} className={css.container}>
+                <input
+                  type="radio"
+                  id={pr.title}
+                  name="icon"
+                  value={pr.title}
+                  checked={priority === pr.title}
+                  onChange={handlePriorityChange}
+                  required
+                />
+                <span
+                  style={{ backgroundColor: `${pr.color}` }}
+                  className={`${css.checkmark}`}
+                ></span>
+              </label>
+            ))}
           </div>
         </fieldset>
         <p className={css.deadlineStyle}>Deadline</p>
@@ -103,7 +100,6 @@ export const AddCardForm = () => {
             <span className={css.span}> Today,</span>
           ) : null}
           <Calendar
-           
             selectedDate={selectedDate}
             onDateChange={date => {
               setSelectedDate(date);
@@ -116,7 +112,7 @@ export const AddCardForm = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Add
+          Edit
         </button>
       </form>
     </div>

@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCards, postCard, deleteCard, updateCard } from './cardThunk';
+import {
+  getCards,
+  postCard,
+  deleteCard,
+  updateCard,
+  updateColumnId,
+} from './cardThunk';
 import * as HelpersReducer from './helpersCardReducer';
 
 const initialState = {
   cards: [],
-  isLoadding: false,
+  isLoading: false,
   error: null,
 };
 
@@ -17,6 +23,10 @@ const cardSlice = createSlice({
       .addCase(postCard.fulfilled, HelpersReducer.handleFulfilledAddCard)
       .addCase(deleteCard.fulfilled, HelpersReducer.handleFulfilledDeleteCard)
       .addCase(updateCard.fulfilled, HelpersReducer.handleFulfilledUpdateCard)
+      .addCase(
+        updateColumnId.fulfilled,
+        HelpersReducer.handleFulfilledUpdateColumnId
+      )
       .addMatcher(
         action => action.type.endsWith('fulfilled'),
         HelpersReducer.handleFulfilled

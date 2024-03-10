@@ -1,20 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://task-pro-7x3t.onrender.com/';
-const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as BoardsService from 'services/boardService';
 
 export const fetchBoards = createAsyncThunk(
   'boards/fetchAll',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persostedToken = state.auth.token;
     try {
-      const state = thunkAPI.getState();
-      setToken(state.auth.token);
-      const resp = await axios.get('/boards');
-      return resp.data;
+      return await BoardsService.fetchGetBoards(persostedToken);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -24,11 +23,11 @@ export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async (newBoard, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      setToken(state.auth.token);
-      const resp = await axios.post('/boards', newBoard);
-      return resp.data;
+      return await BoardsService.fetchAddBoard(newBoard);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -38,11 +37,11 @@ export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (_id, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      setToken(state.auth.token);
-      await axios.delete(`/boards/${_id}`);
-      return _id;
+      return await BoardsService.fetchDeleteBoard(_id);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -50,27 +49,15 @@ export const deleteBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async ( {id, updatedBoard} , thunkAPI) => {
+  async ({ id, updatedBoard }, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      setToken(state.auth.token);
-      await axios.put(`/boards/${id}`, updatedBoard);
-      return updatedBoard;
+      toast.success('Your board was successfully updated');
+      return await BoardsService.fetchUpdateBoard(id, updatedBoard);
     } catch (e) {
+      toast.error(
+        'Oops! Something went wrong! Please try reloading this page!'
+      );
       return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const addCard = createAsyncThunk(
-  'cards/add',
-  async ({ values, columnId }, thunkAPI) => {
-    try {
-      const res = await axios.post(`/cards/${columnId}`, values);
-
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
