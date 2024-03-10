@@ -15,17 +15,23 @@ export const AddCardForm = () => {
 
   const currBoardId = useSelector(state => state.boards.currentBoardId);
   const currColumnId = useSelector(state => state.columns.currentColumnId);
-  const allCards = useSelector(state=> state.cards.cards)
-  const currColumnCardsLgth = allCards.filter(card => card.columnId === currColumnId).length
+  const allCards = useSelector(state => state.cards.cards);
+  const currColumnCardsLgth = allCards.filter(
+    card => card.columnId === currColumnId
+  ).length;
   const dispatch = useDispatch();
 
   const handleTitleChange = e => {
-    console.log(allCards)
+    console.log(allCards);
     setTitle(e.target.value);
   };
 
   const handleDescChange = e => {
     setDescription(e.target.value);
+  };
+
+  const handleDataChange = date => {
+    setSelectedDate(date);
   };
 
   const handlePriorityChange = e => {
@@ -34,7 +40,7 @@ export const AddCardForm = () => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    const index = currColumnCardsLgth
+    const index = currColumnCardsLgth;
     const newCard = {
       title,
       description,
@@ -42,9 +48,9 @@ export const AddCardForm = () => {
       deadline: selectedDate.getTime(),
       boardId: currBoardId,
       columnId: currColumnId,
-      index: index
+      index: index,
     };
-    console.log(newCard)
+    console.log(newCard);
     dispatch(postCard(newCard));
     dispatch(closeModal());
   };
@@ -103,11 +109,8 @@ export const AddCardForm = () => {
             <span className={css.span}> Today,</span>
           ) : null}
           <Calendar
-           
             selectedDate={selectedDate}
-            onDateChange={date => {
-              setSelectedDate(date);
-            }}
+            onDateChange={handleDataChange}
           />
         </div>
         <button type="submit" className={css.formButton}>

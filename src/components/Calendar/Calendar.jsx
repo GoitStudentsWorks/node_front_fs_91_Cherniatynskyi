@@ -3,24 +3,35 @@ import DatePicker from 'react-datepicker';
 import { enGB } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import css from './Calendar.module.css';
+import { forwardRef } from 'react';
+
+const CustomInputWrapper = forwardRef(({ value, onClick }, ref) => (
+  <button
+    type="button"
+    className={css.inputCalendar}
+    onClick={onClick}
+    ref={ref}
+  >
+    {value}
+  </button>
+));
 
 export function Calendar({ selectedDate, onDateChange }) {
-  const handleDateChange = (date) => {
+  const handleDateChange = date => {
     onDateChange(date);
   };
 
-  const today = new Date();
-  const isToday =
-    selectedDate.getDate() === today.getDate() &&
-    selectedDate.getMonth() === today.getMonth() &&
-    selectedDate.getFullYear() === today.getFullYear();
+  // const today = new Date();
+  // const isToday =
+  //   selectedDate.getDate() === today.getDate() &&
+  //   selectedDate.getMonth() === today.getMonth() &&
+  //   selectedDate.getFullYear() === today.getFullYear();
 
   return (
-    <div >
+    <div>
       <DatePicker
         calendarClassName={css.calendar}
         dayClassName={() => css.day}
-        
         renderCustomHeader={({
           date,
           decreaseMonth,
@@ -29,7 +40,11 @@ export function Calendar({ selectedDate, onDateChange }) {
           nextMonthButtonDisabled,
         }) => (
           <div className={css.header}>
-            <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+            <button
+              type="button"
+              onClick={decreaseMonth}
+              disabled={prevMonthButtonDisabled}
+            >
               {'<'}
             </button>
             <span>
@@ -38,7 +53,11 @@ export function Calendar({ selectedDate, onDateChange }) {
                 year: 'numeric',
               })}
             </span>
-            <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+            <button
+              type="button"
+              onClick={increaseMonth}
+              disabled={nextMonthButtonDisabled}
+            >
               {'>'}
             </button>
           </div>
@@ -49,13 +68,8 @@ export function Calendar({ selectedDate, onDateChange }) {
         minDate={new Date()}
         locale={enGB}
         weekStartsOn={0}
-        renderCustomInput={({ value, onClick }) => (
-          <input
-            className={css.customInput}
-            value={isToday ? '' : value}
-            onClick={onClick}
-          />
-        )}
+        popoverPlacement="bottom"
+        customInput={<CustomInputWrapper />}
         className={css.inputCalendar}
         weekDayClassName={() => css.weekDay}
       />
