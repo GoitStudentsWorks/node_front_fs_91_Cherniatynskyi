@@ -9,29 +9,35 @@ import { clearColumns } from '../../../redux/column/columnSlice';
 
 export const Board = ({ board }) => {
   const dispatch = useDispatch();
-  const navigate= useNavigate()
-  const currBoardId = useSelector(state => state.boards.currentBoardId)
+  const navigate = useNavigate();
+  const currBoardId = useSelector(state => state.boards.currentBoardId);
 
   const handleEditBoard = () => {
     dispatch(openModal({ content: 'edit-board', id: `${board._id}` }));
   };
-  const handleNavigate = (e) =>{
-    if(e.dataset === 'icon'){
-      return
+  const handleNavigate = e => {
+    if (e.dataset === 'icon') {
+      return;
     }
-    navigate(`/home/${board._id}`)
-    dispatch(setCurrentBoardId(board._id))
-    dispatch(closeSidebar())
-    if(board._id !== currBoardId){
-      dispatch(clearColumns())
+    navigate(`/home/${board._id}`);
+    dispatch(setCurrentBoardId(board._id));
+    dispatch(closeSidebar());
+    if (board._id !== currBoardId) {
+      dispatch(clearColumns());
     }
-  }
+  };
 
-  const handleWarningBoard =()=>{
-    dispatch (openModal({content:'warning-dell', id: board}))
-  }
+  const handleWarningBoard = () => {
+    dispatch(openModal({ content: 'warning-dell', id: board }));
+  };
   return (
-    <li id='boardBtn' onClick={handleNavigate} className={css.boardItem}>
+    <li
+      id="boardBtn"
+      onClick={handleNavigate}
+      className={`${css.boardItem} ${
+        board._id === currBoardId ? css.active : ''
+      }`}
+    >
       <div className={css.boardTitleBox}>
         <svg width="18" height="18" className={css.boardIcon}>
           <use href={`${sprite}#icon-${board.icon}`} />
@@ -39,8 +45,17 @@ export const Board = ({ board }) => {
         <p className={css.boardText}>{board.name}</p>
       </div>
       <div className={css.boardButtonBox}>
-        <button data-icon="icon" onClick={handleEditBoard} className={css.boardButton}>
-          <svg data-icon="icon" className={css.iconButton} width="16" height="16">
+        <button
+          data-icon="icon"
+          onClick={handleEditBoard}
+          className={css.boardButton}
+        >
+          <svg
+            data-icon="icon"
+            className={css.iconButton}
+            width="16"
+            height="16"
+          >
             <use data-icon="icon" href={`${sprite}#icon-pencil`} />
           </svg>
         </button>
@@ -49,7 +64,12 @@ export const Board = ({ board }) => {
           onClick={handleWarningBoard}
           data-icon="icon"
         >
-          <svg data-icon="icon" className={css.iconButton} width="16" height="16">
+          <svg
+            data-icon="icon"
+            className={css.iconButton}
+            width="16"
+            height="16"
+          >
             <use data-icon="icon" href={`${sprite}#icon-trash`} />
           </svg>
         </button>
