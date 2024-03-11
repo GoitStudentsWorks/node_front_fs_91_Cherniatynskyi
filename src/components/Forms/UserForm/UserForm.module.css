@@ -70,7 +70,7 @@
 .iconBtnPlus {
   position: absolute;
   bottom: 0;
-  background-color: var(--accentColor);
+  background-color: var(--boardAddIconBg);
   width: 24px;
   height: 24px;
   border-radius: 5px;
@@ -87,7 +87,7 @@
 .fieldWrapper {
   display: flex;
   position: relative;
-  border: 1px solid var(--boardAddIconBg);
+  border: 1px solid var(--inputsBorderColor);
   border-radius: 8px;
   padding: 0;
   width: 287px;
@@ -95,7 +95,7 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 14px;
-  background-color: #151515;
+  background-color: var(--inputsBgColor);
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
@@ -105,6 +105,7 @@
 }
 
 .fieldWrapper:hover {
+  border: 1px solid var(--imputBoarderHovetColor);
   opacity: 1;
 }
 .fieldWrapper:active {
@@ -124,7 +125,7 @@
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
-  background-color: #151515;
+  background-color: var(--inputsBgColor) !important;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
@@ -136,12 +137,12 @@
 }
 
 .field:hover {
-  background: #1f1f1f;
+  background: var(--inputsBgColor);
   opacity: 1;
 }
 
 .field:active {
-  background: #1f1f1f;
+  background: var(--inputsBgColor);
   opacity: 1;
 }
 
@@ -183,7 +184,7 @@
 }
 
 .btnSend:hover {
-  background: #9dc888;
+  background: var(--accentColorHover);
   position: relative;
   cursor: pointer;
 }
@@ -210,7 +211,8 @@
 
 .iconEye {
   stroke-width: 1.3px;
-  stroke: var(--mainTextColor);
+  stroke: var(--inputsPlaceholderColor);
+  fill: var(--inputsBgColor);
 }
 
 .iconEye:hover {
