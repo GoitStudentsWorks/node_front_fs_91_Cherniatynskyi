@@ -8,11 +8,13 @@ import { deleteBoard } from '../../redux/board/boardThunks';
 import { deleteColumn } from '../../redux/column/columnThunk';
 import { updateColumnId } from '../../redux/card/cardThunk';
 import { closeModal } from '../../redux/modalSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const WarningDell = ()=> {
  const dispatch = useDispatch();
+ const navigate = useNavigate()
   const { selectedElId } = useSelector(state => state.modal);
   const allCards = useSelector(state=> state.cards.cards)
 
@@ -32,6 +34,7 @@ export const WarningDell = ()=> {
     }
     if(selectedElId.icon){
       dispatch(deleteBoard(selectedElId._id))
+      navigate('/home')
       dispatch(closeModal())
       return
     }
