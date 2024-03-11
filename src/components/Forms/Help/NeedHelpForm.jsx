@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import css from './NeedHelpForm.module.css';
 import { useState } from 'react';
 import { needHelpAction } from '../../../redux/needHelp/needHelpThunks';
+import { closeModal } from '../../../redux/modalSlice';
 
 // case 'need-help':
 // return <NeedHelpForm />; при рендері у ModalBody спінер додати
@@ -33,6 +34,7 @@ export const NeedHelpForm = () => {
 
     setEmail('');
     setComment('');
+    dispatch(closeModal())
   };
 
   return (
