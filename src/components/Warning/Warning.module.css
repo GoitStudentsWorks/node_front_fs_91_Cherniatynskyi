@@ -58,6 +58,16 @@ width: 100%;
   cursor: pointer;
 }
 
-.WButton:hover {
+.btnDel{
+    background-color: rgb(168, 8, 8);
+    color: white;
+}
+
+.btnDel:hover{
+    background-color: rgb(209, 10, 10);
+}
+
+.btnCnl:hover{
     background-color: var(--accentColorHover);
-  }
+}
+

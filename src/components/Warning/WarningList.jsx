@@ -5,8 +5,8 @@ export const WarningList = ({onDelete, onCancel, onLogout})=> {
   return (
     
         <ul className={css.WList}>
-            <li className={css.WItem}><button className={css.WButton}type="submit" onClick={onDelete ?? onLogout}>Yes</button></li>
-            <li className={css.WItem}><button className={css.WButton}type="button" onClick={onCancel}>No</button></li>
+            <li className={css.WItem}><button className={`${css.WButton} ${css.btnDel}`}type="submit" onClick={onDelete ?? onLogout}>Delete</button></li>
+            <li className={css.WItem}><button className={`${css.WButton} ${css.btnCnl}`}type="button" onClick={onCancel}>Cancel</button></li>
         </ul>
    
   )
