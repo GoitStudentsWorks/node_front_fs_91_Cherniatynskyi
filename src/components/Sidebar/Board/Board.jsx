@@ -2,7 +2,6 @@ import css from './Board.module.css';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../../redux/modalSlice';
-import { deleteBoard } from '../../../redux/board/boardThunks';
 import { closeSidebar } from '../../../redux/modalSlice';
 import { useNavigate } from 'react-router-dom';
 import { setCurrentBoardId } from '../../../redux/board/boardSlice';
@@ -14,7 +13,6 @@ export const Board = ({ board }) => {
   const handleEditBoard = () => {
     dispatch(openModal({ content: 'edit-board', id: `${board._id}` }));
   };
-console.log(board);
   const handleNavigate = (e) =>{
     if(e.dataset === 'icon'){
       return
@@ -24,10 +22,6 @@ console.log(board);
     dispatch(closeSidebar())
   }
 
-  // const handleDelete = () =>{
-  //   navigate('/home')
-  //   dispatch(deleteBoard(board._id))
-  // }
   const handleWarningBoard =()=>{
     dispatch (openModal({content:'warning-dell', id: board}))
   }

@@ -6,7 +6,6 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Board } from './Board/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeSidebar } from '../../redux/modalSlice';
-import { logoutThunk } from '../../redux/auth/authThunks';
 import { selectBoards } from '../../redux/board/selectors';
 import { useEffect } from 'react';
 import { fetchBoards } from '../../redux/board/boardThunks';
@@ -35,9 +34,6 @@ export const Sidebar = () => {
     }
   };
 
-  // const handleLogout = () => {
-  //   dispatch(logoutThunk());
-  // };
   const handleLogout =()=>{
     dispatch (openModal({content:'warning-logout'}))
   }

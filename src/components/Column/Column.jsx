@@ -4,7 +4,6 @@ import { openModal } from '../../redux/modalSlice';
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useDispatch } from 'react-redux';
 import { setCurrentColumnId } from '../../redux/column/columnSlice';
-import { deleteColumn } from '../../redux/column/columnThunk';
 
 export const Column = ({ children, column }) => {
   const dispatch = useDispatch();
@@ -15,9 +14,6 @@ export const Column = ({ children, column }) => {
     dispatch(setCurrentColumnId(column._id))
   };
 
-  // const handleColumnDelete = () =>{
-  //   dispatch(deleteColumn(column._id))
-  // }
 
   const handleEditColumn = () => {
     dispatch(openModal({ content: 'edit-column', id:`${column._id}`}));

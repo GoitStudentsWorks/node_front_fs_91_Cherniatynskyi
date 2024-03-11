@@ -6,40 +6,38 @@ import { deleteCard } from '../../redux/card/cardThunk';
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../redux/board/boardThunks';
 import { deleteColumn } from '../../redux/column/columnThunk';
+import { closeModal } from '../../redux/modalSlice';
 
 
 
 export const WarningDell = ()=> {
  const dispatch = useDispatch();
   const { selectedElId } = useSelector(state => state.modal);
+  console.log(selectedElId)
 
-
-const deleteCase = id =>{
-  if(selectedElId.hasOwnProperty("deadline")){
-    return deleteCard(id)
-  }else if (selectedElId.hasOwnProperty("icon")){
-    return deleteBoard(id)
-  }else {
-    return deleteColumn (id)
-  }
-}
-const title = () =>{
-  if(selectedElId.hasOwnProperty("deadline")){
-    return "Card"
-  }else if (selectedElId.hasOwnProperty("icon")){
-    return "Board"
-  }else {
-    return "Column"
-  }
-}
-  const handleDelete = (e) =>{
-        dispatch(deleteCase(selectedElId._id))
+  const handleDelete = () =>{
+    if(selectedElId.deadline){
+      dispatch(deleteCard(selectedElId._id))
+      dispatch(closeModal())
+      return
     }
-//Додумати закриття при підтвердженні
+    if(selectedElId.icon){
+      dispatch(deleteBoard(selectedElId._id))
+      dispatch(closeModal())
+      return
+    }
+    dispatch(deleteColumn(selectedElId._id))
+    dispatch(closeModal())
+  }
+
+  const handleCancel = () =>{
+    dispatch(closeModal())
+  }
+
   return (
     <div className={css.WDWrapper}>
-        <p className={css.WDText}>Are you sure you want to delete <span className={css.WDTitle}>{title()} title {selectedElId.title}</span></p>
-        <WarningList  confirm ={e=>handleDelete()}/>
+        <p className={css.WDText}>Are you sure you want to delete <span className={css.WDTitle}>{selectedElId.title ?? selectedElId.name}</span></p>
+        <WarningList onDelete={handleDelete} onCancel={handleCancel}/>
     </div>
   )
 }
