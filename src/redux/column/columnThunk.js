@@ -35,7 +35,9 @@ export const deleteColumn = createAsyncThunk(
   'columns/deleteColumn',
   async (id, { rejectWithValue }) => {
     try {
-      return await ColumnService.fetchDeleteColumn(id);
+      const data = await ColumnService.fetchDeleteColumn(id);
+      toast.success(`${data.data.message}`);
+      return data;
     } catch (error) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'
@@ -49,8 +51,9 @@ export const updateColumn = createAsyncThunk(
   'columns/updateColumn',
   async ({ id, newColumn }, { rejectWithValue }) => {
     try {
+      const data = await ColumnService.fetchUpdateColumn(id, newColumn);
       toast.success('Your column was successfully updated');
-      return await ColumnService.fetchUpdateColumn(id, newColumn);
+      return data;
     } catch (error) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'
