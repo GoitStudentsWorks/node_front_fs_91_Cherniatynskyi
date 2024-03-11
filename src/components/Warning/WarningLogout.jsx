@@ -19,8 +19,8 @@ export const WarningLogout = ()=> {
   }
 
   return (
-    <div className={css.awrningWrapper}>
-        <p className={css.warningText}>Are you sure you want to Log Out</p>
+    <div className={css.WDWrapper}>
+        <p className={css.WDText}>Are you sure you want to Log Out</p>
         <WarningList onLogout={handleLogout} onCancel={handleCancel}/>
     </div>
   )
