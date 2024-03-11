@@ -6,6 +6,7 @@ import { deleteCard } from '../../redux/card/cardThunk';
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../redux/board/boardThunks';
 import { deleteColumn } from '../../redux/column/columnThunk';
+import { updateColumnId } from '../../redux/card/cardThunk';
 import { closeModal } from '../../redux/modalSlice';
 
 
@@ -13,11 +14,19 @@ import { closeModal } from '../../redux/modalSlice';
 export const WarningDell = ()=> {
  const dispatch = useDispatch();
   const { selectedElId } = useSelector(state => state.modal);
-  console.log(selectedElId)
+  const allCards = useSelector(state=> state.cards.cards)
 
   const handleDelete = () =>{
     if(selectedElId.deadline){
       dispatch(deleteCard(selectedElId._id))
+      const currCards = allCards.filter(c => c.columnId === selectedElId.columnId)
+      currCards.forEach(c => {
+      if((c.index < selectedElId.index) || (c._id === selectedElId._id)){
+        return
+      }
+      dispatch(updateColumnId({id: c._id, columnId: c.columnId, index: c.index - 1}))
+    });
+
       dispatch(closeModal())
       return
     }
