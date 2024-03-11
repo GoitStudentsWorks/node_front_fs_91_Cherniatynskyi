@@ -5,6 +5,7 @@ import { openModal } from '../../../redux/modalSlice';
 import { closeSidebar } from '../../../redux/modalSlice';
 import { useNavigate } from 'react-router-dom';
 import { setCurrentBoardId } from '../../../redux/board/boardSlice';
+import { clearColumns } from '../../../redux/column/columnSlice';
 
 export const Board = ({ board }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Board = ({ board }) => {
     }
     navigate(`/home/${board._id}`)
     dispatch(setCurrentBoardId(board._id))
+    dispatch(clearColumns())
     dispatch(closeSidebar())
   }
 

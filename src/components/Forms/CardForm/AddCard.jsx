@@ -10,7 +10,7 @@ import { priorityEnum } from 'utils/priorityObject';
 export const AddCardForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState('Without priority');
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const currBoardId = useSelector(state => state.boards.currentBoardId);
@@ -91,6 +91,7 @@ export const AddCardForm = () => {
                     value={pr.title}
                     onChange={e => handlePriorityChange(e)}
                     required
+                    checked = {priority === 'Without priority'}
                   />
                   <span
                     style={{ backgroundColor: `${pr.color}` }}
