@@ -35,7 +35,9 @@ export const deleteCard = createAsyncThunk(
   'cards/deleteCard',
   async (id, { rejectWithValue }) => {
     try {
-      return await CardServices.fetchDeleteCard(id);
+      const data = await CardServices.fetchDeleteCard(id);
+      toast.success(`${data.data.message}`);
+      return data;
     } catch (error) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'
@@ -49,8 +51,9 @@ export const updateCard = createAsyncThunk(
   'cards/updateCard',
   async ({ id, newCard }, { rejectWithValue }) => {
     try {
+      const data = await CardServices.fetchUpdateCard(id, newCard);
       toast.success('Your card was successfully updated');
-      return await CardServices.fetchUpdateCard(id, newCard);
+      return data;
     } catch (error) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'

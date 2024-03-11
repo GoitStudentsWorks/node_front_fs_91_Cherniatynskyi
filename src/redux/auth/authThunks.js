@@ -105,8 +105,9 @@ export const updaterUserData = createAsyncThunk(
   'auth/updateUser',
   async (body, { rejectWithValue }) => {
     try {
+      const data = await updateUser(body);
       toast.success('Your information successfully updated');
-      return await updateUser(body);
+      return data;
     } catch (error) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'
