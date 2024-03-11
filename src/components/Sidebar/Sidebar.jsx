@@ -2,18 +2,19 @@ import css from './Sidebar.module.css';
 import sprite from '../../images/sprite.svg';
 import pot from '../../images/need-help/pot.png';
 import pot2x from '../../images/need-help/pot2x.png';
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Board } from './Board/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeSidebar } from '../../redux/modalSlice';
 import { selectBoards } from '../../redux/board/selectors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchBoards } from '../../redux/board/boardThunks';
 
 export const Sidebar = () => {
+  const [active, setActive] = useState(null);
   const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
-  const [listRef] = useAutoAnimate()
+  const [listRef] = useAutoAnimate();
 
   useEffect(() => {
     dispatch(fetchBoards());
@@ -34,9 +35,9 @@ export const Sidebar = () => {
     }
   };
 
-  const handleLogout =()=>{
-    dispatch (openModal({content:'warning-logout'}))
-  }
+  const handleLogout = () => {
+    dispatch(openModal({ content: 'warning-logout' }));
+  };
   return (
     <div
       onClick={e => handleCloseSidebar(e)}
@@ -69,7 +70,12 @@ export const Sidebar = () => {
         {boards.length > 0 && (
           <ul className={css.bordList} ref={listRef}>
             {boards.map(board => (
-              <Board key={board._id} board={board}></Board>
+              <Board
+                key={board._id}
+                board={board}
+                active={active}
+                setActive={setActive}
+              ></Board>
             ))}
           </ul>
         )}
