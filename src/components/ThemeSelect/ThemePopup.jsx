@@ -6,8 +6,10 @@ export const ThemePopup = ({ onSelectClose, isOpen }) => {
   const dispatch = useDispatch();
 
   const handleChangeTheme = e => {
-    console.log(e.target.id);
-    dispatch(updaterUserTheme({ theme: `${e.target.id}` }));
+    const selectedTheme = e.target.id;
+
+    localStorage.setItem('theme', selectedTheme);
+    dispatch(updaterUserTheme({ theme: selectedTheme }));
     onSelectClose();
   };
 
