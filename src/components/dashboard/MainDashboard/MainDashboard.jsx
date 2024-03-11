@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getCards} from '../../../redux/card/cardThunk';
 import {getColumns} from '../../../redux/column/columnThunk';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { Spinner } from 'components/Spinner';
 
 const MainDashboard = ({ board }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const MainDashboard = ({ board }) => {
   const stateCards = useSelector(state => state.cards.cards)
   const filterValue = useSelector(state => state.filter.filterValue)
   const [listRef] = useAutoAnimate()
+  const isLoading = useSelector(state => state.cards.isLoading)
 
   useEffect(() => {
     if(board){
@@ -31,6 +33,7 @@ const MainDashboard = ({ board }) => {
 
   return (
     <DragDropContext>
+      {isLoading && <Spinner></Spinner>}
       <div className={css.boardWrap}>
       <ul className={css.columnsList} ref={listRef}>
         {stateColumns && stateColumns.map(col => {

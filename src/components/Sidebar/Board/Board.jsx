@@ -1,6 +1,6 @@
 import css from './Board.module.css';
 import sprite from '../../../images/sprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../../redux/modalSlice';
 import { closeSidebar } from '../../../redux/modalSlice';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { clearColumns } from '../../../redux/column/columnSlice';
 export const Board = ({ board }) => {
   const dispatch = useDispatch();
   const navigate= useNavigate()
+  const currBoardId = useSelector(state => state.boards.currentBoardId)
 
   const handleEditBoard = () => {
     dispatch(openModal({ content: 'edit-board', id: `${board._id}` }));
@@ -20,8 +21,10 @@ export const Board = ({ board }) => {
     }
     navigate(`/home/${board._id}`)
     dispatch(setCurrentBoardId(board._id))
-    dispatch(clearColumns())
     dispatch(closeSidebar())
+    if(board._id !== currBoardId){
+      dispatch(clearColumns())
+    }
   }
 
   const handleWarningBoard =()=>{
