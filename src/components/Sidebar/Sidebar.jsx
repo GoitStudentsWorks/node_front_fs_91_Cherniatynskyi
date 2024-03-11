@@ -7,11 +7,10 @@ import { Board } from './Board/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeSidebar } from '../../redux/modalSlice';
 import { selectBoards } from '../../redux/board/selectors';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { fetchBoards } from '../../redux/board/boardThunks';
 
 export const Sidebar = () => {
-  const [active, setActive] = useState(null);
   const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
   const [listRef] = useAutoAnimate();
@@ -70,16 +69,10 @@ export const Sidebar = () => {
         {boards.length > 0 && (
           <ul className={css.bordList} ref={listRef}>
             {boards.map(board => (
-              <Board
-                key={board._id}
-                board={board}
-                active={active}
-                setActive={setActive}
-              ></Board>
+              <Board key={board._id} board={board}></Board>
             ))}
           </ul>
         )}
-
         {/* need help */}
         <div className={css.helpBox}>
           <div className={css.helpTextBox}>
