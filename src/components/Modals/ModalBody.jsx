@@ -13,6 +13,7 @@ import { UserForm } from 'components/Forms/UserForm/UserForm';
 import { AddCardForm } from 'components/Forms/CardForm/AddCard';
 import { EditCardForm } from 'components/Forms/CardForm/EditCard';
 import { WarningDell } from 'components/Warning/WarningDell';
+import { WarningLogout } from 'components/Warning/WarningLogout';
 
 export const ModalBody = () => {
   const dispatch = useDispatch();
@@ -67,7 +68,9 @@ export const ModalBody = () => {
         return <AddCardForm />;
       case 'warning-dell':
         return <WarningDell/>
-
+      case 'warning-logout':
+          return <WarningLogout/>
+  
       default:
         break;
     }

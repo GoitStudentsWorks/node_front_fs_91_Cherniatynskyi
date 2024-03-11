@@ -15,14 +15,16 @@ export const Column = ({ children, column }) => {
     dispatch(setCurrentColumnId(column._id))
   };
 
-  const handleColumnDelete = () =>{
-    dispatch(deleteColumn(column._id))
-  }
+  // const handleColumnDelete = () =>{
+  //   dispatch(deleteColumn(column._id))
+  // }
 
   const handleEditColumn = () => {
     dispatch(openModal({ content: 'edit-column', id:`${column._id}`}));
   };
-
+  const handleWarningColumn =()=>{
+    dispatch (openModal({content:'warning-dell', id: column}))
+  }
   return (
     <li className={css.columnWrap}>
       <div>
@@ -34,7 +36,7 @@ export const Column = ({ children, column }) => {
                 <use href={`${sprite}#icon-pencil`}></use>
               </svg>
             </button>
-            <button onClick={handleColumnDelete} className={css.columnButton}>
+            <button onClick={handleWarningColumn} className={css.columnButton}>
               <svg className={css.columnIcon}>
                 <use href={`${sprite}#icon-trash`}></use>
               </svg>

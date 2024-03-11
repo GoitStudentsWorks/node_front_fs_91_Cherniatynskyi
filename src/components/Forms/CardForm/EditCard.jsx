@@ -9,6 +9,7 @@ import { priorityEnum } from 'utils/priorityObject';
 
 export const EditCardForm = () => {
   const { selectedElId } = useSelector(state => state.modal);
+  console.log(selectedElId);
   const stateCards = useSelector(state => state.cards.cards)
   const currentCard = stateCards.find(card=> card._id === selectedElId)
   const dispatch = useDispatch();
