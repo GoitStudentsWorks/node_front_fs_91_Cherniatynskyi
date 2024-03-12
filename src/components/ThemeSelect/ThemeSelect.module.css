@@ -17,7 +17,7 @@
   border-radius: 8px;
 }
 
-.menuTheme:hover .iconChevronDown{
+.menuTheme:hover .iconChevronDown {
   background-color: var(--lightBgColor);
 }
 
@@ -44,8 +44,7 @@
   cursor: pointer;
 }
 
-
-.menuList{
+.menuList {
   position: absolute;
   display: flex;
   gap: 5px;
@@ -63,7 +62,7 @@
   cursor: default;
 }
 
-.menuItem{
+.menuItem {
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -72,14 +71,24 @@
 
   color: var(--secondaryTextColor);
   cursor: pointer;
+}
 
+.activ {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  color: var(--accentColor);
+  cursor: pointer;
 }
 
 .menuItem:hover {
   color: var(--accentColor);
 }
 
-.menuListHidden{
+.menuListHidden {
   padding: 0 15px;
   opacity: 0;
   top: 70%;
@@ -87,4 +96,3 @@
   border: none;
   overflow: hidden;
 }
-
