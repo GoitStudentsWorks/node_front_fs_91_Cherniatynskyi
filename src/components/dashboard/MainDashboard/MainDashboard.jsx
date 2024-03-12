@@ -8,7 +8,8 @@ import { openModal } from '../../../redux/modalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCards} from '../../../redux/card/cardThunk';
 import {getColumns} from '../../../redux/column/columnThunk';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { updateColumnId } from '../../../redux/card/cardThunk';
 
 
 const MainDashboard = ({ board }) => {
@@ -31,26 +32,70 @@ const MainDashboard = ({ board }) => {
     dispatch(openModal({ content: 'add-column' }));
   };
 
+
+  const handleDragEnd = (result) =>{
+    const {draggableId, destination, source} = result
+    
+    if((destination.droppableId === source.droppableId) & (destination.index === source.index)){
+      return
+    }
+
+    if((destination.droppableId === source.droppableId)){
+      dispatch(updateColumnId({id: draggableId, columnId: destination.droppableId, index: destination.index}))
+      const changedCard = stateCards.filter(c => c.columnId === source.droppableId).find(card => card.index === destination.index)
+      dispatch(updateColumnId({id: changedCard._id, columnId: destination.droppableId, index: source.index}))
+      return
+    }
+
+
+    dispatch(updateColumnId({id: draggableId, columnId: destination.droppableId, index: destination.index}))
+    const srcCards = stateCards.filter(c => c.columnId === source.droppableId)
+    const dstnCards = stateCards.filter(c => c.columnId === destination.droppableId)
+
+    srcCards.forEach(c => {
+      if((c.index < source.index) || (c._id === draggableId)){
+        return
+      }
+      dispatch(updateColumnId({id: c._id, columnId: c.columnId, index: c.index - 1}))
+    });
+
+    dstnCards.forEach(c => {
+      if((c.index < destination.index)){
+        return
+      }
+      dispatch(updateColumnId({id: c._id, columnId: c.columnId, index: c.index + 1}))
+    });
+
+  }
+
   return (
-    <DragDropContext>
       <div className={css.boardWrap}>
+      <DragDropContext onDragEnd={handleDragEnd}>
       <ul className={css.columnsList} ref={listRef}>
         {stateColumns && stateColumns.map(col => {
           return (
             <Column key={col._id} column={col} >
-              {stateCards && stateCards
-                .filter(card => {
-                  if(card.columnId === col._id){
-                    if(filterValue){
-                      return (card.priority === filterValue)
+            <Droppable droppableId={col._id}>
+              {(provided) => (
+                  <ul className={css.columnList} ref={provided.innerRef} {...provided.droppableProps}>
+                  {stateCards && stateCards
+                  .filter(card => {
+                    if(card.columnId === col._id){
+                      if(filterValue){
+                        return (card.priority === filterValue)
+                      }
+                      return true
                     }
-                    return true
-                  }
-                  return false
-                }).sort(function(a,b){return a.index-b.index})
-                .map(card => {
-                  return <Card key={card._id} card={card} />;
-                })}
+                    return false
+                  }).sort(function(a,b){return a.index-b.index})
+                  .map(card => {
+                    return (<Card key={card._id} card={card}/>);
+                  })}
+                  {provided.placeholder}
+                  </ul> 
+              
+              )}
+              </Droppable>
             </Column>
           );
         })}
@@ -63,8 +108,8 @@ const MainDashboard = ({ board }) => {
           </div>
         </button>
       </ul>
+      </DragDropContext>
     </div>
-    </DragDropContext>
     
   );
 };

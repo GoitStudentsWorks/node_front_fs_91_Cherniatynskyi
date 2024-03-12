@@ -22,7 +22,6 @@ export const AddCardForm = () => {
   const dispatch = useDispatch();
 
   const handleTitleChange = e => {
-    console.log(allCards);
     setTitle(e.target.value);
   };
 
@@ -50,7 +49,6 @@ export const AddCardForm = () => {
       columnId: currColumnId,
       index: index,
     };
-    console.log(newCard);
     dispatch(postCard(newCard));
     dispatch(closeModal());
   };
@@ -91,7 +89,7 @@ export const AddCardForm = () => {
                     value={pr.title}
                     onChange={e => handlePriorityChange(e)}
                     required
-                    checked = {priority === 'Without priority'}
+                    checked = {priority === pr.title}
                   />
                   <span
                     style={{ backgroundColor: `${pr.color}` }}

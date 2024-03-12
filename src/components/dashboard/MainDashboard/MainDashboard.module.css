@@ -96,3 +96,37 @@
   font-size: 14px;
   letter-spacing: -0.02em;
 }
+
+.columnList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 4px;
+  padding-top: 4px;
+  margin-bottom: 14px;
+  transition: 600ms linear;
+
+  @media (min-width: 768px) {
+    padding-right: 8px;
+  }
+}
+
+.columnList::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--darkBgColor);
+  border-radius: 8px;
+}
+
+.columnList::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  width: 4px;
+  border: none;
+  background-color: #404040;
+}
+
+.test{
+  background-color: aqua;
+  padding: 20px;
+}

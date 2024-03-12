@@ -1,14 +1,14 @@
 import css from './Column.module.css';
 import sprite from '../../images/sprite.svg';
 import { openModal } from '../../redux/modalSlice';
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+// import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useDispatch } from 'react-redux';
 import { setCurrentColumnId } from '../../redux/column/columnSlice';
 
 export const Column = ({ children, column }) => {
   const dispatch = useDispatch();
 
-  const [listRef] = useAutoAnimate()
+  // const [listRef] = useAutoAnimate()
   const handleAddCard = () => {
     dispatch(openModal({ content: 'add-card' }));
     dispatch(setCurrentColumnId(column._id))
@@ -39,7 +39,7 @@ export const Column = ({ children, column }) => {
             </button>
           </div>
         </div>
-        <ul className={css.columnList} ref={listRef}>{children}</ul>
+        {children}
 
         <button onClick={handleAddCard} className={css.columnAddButton}>
           <svg className={css.addColumnIcon}>
