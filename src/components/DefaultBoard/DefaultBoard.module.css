@@ -1,28 +1,27 @@
-.boardDefault{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.boardDefault {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 
-    background-color: var(--lightBgColor);
+  background-color: var(--lightBgColor);
 }
 
-.boardDefaultText{
-    max-width: 486px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.02em;
-    text-align: center;
-    margin-top: -60px;
+.boardDefaultText {
+  max-width: 486px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-top: -60px;
 
-    color: var(--secondaryTextColor);
-    
+  color: var(--secondaryTextColor);
 }
 
-.boardDefaultLink{
-    color: var(--accentColor);
-    cursor: pointer;
+.boardDefaultLink {
+  color: var(--accentColor);
+  cursor: pointer;
 }
