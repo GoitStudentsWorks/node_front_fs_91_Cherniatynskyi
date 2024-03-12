@@ -207,7 +207,7 @@
 
 
 [data-dragging="true"] .cardWrapper{
-        transform: rotateZ(8deg);
+        transform: rotateZ(5deg);
         border: 0.1px solid var(--accentColor);
 }
 

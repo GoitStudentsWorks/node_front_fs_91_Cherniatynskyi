@@ -42,7 +42,7 @@ export const ThemeSelect = () => {
           <use data-popup="popupBtn"  href={`${sprite}#icon-chevron-down`} />
         </svg>
       </button>
-      <ThemePopup onSelectClose={onSelectClose} isOpen={isOpen}/>
+      {isOpen && <ThemePopup onSelectClose={onSelectClose} isOpen={isOpen}/>}
     </div>
   );
 };
