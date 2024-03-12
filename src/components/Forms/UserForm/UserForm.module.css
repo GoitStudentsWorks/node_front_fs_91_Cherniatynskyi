@@ -1,12 +1,3 @@
-.formWrap {
-  width: 400px;
-  height: 440px;
-  background-color: var(--modalBgColor);
-  border-radius: 8px;
-  border: 0.1px solid var(--inputsBorderColor);
-  padding: 30px 24px;
-  min-width: 320px;
-}
 
 .formTitle {
   font-weight: 500;
@@ -16,13 +7,11 @@
   color: var(--mainTextColor);
   text-align: left;
   margin-bottom: 24px;
-  margin-left: 20px;
 }
 
 @media (min-width: 375px) {
   .formWrap {
     width: 350px;
-    height: 453px;
   }
   .formTitle {
     margin-left: 0;
@@ -32,7 +21,6 @@
 @media (min-width: 768px) {
   .formWrap {
     width: 400px;
-    height: 440px;
   }
 }
 
@@ -94,7 +82,7 @@
   border: 1px solid var(--inputsBorderColor);
   border-radius: 8px;
   padding: 0;
-  width: 287px;
+  width: 100%;
   height: 49px;
   margin-right: auto;
   margin-left: auto;
@@ -118,7 +106,7 @@
 
 @media (min-width: 768px) {
   .fieldWrapper {
-    width: 352px;
+    width: 100%;
   }
 }
 
@@ -167,7 +155,7 @@
   border: none;
   border-radius: 8px;
   text-decoration: none;
-  width: 287px;
+  width: 100%;
   height: 49px;
   background-color: var(--accentColor);
   margin-top: 24px;
@@ -182,7 +170,7 @@
 
 @media (min-width: 768px) {
   .btnSend {
-    width: 352px;
+   width: 100%;
     height: 49px;
   }
 }

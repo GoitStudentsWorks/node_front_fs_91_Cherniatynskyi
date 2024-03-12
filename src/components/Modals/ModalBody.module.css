@@ -24,3 +24,33 @@
     width: 300px;
     height: 400px;
 }
+
+.formWrap {
+    width: 350px;
+    background-color: var(--modalBgColor);
+    border-radius: 8px;
+    border: 0.1px solid var(--inputsBorderColor);
+    padding: 30px 24px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .formWrap {
+      width: 300px;
+      padding: 20px 14px;
+    }
+  }
+  
+
+.closeButton{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    stroke: var(--mainTextColor);
+    background-color: inherit;
+    cursor: pointer;
+    transition: 200ms linear;
+  }
+
+  .closeButton:hover{
+    stroke: var(--accentColor);
+  }

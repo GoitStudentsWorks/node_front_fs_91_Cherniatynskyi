@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { closeModal } from '../../redux/modalSlice';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 import css from './ModalBody.module.css';
+import sprite from '../../images/sprite.svg';
 import { motion } from 'framer-motion';
 import { NewBoardForm } from 'components/Forms/BoardForm/NewBoardForm';
 import { EditBoardForm } from 'components/Forms/BoardForm/EditBoardForm';
@@ -47,6 +48,10 @@ export const ModalBody = () => {
     }
   };
 
+  const handleBtnClose = () =>{
+    dispatch(closeModal());
+  }
+
   const handleContent = content => {
     //ФУНКЦІЯ ВИЗНАЧЕННЯ РЕДНЕРУ КОНЕТНТУ. КОЖЕН КЕЙС ПОТРІБНО ПРОПИСАТИ
     switch (content) {
@@ -77,13 +82,22 @@ export const ModalBody = () => {
   };
 
   return (
+    
     <div onClick={e => backdropClose(e)} className={css.modalBackdrop}>
       <motion.div
         animate={{ y: '0%' }}
         initial={{ y: '100%' }}
         className={css.modalBody}
       >
-        {handleContent(modalContent)}
+        <button onClick={handleBtnClose} className={css.closeButton}>
+          <svg width="20" height="20" className={css.buttonIcon}>
+              <use href={`${sprite}#icon-close`} />
+            </svg>
+        </button>
+        <div className={css.formWrap}>
+          {handleContent(modalContent)}
+        </div>
+        
       </motion.div>
     </div>
   );

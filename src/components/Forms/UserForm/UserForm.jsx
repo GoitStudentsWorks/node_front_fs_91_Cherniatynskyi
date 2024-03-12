@@ -80,8 +80,7 @@ export const UserForm = () => {
 
   return (
     <>
-      <div className={css.formWrap}>
-        <h2 className={css.formTitle}>Edit profile</h2>
+      <h2 className={css.formTitle}>Edit profile</h2>
         <Formik
           initialValues={{
             avatar: '',
@@ -179,7 +178,6 @@ export const UserForm = () => {
             </button>
           </Form>
         </Formik>
-      </div>
     </>
   );
 };

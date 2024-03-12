@@ -1,13 +1,4 @@
 
-.formWrap {
-  width: 350px;
-  height: 453px;
-  background-color: var(--modalBgColor);
-  border-radius: 8px;
-  border: 0.1px solid var(--inputsBorderColor);
-  padding: 30px 24px;
-}
-
 .formTitle {
   font-size: 18px;
   font-weight: 500;
@@ -20,7 +11,7 @@
 }
 
 .formInput {
-  width: 300px;
+  width: 100%;
   height: 49px;
   background-color: var(--inputsBgColor);
   border: 1px solid var(--inputsBorderColor);
@@ -67,6 +58,13 @@
   gap: 20px;
   width: 98%;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 500px) {
+  .bgIconsWrap {
+    gap: 15px;
+    width: 92%;
+  }
 }
 
 .iconInput:after {

@@ -24,8 +24,8 @@ export const EditColumnForm = () => {
   };
 
   return (
-    <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Edit column</h2>
+    <>
+    <h2 className={css.formTitle}>Edit column</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
       <label htmlFor="name">
           <input
@@ -49,6 +49,6 @@ export const EditColumnForm = () => {
           Edit
         </button>
       </form>
-    </div>
+    </>
   );
 };

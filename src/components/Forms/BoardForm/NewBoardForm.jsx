@@ -54,7 +54,7 @@ export const NewBoardForm = () => {
   }
 
   return (
-    <div className={css.formWrap}>
+    <>
       <h2 className={css.formTitle}>New Board</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
@@ -128,6 +128,6 @@ export const NewBoardForm = () => {
           Create
         </button>
       </form>
-    </div>
+    </>
   );
 };

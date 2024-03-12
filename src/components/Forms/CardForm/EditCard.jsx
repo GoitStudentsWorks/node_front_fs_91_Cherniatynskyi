@@ -46,8 +46,8 @@ export const EditCardForm = () => {
   };
 
   return (
-    <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Edit Card</h2>
+    <>
+    <h2 className={css.formTitle}>Edit Card</h2>
       <form className={css.from} onSubmit={handleSubmitForm}>
         <input
           className={css.formInputTitle}
@@ -116,6 +116,6 @@ export const EditCardForm = () => {
           Edit
         </button>
       </form>
-    </div>
+    </>
   );
 };

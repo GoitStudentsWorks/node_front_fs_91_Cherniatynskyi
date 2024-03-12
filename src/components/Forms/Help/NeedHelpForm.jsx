@@ -38,8 +38,8 @@ export const NeedHelpForm = () => {
   };
 
   return (
-    <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Need help</h2>
+    <>
+    <h2 className={css.formTitle}>Need help</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="email">
           <input
@@ -66,6 +66,6 @@ export const NeedHelpForm = () => {
           Send
         </button>
       </form>
-    </div>
+    </>
   );
 };

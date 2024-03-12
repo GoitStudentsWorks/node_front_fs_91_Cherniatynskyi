@@ -56,7 +56,7 @@ export const AddCardForm = () => {
   };
 
   return (
-    <div className={css.formWrap}>
+    <>
       <h2 className={css.formTitle}>Add Card</h2>
       <form className={css.from} onSubmit={handleSubmitForm}>
         <input
@@ -123,6 +123,6 @@ export const AddCardForm = () => {
           Add
         </button>
       </form>
-    </div>
+    </>
   );
 };

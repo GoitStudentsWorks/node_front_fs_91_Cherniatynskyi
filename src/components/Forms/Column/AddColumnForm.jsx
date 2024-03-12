@@ -21,7 +21,7 @@ export const AddColumnForm= () => {
   };
 
   return (
-    <div className={css.formWrap}>
+    <>
       <h2 className={css.formTitle}>Add column</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
@@ -46,6 +46,6 @@ export const AddColumnForm= () => {
           Add
         </button>
       </form>
-    </div>
+    </>
   );
 };

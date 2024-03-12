@@ -56,8 +56,8 @@ export const EditBoardForm = () => {
   }
 
   return (
-    <div className={css.formWrap}>
-      <h2 className={css.formTitle}>Edit Board</h2>
+    <>
+    <h2 className={css.formTitle}>Edit Board</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
           <input
@@ -128,7 +128,7 @@ export const EditBoardForm = () => {
           Edit
         </button>
       </form>
-    </div> 
+    </>
   );
 
   
