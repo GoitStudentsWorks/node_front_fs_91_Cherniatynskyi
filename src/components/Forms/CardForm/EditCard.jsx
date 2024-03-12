@@ -95,11 +95,11 @@ export const EditCardForm = () => {
         </fieldset>
         <p className={css.deadlineStyle}>Deadline</p>
         <div className={css.deadlineContainer}>
-          {selectedDate.getDate() === new Date().getDate() &&
+          {/* {selectedDate.getDate() === new Date().getDate() &&
           selectedDate.getMonth() === new Date().getMonth() &&
           selectedDate.getFullYear() === new Date().getFullYear() ? (
             <span className={css.span}> Today,</span>
-          ) : null}
+          ) : null} */}
           <Calendar
             selectedDate={selectedDate}
             onDateChange={date => {
