@@ -88,3 +88,12 @@
 .menuItem:hover {
   color: var(--accentColor);
 }
+
+.menuListHidden {
+  padding: 0 15px;
+  opacity: 0;
+  top: 70%;
+  height: 0;
+  border: none;
+  overflow: hidden;
+}
