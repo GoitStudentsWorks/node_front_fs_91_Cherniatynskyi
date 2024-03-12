@@ -1,5 +1,3 @@
-
-
 .formTitle {
   font-size: 18px;
   font-weight: 500;
@@ -23,6 +21,13 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: var(--mainTextColor);
+  opacity: 0.4;
+}
+
+.formInput:hover,
+.formInput:active,
+.formInput:focus {
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
@@ -39,6 +44,15 @@
     letter-spacing: -0.02em;
     text-align: left;
     color: var(--mainTextColor);
+    opacity: 0.4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .formInput:hover,
+  .formInput:active,
+  .formInput:focus {
+    opacity: 1;
   }
 }
 
@@ -116,7 +130,6 @@
   margin-left: 0;
 }
 
-/* Hide the browser's default radio button */
 .container input {
   position: absolute;
   opacity: 0;
@@ -133,7 +146,6 @@
   width: 28px;
 }
 
-/* Create a custom radio button */
 .checkmark {
   position: absolute;
   top: 0;
@@ -154,7 +166,6 @@
   stroke: var(--secondaryTextColor);
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   stroke: var(--mainTextColor);
 }
@@ -164,7 +175,6 @@
   border-radius: 8px;
 }
 
-/* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
   background-color: inherit;
   fill: var(--modalBgColor);
@@ -188,12 +198,10 @@
   background-color: var(--accentColor);
   height: 49px;
   border-radius: 8px;
-
   font-size: 16px;
   font-weight: 500;
   line-height: 21px;
   letter-spacing: -0.02em;
-
   color: var(--reversedTextColor);
   cursor: pointer;
 }
