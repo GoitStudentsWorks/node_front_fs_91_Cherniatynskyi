@@ -16,12 +16,16 @@
   color: var(--mainTextColor);
   text-align: left;
   margin-bottom: 24px;
+  margin-left: 20px;
 }
 
 @media (min-width: 375px) {
   .formWrap {
     width: 350px;
     height: 453px;
+  }
+  .formTitle {
+    margin-left: 0;
   }
 }
 
