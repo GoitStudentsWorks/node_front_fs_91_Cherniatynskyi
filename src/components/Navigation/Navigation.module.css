@@ -1,5 +1,6 @@
 .navContainer {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   height: 60px;
@@ -48,6 +49,11 @@
   }
 }
 
+.spinner{
+  position: absolute;
+  left: 80px;
+}
+
 @media screen and (min-width: 1440px) {
   .navContainer {
     justify-content: flex-end;
@@ -55,5 +61,10 @@
 
   .buttonBurger {
     display: none;
+  }
+
+  .spinner{
+    position: absolute;
+    left: 20px;
   }
 }

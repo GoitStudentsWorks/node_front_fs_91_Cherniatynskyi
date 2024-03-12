@@ -1,6 +1,7 @@
 import css from '../HeaderDashboard/HeaderDashboard.module.css';
 import Filters from '../Filters/Filters';
 
+
 const HeaderDashboard = ({ board }) => {
   return (
     <div className={css.headDashWrap}>
