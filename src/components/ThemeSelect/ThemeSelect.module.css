@@ -73,6 +73,18 @@
   cursor: pointer;
 }
 
+.activ {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: left;
+
+  color: var(--accentColor);
+  cursor: pointer;
+
+}
+
 .menuItem:hover {
   color: var(--accentColor);
 }
