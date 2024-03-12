@@ -12,7 +12,7 @@
 }
 
 .active {
-  background-color: var(--lightBgColor);
+  background-color: var(--sidebarBgColor);
 }
 
 .active::after {
@@ -28,7 +28,7 @@
 }
 
 .boardItem:hover {
-  background-color: var(--lightBgColor);
+  background-color: var(--bordBgColor);
 }
 
 .boardItem:hover .boardButton {
