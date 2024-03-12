@@ -47,9 +47,9 @@ export const WarningDell = ()=> {
   }
 
   return (
-    <div className={css.WDWrapper}>
-        <p className={css.WDText}>Are you sure you want to delete <span className={css.WDTitle}>{selectedElId.title ?? selectedElId.name}</span></p>
+    <>
+       <p className={css.WDText}>Are you sure you want to delete <span className={css.WDTitle}>{selectedElId.title ?? selectedElId.name}</span></p>
         <WarningList onDelete={handleDelete} onCancel={handleCancel}/>
-    </div>
+    </>
   )
 }

@@ -19,9 +19,9 @@ export const WarningLogout = ()=> {
   }
 
   return (
-    <div className={css.WDWrapper}>
-        <p className={css.WDText}>Are you sure you want to Log Out</p>
-        <WarningList onLogout={handleLogout} onCancel={handleCancel}/>
-    </div>
+    <>
+    <p className={css.WDText}>Are you sure you want to Log Out</p>
+    <WarningList onLogout={handleLogout} onCancel={handleCancel}/>
+    </>
   )
 }
