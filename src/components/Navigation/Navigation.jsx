@@ -5,9 +5,11 @@ import { openSidebar } from '../../redux/modalSlice';
 import { UserMenu } from '../UserMenu/UserMenu.jsx';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect.jsx';
 import { HeaderSpinner } from 'components/Spinner';
+import { useTranslation } from 'react-i18next';
 
 export const Navigation = () => {
   const dispatch = useDispatch()
+  const {i18n} = useTranslation()
   const isLoading = useSelector(state => state.cards.isLoading)
   const { sideBarIsOpen } = useSelector(state => state.modal);
 
@@ -15,6 +17,10 @@ export const Navigation = () => {
     dispatch(openSidebar())
     console.log(sideBarIsOpen)
     
+  }
+
+  const handleLngChange = (language) =>{
+    i18n.changeLanguage(language)
   }
   return (
     <div className={css.navContainer}>
@@ -29,6 +35,8 @@ export const Navigation = () => {
         <ThemeSelect />
         <UserMenu />
       </div>
+      <button onClick={()=>handleLngChange('en')}>En</button>
+      <button onClick={()=>handleLngChange('uk')}>Uk</button>
     </div>
   );
 };

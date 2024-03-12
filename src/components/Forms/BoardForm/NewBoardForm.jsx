@@ -4,12 +4,14 @@ import { closeModal } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addBoard } from '../../../redux/board/boardThunks';
+import { useTranslation } from 'react-i18next';
 
 export const NewBoardForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [iconValue, setIconValue] = useState('four-circles');
   const [bgValue, setBgValue] = useState('1');
+  const {t} = useTranslation()
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -55,12 +57,12 @@ export const NewBoardForm = () => {
 
   return (
     <>
-      <h2 className={css.formTitle}>New Board</h2>
+      <h2 className={css.formTitle}>{t("form.new-title")}</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
           <input
             autoComplete="false"
-            placeholder="Title"
+            placeholder={t("form.new-placeholder")}
             onChange={e => handleChange(e)}
             value={title}
             className={css.formInput}
@@ -70,7 +72,7 @@ export const NewBoardForm = () => {
           />
         </label>
         <fieldset className={css.iconsForm}>
-          <legend className={css.iconsTitle}>Icons</legend>
+          <legend className={css.iconsTitle}>{t("form.new-icon")}</legend>
           <div className={css.iconsWrap}>
             {icValues.map(ic => {
               return (
@@ -93,7 +95,7 @@ export const NewBoardForm = () => {
           </div>
         </fieldset>
         <fieldset className={css.iconsForm}>
-          <legend className={css.iconsTitle}>Background</legend>
+          <legend className={css.iconsTitle}>{t("form.new-bg")}</legend>
           <div className={css.bgIconsWrap}>
             {bgValues.map(bg => {
               return (

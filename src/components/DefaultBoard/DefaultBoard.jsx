@@ -1,8 +1,10 @@
 import css from './DefaultBoard.module.css';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../redux/modalSlice';
+import { useTranslation } from 'react-i18next';
 
 export const DefaultBoard = () => {
+  const {t} = useTranslation()
   const dispatch = useDispatch();
 
   const handleOpenAddBoardModal = () => {
@@ -12,16 +14,14 @@ export const DefaultBoard = () => {
   return (
     <div className={css.boardDefault}>
       <p className={css.boardDefaultText}>
-        Before starting your project, it is essential{' '}
+        {t("dflt.text-1st")}{' '}
         <span
           className={css.boardDefaultLink}
           onClick={handleOpenAddBoardModal}
         >
-          to create a board
+          {t("dflt.text-thumb")}
         </span>{' '}
-        to visualize and track all the necessary tasks and milestones. This
-        board serves as a powerful tool to organize the workflow and ensure
-        effective collaboration among team members.
+        {t("dflt.text-2nd")}
       </p>
     </div>
   );

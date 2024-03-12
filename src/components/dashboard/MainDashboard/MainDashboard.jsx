@@ -10,6 +10,7 @@ import {getCards} from '../../../redux/card/cardThunk';
 import {getColumns} from '../../../redux/column/columnThunk';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { updateColumnId } from '../../../redux/card/cardThunk';
+import { useTranslation } from 'react-i18next';
 
 
 const MainDashboard = ({ board }) => {
@@ -18,6 +19,7 @@ const MainDashboard = ({ board }) => {
   const stateCards = useSelector(state => state.cards.cards)
   const filterValue = useSelector(state => state.filter.filterValue)
   const [listRef] = useAutoAnimate()
+  const {t} = useTranslation()
 
 
   useEffect(() => {
@@ -112,7 +114,7 @@ const MainDashboard = ({ board }) => {
             <svg className={css.addColumnIcon}>
               <use href={`${sprite}#icon-plus`}></use>
             </svg>
-            <p className={css.addColumnTitle}>Add another column</p>
+            <p className={css.addColumnTitle}>{t("main.add-column")}</p>
           </div>
         </button>
       </ul>

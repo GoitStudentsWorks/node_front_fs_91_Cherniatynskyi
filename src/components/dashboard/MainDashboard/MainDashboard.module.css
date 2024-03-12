@@ -106,7 +106,6 @@
   padding-right: 4px;
   padding-top: 4px;
   margin-bottom: 14px;
-  transition: 600ms linear;
 
   @media (min-width: 768px) {
     padding-right: 8px;

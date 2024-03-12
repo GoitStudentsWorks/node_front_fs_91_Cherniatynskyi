@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FiltersForm } from 'components/Forms/FiltersForm/FiltersForm';
 import { priorityEnum } from 'utils/priorityObject';
+import { useTranslation } from 'react-i18next';
 
 const Filters = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const filterValue = useSelector(state => state.filter.filterValue)
   const filterColor = priorityEnum.find(pr => (pr.title === filterValue))
+  const {t} = useTranslation()
 
   useEffect(() => {
     if (isFiltersOpen) {
@@ -51,7 +53,7 @@ const Filters = () => {
         <svg data-popup="popupFiltersBtn" className={css.filterIcon}>
           <use data-popup="popupFiltersBtn" href={`${sprite}#icon-filter`} />
         </svg>
-        Filters
+        {t("filter")}
       </button>
       <FiltersForm onSelectClose={onFiltersClose} isOpen={isFiltersOpen} />
     </div>

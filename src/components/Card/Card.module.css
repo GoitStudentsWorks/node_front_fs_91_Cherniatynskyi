@@ -68,13 +68,14 @@
 }
 
 .cardFooterTitle{
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 400;
     letter-spacing: -0.16px;
     margin-bottom: 4px;
 }
 .cardPriorityInfo{
     display: flex;
+    align-items: center;
     gap: 4px;
     margin-right: 14px;
     }

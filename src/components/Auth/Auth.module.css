@@ -151,12 +151,13 @@ Form {
   color: rgba(255, 255, 255, 1);
 
   &:hover {
-    border-color: rgba(190, 219, 176, 1);
+    border-color: var(--accentColor);
     opacity: 1;
   }
 
-  &:active {
+  &:active, &:focus {
     opacity: 1;
+    border-color: var(--accentColor);
   }
 }
 

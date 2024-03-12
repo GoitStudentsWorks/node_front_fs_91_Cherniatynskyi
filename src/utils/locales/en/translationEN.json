@@ -1,0 +1,38 @@
+{
+    "sb": {
+        "title": "My Boards",
+        "createbutton": "Create a new board",
+        "help-1st": "If you need help with",
+        "help-2nd": ", check out our support resources or reach out to our customer support team.",
+        "btn-text": "Need help?",
+        "logout-text": "Log Out"
+    },
+    "nav":{
+        "theme": "Theme"
+    },
+    "dflt": {
+        "text-1st": "Before starting your project, it is essential",
+        "text-thumb": "to create a board",
+        "text-2nd": "to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members."
+    },
+    "filter": "Filters",
+    "main": {
+        "add-column": "Add another column",
+        "add-card": "Add Card",
+        "card-priority": "Priority",
+        "card-deadline": "Deadline",
+        "priorities":{
+            "Without": "Without",
+            "Low": "Low",
+            "Medium": "Medium",
+            "High": "High"
+        }
+    },
+    "form":{
+        "new-title": "New Board",
+        "new-icon": "Icons",
+        "new-bg": "Background",
+        "new-placeholder": "Title"
+    }
+    
+}

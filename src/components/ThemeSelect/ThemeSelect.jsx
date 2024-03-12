@@ -3,10 +3,12 @@ import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
 import { ThemePopup } from './ThemePopup';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 
 export const ThemeSelect = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const {t} = useTranslation()
 
   useEffect(() =>{
     if((isOpen)){
@@ -36,7 +38,7 @@ export const ThemeSelect = () => {
 
   return (
     <div data-popup="popupBtn" onClick={(e)=>handleOpenPopup(e)} className={css.menuTheme}>
-      <p data-popup="popupBtn" className={css.titleMenuTheme}>Theme</p>
+      <p data-popup="popupBtn" className={css.titleMenuTheme}>{t('nav.theme')}</p>
       <button data-popup="popupBtn" className={css.buttonMenu} type="button">
         <svg data-popup="popupBtn"  className={css.iconChevronDown} width="16" height="16">
           <use data-popup="popupBtn"  href={`${sprite}#icon-chevron-down`} />

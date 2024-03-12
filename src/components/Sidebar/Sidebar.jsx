@@ -9,8 +9,10 @@ import { openModal, closeSidebar } from '../../redux/modalSlice';
 import { selectBoards } from '../../redux/board/selectors';
 import { useEffect } from 'react';
 import { fetchBoards } from '../../redux/board/boardThunks';
+import { useTranslation } from 'react-i18next';
 
 export const Sidebar = () => {
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
   const [listRef] = useAutoAnimate();
@@ -54,10 +56,10 @@ export const Sidebar = () => {
             <h2 className={css.title}>Task Pro</h2>
           </div>
           <div className={css.bordBox}>
-            <h3 className={css.bordTitle}>My Boards</h3>
+            <h3 className={css.bordTitle}>{t("sb.title")}</h3>
             {/* button create */}
             <div className={css.buttonBox}>
-              <span className={css.buttonText}>Create a new board</span>
+              <span className={css.buttonText}>{t('sb.createbutton')}</span>
               <button onClick={handleAddBoard} className={css.buttonCreate}>
                 <svg className={css.iconCreate} width="22" height="22">
                   <use href={`${sprite}#icon-plus`} />
@@ -83,10 +85,8 @@ export const Sidebar = () => {
                   <img srcSet={`${pot} 1x`} alt="pot" />
                 </picture>
                 <p className={css.helpText}>
-                  If you need help with{' '}
-                  <span className={css.helpTextLink}>TaskPro</span>, check out
-                  our support resources or reach out to our customer support
-                  team.
+                  {t("sb.help-1st")}<br></br>
+                  <span className={css.helpTextLink}>TaskPro</span>{t("sb.help-2nd")}
                 </p>
               </>
             )}
@@ -94,7 +94,7 @@ export const Sidebar = () => {
               <svg className={css.iconHelp} width="20" height="20">
                 <use href={`${sprite}#icon-help`} />
               </svg>
-              <p className={css.helpButtonText}>Need help?</p>
+              <p className={css.helpButtonText}>{t("sb.btn-text")}</p>
             </button>
           </div>
           {/* logout */}
@@ -102,7 +102,7 @@ export const Sidebar = () => {
             <svg className={css.iconLogOut} width="32" height="32">
               <use href={`${sprite}#icon-login`} />
             </svg>
-            <p className={css.logOutButtonText}>Log Out</p>
+            <p className={css.logOutButtonText}>{t("sb.logout-text")}</p>
           </button>
         </div>
       </div>

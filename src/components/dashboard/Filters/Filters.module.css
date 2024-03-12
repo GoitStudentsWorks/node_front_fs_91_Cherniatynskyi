@@ -9,7 +9,6 @@
 .filterButton {
   display: flex;
   align-items: center;
-  width: 64px;
   height: 20px;
   gap: 8px;
   background-color: transparent;

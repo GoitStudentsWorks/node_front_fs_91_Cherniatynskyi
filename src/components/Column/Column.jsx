@@ -4,9 +4,12 @@ import { openModal } from '../../redux/modalSlice';
 // import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useDispatch } from 'react-redux';
 import { setCurrentColumnId } from '../../redux/column/columnSlice';
+import { useTranslation } from 'react-i18next';
 
 export const Column = ({ children, column }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation()
+  
 
   // const [listRef] = useAutoAnimate()
   const handleAddCard = () => {
@@ -45,7 +48,7 @@ export const Column = ({ children, column }) => {
           <svg className={css.addColumnIcon}>
             <use href={`${sprite}#icon-plus`}></use>
           </svg>
-          <p className={css.addColumnTitle}>Add Card</p>
+          <p className={css.addColumnTitle}>{t("main.add-card")}</p>
         </button>
       </div>
     </li>
