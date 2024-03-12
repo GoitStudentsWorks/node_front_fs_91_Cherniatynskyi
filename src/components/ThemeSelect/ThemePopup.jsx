@@ -1,13 +1,15 @@
 import css from './ThemeSelect.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updaterUserTheme } from '../../redux/auth/authThunks';
 
 export const ThemePopup = ({ onSelectClose, isOpen }) => {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user);
 
   const handleChangeTheme = e => {
-    console.log(e.target.id);
     dispatch(updaterUserTheme({ theme: `${e.target.id}` }));
+    const selectedTheme = e.target.id;
+    localStorage.setItem('theme', selectedTheme);
     onSelectClose();
   };
 
@@ -20,7 +22,7 @@ export const ThemePopup = ({ onSelectClose, isOpen }) => {
         onClick={handleChangeTheme}
         data-popup="el"
         id="dark"
-        className={css.menuItem}
+        className={`${css.menuItem} ${user.theme === 'dark' ? css.activ : ''}`}
       >
         Dark
       </li>
@@ -28,7 +30,7 @@ export const ThemePopup = ({ onSelectClose, isOpen }) => {
         onClick={handleChangeTheme}
         data-popup="el"
         id="light"
-        className={css.menuItem}
+        className={`${css.menuItem} ${user.theme === 'light' ? css.activ : ''}`}
       >
         Light
       </li>
@@ -36,7 +38,9 @@ export const ThemePopup = ({ onSelectClose, isOpen }) => {
         onClick={handleChangeTheme}
         data-popup="el"
         id="violet"
-        className={css.menuItem}
+        className={`${css.menuItem} ${
+          user.theme === 'violet' ? css.activ : ''
+        }`}
       >
         Violet
       </li>
