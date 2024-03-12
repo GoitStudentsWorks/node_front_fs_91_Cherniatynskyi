@@ -20,6 +20,9 @@ const columnSlice = createSlice({
   reducers: {
     setCurrentColumnId(state, {payload}){
       state.currentColumnId = payload
+    },
+    clearColumns(state, actions){
+      state.columns = []
     }
   },
   extraReducers: builder => {
@@ -50,4 +53,4 @@ const columnSlice = createSlice({
 });
 
 export const columnReducer = columnSlice.reducer;
-export const {setCurrentColumnId} = columnSlice.actions
+export const {setCurrentColumnId, clearColumns} = columnSlice.actions

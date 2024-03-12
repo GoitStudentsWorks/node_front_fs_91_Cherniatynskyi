@@ -37,7 +37,10 @@ export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (_id, thunkAPI) => {
     try {
-      return await BoardsService.fetchDeleteBoard(_id);
+      const data = await BoardsService.fetchDeleteBoard(_id);
+      console.log(data);
+      toast.success(`${data.data.message}`);
+      return data;
     } catch (e) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'
@@ -51,8 +54,9 @@ export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
   async ({ id, updatedBoard }, thunkAPI) => {
     try {
+      const data = await BoardsService.fetchUpdateBoard(id, updatedBoard);
       toast.success('Your board was successfully updated');
-      return await BoardsService.fetchUpdateBoard(id, updatedBoard);
+      return data;
     } catch (e) {
       toast.error(
         'Oops! Something went wrong! Please try reloading this page!'

@@ -11,8 +11,24 @@
   cursor: pointer;
 }
 
+.active {
+  background-color: var(--sidebarBgColor);
+}
+
+.active::after {
+  content: '';
+  width: 4px;
+  height: 61px;
+  background-color: var(--boardAddIconBg);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: absolute;
+  top: 0;
+  right: 4px;
+}
+
 .boardItem:hover {
-  background-color: var(--lightBgColor);
+  background-color: var(--bordBgColor);
 }
 
 .boardItem:hover .boardButton {
@@ -59,6 +75,11 @@
   fill: var(--sidebarBgColor);
 }
 
+.active .boardIcon {
+  stroke: var(--sidebarMainTextColor);
+  fill: var(--lightBgColor);
+}
+
 .boardItem:hover .boardIcon {
   stroke: var(--sidebarMainTextColor);
   fill: var(--lightBgColor);
@@ -74,6 +95,10 @@
   letter-spacing: -0.28px;
   margin-left: 4px;
   max-width: 88px;
+}
+
+.active .boardText {
+  color: var(--sidebarMainTextColor);
 }
 
 .boardItem:hover .boardText {
@@ -101,6 +126,11 @@
 .iconButton {
   stroke: var(--sidebarLightColor);
   cursor: pointer;
+}
+
+.active .iconButton {
+  stroke: var(--sidebarMainTextColor);
+  fill: var(--lightBgColor);
 }
 
 .iconButton:hover,

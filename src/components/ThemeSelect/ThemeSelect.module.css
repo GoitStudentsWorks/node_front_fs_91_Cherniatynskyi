@@ -82,6 +82,7 @@
 
   color: var(--accentColor);
   cursor: pointer;
+
 }
 
 .menuItem:hover {
