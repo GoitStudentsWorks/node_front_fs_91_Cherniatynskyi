@@ -127,10 +127,10 @@ export const UserForm = () => {
                 name="name"
                 placeholder="Enter your name"
               />
+              <ErrorMessage name="name">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
             </div>
-            <ErrorMessage name="name">
-              {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-            </ErrorMessage>
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
@@ -138,10 +138,10 @@ export const UserForm = () => {
                 name="email"
                 placeholder="Enter your email"
               />
+              <ErrorMessage name="email">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
             </div>
-            <ErrorMessage name="email">
-              {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-            </ErrorMessage>
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
@@ -170,10 +170,10 @@ export const UserForm = () => {
                   </svg>
                 </button>
               )}
+              <ErrorMessage name="password">
+                {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
+              </ErrorMessage>
             </div>
-            <ErrorMessage name="password">
-              {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
-            </ErrorMessage>
             <button className={css.btnSend} type="submit">
               Send
             </button>

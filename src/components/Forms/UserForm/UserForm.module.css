@@ -16,12 +16,16 @@
   color: var(--mainTextColor);
   text-align: left;
   margin-bottom: 24px;
+  margin-left: 20px;
 }
 
 @media (min-width: 375px) {
   .formWrap {
     width: 350px;
     height: 453px;
+  }
+  .formTitle {
+    margin-left: 0;
   }
 }
 
@@ -220,6 +224,25 @@
 }
 
 .errorMessage {
+  width: 100%;
+  height: 16px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  display: inline;
+  color: var(--mainTextColor);
+  float: left;
+  font-weight: 100;
+  font-size: 10px;
+  line-height: 14px;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  padding: 1px 8px 1px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* .errorMessage {
   display: flex;
   width: 100%;
   align-items: center;
@@ -230,7 +253,7 @@
   padding-left: 12px;
   font-size: 12px;
   font-weight: 400;
-}
+} */
 
 .userIconBtn {
   display: flex;
