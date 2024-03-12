@@ -84,7 +84,7 @@ const MainDashboard = ({ board }) => {
                   <ul className={css.columnList}
                    ref={provided.innerRef}
                     {...provided.droppableProps}
-                    isDraggingOver={snapshot.isDraggingOver}
+                    data-dragover={snapshot.isDraggingOver}
                     >
                   {stateCards && stateCards
                   .filter(card => {

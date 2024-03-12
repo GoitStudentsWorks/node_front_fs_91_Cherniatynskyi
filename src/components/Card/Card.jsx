@@ -41,7 +41,7 @@ export const Card = ({card}) =>{
                         <div className={css.cardFooterWrapper}>
                             <div className={css.cardFooter}>
                                 <div className={css.cardPriority}>
-                                    <h5 className={css.cardFooterTitle}>Priority {card.index}</h5>
+                                    <h5 className={css.cardFooterTitle}>Priority</h5>
                                     <div className={css.cardPriorityInfo}>
                                         <div style={{backgroundColor: `${priorityColor.color}`}} className={`${css.cardPriorityCircle}`}></div>
                                         <p className={css.cardPriorityName}>{card.priority.split(' ')[0]}</p>
