@@ -1,7 +1,6 @@
 import css from './Card.module.css';
 import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
-// import { deleteCard } from '../../redux/card/cardThunk';
 import { priorityEnum } from 'utils/priorityObject';
 import { openModal } from '../../redux/modalSlice';
 import { ChangeColumnMenu } from './ChangeColumn/ChangeColumnMenu';
@@ -12,10 +11,6 @@ import { Draggable } from 'react-beautiful-dnd';
 export const Card = ({card}) =>{
     const dispatch = useDispatch()
     const priorityColor = priorityEnum.find(pr => pr.title === card.priority)
-    // const handleDeleteCard = (e) =>{
-    //     dispatch(deleteCard(card._id))
-    // }
-    
  
     let dateNow =new Date();
     let deadline = new Date(card.deadline);
@@ -31,11 +26,14 @@ export const Card = ({card}) =>{
     //Логіка: Дані передаються в компонент з отриманого з бекенду юзера в тому числі додаткові класи; дзвіночок створюється за умови якщо сьогоднішня дата на 1 більша за дату дедлайну; додати функції при кліку на іконки 
     return (
         <Draggable draggableId={card._id} key={card._id} index={card.index}>
-            {(provided) => (
-                <li className={css.cardHeight}
+            {(provided, snapshot) => (
+                <li 
+                 className={css.cardHeight}
                  ref={provided.innerRef}
                  {...provided.draggableProps}
-                 {...provided.dragHandleProps}>
+                 {...provided.dragHandleProps}
+                 data-dragging={snapshot.isDragging}
+                 >
                 <div style={{backgroundColor: `${priorityColor.color}`}} className={css.cardWrapper}>
                     <div className= {css.cardContainer}>
                         <h4 className={css.cardTitle}>{card.title}</h4>

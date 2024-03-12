@@ -1,6 +1,5 @@
 .cardHeight{
     width: 335px;
-    cursor: pointer;
     transition: 200ms linear;
     cursor: grabbing;
 }
@@ -205,4 +204,14 @@
     fill: transparent;
 }
 
+
+
+[data-dragging="true"] .cardWrapper{
+        transform: rotateZ(8deg);
+        border: 0.1px solid var(--accentColor);
+}
+
+[data-dragging="true"] .cardContainer{
+    background-color: var(--lightBgColor);
+}
 

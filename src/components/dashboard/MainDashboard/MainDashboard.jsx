@@ -35,6 +35,10 @@ const MainDashboard = ({ board }) => {
 
   const handleDragEnd = (result) =>{
     const {draggableId, destination, source} = result
+
+    if(!destination){
+      return
+    }
     
     if((destination.droppableId === source.droppableId) & (destination.index === source.index)){
       return
@@ -76,8 +80,12 @@ const MainDashboard = ({ board }) => {
           return (
             <Column key={col._id} column={col} >
             <Droppable droppableId={col._id}>
-              {(provided) => (
-                  <ul className={css.columnList} ref={provided.innerRef} {...provided.droppableProps}>
+              {(provided, snapshot) => (
+                  <ul className={css.columnList}
+                   ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    isDraggingOver={snapshot.isDraggingOver}
+                    >
                   {stateCards && stateCards
                   .filter(card => {
                     if(card.columnId === col._id){
