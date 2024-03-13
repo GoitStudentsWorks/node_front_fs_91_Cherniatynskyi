@@ -13,6 +13,7 @@ import * as HelpersReducer from './helpersAuthReducer';
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  tokenExpiration: null,
   isLoggedIn: false,
   error: '',
   isRefreshing: false,

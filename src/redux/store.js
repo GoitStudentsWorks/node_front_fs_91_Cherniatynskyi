@@ -20,7 +20,7 @@ import { cardReducer } from './card/cardSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'tokenExpiration'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authSlice.reducer);
