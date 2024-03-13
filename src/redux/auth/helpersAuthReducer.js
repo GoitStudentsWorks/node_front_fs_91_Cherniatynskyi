@@ -6,6 +6,7 @@ export const handleFulfilledLogin = (state, { payload }) => {
   state.isRefreshing = false;
   state.error = '';
   state.token = payload.token;
+  state.tokenExpiration = payload.expiresIn;
   state.user = payload.user;
   state.isLoggedIn = true;
 };
@@ -14,6 +15,7 @@ export const handleFulfilledRegister = (state, { payload }) => {
   state.isRefreshing = false;
   state.error = '';
   state.token = payload.token;
+  state.tokenExpiration = payload.expiresIn;
   state.user = payload.user;
   state.isLoggedIn = true;
 };
@@ -29,6 +31,7 @@ export const handleFulfilledLogout = (state, _) => {
   state.error = '';
   state.user = null;
   state.token = null;
+  state.tokenExpiration = null;
   state.isLoggedIn = false;
 };
 
