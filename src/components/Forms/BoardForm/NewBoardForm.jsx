@@ -2,15 +2,17 @@ import css from './BoardForm.module.css';
 import { useState } from 'react';
 import { closeModal } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBoard } from '../../../redux/board/boardThunks';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 export const NewBoardForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [iconValue, setIconValue] = useState('four-circles');
   const [bgValue, setBgValue] = useState('1');
+  const boards = useSelector(state => state.boards.boards)
   const {t} = useTranslation()
 
   const handleChange = e => {
@@ -27,6 +29,12 @@ export const NewBoardForm = () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
+    if(boards.find(brd => brd.name === title)){
+      toast.error(
+        'Board with this name already exists'
+      );
+      return
+    }
 
     const newBoard = {
       name: title,

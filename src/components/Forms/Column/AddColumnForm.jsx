@@ -5,10 +5,12 @@ import sprite from '../../../images/sprite.svg';
 import { postColumn } from '../../../redux/column/columnThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 export const AddColumnForm= () => {
   const [title, setTitle] = useState('');
   const currentBoardId = useSelector(state => state.boards.currentBoardId)
+  const columns = useSelector(state => state.columns.columns)
   const dispatch = useDispatch()
   const {t} = useTranslation()
 
@@ -18,6 +20,12 @@ export const AddColumnForm= () => {
 
   const onSubmitForm = e => {
     e.preventDefault();
+    if(columns.find(col => col.title === title)){
+      toast.error(
+        'Column with this title already exists'
+      );
+      return
+    }
     dispatch(postColumn({title: title, boardId: currentBoardId}))
     dispatch(closeModal());
   };
