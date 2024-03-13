@@ -68,3 +68,29 @@
     left: 20px;
   }
 }
+
+.lngWrap{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.lngBtn{
+  color: var(--secondaryTextColor);
+  background-color: inherit;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.lngBtn:hover{
+  background-color: var(--lightBgColor);
+  color: var(--mainTextColor);
+  fill: var(--mainTextColor)
+}
+
+.iconLng{
+  stroke: var(--mainTextColor);
+  fill: var(--secondaryTextColor) ;
+}

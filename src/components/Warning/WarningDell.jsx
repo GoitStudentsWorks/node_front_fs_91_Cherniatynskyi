@@ -9,6 +9,7 @@ import { deleteColumn } from '../../redux/column/columnThunk';
 import { updateColumnId } from '../../redux/card/cardThunk';
 import { closeModal } from '../../redux/modalSlice';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -17,6 +18,7 @@ export const WarningDell = ()=> {
  const navigate = useNavigate()
   const { selectedElId } = useSelector(state => state.modal);
   const allCards = useSelector(state=> state.cards.cards)
+  const {t} = useTranslation()
 
   const handleDelete = () =>{
     if(selectedElId.deadline){
@@ -48,7 +50,7 @@ export const WarningDell = ()=> {
 
   return (
     <>
-       <p className={css.WDText}>Are you sure you want to delete <span className={css.WDTitle}>{selectedElId.title ?? selectedElId.name}</span></p>
+       <p className={css.WDText}>{t('form.del-text')} <span className={css.WDTitle}>{selectedElId.title ?? selectedElId.name}</span></p>
         <WarningList onDelete={handleDelete} onCancel={handleCancel}/>
     </>
   )

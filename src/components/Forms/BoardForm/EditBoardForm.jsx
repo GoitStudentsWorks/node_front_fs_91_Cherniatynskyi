@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateBoard } from '../../../redux/board/boardThunks';
 import { closeModal } from '../../../redux/modalSlice';
 import sprite from '../../../images/sprite.svg';
+import { useTranslation } from 'react-i18next';
 
 export const EditBoardForm = () => {
   const { selectedElId } = useSelector(state => state.modal);
@@ -12,6 +13,8 @@ export const EditBoardForm = () => {
   const [title, setTitle] = useState(currentBoard.name);
   const [iconValue, setIconValue] = useState(currentBoard.icon);
   const [bgValue, setBgValue] = useState(currentBoard.background);
+  const {t} = useTranslation()
+
 
   const dispatch = useDispatch()
 
@@ -57,12 +60,12 @@ export const EditBoardForm = () => {
 
   return (
     <>
-    <h2 className={css.formTitle}>Edit Board</h2>
+    <h2 className={css.formTitle}>{t("form.edit-title")}</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
           <input
             autoComplete="false"
-            placeholder="Title"
+            placeholder={t("form.new-placeholder")}
             onChange={e => handleChange(e)}
             value={title}
             className={css.formInput}
@@ -72,7 +75,7 @@ export const EditBoardForm = () => {
           />
         </label>
         <fieldset className={css.iconsForm}>
-          <legend className={css.iconsTitle}>Icons</legend>
+          <legend className={css.iconsTitle}>{t("form.new-icon")}</legend>
           <div className={css.iconsWrap}>
             {icValues.map(ic => {
               return (
@@ -94,7 +97,7 @@ export const EditBoardForm = () => {
           </div>
         </fieldset>
         <fieldset className={css.iconsForm}>
-          <legend className={css.iconsTitle}>Background</legend>
+          <legend className={css.iconsTitle}>{t("form.new-bg")}</legend>
           <div className={css.bgIconsWrap}>
             {bgValues.map(bg => {
               return (
@@ -125,7 +128,7 @@ export const EditBoardForm = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Edit
+          {t('form.edt-brd-btn')}
         </button>
       </form>
     </>

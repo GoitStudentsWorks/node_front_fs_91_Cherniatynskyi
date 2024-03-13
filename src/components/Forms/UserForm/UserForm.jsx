@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import { selectUser } from '../../../redux/auth/selector.js';
 import { updaterUserData } from '../../../redux/auth/authThunks.js';
@@ -38,6 +39,7 @@ export const UserForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [image, setPreviewImage] = useState(null);
   const dispatch = useDispatch();
+  const {t} = useTranslation()
 
   const handleImageChange = imageUrl => {
     setPreviewImage(imageUrl);
@@ -80,7 +82,7 @@ export const UserForm = () => {
 
   return (
     <>
-      <h2 className={css.formTitle}>Edit profile</h2>
+      <h2 className={css.formTitle}>{t('form.edt-prf')}</h2>
         <Formik
           initialValues={{
             avatar: '',
@@ -124,7 +126,7 @@ export const UserForm = () => {
                 className={css.field}
                 type="text"
                 name="name"
-                placeholder="Enter your name"
+                placeholder={t('form.name-prf')}
               />
               <ErrorMessage name="name">
                 {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
@@ -135,7 +137,7 @@ export const UserForm = () => {
                 className={css.field}
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder={t('form.mail-prf')}
               />
               <ErrorMessage name="email">
                 {errorMsg => <div className={css.errorMessage}>{errorMsg}</div>}
@@ -146,7 +148,7 @@ export const UserForm = () => {
                 className={css.field}
                 type={passwordVisible ? 'text' : 'password'}
                 name="password"
-                placeholder="Create a password"
+                placeholder={t('form.psw-prf')}
               />
               {passwordVisible ? (
                 <button
@@ -174,7 +176,7 @@ export const UserForm = () => {
               </ErrorMessage>
             </div>
             <button className={css.btnSend} type="submit">
-              Send
+            {t('form.send-btn')}
             </button>
           </Form>
         </Formik>

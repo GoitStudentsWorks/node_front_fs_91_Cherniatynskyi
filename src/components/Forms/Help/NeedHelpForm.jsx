@@ -3,6 +3,7 @@ import css from './NeedHelpForm.module.css';
 import { useState } from 'react';
 import { needHelpAction } from '../../../redux/needHelp/needHelpThunks';
 import { closeModal } from '../../../redux/modalSlice';
+import { useTranslation } from 'react-i18next';
 
 // case 'need-help':
 // return <NeedHelpForm />; при рендері у ModalBody спінер додати
@@ -10,6 +11,7 @@ import { closeModal } from '../../../redux/modalSlice';
 export const NeedHelpForm = () => {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
+  const {t} = useTranslation()
 
   const dispatch = useDispatch();
 
@@ -39,7 +41,7 @@ export const NeedHelpForm = () => {
 
   return (
     <>
-    <h2 className={css.formTitle}>Need help</h2>
+    <h2 className={css.formTitle}>{t('form.help')}</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="email">
           <input
@@ -55,7 +57,7 @@ export const NeedHelpForm = () => {
         </label>
         <label htmlFor="comment">
           <textarea
-            placeholder="Comment"
+            placeholder={t('form.help-com')}
             onChange={e => handleCommentChange(e)}
             value={comment}
             className={css.commentInput}
@@ -63,7 +65,7 @@ export const NeedHelpForm = () => {
           />
         </label>
         <button type="submit" className={css.formButton}>
-          Send
+        {t('form.send-btn')}
         </button>
       </form>
     </>

@@ -18,21 +18,55 @@
     "filter": "Filters",
     "main": {
         "add-column": "Add another column",
-        "add-card": "Add Card",
+        "add-card": "Add card",
         "card-priority": "Priority",
         "card-deadline": "Deadline",
         "priorities":{
             "Without": "Without",
             "Low": "Low",
             "Medium": "Medium",
-            "High": "High"
+            "High": "High",
+            "Without priority": "Without priority"
         }
     },
     "form":{
-        "new-title": "New Board",
+        "new-title": "New board",
         "new-icon": "Icons",
         "new-bg": "Background",
-        "new-placeholder": "Title"
-    }
-    
+        "new-placeholder": "Title",
+        "edit-title": "Edit board",
+        "cr-brd-btn": "Create",
+        "edt-brd-btn": "Edit",
+
+        "card-add": "Add card",
+        "edt-card": "Edit card",
+        "lbl-color": "Label color",
+        "add-crd-btn": "Add",
+        "edt-crd-btn": "Edit",
+        "crd-descr": "Description",
+
+        "clm-add": "Add column",
+        "clm-edt": "Edit column",
+
+        "filters": "Filters",
+        "all-btn": "Show all",
+
+        "help": "Need help",
+        "help-com": "Comment",
+        "send-btn": "Send",
+
+        "edt-prf": "Edit profile",
+        "name-prf": "Enter your name",
+        "mail-prf": "Enter your email",
+        "psw-prf": "Create a password",
+
+        "del-text": "Are you sure you want to delete",
+        "cnf-btn": "Delete",
+        "cnl-btn": "Cancel",
+        "logout": "Are you sure you want to Log out?",
+        "cnf-logout": "Log out"
+    },
+    "dark": "Dark",
+    "light": "Light",
+    "violet": "Violet"  
 }

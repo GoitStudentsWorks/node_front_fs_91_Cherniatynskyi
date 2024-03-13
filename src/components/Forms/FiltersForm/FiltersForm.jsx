@@ -3,9 +3,11 @@ import { Formik } from 'formik';
 import { priorityEnum } from 'utils/priorityObject';
 import { useDispatch } from 'react-redux';
 import { setFilterValue, clearFilter } from '../../../redux/filterSlice';
+import { useTranslation } from 'react-i18next';
 
 export const FiltersForm = ({ isOpen }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation()
 
   const handleChangeFilter = e => {
     dispatch(setFilterValue(e.target.value));
@@ -23,7 +25,7 @@ export const FiltersForm = ({ isOpen }) => {
       data-popup="menu"
       className={`${css.formWrap} ${!isOpen && css.menuListHidden}`}
     >
-      <h2 className={css.formTitle}>Filters</h2>
+      <h2 className={css.formTitle}>{t('filter')}</h2>
       <div className={css.filterLine}></div>
       <Formik
         initialValues={{
@@ -33,12 +35,12 @@ export const FiltersForm = ({ isOpen }) => {
         <form className={css.from}>
           <fieldset className={css.iconsForm}>
             <div className={css.labelTitle}>
-              <legend className={css.iconsTitle}>Label color</legend>
+              <legend className={css.iconsTitle}>{t('form.lbl-color')}</legend>
               <button
                 onClick={e => handleClearFilter(e)}
                 className={css.iconsAll}
               >
-                Show all
+                {t('form.all-btn')}
               </button>
             </div>
             <div className={css.iconsWrap}>
@@ -52,7 +54,7 @@ export const FiltersForm = ({ isOpen }) => {
                       required
                       onChange={e => handleChangeFilter(e)}
                     />
-                    <p className={css.iconName}>{pr.title}</p>
+                    <p className={css.iconName}>{t(`main.priorities.${pr.title}`)}</p>
                     <span
                       style={{ backgroundColor: `${pr.color}` }}
                       className={`${css.checkmark}`}

@@ -127,7 +127,7 @@ export const NewBoardForm = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Create
+          {t('form.cr-brd-btn')}
         </button>
       </form>
     </>

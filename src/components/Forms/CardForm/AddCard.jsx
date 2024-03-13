@@ -6,6 +6,7 @@ import { postCard } from '../../../redux/card/cardThunk';
 import { closeModal } from '../../../redux/modalSlice';
 import css from './AddCard.module.css';
 import { priorityEnum } from 'utils/priorityObject';
+import { useTranslation } from 'react-i18next';
 
 export const AddCardForm = () => {
   const [title, setTitle] = useState('');
@@ -20,6 +21,7 @@ export const AddCardForm = () => {
     card => card.columnId === currColumnId
   ).length;
   const dispatch = useDispatch();
+  const {t} = useTranslation()
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
@@ -55,13 +57,13 @@ export const AddCardForm = () => {
 
   return (
     <>
-      <h2 className={css.formTitle}>Add Card</h2>
+      <h2 className={css.formTitle}>{t('form.card-add')}</h2>
       <form className={css.from} onSubmit={handleSubmitForm}>
         <input
           className={css.formInputTitle}
           type="text"
           name="title"
-          placeholder="Title"
+          placeholder={t('form.new-placeholder')}
           onChange={e => handleTitleChange(e)}
           required
         />
@@ -71,14 +73,14 @@ export const AddCardForm = () => {
             className={css.formInput}
             rows={4}
             name="text"
-            placeholder="Description"
+            placeholder={t('form.crd-descr')}
             onChange={e => handleDescChange(e)}
             required
           />
           <p className={css.errMsg} name="text" />
         </label>
         <fieldset className={css.iconsForm}>
-          <legend className={css.iconsTitle}>Label color</legend>
+          <legend className={css.iconsTitle}>{t('form.lbl-color')}</legend>
           <div className={css.iconsWrap}>
             {priorityEnum.map(pr => {
               return (
@@ -100,7 +102,7 @@ export const AddCardForm = () => {
             })}
           </div>
         </fieldset>
-        <p className={css.deadlineStyle}>Deadline</p>
+        <p className={css.deadlineStyle}>{t('main.card-deadline')}</p>
         <div className={css.deadlineContainer}>
           {/* {selectedDate.getDate() === new Date().getDate() &&
           selectedDate.getMonth() === new Date().getMonth() &&
@@ -118,7 +120,7 @@ export const AddCardForm = () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Add
+          {t('form.add-crd-btn')}
         </button>
       </form>
     </>

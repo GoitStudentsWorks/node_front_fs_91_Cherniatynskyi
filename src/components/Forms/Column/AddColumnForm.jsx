@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../../images/sprite.svg';
 import { postColumn } from '../../../redux/column/columnThunk';
 import { closeModal } from '../../../redux/modalSlice';
+import { useTranslation } from 'react-i18next';
 
 export const AddColumnForm= () => {
   const [title, setTitle] = useState('');
   const currentBoardId = useSelector(state => state.boards.currentBoardId)
   const dispatch = useDispatch()
+  const {t} = useTranslation()
 
   const handleChange = e => {
     setTitle(e.target.value);
@@ -22,12 +24,12 @@ export const AddColumnForm= () => {
 
   return (
     <>
-      <h2 className={css.formTitle}>Add column</h2>
+      <h2 className={css.formTitle}>{t('form.clm-add')}</h2>
       <form className={css.form} onSubmit={e => onSubmitForm(e)}>
         <label htmlFor="name">
           <input
             autoComplete="false"
-            placeholder="Title"
+            placeholder={t('form.new-placeholder')}
             onChange={e => handleChange(e)}
             value={title}
             className={css.formInput}
@@ -43,7 +45,7 @@ export const AddColumnForm= () => {
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </div>
-          Add
+          {t('form.add-crd-btn')}
         </button>
       </form>
     </>
