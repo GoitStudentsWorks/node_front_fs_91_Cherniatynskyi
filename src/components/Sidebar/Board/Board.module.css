@@ -24,7 +24,7 @@
   border-bottom-left-radius: 4px;
   position: absolute;
   top: 0;
-  right: 4px;
+  right: 0;
 }
 
 .boardItem:hover {
@@ -39,17 +39,6 @@
   fill: var(--lightBgColor);
 }
 
-.boardItem:hover.boardItem::after {
-  content: '';
-  width: 4px;
-  height: 61px;
-  background-color: var(--boardAddIconBg);
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  position: absolute;
-  top: 0;
-  right: 4px;
-}
 
 @media screen and (min-width: 768px) {
   .boardItem {

@@ -13,7 +13,7 @@
   --sidebarBgColor: #121212;
   --logoBgColor: #1f1f1f;
   --logoIconColor: #ffffff;
-  --scrollThumbColor: #121212;
+  --scrollThumbColor: #181818;
   --helpBgColor: #1f1f1f;
   --boardAddIconBg: #bedbb0;
   --bordBgColor: rgb(31, 31, 31);
@@ -104,10 +104,10 @@
   --darkBgColor: #ffffff;
   --greyBgElements: rgb(232, 232, 232);
   --sidebarBgColor: #5255bc;
+  --boardAddIconBg: #9192d6;
   --logoBgColor: #ecedfd;
   --logoIconColor: #5255bc;
   --helpBgColor: #9192d6;
-  --boardAddIconBg: #b8bcfd;
   --bordBgColor: rgba(255, 255, 255, 0.2);
 
   --sidebarLightColor: #a9aade;
@@ -121,6 +121,8 @@
 
   --accentColor: #5255bc;
   --accentColorHover: #7b7ede;
+  
+  --scrollThumbColor: #9192d6;
 
   /* кольори в формах */
   --inputsBgColor: #fcfcfc;
