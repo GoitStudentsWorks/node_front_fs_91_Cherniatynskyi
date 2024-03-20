@@ -1,5 +1,6 @@
 .boardItem {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 61px;
@@ -72,6 +73,9 @@
 .boardIcon {
   stroke: var(--sidebarLightColor);
   fill: var(--sidebarBgColor);
+  display: flex;
+  align-items: center;
+  padding-bottom: 1px;
 }
 
 .active .boardIcon {

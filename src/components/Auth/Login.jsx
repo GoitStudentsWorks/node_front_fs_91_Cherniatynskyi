@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 import { Form, Field, ErrorMessage } from 'formik';
 import css from './Auth.module.css';
 import sprite from '../../images/sprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from '../../redux/auth/authThunks';
+import { Spinner } from 'components/Spinner';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -24,6 +25,7 @@ const schema = Yup.object().shape({
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(state=> state.auth.isRefreshing)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -38,6 +40,8 @@ export const Login = () => {
   };
 
   return (
+    <>
+    {isLoading && <div className={css.loaderBackdrop}><Spinner></Spinner></div>}
     <div className={css.loginForm}>
       <Formik
         initialValues={{
@@ -48,7 +52,7 @@ export const Login = () => {
         onSubmit={e => handleSubmit(e)}
       >
         {({ errors, touched }) => (
-          <Form autoComplete="off">
+          <Form className={css.Form} autoComplete="off">
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
@@ -80,7 +84,7 @@ export const Login = () => {
                   type="button"
                   onClick={handleClickPasswordVisibility}
                 >
-                  <svg>
+                  <svg className={css.svg}>
                     <use href={`${sprite}#icon-eye`} />
                   </svg>
                 </button>
@@ -90,7 +94,7 @@ export const Login = () => {
                   type="button"
                   onClick={handleClickPasswordVisibility}
                 >
-                  <svg>
+                  <svg className={css.svg}>
                     <use href={`${sprite}#icon-eye`} />
                   </svg>
                 </button>
@@ -112,5 +116,6 @@ export const Login = () => {
         )}
       </Formik>
     </div>
+    </>
   );
 };

@@ -36,11 +36,13 @@ export const handleFulfilledLogout = (state, _) => {
 };
 
 export const handleFulfilledFetchCurrentUser = (state, { payload }) => {
+  state.isRefreshing = false;
   state.user = payload;
   state.isLoggedIn = true;
 };
 
 export const handleFulfilledUpdateUserData = (state, { payload }) => {
+  state.isRefreshing = false;
   state.user = payload;
 };
 

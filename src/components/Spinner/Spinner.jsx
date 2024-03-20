@@ -24,8 +24,8 @@ export const Spinner = () => {
 
 export const HeaderSpinner = () =>{
   return(<TailSpin
-  height="30"
-  width="30"
+  height="30px"
+  width="30px"
   color='#bedbb0'
   secondaryColor='bedbb0'>
   </TailSpin>)

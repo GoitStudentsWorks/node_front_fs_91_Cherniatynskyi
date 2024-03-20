@@ -4,9 +4,10 @@ import { Formik } from 'formik';
 import { Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './Auth.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/authThunks';
 import sprite from '../../images/sprite.svg';
+import { Spinner } from 'components/Spinner';
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -28,6 +29,7 @@ const schema = Yup.object().shape({
 
 export const Register = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(state=> state.auth.isRefreshing)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -44,6 +46,8 @@ export const Register = () => {
   };
 
   return (
+    <>
+    {isLoading && <div className={css.loaderBackdrop}><Spinner></Spinner></div>}
     <div className={css.registerForm}>
       <Formik
         initialValues={{
@@ -55,7 +59,7 @@ export const Register = () => {
         onSubmit={e => handleSubmit(e)}
       >
         {({ errors, touched }) => (
-          <Form>
+          <Form className={css.Form}>
             <div className={css.fieldWrapper}>
               <Field
                 className={css.field}
@@ -103,7 +107,7 @@ export const Register = () => {
                   type="button"
                   onClick={handleClickPasswordVisibility}
                 >
-                  <svg>
+                  <svg className={css.svg}>
                     <use href={`${sprite}#icon-eye`} />
                   </svg>
                 </button>
@@ -113,7 +117,7 @@ export const Register = () => {
                   type="button"
                   onClick={handleClickPasswordVisibility}
                 >
-                  <svg>
+                  <svg className={css.svg}>
                     <use href={`${sprite}#icon-eye`} />
                   </svg>
                 </button>
@@ -133,7 +137,7 @@ export const Register = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </div></>
   );
 };
 
