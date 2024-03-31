@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>     
   <PersistGate persistor={persistor}>
-    <BrowserRouter basename='/task-pro'>
+    <BrowserRouter basename='/node_front_fs_91_Cherniatynskyi'>
       <Suspense fallback={<div>loading</div>}>
       <App />
       </Suspense>
